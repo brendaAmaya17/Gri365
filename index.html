@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/2.png?updatedAt=1759434976186" alt="Connect Logo Light" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/1.png?updatedAt=1759434976249" alt="Connect Logo Dark" class="logo-dark">
+            </div>
+            <nav class="navigation">
+                <a class="nav-link active" href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Inicio</span>
+                </a>
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">list_alt</span>
+                    <span>FixIT</span>
+                </a>
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">inbox</span>
+                    <span>Cafetería</span>
+                </a>
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">assessment</span>
+                    <span>Administración</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h2 class="header-title">Bienvenida de nuevo, Sofía 👋</h2>
+                    <p class="header-subtitle">Aquí tienes un resumen de tu actividad.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-container">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input class="search-input" placeholder="Buscar en la plataforma..." type="search"/>
+                    </div>
+                    <button id="theme-toggle" class="icon-button">
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </button>
+                    <button class="icon-button notification-button">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <div class="profile-avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_ktsZYwpbArV_UA-X-zdEFOEL7YVMiV7wmWW8Vgyp38nGpcBnsGQAKcPROq_dgUNNxue2RWFt_9IL1RoYl6txdtcQK4Bb7gIiacoAdr7mUuS5NQXjOPvgMZKOYBmNyMWj03O-maO-CxbvT_FJwnkeGZPzd-GxFBI2DyrKdwtrNNhFc-VyuLERiw0dMis5VKxJQovpjTR8TLUhg1-Wguf6yCdFg0YVhaDoU6RGxvXeAmqmuuqCLrSjdEKtk4bLrnOOa83hvyi-wzY");'></div>
+                </div>
+            </header>
+            <div class="content-grid">
+                <div class="main-column">
+                    <section>
+                        <h3 class="section-title">Anuncios Recientes</h3>
+                        <div class="announcement-card">
+                            <div class="announcement-icon-wrapper">
+                                <span class="material-symbols-outlined">campaign</span>
+                            </div>
+                            <div>
+                                <p class="announcement-title">Nuevo software de gestión de proyectos</p>
+                                <p class="announcement-date">Fecha: 15 de julio de 2024</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 class="section-title">Solicitudes Activas</h3>
+                        <div class="card-list">
+                            <div class="request-card">
+                                <div class="card-content">
+                                    <p class="card-meta">Solicitud #1234 - Departamento de TI</p>
+                                    <p class="card-title">Solicitud de compra de software</p>
+                                </div>
+                                <div class="card-actions">
+                                    <span class="status-badge status-review">En revisión</span>
+                                    <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
+                                </div>
+                            </div>
+                            <div class="request-card">
+                                <div class="card-content">
+                                    <p class="card-meta">Solicitud #5678 - Departamento de Operaciones</p>
+                                    <p class="card-title">Solicitud de mantenimiento de equipo</p>
+                                </div>
+                                <div class="card-actions">
+                                    <span class="status-badge status-approved">Aprobada</span>
+                                    <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="link-button">Ver todas las solicitudes</button>
+                    </section>
+                    <section>
+                        <h3 class="section-title">Bandeja de Entrada</h3>
+                        <div class="inbox-list">
+                            <div class="inbox-item">
+                                <div class="unread-dot"></div>
+                                <div class="card-content">
+                                    <p class="inbox-sender">Departamento de Recursos Humanos</p>
+                                    <p class="inbox-preview">¡Hola! Recordatorio sobre la actualización de políticas...</p>
+                                </div>
+                                <span class="inbox-time">Hace 5m</span>
+                            </div>
+                            <div class="inbox-item">
+                                <div class="unread-dot"></div>
+                                <div class="card-content">
+                                    <p class="inbox-sender">Departamento de Marketing</p>
+                                    <p class="inbox-preview">Revisión de la nueva campaña publicitaria.</p>
+                                </div>
+                                <span class="inbox-time">Hace 2h</span>
+                            </div>
+                            <div class="inbox-item">
+                                <div class="read-dot"></div>
+                                <div class="card-content">
+                                    <p>Juan Pérez (Ventas)</p>
+                                    <p class="inbox-preview">RE: Cifras de ventas Q2</p>
+                                </div>
+                                <span class="inbox-time">Ayer</span>
+                            </div>
+                        </div>
+                        <button class="link-button">Ir a la bandeja de entrada</button>
+                    </section>
+                </div>
+                <div class="side-column">
+                    <section class="tasks-card">
+                        <h3 class="section-title">Tareas Pendientes</h3>
+                        <div class="tasks-list">
+                            <div class="task-item">
+                                <input class="task-checkbox" id="task1" type="checkbox"/>
+                                <label class="task-label" for="task1">Revisar y aprobar la solicitud de compra</label>
+                            </div>
+                            <div class="task-item">
+                                <input class="task-checkbox" id="task2" type="checkbox"/>
+                                <label class="task-label" for="task2">Coordinar el mantenimiento del equipo</label>
+                            </div>
+                            <div class="task-item">
+                                <input checked class="task-checkbox" id="task3" type="checkbox"/>
+                                <label class="task-label-done" for="task3">Preparar informe mensual</label>
+                            </div>
+                            <div class="task-item">
+                                <input class="task-checkbox" id="task4" type="checkbox"/>
+                                <label class="task-label" for="task4">Responder a HR sobre políticas</label>
+                            </div>
+                        </div>
+                        <button class="primary-button">Añadir nueva tarea</button>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== SCRIPT ACTUALIZADO ===== -->
+    <script>
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleButton.querySelector('.material-symbols-outlined');
+        const body = document.body;
+
+        // Función para actualizar el icono y el tema
+        const updateTheme = () => {
+            if (body.classList.contains('dark')) {
+                themeIcon.textContent = 'light_mode'; // Modo oscuro: muestra el sol
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.textContent = 'dark_mode'; // Modo claro: muestra la luna
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        // Al cargar la página, revisa si hay un tema guardado
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+        }
+
+        // Establece el icono correcto al cargar
+        updateTheme();
+
+        // Añade el evento al botón
+        themeToggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            updateTheme(); // Llama a la función para cambiar el icono y guardar en localStorage
+        });
+    </script>
+</body>
+</html>
