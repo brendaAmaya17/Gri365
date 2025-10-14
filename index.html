@@ -12,8 +12,8 @@
     <div class="page-container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="https://ik.imagekit.io/v3kitfabd/gri365/2.png?updatedAt=1759434976186" alt="Connect Logo Light" class="logo-light">
-                <img src="https://ik.imagekit.io/v3kitfabd/gri365/1.png?updatedAt=1759434976249" alt="Connect Logo Dark" class="logo-dark">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Light" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Dark" class="logo-dark">
             </div>
             <nav class="navigation">
                 <a class="nav-link active" href="#">
@@ -26,11 +26,11 @@
                 </a>
                 <a class="nav-link" href="#">
                     <span class="material-symbols-outlined">inbox</span>
-                    <span>Cafetería</span>
+                    <span>Gestión de Proyectos</span>
                 </a>
                 <a class="nav-link" href="#">
                     <span class="material-symbols-outlined">assessment</span>
-                    <span>Administración</span>
+                    <span>Marketing</span>
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -64,7 +64,7 @@
             <div class="content-grid">
                 <div class="main-column">
                     <section>
-                        <h3 class="section-title">Anuncios Recientes</h3>
+                        <h3 class="section-title">Anuncios Recientes <span class="badge new-announcement-count">1</span></h3>
                         <div class="announcement-card">
                             <div class="announcement-icon-wrapper">
                                 <span class="material-symbols-outlined">campaign</span>
@@ -76,14 +76,19 @@
                         </div>
                     </section>
                     <section>
-                        <h3 class="section-title">Solicitudes Activas</h3>
+                        <h3 class="section-title">Solicitudes Abiertas / Pendientes <span class="badge pending-requests-count">5</span></h3>
                         <div class="card-list">
                             <div class="request-card">
                                 <div class="card-content">
                                     <p class="card-meta">Solicitud #1234 - Departamento de TI</p>
                                     <p class="card-title">Solicitud de compra de software</p>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 75%;"></div>
+                                        <span class="progress-text">75%</span>
+                                    </div>
                                 </div>
                                 <div class="card-actions">
+                                    <span class="material-symbols-outlined favorite-icon">star_border</span>
                                     <span class="status-badge status-review">En revisión</span>
                                     <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
                                 </div>
@@ -92,8 +97,13 @@
                                 <div class="card-content">
                                     <p class="card-meta">Solicitud #5678 - Departamento de Operaciones</p>
                                     <p class="card-title">Solicitud de mantenimiento de equipo</p>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                        <span class="progress-text">100%</span>
+                                    </div>
                                 </div>
                                 <div class="card-actions">
+                                    <span class="material-symbols-outlined favorite-icon">star</span>
                                     <span class="status-badge status-approved">Aprobada</span>
                                     <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
                                 </div>
@@ -102,7 +112,7 @@
                         <button class="link-button">Ver todas las solicitudes</button>
                     </section>
                     <section>
-                        <h3 class="section-title">Bandeja de Entrada</h3>
+                        <h3 class="section-title">Bandeja de Entrada <span class="badge unread-messages-count">2</span></h3>
                         <div class="inbox-list">
                             <div class="inbox-item">
                                 <div class="unread-dot"></div>
@@ -111,6 +121,7 @@
                                     <p class="inbox-preview">¡Hola! Recordatorio sobre la actualización de políticas...</p>
                                 </div>
                                 <span class="inbox-time">Hace 5m</span>
+                                <button class="icon-button"><span class="material-symbols-outlined">folder</span></button>
                             </div>
                             <div class="inbox-item">
                                 <div class="unread-dot"></div>
@@ -119,6 +130,7 @@
                                     <p class="inbox-preview">Revisión de la nueva campaña publicitaria.</p>
                                 </div>
                                 <span class="inbox-time">Hace 2h</span>
+                                <button class="icon-button"><span class="material-symbols-outlined">chat</span></button>
                             </div>
                             <div class="inbox-item">
                                 <div class="read-dot"></div>
@@ -127,14 +139,16 @@
                                     <p class="inbox-preview">RE: Cifras de ventas Q2</p>
                                 </div>
                                 <span class="inbox-time">Ayer</span>
+                                <button class="icon-button"><span class="material-symbols-outlined">attach_file</span></button>
                             </div>
                         </div>
-                        <button class="link-button">Ir a la bandeja de entrada</button>
+                        <button class="primary-button add-new-ticket">Abrir nuevo ticket</button>
+                        <button class="link-button">Ir a la bandeja de entrada <span class="badge total-inbox-count">7</span></button>
                     </section>
                 </div>
                 <div class="side-column">
                     <section class="tasks-card">
-                        <h3 class="section-title">Tareas Pendientes</h3>
+                        <h3 class="section-title">Tareas Pendientes <span class="badge tasks-due-count">3</span></h3>
                         <div class="tasks-list">
                             <div class="task-item">
                                 <input class="task-checkbox" id="task1" type="checkbox"/>
@@ -154,6 +168,44 @@
                             </div>
                         </div>
                         <button class="primary-button">Añadir nueva tarea</button>
+                    </section>
+
+                    <section class="calendar-card">
+                        <h3 class="section-title">Calendario</h3>
+                        <div class="calendar-widget">
+                            <div class="calendar-header">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                                <h4>Julio 2024</h4>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="calendar-grid">
+                                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
+                                <!-- Días del mes, resaltando el actual y los que tienen eventos -->
+                                <span class="day">1</span><span class="day">2</span><span class="day">3</span><span class="day">4</span><span class="day">5</span><span class="day">6</span><span class="day">7</span>
+                                <span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day active-day">11</span><span class="day event-day">12</span><span class="day">13</span><span class="day">14</span>
+                                <span class="day">15</span><span class="day">16</span><span class="day">17</span><span class="day">18</span><span class="day">19</span><span class="day event-day">20</span><span class="day">21</span>
+                                <span class="day">22</span><span class="day">23</span><span class="day">24</span><span class="day">25</span><span class="day">26</span><span class="day">27</span><span class="day">28</span>
+                                <span class="day">29</span><span class="day">30</span><span class="day">31</span>
+                            </div>
+                            <div class="calendar-events">
+                                <p class="event-item">Mañana <span class="event-time">10:00</span> - Reunión de equipo</p>
+                                <p class="event-item">20 Julio <span class="event-time">15:00</span> - Entrega informe mensual</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="metrics-card">
+                        <h3 class="section-title">Métricas Clave <button class="icon-button"><span class="material-symbols-outlined">info</span></button></h3>
+                        <div class="metrics-list">
+                            <div class="metric-item">
+                                <span class="metric-label">Tickets cerrados esta semana:</span>
+                                <span class="metric-value">18</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Tiempo promedio de respuesta:</span>
+                                <span class="metric-value">1.2h</span>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>

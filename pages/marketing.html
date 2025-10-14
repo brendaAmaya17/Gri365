@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAM Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/3004/3004613.png" alt="CAM Logo" class="logo">
+                <div class="sidebar-title">
+                    <h1>CAM</h1>
+                    <p>Audiovisual Requests</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <p>Dashboard</p>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <p>Calendar</p>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">bar_chart</span>
+                    <p>Reports</p>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">settings</span>
+                    <p>Settings</p>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="new-request-btn">New Request</button>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">help</span>
+                    <p>Help</p>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">logout</span>
+                    <p>Logout</p>
+                </a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="search-bar">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search by title, requester, or ID...">
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-toggle-btn">
+                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                    </button>
+                    <button class="notifications-btn">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocK_3_1g_... (URL de imagen de perfil)" alt="User profile picture" class="profile-pic">
+                </div>
+            </header>
+            <section class="content">
+                <div class="content-header">
+                    <h1>All Requests</h1>
+                    <div class="filter-buttons">
+                        <button>Date <span class="material-symbols-outlined">expand_more</span></button>
+                        <button>Priority <span class="material-symbols-outlined">expand_more</span></button>
+                        <button>Status <span class="material-symbols-outlined">expand_more</span></button>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <p>En curso</p>
+                            <span class="material-symbols-outlined" style="color: var(--warning-color);">hourglass_top</span>
+                        </div>
+                        <p class="stat-number">2</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <p>En revisión</p>
+                            <span class="material-symbols-outlined" style="color: var(--info-color);">rate_review</span>
+                        </div>
+                        <p class="stat-number">1</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <p>Finalizado</p>
+                            <span class="material-symbols-outlined" style="color: var(--success-color);">check_circle</span>
+                        </div>
+                        <p class="stat-number">1</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <p>Pendiente</p>
+                            <span class="material-symbols-outlined">pending_actions</span>
+                        </div>
+                        <p class="stat-number">1</p>
+                    </div>
+                </div>
+                <div class="requests-table-container">
+                    <table class="requests-table">
+                        <thead>
+                            <tr>
+                                <th>Request Title</th>
+                                <th>Requester</th>
+                                <th>Due Date</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product Launch Campaign</td>
+                                <td>John Doe</td>
+                                <td>2023-10-26</td>
+                                <td><span class="priority high">High</span></td>
+                                <td><span class="status in-progress">En curso</span></td>
+                                <td><a href="#" class="view-link">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>Social Media Graphics</td>
+                                <td>Jane Smith</td>
+                                <td>2023-10-28</td>
+                                <td><span class="priority medium">Medium</span></td>
+                                <td><span class="status completed">Finalizado</span></td>
+                                <td><a href="#" class="view-link">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>New Website Banner</td>
+                                <td>Alex Johnson</td>
+                                <td>2023-11-05</td>
+                                <td><span class="priority high">High</span></td>
+                                <td><span class="status in-review">En revisión</span></td>
+                                <td><a href="#" class="view-link">View</a></td>
+                            </tr>
+                             <tr>
+                                <td>Q4 Lookback Video</td>
+                                <td>Emily White</td>
+                                <td>2023-11-15</td>
+                                <td><span class="priority low">Low</span></td>
+                                <td><span class="status pending">Pendiente</span></td>
+                                <td><a href="#" class="view-link">View</a></td>
+                            </tr>
+                             <tr>
+                                <td>Conference Booth Design</td>
+                                <td>Michael Brown</td>
+                                <td>2023-11-20</td>
+                                <td><span class="priority medium">Medium</span></td>
+                                <td><span class="status in-progress">En curso</span></td>
+                                <td><a href="#" class="view-link">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="pagination">
+                    <p>Showing <span>1</span> to <span>5</span> of <span>20</span> results</p>
+                    <div class="pagination-buttons">
+                        <button disabled><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Función para aplicar el tema guardado o el predeterminado
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark-mode');
+                    body.classList.remove('light-mode');
+                } else {
+                    body.classList.add('light-mode');
+                    body.classList.remove('dark-mode');
+                }
+            }
+
+            // Cargar el tema guardado en localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else {
+                // Si no hay tema guardado, aplica el modo claro por defecto
+                applyTheme('light');
+            }
+
+            // Evento para el botón de cambio de tema
+            themeToggle.addEventListener('click', () => {
+                if (body.classList.contains('light-mode')) {
+                    applyTheme('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    applyTheme('light');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
