@@ -1,212 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAM Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAM - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="./../styles.css" rel="stylesheet" />
 </head>
-<body class="light-mode">
-    <div class="dashboard-container">
+<body class="marketing-page">
+    <div class="page-container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="https://cdn-icons-png.flaticon.com/512/3004/3004613.png" alt="CAM Logo" class="logo">
-                <div class="sidebar-title">
-                    <h1>CAM</h1>
-                    <p>Audiovisual Requests</p>
-                </div>
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark">
             </div>
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active">
+            <nav class="navigation">
+                <a class="nav-link" href="index.html">
                     <span class="material-symbols-outlined">dashboard</span>
-                    <p>Dashboard</p>
+                    <span>Inicio</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <span class="material-symbols-outlined">calendar_today</span>
-                    <p>Calendar</p>
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">list_alt</span>
+                    <span>FixIT</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <span class="material-symbols-outlined">bar_chart</span>
-                    <p>Reports</p>
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">inbox</span>
+                    <span>Gestión de Proyectos</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <span class="material-symbols-outlined">settings</span>
-                    <p>Settings</p>
+                <a class="nav-link active" href="marketing.html">
+                    <span class="material-symbols-outlined">linked_camera</span>
+                    <span>CAM</span>
                 </a>
             </nav>
             <div class="sidebar-footer">
-                <button class="new-request-btn">New Request</button>
-                <a href="#" class="nav-item">
-                    <span class="material-symbols-outlined">help</span>
-                    <p>Help</p>
-                </a>
-                <a href="#" class="nav-item">
+                <a class="nav-link" href="#">
                     <span class="material-symbols-outlined">logout</span>
-                    <p>Logout</p>
+                    <span>Cerrar Sesión</span>
                 </a>
             </div>
         </aside>
         <main class="main-content">
             <header class="main-header">
-                <div class="search-bar">
-                    <span class="material-symbols-outlined">search</span>
-                    <input type="text" placeholder="Search by title, requester, or ID...">
+                <div class="header-left">
+                    <div class="logo">
+                        <div class="logo-icon-wrapper">
+                            <span class="material-symbols-outlined">linked_camera</span>
+                        </div>
+                        <h1>CAM</h1>
+                    </div>
+                    <nav class="main-nav">
+                        <a href="marketing.html" class="nav-link active">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="calendar.html" class="nav-link">
+                            <span class="material-symbols-outlined">calendar_today</span>
+                            <span>Calendario</span>
+                        </a>
+                        <a href="reports.html" class="nav-link">
+                            <span class="material-symbols-outlined">bar_chart</span>
+                            <span>Tickets Resueltos</span>
+                        </a>
+                    </nav>
                 </div>
-                <div class="header-actions">
-                    <button id="theme-toggle" class="theme-toggle-btn">
-                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+                <div class="header-right">
+                    <button class="btn btn-primary" id="open-modal-btn">Nueva Solicitud</button>
+                    <button class="btn-icon" id="theme-toggle-btn" title="Alternar tema">
                         <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
                     </button>
-                    <button class="notifications-btn">
-                        <span class="material-symbols-outlined">notifications</span>
-                        <span class="notification-dot"></span>
-                    </button>
-                    <img src="https://lh3.googleusercontent.com/a/ACg8ocK_3_1g_... (URL de imagen de perfil)" alt="User profile picture" class="profile-pic">
+                    <a href="#" class="btn-icon" title="Cerrar Sesión">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
                 </div>
             </header>
-            <section class="content">
+            <div class="content-wrapper">
                 <div class="content-header">
-                    <h1>All Requests</h1>
+                    <h2>Todas las Solicitudes</h2>
                     <div class="filter-buttons">
-                        <button>Date <span class="material-symbols-outlined">expand_more</span></button>
-                        <button>Priority <span class="material-symbols-outlined">expand_more</span></button>
-                        <button>Status <span class="material-symbols-outlined">expand_more</span></button>
+                        <button class="btn btn-filter"><span>Fecha</span><span class="material-symbols-outlined">expand_more</span></button>
+                        <button class="btn btn-filter"><span>Prioridad</span><span class="material-symbols-outlined">expand_more</span></button>
+                        <button class="btn btn-filter"><span>Estado</span><span class="material-symbols-outlined">expand_more</span></button>
                     </div>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <p>En curso</p>
-                            <span class="material-symbols-outlined" style="color: var(--warning-color);">hourglass_top</span>
-                        </div>
+                        <div class="card-header"><p>En curso</p><span class="material-symbols-outlined icon-warning">hourglass_top</span></div>
                         <p class="stat-number">2</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <p>En revisión</p>
-                            <span class="material-symbols-outlined" style="color: var(--info-color);">rate_review</span>
-                        </div>
+                        <div class="card-header"><p>En revisión</p><span class="material-symbols-outlined icon-info">rate_review</span></div>
                         <p class="stat-number">1</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <p>Finalizado</p>
-                            <span class="material-symbols-outlined" style="color: var(--success-color);">check_circle</span>
-                        </div>
+                        <div class="card-header"><p>Finalizado</p><span class="material-symbols-outlined icon-success">check_circle</span></div>
                         <p class="stat-number">1</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <p>Pendiente</p>
-                            <span class="material-symbols-outlined">pending_actions</span>
-                        </div>
+                        <div class="card-header"><p>Pendiente</p><span class="material-symbols-outlined icon-secondary">pending_actions</span></div>
                         <p class="stat-number">1</p>
                     </div>
                 </div>
-                <div class="requests-table-container">
+                <div class="table-container">
                     <table class="requests-table">
                         <thead>
                             <tr>
-                                <th>Request Title</th>
-                                <th>Requester</th>
-                                <th>Due Date</th>
-                                <th>Priority</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th>Título de la Solicitud</th><th>Solicitante</th><th>Fecha Límite</th><th>Prioridad</th><th>Estado</th><th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Product Launch Campaign</td>
-                                <td>John Doe</td>
-                                <td>2023-10-26</td>
-                                <td><span class="priority high">High</span></td>
-                                <td><span class="status in-progress">En curso</span></td>
-                                <td><a href="#" class="view-link">View</a></td>
+                                <td>Campaña de Lanzamiento de Producto</td><td>John Doe</td><td>2023-10-26</td>
+                                <td><span class="badge badge-high">Alta</span></td><td><span class="badge badge-progress">En curso</span></td>
+                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
                             </tr>
                             <tr>
-                                <td>Social Media Graphics</td>
-                                <td>Jane Smith</td>
-                                <td>2023-10-28</td>
-                                <td><span class="priority medium">Medium</span></td>
-                                <td><span class="status completed">Finalizado</span></td>
-                                <td><a href="#" class="view-link">View</a></td>
+                                <td>Gráficos para Redes Sociales</td><td>Jane Smith</td><td>2023-10-28</td>
+                                <td><span class="badge badge-medium">Media</span></td><td><span class="badge badge-finished">Finalizado</span></td>
+                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
                             </tr>
                             <tr>
-                                <td>New Website Banner</td>
-                                <td>Alex Johnson</td>
-                                <td>2023-11-05</td>
-                                <td><span class="priority high">High</span></td>
-                                <td><span class="status in-review">En revisión</span></td>
-                                <td><a href="#" class="view-link">View</a></td>
+                                <td>Nuevo Banner para Sitio Web</td><td>Alex Johnson</td><td>2023-11-05</td>
+                                <td><span class="badge badge-high">Alta</span></td><td><span class="badge badge-review">En revisión</span></td>
+                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
                             </tr>
-                             <tr>
-                                <td>Q4 Lookback Video</td>
-                                <td>Emily White</td>
-                                <td>2023-11-15</td>
-                                <td><span class="priority low">Low</span></td>
-                                <td><span class="status pending">Pendiente</span></td>
-                                <td><a href="#" class="view-link">View</a></td>
+                            <tr>
+                                <td>Video Resumen Q4</td><td>Emily White</td><td>2023-11-15</td>
+                                <td><span class="badge badge-low">Baja</span></td><td><span class="badge badge-pending">Pendiente</span></td>
+                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
                             </tr>
-                             <tr>
-                                <td>Conference Booth Design</td>
-                                <td>Michael Brown</td>
-                                <td>2023-11-20</td>
-                                <td><span class="priority medium">Medium</span></td>
-                                <td><span class="status in-progress">En curso</span></td>
-                                <td><a href="#" class="view-link">View</a></td>
+                            <tr>
+                                <td>Diseño de Stand para Conferencia</td><td>Michael Brown</td><td>2023-11-20</td>
+                                <td><span class="badge badge-medium">Media</span></td><td><span class="badge badge-progress">En curso</span></td>
+                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                 <div class="pagination">
-                    <p>Showing <span>1</span> to <span>5</span> of <span>20</span> results</p>
-                    <div class="pagination-buttons">
-                        <button disabled><span class="material-symbols-outlined">chevron_left</span></button>
-                        <button><span class="material-symbols-outlined">chevron_right</span></button>
+                    <div class="table-footer">
+                        <p>Mostrando <span>1</span> a <span>5</span> de <span>20</span> resultados</p>
+                        <div class="pagination">
+                            <button class="btn-icon" disabled><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button class="btn-icon"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </main>
     </div>
-
+    <div id="request-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Nueva Solicitud de Marketing y Comunicación</h2>
+                <button id="close-modal-btn" class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form">
+                    <div class="modal-form-grid">
+                        <div class="form-group"><label class="form-label" for="material-type">Tipo de Material *</label><select id="material-type" class="modal-input"><option value="video">Video</option><option value="post">Post</option><option value="fotografia">Fotografía</option><option value="asesoria">Asesoría</option><option value="licitacion">Licitación</option><option value="otro">Otro</option></select></div>
+                        <div class="form-group"><label class="form-label" for="request-date">Fecha de Solicitud *</label><input id="request-date" type="date" class="modal-input" /></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Prioridad *</label>
+                        <div class="priority-toggle">
+                            <label class="priority-label"><input type="radio" name="priority" value="Baja"><span>Baja</span></label>
+                            <label class="priority-label active"><input type="radio" name="priority" value="Media" checked><span>Media</span></label>
+                            <label class="priority-label"><input type="radio" name="priority" value="Alta"><span>Alta</span></label>
+                            <label class="priority-label"><input type="radio" name="priority" value="Urgente"><span>Urgente</span></label>
+                        </div>
+                    </div>
+                    <div class="modal-form-grid">
+                        <div class="form-group"><label class="form-label" for="requester-name">Nombre del Solicitante *</label><input id="requester-name" type="text" class="modal-input" placeholder="Ingrese su nombre" /></div>
+                        <div class="form-group"><label class="form-label" for="department">Departamento *</label><input id="department" type="text" class="modal-input" placeholder="Ingrese su departamento" /></div>
+                    </div>
+                    <div class="form-group"><label class="form-label" for="target-audience">Público Objetivo *</label><input id="target-audience" type="text" class="modal-input" placeholder="Describa el público objetivo" /></div>
+                    <div class="form-group"><label class="form-label" for="request-description">Descripción Detallada *</label><textarea id="request-description" class="modal-textarea" placeholder="Proporcione todos los detalles relevantes..."></textarea></div>
+                    <div class="form-group">
+                        <label class="form-label">Archivos Adjuntos</label>
+                        <div class="file-dropzone">
+                            <label for="dropzone-file"><span class="material-symbols-outlined">cloud_upload</span><p><span>Haga clic para subir</span> o arrastre y suelte</p><p class="file-formats">SVG, PNG, JPG o GIF</p><input id="dropzone-file" type="file" /></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-modal-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-modal-primary">Enviar Solicitud</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        const applySavedTheme = () => { const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') { body.classList.add('dark-mode'); } };
+        themeToggleBtn.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); });
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            const body = document.body;
-
-            // Función para aplicar el tema guardado o el predeterminado
-            function applyTheme(theme) {
-                if (theme === 'dark') {
-                    body.classList.add('dark-mode');
-                    body.classList.remove('light-mode');
-                } else {
-                    body.classList.add('light-mode');
-                    body.classList.remove('dark-mode');
-                }
-            }
-
-            // Cargar el tema guardado en localStorage
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                applyTheme(savedTheme);
-            } else {
-                // Si no hay tema guardado, aplica el modo claro por defecto
-                applyTheme('light');
-            }
-
-            // Evento para el botón de cambio de tema
-            themeToggle.addEventListener('click', () => {
-                if (body.classList.contains('light-mode')) {
-                    applyTheme('dark');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    applyTheme('light');
-                    localStorage.setItem('theme', 'light');
-                }
-            });
+            const openModalBtn = document.getElementById('open-modal-btn');
+            const modal = document.getElementById('request-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const cancelBtn = modal.querySelector('.btn-modal-secondary');
+            const openModal = () => modal.classList.add('active');
+            const closeModal = () => modal.classList.remove('active');
+            openModalBtn.addEventListener('click', openModal);
+            closeModalBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
         });
     </script>
 </body>

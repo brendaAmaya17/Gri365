@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect - Dashboard</title>
+    <title>Connect - Inicio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
-<body>
+<body class="home-page">
     <div class="page-container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Light" class="logo-light">
-                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Dark" class="logo-dark">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark">
             </div>
             <nav class="navigation">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="index.html">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Inicio</span>
                 </a>
@@ -28,9 +28,9 @@
                     <span class="material-symbols-outlined">inbox</span>
                     <span>Gestión de Proyectos</span>
                 </a>
-                <a class="nav-link" href="#">
-                    <span class="material-symbols-outlined">assessment</span>
-                    <span>Marketing</span>
+                <a class="nav-link" href="/pages/marketing.html">
+                    <span class="material-symbols-outlined">linked_camera</span>
+                    <span>CAM</span>
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -47,18 +47,13 @@
                     <p class="header-subtitle">Aquí tienes un resumen de tu actividad.</p>
                 </div>
                 <div class="header-actions">
-                    <div class="search-container">
-                        <span class="material-symbols-outlined search-icon">search</span>
-                        <input class="search-input" placeholder="Buscar en la plataforma..." type="search"/>
-                    </div>
-                    <button id="theme-toggle" class="icon-button">
-                        <span class="material-symbols-outlined">dark_mode</span>
+                    <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
                     </button>
-                    <button class="icon-button notification-button">
-                        <span class="material-symbols-outlined">notifications</span>
-                        <span class="notification-dot"></span>
-                    </button>
-                    <div class="profile-avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_ktsZYwpbArV_UA-X-zdEFOEL7YVMiV7wmWW8Vgyp38nGpcBnsGQAKcPROq_dgUNNxue2RWFt_9IL1RoYl6txdtcQK4Bb7gIiacoAdr7mUuS5NQXjOPvgMZKOYBmNyMWj03O-maO-CxbvT_FJwnkeGZPzd-GxFBI2DyrKdwtrNNhFc-VyuLERiw0dMis5VKxJQovpjTR8TLUhg1-Wguf6yCdFg0YVhaDoU6RGxvXeAmqmuuqCLrSjdEKtk4bLrnOOa83hvyi-wzY");'></div>
+                    <a href="#" class="icon-button" title="Cerrar Sesión">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
                 </div>
             </header>
             <div class="content-grid">
@@ -169,7 +164,6 @@
                         </div>
                         <button class="primary-button">Añadir nueva tarea</button>
                     </section>
-
                     <section class="calendar-card">
                         <h3 class="section-title">Calendario</h3>
                         <div class="calendar-widget">
@@ -180,7 +174,6 @@
                             </div>
                             <div class="calendar-grid">
                                 <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
-                                <!-- Días del mes, resaltando el actual y los que tienen eventos -->
                                 <span class="day">1</span><span class="day">2</span><span class="day">3</span><span class="day">4</span><span class="day">5</span><span class="day">6</span><span class="day">7</span>
                                 <span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day active-day">11</span><span class="day event-day">12</span><span class="day">13</span><span class="day">14</span>
                                 <span class="day">15</span><span class="day">16</span><span class="day">17</span><span class="day">18</span><span class="day">19</span><span class="day event-day">20</span><span class="day">21</span>
@@ -193,7 +186,6 @@
                             </div>
                         </div>
                     </section>
-
                     <section class="metrics-card">
                         <h3 class="section-title">Métricas Clave <button class="icon-button"><span class="material-symbols-outlined">info</span></button></h3>
                         <div class="metrics-list">
@@ -211,38 +203,18 @@
             </div>
         </main>
     </div>
-
-    <!-- ===== SCRIPT ACTUALIZADO ===== -->
     <script>
-        const themeToggleButton = document.getElementById('theme-toggle');
-        const themeIcon = themeToggleButton.querySelector('.material-symbols-outlined');
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
-
-        // Función para actualizar el icono y el tema
-        const updateTheme = () => {
-            if (body.classList.contains('dark')) {
-                themeIcon.textContent = 'light_mode'; // Modo oscuro: muestra el sol
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.textContent = 'dark_mode'; // Modo claro: muestra la luna
-                localStorage.setItem('theme', 'light');
-            }
+        const applySavedTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') { body.classList.add('dark-mode'); }
         };
-
-        // Al cargar la página, revisa si hay un tema guardado
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            body.classList.add(currentTheme);
-        }
-
-        // Establece el icono correcto al cargar
-        updateTheme();
-
-        // Añade el evento al botón
-        themeToggleButton.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            updateTheme(); // Llama a la función para cambiar el icono y guardar en localStorage
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
         });
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
     </script>
 </body>
 </html>
