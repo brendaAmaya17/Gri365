@@ -2,14 +2,15 @@
  *  GUÍA DE ESTILOS:
  *  1. Variables y Estilos Raíz (Global)
  *  2. Estilos Base y Tipografía (Global)
- *  3. Layout y Componentes Globales (Sidebar, Botones, etc.)
+ *  3. Layout y Componentes Globales
  *  4. MODO OSCURO (Global y Sincronizado)
- *  5. ESTILOS PARA PÁGINA DE INICIO (.home-page)
- *  6. ESTILOS PARA PÁGINA CAM (.marketing-page)
- *  7. ESTILOS PARA PÁGINA DE CALENDARIO (.calendar-page)
- *  8. ESTILOS PARA PÁGINA DE TICKETS RESUELTOS
+ *  5. ESTILOS PÁGINA DE INICIO (.home-page)
+ *  6. ESTILOS PÁGINA CAM (.marketing-page)
+ *  7. ESTILOS PÁGINA DE CALENDARIO (.calendar-page)
+ *  8. ESTILOS PÁGINA DE TICKETS RESUELTOS
  *  9. ESTILOS PARA MODAL DE NUEVA SOLICITUD
- *  10. Diseño Responsivo (Global)
+ *  10. ESTILOS PARA DETALLE DE TICKET EN CAM
+ *  11. Diseño Responsivo (Global)
 */
 
 /* 1. Variables y Estilos Raíz (Global) */
@@ -18,17 +19,11 @@
     --primary: #370c31;
     --accent: #e6e0f0;
     --accent-hover: #dcd6e8;
-    --background: #e4e2dd;
+    --background: #ecf0f1;
     --surface: #ffffff;
-    --text-primary: #09090b;
-    --text-muted: #71717a;
-    --border: #d8d6d1;
-    --yellow-light: #fef9c3;
-    --yellow-dark: #854d0e;
-    --green-light: #dcfce7;
-    --green-dark: #166534;
-    --purple-light: #e6e0f0; 
-    --purple-dark: #370c31; 
+    --text-primary: #212529;
+    --text-muted: #6C757D;
+    --border: #dee2e6;
     --border-radius: 0.5rem;
     --border-radius-lg: 0.75rem;
     --border-radius-xl: 1rem;
@@ -42,7 +37,7 @@ a { text-decoration: none; color: inherit; }
 
 /* 3. Layout y Componentes Globales */
 .page-container { display: flex; height: 100vh; }
-.main-content { flex-grow: 1; overflow-y: auto; }
+.main-content { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; }
 .icon-button { position: relative; padding: 0.5rem; border-radius: 9999px; background: none; border: none; cursor: pointer; color: var(--text-muted); display: grid; place-items: center; transition: background-color 0.2s ease, color 0.2s ease; }
 .icon-button:hover { background-color: var(--accent); color: var(--primary); }
 .moon-icon { display: none; }
@@ -58,7 +53,7 @@ a { text-decoration: none; color: inherit; }
 .sidebar .nav-link.active { background-color: var(--accent); color: var(--primary); font-weight: 600; }
 
 /* 4. MODO OSCURO (Global y Sincronizado) */
-body.dark-mode { --primary: #a62193; --accent: rgba(166, 33, 147, 0.15); --accent-hover: rgba(166, 33, 147, 0.25); --background: #18181b; --surface: #27272a; --text-primary: #f4f4f5; --text-muted: #a1a1aa; --border: #3f3f46; --yellow-light: rgba(234, 179, 8, 0.1); --yellow-dark: #fde047; --green-light: rgba(34, 197, 94, 0.1); --green-dark: #86efac; --purple-light: rgba(166, 33, 147, 0.2); --purple-dark: #f4f4f5; }
+body.dark-mode { --primary: #9b4a8d; --accent: rgba(155, 74, 141, 0.15); --accent-hover: rgba(155, 74, 141, 0.25); --background: #101c22; --surface: #1A202C; --text-primary: #f4f4f5; --text-muted: #a1a1aa; --border: #3f3f46; }
 body.dark-mode .moon-icon { display: block; }
 body.dark-mode .sun-icon { display: none; }
 body.dark-mode .logo-dark { display: block; }
@@ -66,68 +61,75 @@ body.dark-mode .logo-light { display: none; }
 body.dark-mode .icon-button { color: var(--text-muted); }
 body.dark-mode .icon-button:hover { background-color: var(--border); color: var(--text-primary); }
 
-/* 5. ESTILOS PARA PÁGINA DE INICIO (.home-page) */
-.home-page .header { display: flex; align-items: center; justify-content: space-between; height: 4rem; padding-inline: 1.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background-color: rgba(228, 226, 221, 0.8); backdrop-filter: blur(4px); z-index: 10; }
-body.dark-mode .home-page .header { background-color: rgba(24, 24, 27, 0.8); }
-.home-page .header-title { font-size: 1.125rem; font-weight: 600; }
-.home-page .header-subtitle { font-size: 0.875rem; color: var(--text-muted); }
-.home-page .header-actions { display: flex; align-items: center; gap: 1rem; }
-.home-page .content-grid { padding: 1.5rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-.home-page .main-column, .home-page .side-column { display: flex; flex-direction: column; gap: 1.5rem; }
-.home-page .section-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
-.home-page .request-card { background-color: var(--surface); padding: 1rem; border-radius: var(--border-radius-lg); border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-.home-page .request-card:hover { border-color: var(--accent); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
-.home-page .card-title { font-weight: 600; color: var(--text-primary); }
-.home-page .progress-bar { background-color: var(--primary); }
-.home-page .announcement-card { background-color: var(--accent); } .home-page .announcement-icon-wrapper { background-color: var(--primary); } .home-page .announcement-title { color: var(--primary); }
-.home-page .inbox-list { background-color: var(--surface); border-radius: var(--border-radius-lg); border: 1px solid var(--border); }
-.home-page .tasks-card, .home-page .calendar-card, .home-page .metrics-card { background-color: var(--surface); padding: 1rem; border-radius: var(--border-radius-lg); border: 1px solid var(--border); }
-.home-page .primary-button { background-color: var(--primary); color: #ffffff; }
-.home-page .link-button { color: var(--primary); }
-.home-page .status-review { background-color: var(--yellow-light); color: var(--yellow-dark); } .home-page .status-approved { background-color: var(--green-light); color: var(--green-dark); }
-.home-page .badge { background-color: var(--purple-light); color: var(--purple-dark); }
-.home-page .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
+/* 5. ESTILOS PÁGINA DE INICIO (.home-page) */
+.home-page .header { display: flex; align-items: center; justify-content: space-between; background-color: var(--surface); padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border); }
+.home-page .header-logo { display: flex; align-items: center; gap: 0.75rem; }
+.home-page .header-logo img { height: 2rem; }
+.home-page .header-logo h2 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
+.home-page .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+body.dark-mode .home-page .header { background-color: var(--surface); }
+.home-page .landing-main { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+.home-page .module-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 960px; width: 100%; }
+@media (min-width: 768px) { .home-page .module-grid { grid-template-columns: repeat(3, 1fr); } }
+.home-page .module-card { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2.5rem 1.5rem; background-color: var(--surface); border-radius: var(--border-radius-xl); border: 2px solid var(--surface); box-shadow: 0 4px 15px -2px rgba(0,0,0,0.07); transition: all 0.3s ease; }
+.home-page .module-card:hover { border-color: var(--primary); }
+.home-page .module-icon-wrapper { width: 4rem; height: 4rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; background-color: var(--accent); }
+.home-page .module-icon-wrapper .material-symbols-outlined { font-size: 2rem; color: var(--primary); }
+.home-page .module-text { text-align: center; flex-grow: 1; }
+.home-page .module-title { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
+.home-page .module-description { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
+.home-page .module-go { width: calc(100% - 3rem); margin-top: 1.5rem; padding: 0.75rem 0; text-align: center; border-radius: var(--border-radius-lg); background-color: var(--primary); color: #ffffff; font-weight: 600; transition: all 0.3s ease; }
+.home-page .landing-footer { text-align: center; padding: 1.5rem; color: var(--text-muted); font-size: 0.875rem; }
+.home-page .footer-links { display: none; }
+body.dark-mode .home-page .module-card:hover { border-color: var(--primary); }
+body.dark-mode .home-page .module-go { background-color: var(--primary); }
 
-/* 6. ESTILOS PARA PÁGINA CAM (.marketing-page) */
-.marketing-page { --cam-primary: #007B7B; --cam-primary-dark: #005F5F; --cam-primary-light: #B2FFFF; --cam-success: #16a34a; --cam-warning: #d97706; --cam-danger: #dc2626; --cam-info: #2563eb; background-color: #f8f9fa; color: #374151; }
+/* 6. ESTILOS PÁGINA CAM (.marketing-page) */
+.marketing-page { --cam-primary: #007B7B; --cam-primary-dark: #063838; --cam-primary-light: #007B7B; --cam-success: #16a34a; --cam-warning: #d97706; --cam-danger: #dc2626; --cam-info: #2563eb; background-color: #f8f9fa; color: #374151; }
 .marketing-page .main-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background-color: #ffffff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 900; }
 .marketing-page .header-left, .marketing-page .header-right, .marketing-page .logo, .marketing-page .main-nav { display: flex; align-items: center; gap: 1.5rem; }
-.marketing-page .logo .logo-icon-wrapper { width: 40px; height: 40px; border-radius: 9999px; background-color: var(--cam-primary-light); display: grid; place-content: center; color: var(--cam-primary-dark); }
-.marketing-page .main-nav .nav-link { display: flex; align-items: center; gap: 0.5rem; color: #6b7280; font-weight: 500; } /* <-- CORRECCIÓN DE ALINEACIÓN */
+.marketing-page .logo { align-items: baseline; }
+.marketing-page .logo .logo-icon-wrapper { width: 48px; height: 48px; border-radius: 9999px; background-color: var(--cam-primary-light); display: grid; place-content: center; color: var(--cam-primary-dark); }
+.marketing-page .logo .logo-icon-wrapper .material-symbols-outlined { font-size: 28px; }
+.marketing-page .logo h1 { font-size: 2rem; font-weight: 800; font-family: 'Helvetica Neue', sans-serif; letter-spacing: -0.05em; }
+.marketing-page .main-nav .nav-link { display: flex; align-items: center; gap: 0.5rem; color: #6b7280; font-weight: 500; }
 .marketing-page .main-nav .nav-link.active { color: var(--cam-primary); font-weight: 600; }
 .marketing-page .btn-primary { background-color: var(--cam-primary); color: #ffffff; padding: 0.5rem 1rem; border: none; border-radius: var(--border-radius); font-weight: 600; cursor: pointer; transition: background-color 0.2s; }
 .marketing-page .btn-primary:hover { background-color: var(--cam-primary-dark); }
-.marketing-page .content-wrapper { padding: 1.5rem; }
-.marketing-page .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-.marketing-page .content-header h2 { font-size: 2rem; font-weight: 700; color: #1f2937; }
+.marketing-page .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 5rem); }
+.marketing-page .ticket-list-column { padding: 1.5rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.5rem; }
+.marketing-page .content-header { display: flex; justify-content: space-between; align-items: center; }
+.marketing-page .content-header h2 { font-size: 1.5rem; font-weight: 700; color: #1f2937; }
 .marketing-page .filter-buttons { display: flex; align-items: center; gap: 1rem; } .marketing-page .btn-filter { display: flex; align-items: center; gap: 0.25rem; background-color: #ffffff; border: 1px solid #e5e7eb; color: #374151; padding: 0.5rem 1rem; border-radius: var(--border-radius); }
-.marketing-page .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
-.marketing-page .stat-card { background-color: #ffffff; padding: 1.25rem; border-radius: var(--border-radius); border: 1px solid #e5e7eb; }
-.marketing-page .stat-card .card-header { display: flex; justify-content: space-between; align-items: center; color: #6b7280; }
-.marketing-page .stat-number { font-size: 2.5rem; font-weight: 700; color: #1f2937; margin-top: 0.5rem; }
+.marketing-page .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
+.marketing-page .stat-card { background-color: #ffffff; padding: 1rem; border-radius: var(--border-radius); border: 1px solid #e5e7eb; }
+.marketing-page .stat-card .card-header { display: flex; justify-content: space-between; align-items: center; color: #6b7280; font-size: 0.875rem; }
+.marketing-page .stat-number { font-size: 1.75rem; font-weight: 700; color: #1f2937; margin-top: 0.5rem; }
 .marketing-page .icon-warning { color: var(--cam-warning); } .marketing-page .icon-info { color: var(--cam-info); } .marketing-page .icon-success { color: var(--cam-success); } .marketing-page .icon-secondary { color: #9ca3af; }
-.marketing-page .table-container { background-color: #ffffff; border-radius: var(--border-radius); overflow: hidden; border: 1px solid #e5e7eb; }
-.marketing-page .requests-table { width: 100%; border-collapse: collapse; } .marketing-page .requests-table th, .marketing-page .requests-table td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid #f3f4f6; }
+.marketing-page .table-container { background-color: #ffffff; border-radius: var(--border-radius); overflow: auto; border: 1px solid #e5e7eb; flex-grow: 1; }
+.marketing-page .requests-table { width: 100%; border-collapse: collapse; } .marketing-page .requests-table th, .marketing-page .requests-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #f3f4f6; white-space: nowrap; }
 .marketing-page .requests-table th { background-color: #f9fafb; color: #6b7280; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
 .marketing-page .requests-table td { color: #374151; font-weight: 500; }
-.marketing-page .view-link { color: var(--cam-primary); font-weight: 500; }
+.marketing-page .requests-table tr:hover { background-color: #f9fafb; cursor: pointer; }
+.marketing-page .requests-table tr.active-row { background-color: var(--cam-primary-light); }
 .marketing-page .badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500; } .marketing-page .badge-high { background-color: #fee2e2; color: var(--cam-danger); } .marketing-page .badge-medium { background-color: #fef3c7; color: var(--cam-warning); } .marketing-page .badge-low { background-color: #f3f4f6; color: #4b5563; } .marketing-page .badge-progress { background-color: #fef3c7; color: var(--cam-warning); } .marketing-page .badge-finished { background-color: #dcfce7; color: var(--cam-success); } .marketing-page .badge-review { background-color: #dbeafe; color: var(--cam-info); } .marketing-page .badge-pending { background-color: #f3f4f6; color: #4b5563; }
-.marketing-page .table-footer { padding: 1rem 1.5rem; color: #6b7280; } .marketing-page .pagination { display: flex; justify-content: flex-end; gap: 0.5rem; } .marketing-page .pagination .btn-icon { border: 1px solid #e2e8f0; border-radius: var(--border-radius); }
 .marketing-page.dark-mode { background-color: var(--background); color: var(--text-primary); --cam-primary: #B2FFFF; --cam-primary-dark: #8FEFEF; }
-.marketing-page.dark-mode .main-header, .marketing-page.dark-mode .btn-filter, .marketing-page.dark-mode .stat-card, .marketing-page.dark-mode .table-container { background-color: var(--surface); border-color: var(--border); color: var(--text-primary); }
-.marketing-page.dark-mode .content-header h2, .marketing-page.dark-mode .stat-number, .marketing-page.dark-mode .requests-table td { color: var(--text-primary); }
+.marketing-page.dark-mode .main-header, .marketing-page.dark-mode .btn-filter, .marketing-page.dark-mode .stat-card, .marketing-page.dark-mode .table-container, .marketing-page.dark-mode .ticket-list-column { background-color: var(--surface); border-color: var(--border); color: var(--text-primary); }
+.marketing-page.dark-mode .content-header h2, .marketing-page.dark-mode .stat-number, .marketing-page.dark-mode .requests-table td, .marketing-page.dark-mode .logo h1 { color: var(--text-primary); }
 .marketing-page.dark-mode .main-nav .nav-link, .marketing-page.dark-mode .stat-card .card-header, .marketing-page.dark-mode .requests-table th { color: var(--text-muted); }
-.marketing-page.dark-mode .main-nav .nav-link.active, .marketing-page.dark-mode .view-link { color: var(--cam-primary); }
+.marketing-page.dark-mode .main-nav .nav-link.active { color: var(--cam-primary); }
 .marketing-page.dark-mode .btn-primary { background-color: var(--cam-primary); color: #111827; } .marketing-page.dark-mode .btn-primary:hover { background-color: var(--cam-primary-dark); }
 .marketing-page.dark-mode .requests-table thead { background-color: #1f2937; }
+.marketing-page.dark-mode .requests-table tr.active-row { background-color: rgba(178, 255, 255, 0.1); }
 .marketing-page.dark-mode .badge-high { background-color: rgba(254, 178, 178, 0.1); color: #FEB2B2; } .marketing-page.dark-mode .badge-medium, .marketing-page.dark-mode .badge-progress { background-color: rgba(252, 211, 77, 0.1); color: #FCD34D; } .marketing-page.dark-mode .badge-finished { background-color: rgba(110, 231, 183, 0.1); color: #6EE7B7; } .marketing-page.dark-mode .badge-review { background-color: rgba(147, 197, 253, 0.1); color: #93C5FD; } .marketing-page.dark-mode .badge-low, .marketing-page.dark-mode .badge-pending { background-color: #4A5568; color: #E2E8F0; }
 
 /* 7. ESTILOS PARA PÁGINA DE CALENDARIO (.calendar-page) */
+.calendar-page .content-wrapper { padding: 1.5rem; }
 .calendar-page .calendar-header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .calendar-page .calendar-nav { display: flex; align-items: center; gap: 1rem; }
 .calendar-page .calendar-title { font-size: 1.5rem; font-weight: 600; }
 .calendar-page .btn-secondary { background-color: var(--surface); border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem 1rem; border-radius: var(--border-radius); cursor: pointer; }
-.calendar-page .btn-secondary.active { background-color: var(--cam-primary); color: #005F5F; border-color: var(--cam-primary); font-weight: 600; }
+.calendar-page .btn-secondary.active { background-color: var(--cam-primary); color: var(--cam-primary-dark); border-color: var(--cam-primary); font-weight: 600; }
 .calendar-page .calendar-view-toggle { display: flex; } .calendar-page .calendar-view-toggle .btn-secondary { border-radius: 0; } .calendar-page .calendar-view-toggle .btn-secondary:first-child { border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius); } .calendar-page .calendar-view-toggle .btn-secondary:last-child { border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); }
 .calendar-page .calendar-container { background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--border-radius-lg); overflow: hidden; }
 .calendar-page .calendar-grid-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; background-color: #f9fafb; }
@@ -136,7 +138,7 @@ body.dark-mode .home-page .header { background-color: rgba(24, 24, 27, 0.8); }
 .calendar-page .day-cell { padding: 0.5rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
 .calendar-page .day-cell:nth-child(7n) { border-right: none; }
 .calendar-page .day-cell.muted { color: var(--text-muted); background-color: #f9fafb; }
-.calendar-page .day-cell.today span { background-color: var(--cam-primary); color: #005F5F; border-radius: 9999px; padding: 0.25rem 0.5rem; font-weight: 600; display: inline-block; }
+.calendar-page .day-cell.today span { background-color: var(--cam-primary); color: var(--cam-primary-dark); border-radius: 9999px; padding: 0.25rem 0.5rem; font-weight: 600; display: inline-block; }
 .calendar-page .event-list { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
 .calendar-page .event-pill { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 500; }
 .calendar-page .event-danger { background-color: #fee2e2; color: var(--cam-danger); } .calendar-page .event-warning { background-color: #fef3c7; color: var(--cam-warning); } .calendar-page .event-success { background-color: #dcfce7; color: var(--cam-success); } .calendar-page .event-pending { background-color: #f3f4f6; color: #4b5563; }
@@ -145,7 +147,7 @@ body.dark-mode .home-page .header { background-color: rgba(24, 24, 27, 0.8); }
 .calendar-page.dark-mode .event-danger { background-color: rgba(254, 178, 178, 0.1); color: #FEB2B2; } .calendar-page.dark-mode .event-warning { background-color: rgba(252, 211, 77, 0.1); color: #FCD34D; } .calendar-page.dark-mode .event-success { background-color: rgba(110, 231, 183, 0.1); color: #6EE7B7; } .calendar-page.dark-mode .event-pending { background-color: #4A5568; color: #E2E8F0; }
 
 /* 8. ESTILOS PARA PÁGINA DE TICKETS RESUELTOS */
-.reports-page .reports-content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; height: calc(100vh - 4.5rem); }
+.reports-page .reports-content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; height: calc(100vh - 5rem); }
 @media (min-width: 1280px) { .reports-page .reports-content-grid { grid-template-columns: 1fr 2fr; } }
 .reports-sidebar { display: flex; flex-direction: column; gap: 1rem; }
 .reports-tabs { display: flex; border-bottom: 1px solid var(--border); }
@@ -171,8 +173,11 @@ body.dark-mode .home-page .header { background-color: rgba(24, 24, 27, 0.8); }
 .victory-box { background-color: rgba(22, 163, 74, 0.05); border: 1px solid rgba(22, 163, 74, 0.2); border-radius: var(--border-radius); padding: 1rem; display: flex; align-items: flex-start; gap: 0.75rem; } .victory-box .material-symbols-outlined { color: #16a34a; font-size: 1.75rem; font-variation-settings: 'FILL' 1; } .victory-box p { font-size: 0.875rem; } .victory-box .completion-meta { font-size: 0.75rem; color: #15803d; margin-top: 0.5rem; }
 .timeline-section { position: relative; }
 .timeline { position: relative; padding-left: 1.5rem; border-left: 2px dashed var(--cam-primary); }
-.timeline-item { position: relative; margin-bottom: 2rem; } .timeline-item:last-child { margin-bottom: 0; }
-.timeline-icon { position: absolute; left: calc(-1rem - 1px); top: 0; width: 2rem; height: 2rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); } .timeline-icon .material-symbols-outlined { color: #ffffff; font-size: 1.125rem; font-variation-settings: 'FILL' 1; }
+.timeline-item { position: relative; margin-bottom: 2rem; padding-left: 1.5rem; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-icon { position: absolute; left: calc(-1rem - 1px); top: 0; width: 2rem; height: 2rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); z-index: 2; }
+.timeline-icon::before { content: ''; position: absolute; width: 100%; height: 100%; background-color: var(--surface); border-radius: 9999px; z-index: -1; }
+.timeline-icon .material-symbols-outlined { color: #000000; font-size: 1.125rem; font-variation-settings: 'FILL' 1; }
 .timeline-icon.icon-success { background: linear-gradient(to right, var(--cam-success), #22c55e); } .timeline-icon.icon-design { background: linear-gradient(to right, #60a5fa, #3b82f6); } .timeline-icon.icon-new { background: linear-gradient(to right, #c084fc, #9333ea); }
 .timeline-title { font-weight: 500; font-size: 0.875rem; color: var(--text-primary); } .timeline-date { font-size: 0.75rem; color: var(--text-muted); }
 .reports-page.dark-mode .achievement-item { color: var(--text-primary); } .reports-page.dark-mode .victory-box { background-color: rgba(74, 222, 128, 0.1); border-color: rgba(74, 222, 128, 0.3); } .reports-page.dark-mode .victory-box .material-symbols-outlined { color: #4ade80; } .reports-page.dark-mode .victory-box p { color: var(--text-primary); } .reports-page.dark-mode .victory-box .completion-meta { color: #22c55e; }
@@ -216,6 +221,58 @@ body.dark-mode .file-dropzone label:hover { background-color: rgba(0,0,0,0.2); }
 body.dark-mode .btn-modal-secondary { background-color: var(--border); color: var(--text-primary); }
 body.dark-mode .btn-modal-primary { background-color: var(--cam-primary, #B2FFFF); color: #111827; }
 
-/* 10. Diseño Responsivo (Global) */
-@media (min-width: 1024px) { .home-page .content-grid { grid-template-columns: repeat(3, 1fr); } .home-page .main-column { grid-column: span 2 / span 2; } .home-page .side-column { grid-column: span 1 / span 1; } }
-@media (max-width: 768px) { .sidebar { width: 4rem; } .sidebar span:not(.material-symbols-outlined) { display: none; } .sidebar .nav-link { justify-content: center; } .home-page .header-subtitle, .marketing-page .main-nav { display: none; } .content-grid, .marketing-page .content-wrapper { padding: 1rem; } .marketing-page .main-header { flex-wrap: wrap; height: auto; padding: 0.75rem; } .calendar-page .calendar-header-controls { flex-direction: column; gap: 1rem; } .reports-page .reports-content-grid { grid-template-columns: 1fr; } }
+/* 10. ESTILOS PARA DETALLE DE TICKET EN CAM */
+.ticket-view-column { padding: 2rem; overflow-y: auto; }
+.ticket-detail-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+@media (min-width: 768px) { .ticket-detail-header { flex-direction: row; justify-content: space-between; align-items: flex-start; } }
+.ticket-title-group h2 { font-size: 2.25rem; font-weight: 900; line-height: 1.2; color: var(--text-primary); }
+.ticket-status { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+.ticket-detail-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ticket-detail-actions .btn-secondary { background-color: #e5e7eb; color: #374151; font-weight: 600; padding: 0.5rem 1rem; border: none; border-radius: var(--border-radius); }
+body.dark-mode .ticket-detail-actions .btn-secondary { background-color: var(--border); color: var(--text-primary); }
+.ticket-meta-info { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; font-size: 0.875rem; margin-bottom: 2rem; }
+.meta-item { display: flex; align-items: center; gap: 0.5rem; }
+.meta-item p { color: var(--text-muted); }
+.meta-item strong { color: var(--text-primary); font-weight: 600; }
+.ticket-detail-content { display: flex; flex-direction: column; gap: 2rem; }
+.ticket-detail-card { background-color: var(--surface); border-radius: var(--border-radius-xl); padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.ticket-detail-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; }
+.ticket-detail-card hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+.details-grid { display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.5rem; font-size: 0.875rem; }
+.detail-label { font-weight: 500; color: var(--text-muted); }
+.detail-description { background-color: #f8f9fa; padding: 1rem; border-radius: var(--border-radius-lg); line-height: 1.7; }
+.full-width { grid-column: 1 / -1; }
+body.dark-mode .detail-description { background-color: var(--background); }
+.status-section { display: flex; flex-direction: column; gap: 1.5rem; }
+.user-chip { display: inline-flex; align-items: center; gap: 0.5rem; }
+.user-chip img { width: 1.5rem; height: 1.5rem; border-radius: 9999px; }
+.link { color: var(--cam-primary); text-decoration: underline; font-weight: 500; }
+.history-list { display: flex; flex-direction: column; gap: 1.5rem; list-style: none; }
+.history-item { display: flex; align-items: flex-start; gap: 1rem; }
+.history-icon { background-color: #e5e7eb; border-radius: 9999px; width: 2rem; height: 2rem; display: grid; place-content: center; flex-shrink: 0; }
+.history-icon .material-symbols-outlined { font-size: 1rem; color: var(--text-muted); }
+.history-item .font-semibold { font-weight: 600; color: var(--text-primary); }
+.history-date { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+body.dark-mode .history-icon { background-color: var(--border); }
+
+/* 11. Diseño Responsivo (Global) */
+@media (min-width: 1024px) { 
+    .home-page .module-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1024px) { 
+    .page-container:not(.home-page) { flex-direction: column; }
+    .sidebar { display: none; }
+}
+@media (min-width: 1024px) {
+    .home-page .sidebar { display: flex; }
+}
+@media (max-width: 768px) { 
+    .main-content { padding: 0; }
+    .content-wrapper, .reports-content-grid { padding: 1rem; }
+    .marketing-page .main-nav, .calendar-page .main-nav, .reports-page .main-nav { display: none; } 
+    .marketing-page .main-header, .calendar-page .main-header, .reports-page .main-header { flex-wrap: wrap; height: auto; padding: 0.75rem; } 
+    .marketing-page .dashboard-grid { grid-template-columns: 1fr; height: auto; }
+    .marketing-page .ticket-list-column { border-right: none; }
+    .calendar-page .calendar-header-controls { flex-direction: column; gap: 1rem; } 
+    .reports-page .reports-content-grid { grid-template-columns: 1fr; }
+}

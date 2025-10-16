@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect - Inicio</title>
+    <title>GRI 365 - Inicio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -28,7 +28,7 @@
                     <span class="material-symbols-outlined">inbox</span>
                     <span>Gestión de Proyectos</span>
                 </a>
-                <a class="nav-link" href="/pages/marketing.html">
+                <a class="nav-link" href="./pages/marketing.html">
                     <span class="material-symbols-outlined">linked_camera</span>
                     <span>CAM</span>
                 </a>
@@ -41,10 +41,9 @@
             </div>
         </aside>
         <main class="main-content">
-            <header class="header">
-                <div>
-                    <h2 class="header-title">Bienvenida de nuevo, Sofía 👋</h2>
-                    <p class="header-subtitle">Aquí tienes un resumen de tu actividad.</p>
+             <header class="header">
+                <div class="header-logo">
+                    <h2>GRI365</h2>
                 </div>
                 <div class="header-actions">
                     <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
@@ -56,151 +55,46 @@
                     </a>
                 </div>
             </header>
-            <div class="content-grid">
-                <div class="main-column">
-                    <section>
-                        <h3 class="section-title">Anuncios Recientes <span class="badge new-announcement-count">1</span></h3>
-                        <div class="announcement-card">
-                            <div class="announcement-icon-wrapper">
-                                <span class="material-symbols-outlined">campaign</span>
-                            </div>
-                            <div>
-                                <p class="announcement-title">Nuevo software de gestión de proyectos</p>
-                                <p class="announcement-date">Fecha: 15 de julio de 2024</p>
-                            </div>
+            <div class="landing-main">
+                <div class="module-grid">
+                    <a class="module-card" href="#">
+                        <div class="module-icon-wrapper">
+                            <span class="material-symbols-outlined">settings</span>
                         </div>
-                    </section>
-                    <section>
-                        <h3 class="section-title">Solicitudes Abiertas / Pendientes <span class="badge pending-requests-count">5</span></h3>
-                        <div class="card-list">
-                            <div class="request-card">
-                                <div class="card-content">
-                                    <p class="card-meta">Solicitud #1234 - Departamento de TI</p>
-                                    <p class="card-title">Solicitud de compra de software</p>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-bar" style="width: 75%;"></div>
-                                        <span class="progress-text">75%</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions">
-                                    <span class="material-symbols-outlined favorite-icon">star_border</span>
-                                    <span class="status-badge status-review">En revisión</span>
-                                    <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
-                                </div>
-                            </div>
-                            <div class="request-card">
-                                <div class="card-content">
-                                    <p class="card-meta">Solicitud #5678 - Departamento de Operaciones</p>
-                                    <p class="card-title">Solicitud de mantenimiento de equipo</p>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-bar" style="width: 100%;"></div>
-                                        <span class="progress-text">100%</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions">
-                                    <span class="material-symbols-outlined favorite-icon">star</span>
-                                    <span class="status-badge status-approved">Aprobada</span>
-                                    <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
-                                </div>
-                            </div>
+                        <div class="module-text">
+                            <p class="module-title">FixIT</p>
+                            <p class="module-description">Módulo para seguimiento y gestión de tickets de reparación.</p>
                         </div>
-                        <button class="link-button">Ver todas las solicitudes</button>
-                    </section>
-                    <section>
-                        <h3 class="section-title">Bandeja de Entrada <span class="badge unread-messages-count">2</span></h3>
-                        <div class="inbox-list">
-                            <div class="inbox-item">
-                                <div class="unread-dot"></div>
-                                <div class="card-content">
-                                    <p class="inbox-sender">Departamento de Recursos Humanos</p>
-                                    <p class="inbox-preview">¡Hola! Recordatorio sobre la actualización de políticas...</p>
-                                </div>
-                                <span class="inbox-time">Hace 5m</span>
-                                <button class="icon-button"><span class="material-symbols-outlined">folder</span></button>
-                            </div>
-                            <div class="inbox-item">
-                                <div class="unread-dot"></div>
-                                <div class="card-content">
-                                    <p class="inbox-sender">Departamento de Marketing</p>
-                                    <p class="inbox-preview">Revisión de la nueva campaña publicitaria.</p>
-                                </div>
-                                <span class="inbox-time">Hace 2h</span>
-                                <button class="icon-button"><span class="material-symbols-outlined">chat</span></button>
-                            </div>
-                            <div class="inbox-item">
-                                <div class="read-dot"></div>
-                                <div class="card-content">
-                                    <p>Juan Pérez (Ventas)</p>
-                                    <p class="inbox-preview">RE: Cifras de ventas Q2</p>
-                                </div>
-                                <span class="inbox-time">Ayer</span>
-                                <button class="icon-button"><span class="material-symbols-outlined">attach_file</span></button>
-                            </div>
+                        <div class="module-go">Ir a FixIT</div>
+                    </a>
+                    <a class="module-card" href="./pages/marketing.html">
+                        <div class="module-icon-wrapper">
+                            <span class="material-symbols-outlined">linked_camera</span>
                         </div>
-                        <button class="primary-button add-new-ticket">Abrir nuevo ticket</button>
-                        <button class="link-button">Ir a la bandeja de entrada <span class="badge total-inbox-count">7</span></button>
-                    </section>
-                </div>
-                <div class="side-column">
-                    <section class="tasks-card">
-                        <h3 class="section-title">Tareas Pendientes <span class="badge tasks-due-count">3</span></h3>
-                        <div class="tasks-list">
-                            <div class="task-item">
-                                <input class="task-checkbox" id="task1" type="checkbox"/>
-                                <label class="task-label" for="task1">Revisar y aprobar la solicitud de compra</label>
-                            </div>
-                            <div class="task-item">
-                                <input class="task-checkbox" id="task2" type="checkbox"/>
-                                <label class="task-label" for="task2">Coordinar el mantenimiento del equipo</label>
-                            </div>
-                            <div class="task-item">
-                                <input checked class="task-checkbox" id="task3" type="checkbox"/>
-                                <label class="task-label-done" for="task3">Preparar informe mensual</label>
-                            </div>
-                            <div class="task-item">
-                                <input class="task-checkbox" id="task4" type="checkbox"/>
-                                <label class="task-label" for="task4">Responder a HR sobre políticas</label>
-                            </div>
+                        <div class="module-text">
+                            <p class="module-title">CAM</p>
+                            <p class="module-description">Módulo para seguimiento y gestión de solicitudes audiovisuales.</p>
+                            <p class="module-description">Informacion importante</p>
+                            <p class="module-description">* Tiempos de entrega: pieza 2 dias y video 3 dias </p>
+                            <p class="module-description">* Luego de enviar el ticket acercarse al area de CAM </p>
                         </div>
-                        <button class="primary-button">Añadir nueva tarea</button>
-                    </section>
-                    <section class="calendar-card">
-                        <h3 class="section-title">Calendario</h3>
-                        <div class="calendar-widget">
-                            <div class="calendar-header">
-                                <span class="material-symbols-outlined">chevron_left</span>
-                                <h4>Julio 2024</h4>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </div>
-                            <div class="calendar-grid">
-                                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
-                                <span class="day">1</span><span class="day">2</span><span class="day">3</span><span class="day">4</span><span class="day">5</span><span class="day">6</span><span class="day">7</span>
-                                <span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day active-day">11</span><span class="day event-day">12</span><span class="day">13</span><span class="day">14</span>
-                                <span class="day">15</span><span class="day">16</span><span class="day">17</span><span class="day">18</span><span class="day">19</span><span class="day event-day">20</span><span class="day">21</span>
-                                <span class="day">22</span><span class="day">23</span><span class="day">24</span><span class="day">25</span><span class="day">26</span><span class="day">27</span><span class="day">28</span>
-                                <span class="day">29</span><span class="day">30</span><span class="day">31</span>
-                            </div>
-                            <div class="calendar-events">
-                                <p class="event-item">Mañana <span class="event-time">10:00</span> - Reunión de equipo</p>
-                                <p class="event-item">20 Julio <span class="event-time">15:00</span> - Entrega informe mensual</p>
-                            </div>
+                        <div class="module-go">Ir a CAM</div>
+                    </a>
+                    <a class="module-card" href="#">
+                        <div class="module-icon-wrapper">
+                            <span class="material-symbols-outlined">folder_managed</span>
                         </div>
-                    </section>
-                    <section class="metrics-card">
-                        <h3 class="section-title">Métricas Clave <button class="icon-button"><span class="material-symbols-outlined">info</span></button></h3>
-                        <div class="metrics-list">
-                            <div class="metric-item">
-                                <span class="metric-label">Tickets cerrados esta semana:</span>
-                                <span class="metric-value">18</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-label">Tiempo promedio de respuesta:</span>
-                                <span class="metric-value">1.2h</span>
-                            </div>
+                        <div class="module-text">
+                            <p class="module-title">Gestión de Proyectos</p>
+                            <p class="module-description">Módulo para la planificación y ejecución de proyectos.</p>
                         </div>
-                    </section>
+                        <div class="module-go">Ir a Proyectos</div>
+                    </a>
                 </div>
             </div>
+            <footer class="landing-footer">
+                <p>© 2025 GRI365. Todos los derechos reservados.</p>
+            </footer>
         </main>
     </div>
     <script>

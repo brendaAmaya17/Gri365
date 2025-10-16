@@ -18,7 +18,7 @@
                 <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark">
             </div>
             <nav class="navigation">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="./../index.html">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Inicio</span>
                 </a>
@@ -54,13 +54,13 @@
                     <nav class="main-nav">
                         <a href="marketing.html" class="nav-link active">
                             <span class="material-symbols-outlined">dashboard</span>
-                            <span>Dashboard</span>
+                            <span>Tickets</span>
                         </a>
-                        <a href="calendar.html" class="nav-link">
+                        <a href="./../pages/calendario.html" class="nav-link">
                             <span class="material-symbols-outlined">calendar_today</span>
                             <span>Calendario</span>
                         </a>
-                        <a href="reports.html" class="nav-link">
+                        <a href="./../pages/tickets_resueltos.html" class="nav-link">
                             <span class="material-symbols-outlined">bar_chart</span>
                             <span>Tickets Resueltos</span>
                         </a>
@@ -77,73 +77,131 @@
                     </a>
                 </div>
             </header>
-            <div class="content-wrapper">
-                <div class="content-header">
-                    <h2>Todas las Solicitudes</h2>
-                    <div class="filter-buttons">
-                        <button class="btn btn-filter"><span>Fecha</span><span class="material-symbols-outlined">expand_more</span></button>
-                        <button class="btn btn-filter"><span>Prioridad</span><span class="material-symbols-outlined">expand_more</span></button>
-                        <button class="btn btn-filter"><span>Estado</span><span class="material-symbols-outlined">expand_more</span></button>
+            <div class="dashboard-grid">
+                <div class="ticket-list-column">
+                    <div class="content-header">
+                        <h2>Todas las Solicitudes</h2>
+                        <div class="filter-buttons">
+                            <button class="btn btn-filter"><span>Fecha</span><span class="material-symbols-outlined">expand_more</span></button>
+                            <button class="btn btn-filter"><span>Prioridad</span><span class="material-symbols-outlined">expand_more</span></button>
+                        </div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="card-header"><p>En curso</p><span class="material-symbols-outlined icon-warning">hourglass_top</span></div><p class="stat-number">2</p></div>
+                        <div class="stat-card"><div class="card-header"><p>En revisión</p><span class="material-symbols-outlined icon-info">rate_review</span></div><p class="stat-number">1</p></div>
+                        <div class="stat-card"><div class="card-header"><p>Finalizado</p><span class="material-symbols-outlined icon-success">check_circle</span></div><p class="stat-number">1</p></div>
+                        <div class="stat-card"><div class="card-header"><p>Pendiente</p><span class="material-symbols-outlined icon-secondary">pending_actions</span></div><p class="stat-number">1</p></div>
+                    </div>
+                    <div class="table-container">
+                        <table class="requests-table">
+                            <thead>
+                                <tr><th>Título de la Solicitud</th><th>Prioridad</th><th>Estado</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr class="active-row"><td>Campaña de Lanzamiento de Producto</td><td><span class="badge badge-high">Alta</span></td><td><span class="badge badge-progress">En curso</span></td></tr>
+                                <tr><td>Gráficos para Redes Sociales</td><td><span class="badge badge-medium">Media</span></td><td><span class="badge badge-finished">Finalizado</span></td></tr>
+                                <tr><td>Nuevo Banner para Sitio Web</td><td><span class="badge badge-high">Alta</span></td><td><span class="badge badge-review">En revisión</span></td></tr>
+                                <tr><td>Video Resumen Q4</td><td><span class="badge badge-low">Baja</span></td><td><span class="badge badge-pending">Pendiente</span></td></tr>
+                                <tr><td>Diseño de Stand para Conferencia</td><td><span class="badge badge-medium">Media</span></td><td><span class="badge badge-progress">En curso</span></td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="card-header"><p>En curso</p><span class="material-symbols-outlined icon-warning">hourglass_top</span></div>
-                        <p class="stat-number">2</p>
+                <div class="ticket-view-column">
+                    <div class="ticket-detail-header">
+                        <div class="ticket-title-group">
+                            <h2>Ticket #MKT-12345</h2>
+                            <div class="ticket-status">
+                                <p>Estado:</p>
+                                <span class="badge badge-progress">En Progreso</span>
+                            </div>
+                        </div>
+                        <div class="ticket-detail-actions">
+                            <button class="btn btn-secondary">Editar Ticket</button>
+                            <button class="btn btn-secondary">Asignar Usuario</button>
+                            <button class="btn btn-primary">Cerrar Ticket</button>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="card-header"><p>En revisión</p><span class="material-symbols-outlined icon-info">rate_review</span></div>
-                        <p class="stat-number">1</p>
+                    <div class="ticket-meta-info">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            <p>Fecha de Solicitud:</p>
+                            <strong>2023-10-26</strong>
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined">priority_high</span>
+                            <p>Prioridad:</p>
+                            <span class="badge badge-high">Alta</span>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="card-header"><p>Finalizado</p><span class="material-symbols-outlined icon-success">check_circle</span></div>
-                        <p class="stat-number">1</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="card-header"><p>Pendiente</p><span class="material-symbols-outlined icon-secondary">pending_actions</span></div>
-                        <p class="stat-number">1</p>
-                    </div>
-                </div>
-                <div class="table-container">
-                    <table class="requests-table">
-                        <thead>
-                            <tr>
-                                <th>Título de la Solicitud</th><th>Solicitante</th><th>Fecha Límite</th><th>Prioridad</th><th>Estado</th><th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Campaña de Lanzamiento de Producto</td><td>John Doe</td><td>2023-10-26</td>
-                                <td><span class="badge badge-high">Alta</span></td><td><span class="badge badge-progress">En curso</span></td>
-                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
-                            </tr>
-                            <tr>
-                                <td>Gráficos para Redes Sociales</td><td>Jane Smith</td><td>2023-10-28</td>
-                                <td><span class="badge badge-medium">Media</span></td><td><span class="badge badge-finished">Finalizado</span></td>
-                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
-                            </tr>
-                            <tr>
-                                <td>Nuevo Banner para Sitio Web</td><td>Alex Johnson</td><td>2023-11-05</td>
-                                <td><span class="badge badge-high">Alta</span></td><td><span class="badge badge-review">En revisión</span></td>
-                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
-                            </tr>
-                            <tr>
-                                <td>Video Resumen Q4</td><td>Emily White</td><td>2023-11-15</td>
-                                <td><span class="badge badge-low">Baja</span></td><td><span class="badge badge-pending">Pendiente</span></td>
-                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
-                            </tr>
-                            <tr>
-                                <td>Diseño de Stand para Conferencia</td><td>Michael Brown</td><td>2023-11-20</td>
-                                <td><span class="badge badge-medium">Media</span></td><td><span class="badge badge-progress">En curso</span></td>
-                                <td class="action-cell"><a href="#" class="view-link">Ver</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="table-footer">
-                        <p>Mostrando <span>1</span> a <span>5</span> de <span>20</span> resultados</p>
-                        <div class="pagination">
-                            <button class="btn-icon" disabled><span class="material-symbols-outlined">chevron_left</span></button>
-                            <button class="btn-icon"><span class="material-symbols-outlined">chevron_right</span></button>
+                    <div class="ticket-detail-content">
+                        <div class="ticket-detail-card">
+                            <h3>Detalles del Ticket</h3>
+                            <div class="details-grid">
+                                <p class="detail-label">Solicitante:</p><p>John Doe</p>
+                                <p class="detail-label">Departamento:</p><p>Marketing</p>
+                                <p class="detail-label">Tipo de Material:</p><p>Video</p>
+                                <p class="detail-label">Público Objetivo:</p><p>Todos los públicos</p>
+                                <p class="detail-label full-width">Descripción Detallada:</p>
+                                <p class="detail-description full-width">
+                                    Aquí se mostraría una descripción detallada de la solicitud, proporcionando toda la información necesaria para que el equipo comprenda el alcance y los requisitos de la tarea. Esto incluye detalles sobre el propósito del video, mensajes clave, tono deseado y cualquier inclusión obligatoria como logotipos o elementos de marca.
+                                </p>
+                            </div>
+                            <hr>
+                            <h3>Estado y Cierre</h3>
+                            <div class="status-section">
+                                <div class="form-group">
+                                    <label class="form-label" for="status">Estado de la Solicitud</label>
+                                    <select id="status" class="modal-input">
+                                        <option>Nuevo</option>
+                                        <option selected>En Progreso</option>
+                                        <option>Pendiente de Aprobación</option>
+                                        <option>Cerrado</option>
+                                    </select>
+                                </div>
+                                <div class="details-grid">
+                                    <p class="detail-label">Asignado a:</p>
+                                    <div class="user-chip">
+                                        <img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar de usuario asignado">
+                                        <p>Jane Smith</p>
+                                    </div>
+                                    <p class="detail-label">Fecha de Cierre:</p><p>-</p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="close-comment">Comentario de Cierre</label>
+                                    <textarea id="close-comment" class="modal-textarea" placeholder="Aún no hay comentarios..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <p class="form-label">URL de Entregable Final</p>
+                                    <a href="#" class="link">https://deliverables.co/final-video-v1.mp4</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-detail-card">
+                            <h3>Historial de Cambios</h3>
+                            <ul class="history-list">
+                                <li class="history-item">
+                                    <div class="history-icon"><span class="material-symbols-outlined">history</span></div>
+                                    <div>
+                                        <p><span class="font-semibold">Jane Smith</span> cambió el estado de <span class="font-semibold">Nuevo</span> a <span class="font-semibold">En Progreso</span>.</p>
+                                        <p class="history-date">2023-10-27 09:15 AM</p>
+                                    </div>
+                                </li>
+                                <li class="history-item">
+                                    <div class="history-icon"><span class="material-symbols-outlined">assignment_ind</span></div>
+                                    <div>
+                                        <p><span class="font-semibold">Admin</span> asignó el ticket a <span class="font-semibold">Jane Smith</span>.</p>
+                                        <p class="history-date">2023-10-27 09:14 AM</p>
+                                    </div>
+                                </li>
+                                <li class="history-item">
+                                    <div class="history-icon"><span class="material-symbols-outlined">add</span></div>
+                                    <div>
+                                        <p><span class="font-semibold">John Doe</span> creó el ticket.</p>
+                                        <p class="history-date">2023-10-26 03:30 PM</p>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
