@@ -63,7 +63,7 @@
     <!-- MODAL -->
     <div id="new-ticket-modal" class="modal-overlay">
         <div class="modal-content">
-            <!-- PASO 1: Selección de Módulo -->
+            <!-- VISTA 1: Selección de Módulo -->
             <div id="modal-step-1" class="modal-view">
                 <div class="modal-header">
                     <h2 class="modal-title">Crear Nuevo Ticket</h2>
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <!-- Formulario FixIT -->
+            <!-- VISTA 2: Formulario FixIT -->
             <div id="modal-fixit-form" class="modal-view hidden">
                 <div class="modal-header">
                     <h2 class="modal-title">Nuevo Ticket - FixIT</h2>
@@ -101,7 +101,7 @@
                 </div>
             </div>
             
-            <!-- PASO 2 de CAM: Tipo de Solicitud -->
+            <!-- VISTA 3: CAM - Paso 1 (Tipo) -->
             <div id="modal-cam-step1" class="modal-view hidden">
                 <div class="modal-header">
                     <h2 class="modal-title">Nueva Solicitud - CAM</h2>
@@ -118,8 +118,10 @@
                             <h2>¿Qué tipo de solicitud es esta?</h2>
                             <p>Elige la categoría que mejor se adapte.</p>
                             <div class="request-type-grid">
-                                <button class="type-card active" data-request-type="video"><span class="material-symbols-outlined">videocam</span><p class="type-title">Producción Audiovisual</p></button>
-                                <button class="type-card" data-request-type="design"><span class="material-symbols-outlined">draw</span><p class="type-title">Diseño Gráfico</p></button>
+                                <button class="type-card active" data-request-type="Producción Audiovisual"><span class="material-symbols-outlined">videocam</span><p class="type-title">Producción Audiovisual</p><p class="type-description">Videos, fotos, animaciones, etc.</p></button>
+                                <button class="type-card" data-request-type="Campaña de Marketing"><span class="material-symbols-outlined">campaign</span><p class="type-title">Campaña de Marketing</p><p class="type-description">Anuncios, redes sociales, campañas de correo.</p></button>
+                                <button class="type-card" data-request-type="Diseño Gráfico"><span class="material-symbols-outlined">draw</span><p class="type-title">Diseño Gráfico</p><p class="type-description">Logos, folletos, presentaciones.</p></button>
+                                <button class="type-card" data-request-type="Otro"><span class="material-symbols-outlined">category</span><p class="type-title">Otro</p><p class="type-description">¿Algo más? Descríbelo más adelante.</p></button>
                             </div>
                         </div>
                         <div class="request-creator-footer">
@@ -129,7 +131,7 @@
                 </div>
             </div>
 
-            <!-- PASO 3 de CAM: Detalles -->
+            <!-- VISTA 4: CAM - Paso 2 (Detalles) -->
             <div id="modal-cam-step2" class="modal-view hidden">
                 <div class="modal-header">
                     <h2 class="modal-title">Nueva Solicitud - CAM</h2>
@@ -144,22 +146,22 @@
                         </div>
                         <form class="modal-form" id="cam-details-form">
                             <div class="modal-form-grid">
-                                <div class="form-group"><label class="form-label" for="cam-date">Fecha de Solicitud *</label><input id="cam-date" type="date" class="modal-input" required /></div>
+                                <div class="form-group"><label class="form-label" for="cam-date">Fecha de Solicitud *</label><input id="cam-date" name="Fecha de Solicitud" type="date" class="modal-input" required /></div>
                                 <div class="form-group">
                                     <label class="form-label">Prioridad *</label>
                                     <div class="priority-toggle">
-                                        <label class="priority-label"><input type="radio" name="priority" value="Baja">Baja</label>
-                                        <label class="priority-label active"><input type="radio" name="priority" value="Media" checked>Media</label>
-                                        <label class="priority-label"><input type="radio" name="priority" value="Alta">Alta</label>
+                                        <label class="priority-label"><input type="radio" name="Prioridad" value="Baja">Baja</label>
+                                        <label class="priority-label active"><input type="radio" name="Prioridad" value="Media" checked>Media</label>
+                                        <label class="priority-label"><input type="radio" name="Prioridad" value="Alta">Alta</label>
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="form-label" for="cam-requester">Nombre del Solicitante *</label><input id="cam-requester" type="text" class="modal-input" required /></div>
-                                <div class="form-group"><label class="form-label" for="cam-department">Departamento *</label><input id="cam-department" type="text" class="modal-input" required /></div>
+                                <div class="form-group"><label class="form-label" for="cam-requester">Nombre del Solicitante *</label><input id="cam-requester" name="Solicitante" type="text" class="modal-input" required /></div>
+                                <div class="form-group"><label class="form-label" for="cam-department">Departamento *</label><input id="cam-department" name="Departamento" type="text" class="modal-input" required /></div>
                             </div>
-                            <div class="form-group"><label class="form-label" for="cam-audience">Público Objetivo *</label><input id="cam-audience" type="text" class="modal-input" required /></div>
-                            <div class="form-group"><label class="form-label" for="cam-description">Descripción Detallada *</label><textarea id="cam-description" class="modal-textarea" required></textarea></div>
-                            <div class="form-group"><label class="form-label" for="cam-comments">Comentario de Cierre / Observaciones</label><textarea id="cam-comments" class="modal-textarea"></textarea></div>
-                            <div class="form-group"><label class="form-label" for="cam-url">URL del Entregable Final</label><input id="cam-url" type="url" class="modal-input" /></div>
+                            <div class="form-group"><label class="form-label" for="cam-audience">Público Objetivo *</label><input id="cam-audience" name="Público Objetivo" type="text" class="modal-input" required /></div>
+                            <div class="form-group"><label class="form-label" for="cam-description">Descripción Detallada *</label><textarea id="cam-description" name="Descripción" class="modal-textarea" required></textarea></div>
+                            <div class="form-group"><label class="form-label" for="cam-comments">Comentario de Cierre / Observaciones</label><textarea id="cam-comments" name="Observaciones" class="modal-textarea"></textarea></div>
+                            <div class="form-group"><label class="form-label" for="cam-url">URL del Entregable Final</label><input id="cam-url" name="URL Entregable" type="url" class="modal-input" /></div>
                         </form>
                         <div class="request-creator-footer">
                             <button class="back-to-cam-step1-btn btn-secondary">Atrás</button>
@@ -169,7 +171,7 @@
                 </div>
             </div>
 
-            <!-- PASO 4 de CAM: Revisar y Enviar -->
+            <!-- VISTA 5: CAM - Paso 3 (Revisar) -->
             <div id="modal-cam-step3" class="modal-view hidden">
                  <div class="modal-header">
                     <h2 class="modal-title">Revisar Solicitud - CAM</h2>
@@ -221,29 +223,29 @@
             const openModalBtn = document.getElementById('open-modal-btn');
             const modal = document.getElementById('new-ticket-modal');
             const closeModalBtn = document.getElementById('close-modal-btn');
-            const toast = document.getElementById("toast");
-            const closeToast = document.querySelector(".close-toast");
             
             const step1 = document.getElementById('modal-step-1');
             const stepFixit = document.getElementById('modal-fixit-form');
-            const stepCam1 = document.getElementById('modal-cam-step1');
-            const stepCam2 = document.getElementById('modal-cam-step2');
-            const stepCam3 = document.getElementById('modal-cam-step3');
-
-            const allSteps = [step1, stepFixit, stepCam1, stepCam2, stepCam3];
+            const camStep1 = document.getElementById('modal-cam-step1');
+            const camStep2 = document.getElementById('modal-cam-step2');
+            const camStep3 = document.getElementById('modal-cam-step3');
+            const allSteps = [step1, stepFixit, camStep1, camStep2, camStep3];
             
             const goToFixitBtn = document.getElementById('go-to-fixit-form');
             const goToCamBtn = document.getElementById('go-to-cam-form');
             const backToStep1Btns = document.querySelectorAll('.back-to-step1-btn');
             
-            const nextBtnFromCam1 = stepCam1.querySelector('.next-step-btn');
-            const backBtnFromCam2 = stepCam2.querySelector('.back-to-cam-step1-btn');
-            const nextBtnFromCam2 = stepCam2.querySelector('.next-step-btn');
-            const backBtnFromCam3 = stepCam3.querySelector('.back-to-cam-step2-btn');
+            const nextBtnFromCam1 = camStep1.querySelector('.next-step-btn');
+            const backBtnFromCam2 = camStep2.querySelector('.back-to-cam-step1-btn');
+            const nextBtnFromCam2 = camStep2.querySelector('.next-step-btn');
+            const backBtnFromCam3 = camStep3.querySelector('.back-to-cam-step2-btn');
+            
             const sendBtn = document.getElementById('send-request');
+            const toast = document.getElementById("toast");
+            const closeToast = document.querySelector(".close-toast");
 
-            let selectedCamType = 'video';
-            const typeCards = stepCam1.querySelectorAll('.type-card');
+            let selectedCamType = 'Producción Audiovisual';
+            const typeCards = camStep1.querySelectorAll('.type-card');
             
             const hideAllSteps = () => allSteps.forEach(step => step.classList.add('hidden'));
 
@@ -258,7 +260,7 @@
             modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
             
             goToFixitBtn.addEventListener('click', (e) => { e.preventDefault(); hideAllSteps(); stepFixit.classList.remove('hidden'); });
-            goToCamBtn.addEventListener('click', (e) => { e.preventDefault(); hideAllSteps(); stepCam1.classList.remove('hidden'); });
+            goToCamBtn.addEventListener('click', (e) => { e.preventDefault(); hideAllSteps(); camStep1.classList.remove('hidden'); });
 
             backToStep1Btns.forEach(btn => {
                 btn.addEventListener('click', () => { hideAllSteps(); step1.classList.remove('hidden'); });
@@ -274,34 +276,33 @@
 
             nextBtnFromCam1.addEventListener('click', () => {
                 hideAllSteps();
-                stepCam2.classList.remove('hidden');
+                camStep2.classList.remove('hidden');
             });
 
-            backBtnFromCam2.addEventListener('click', () => { hideAllSteps(); stepCam1.classList.remove('hidden'); });
+            backBtnFromCam2.addEventListener('click', () => { hideAllSteps(); camStep1.classList.remove('hidden'); });
             
             nextBtnFromCam2.addEventListener('click', () => {
-                // Lógica para poblar la vista de revisión
                 const form = document.getElementById('cam-details-form');
                 const reviewDetails = document.getElementById('review-details');
                 const formData = new FormData(form);
-                let reviewHTML = '';
-                
-                reviewHTML += `<p class="detail-label">Tipo de Solicitud:</p><p>${selectedCamType.charAt(0).toUpperCase() + selectedCamType.slice(1)}</p>`;
+                let reviewHTML = `<p class="detail-label">Tipo de Solicitud:</p><p>${selectedCamType}</p>`;
 
                 for (let [key, value] of formData.entries()) {
-                    const el = form.querySelector(`[name="${key}"], [id="cam-${key}"]`);
-                    if (el && value) {
-                        const label = el.closest('.form-group').querySelector('.form-label').textContent;
-                        reviewHTML += `<p class="detail-label">${label}:</p><p>${value}</p>`;
+                    if (value) {
+                         if (key === 'Prioridad') {
+                            const checkedRadio = form.querySelector('input[name="Prioridad"]:checked');
+                            value = checkedRadio ? checkedRadio.value : 'No especificada';
+                        }
+                        reviewHTML += `<p class="detail-label">${key}:</p><p>${value}</p>`;
                     }
                 }
                 reviewDetails.innerHTML = reviewHTML;
 
                 hideAllSteps();
-                stepCam3.classList.remove('hidden');
+                camStep3.classList.remove('hidden');
             });
 
-            backBtnFromCam3.addEventListener('click', () => { hideAllSteps(); stepCam2.classList.remove('hidden'); });
+            backBtnFromCam3.addEventListener('click', () => { hideAllSteps(); camStep2.classList.remove('hidden'); });
             
             sendBtn.onclick = () => {
                 closeModal();
