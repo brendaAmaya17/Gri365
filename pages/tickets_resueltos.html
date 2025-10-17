@@ -41,8 +41,10 @@
                     </nav>
                 </div>
                 <div class="header-right">
-                    <button class="btn btn-primary" id="open-modal-btn">Nueva Solicitud</button>
-                    <button class="btn-icon" id="theme-toggle-btn" title="Alternar tema"><span class="material-symbols-outlined sun-icon">light_mode</span><span class="material-symbols-outlined moon-icon">dark_mode</span></button>
+                    <button class="btn-icon" id="theme-toggle-btn" title="Alternar tema">
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+                    </button>
                     <a href="#" class="btn-icon" title="Cerrar Sesión"><span class="material-symbols-outlined">logout</span></a>
                 </div>
             </header>
@@ -203,22 +205,6 @@
                 cancelBtn.addEventListener('click', closeModal);
                 modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
             }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.reports-tab-btn');
-            const tabContents = document.querySelectorAll('.reports-tab-content');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    const tabId = tab.getAttribute('data-tab');
-                    tabContents.forEach(content => {
-                        content.id === `${tabId}-content` ? content.classList.remove('hidden') : content.classList.add('hidden');
-                    });
-                });
-            });
         });
     </script>
 </body>

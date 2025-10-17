@@ -67,7 +67,6 @@
                     </nav>
                 </div>
                 <div class="header-right">
-                    <button class="btn btn-primary" id="open-modal-btn">Nueva Solicitud</button>
                     <button class="btn-icon" id="theme-toggle-btn" title="Alternar tema">
                         <span class="material-symbols-outlined sun-icon">light_mode</span>
                         <span class="material-symbols-outlined moon-icon">dark_mode</span>
@@ -255,20 +254,6 @@
         const applySavedTheme = () => { const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') { body.classList.add('dark-mode'); } };
         themeToggleBtn.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); });
         document.addEventListener('DOMContentLoaded', applySavedTheme);
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const openModalBtn = document.getElementById('open-modal-btn');
-            const modal = document.getElementById('request-modal');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-            const cancelBtn = modal.querySelector('.btn-modal-secondary');
-            const openModal = () => modal.classList.add('active');
-            const closeModal = () => modal.classList.remove('active');
-            openModalBtn.addEventListener('click', openModal);
-            closeModalBtn.addEventListener('click', closeModal);
-            cancelBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
-        });
     </script>
 </body>
 </html>
