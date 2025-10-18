@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRI365 - Tareas</title>
+    <link rel="stylesheet" href="./../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body class="tasks-page">
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark">
+            </div>
+            <nav class="navigation">
+                <a class="nav-link" href="index.html"><span class="material-symbols-outlined">dashboard</span><span>Inicio</span></a>
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
+                <a class="nav-link" href="gestion_proyectos.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
+                <a class="nav-link" href="./pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
+                <a class="nav-link active" href="tareas.html"><span class="material-symbols-outlined">task_alt</span><span>Tareas</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="tasks-header">
+                <div class="tasks-header-info">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Logo del Equipo">
+                    <div>
+                        <h1>Team Alpha</h1>
+                        <p>Campaña de Marketing</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Buscar Tarea...">
+                    </div>
+                    <button class="btn btn-primary create-task-btn"><span class="material-symbols-outlined">add</span><span>Añadir Tarea</span></button>
+                    <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+                    </button>
+                </div>
+            </header>
+            <main class="tasks-main-content">
+                <div class="tasks-content-header">
+                    <div>
+                        <p class="tasks-title">Tareas de la Campaña de Marketing</p>
+                        <p class="tasks-subtitle">Una lista de tareas a completar para la campaña.</p>
+                    </div>
+                </div>
+                <div class="tasks-filters">
+                    <button class="filter-tab active"><span>Estado</span><span class="material-symbols-outlined">arrow_drop_down</span></button>
+                    <button class="filter-tab"><span>Asignado</span><span class="material-symbols-outlined">arrow_drop_down</span></button>
+                    <button class="filter-tab"><span>Fecha de Vencimiento</span><span class="material-symbols-outlined">arrow_drop_down</span></button>
+                    <button class="filter-tab sort-btn"><span class="material-symbols-outlined">filter_list</span><span>Ordenar</span></button>
+                </div>
+                <div class="tasks-table-container">
+                    <table class="tasks-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre de la Tarea</th><th>Asignado</th><th>Fecha de Vencimiento</th><th>Prioridad</th><th>Estado</th><th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Desarrollar nuevo anuncio creativo</td>
+                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Alice</div></td>
+                                <td>2023-10-26</td>
+                                <td><span class="badge status-high">Alta</span></td>
+                                <td><span class="badge status-progress">En Progreso</span></td>
+                                <td><a href="#" class="action-link">Editar</a></td>
+                            </tr>
+                            <tr>
+                                <td>Escribir publicación de blog</td>
+                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Bob</div></td>
+                                <td>2023-10-28</td>
+                                <td><span class="badge status-medium">Media</span></td>
+                                <td><span class="badge status-todo">Por Hacer</span></td>
+                                <td><a href="#" class="action-link">Editar</a></td>
+                            </tr>
+                            <tr>
+                                <td>Programar publicaciones en redes sociales</td>
+                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Charlie</div></td>
+                                <td>2023-10-30</td>
+                                <td><span class="badge status-low">Baja</span></td>
+                                <td><span class="badge status-todo">Por Hacer</span></td>
+                                <td><a href="#" class="action-link">Editar</a></td>
+                            </tr>
+                            <tr>
+                                <td>Revisar y aprobar el diseño</td>
+                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Alice</div></td>
+                                <td>2023-11-01</td>
+                                <td><span class="badge status-high">Alta</span></td>
+                                <td><span class="badge status-completed">Completado</span></td>
+                                <td><a href="#" class="action-link">Editar</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </main>
+    </div>
+    <script>
+        // Script de Tema
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        const applySavedTheme = () => { const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') { body.classList.add('dark-mode'); } };
+        themeToggleBtn.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); });
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
+    </script>
+</body>
+</html>

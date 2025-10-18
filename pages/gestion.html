@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRI365 - Gestión de Proyectos</title>
+    <link rel="stylesheet" href="./../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body class="project-page">
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark">
+            </div>
+            <nav class="navigation">
+                <a class="nav-link" href="./../index.html"><span class="material-symbols-outlined">dashboard</span><span>Inicio</span></a>
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
+                <a class="nav-link active" href="gestion_proyectos.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
+                <a class="nav-link" href="./pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="project-header">
+                <div class="project-header-main">
+                    <div class="project-logo">
+                        <span class="material-symbols-outlined">add_task</span>
+                        <h2>Gestión de Proyectos</h2>
+                    </div>
+                    <nav class="project-nav">
+                        <a href="#">Dashboard</a>
+                        <a href="#">Tareas</a>
+                        <a href="#">Calendario</a>
+                        <a href="#">Informes</a>
+                    </nav>
+                </div>
+                <!-- ===== ESTRUCTURA CORREGIDA ===== -->
+                <div class="header-actions">
+                    <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+                    </button>
+                    <a href="#" class="icon-button" title="Cerrar Sesión">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
+                </div>
+            </header>
+            <main class="project-main-content">
+                <div class="project-content-header">
+                    <div>
+                        <p class="project-title">Panel de Proyectos</p>
+                        <p class="project-subtitle">Una vista general de todos tus proyectos.</p>
+                    </div>
+                    <button class="btn btn-primary create-project-btn">
+                        <span class="material-symbols-outlined">add</span>
+                        <span>Crear Nuevo Proyecto</span>
+                    </button>
+                </div>
+                <div class="project-filters">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Buscar proyectos...">
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">Todos</button>
+                        <button class="filter-tab">Activo</button>
+                        <button class="filter-tab">Completado</button>
+                        <button class="filter-tab">En pausa</button>
+                    </div>
+                </div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="card-header"><h3>Campaña de Marketing Q3</h3><span class="badge status-active">Activo</span></div>
+                        <div class="progress-section">
+                            <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">65%</span></div>
+                            <div class="progress-bar-wrapper"><div class="progress-bar" style="width: 65%;"></div></div>
+                        </div>
+                        <div class="card-meta">
+                            <div><span class="meta-label">Vencimiento</span><span>15 Oct, 2024</span></div>
+                            <div class="meta-right"><span class="meta-label">Tareas</span><span>8 pendientes</span></div>
+                        </div>
+                        <div class="card-team">
+                            <span class="meta-label">Equipo</span>
+                            <div class="avatar-group">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar de miembro del equipo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-header"><h3>Rediseño del Sitio Web</h3><span class="badge status-completed">Completado</span></div>
+                        <div class="progress-section">
+                            <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">100%</span></div>
+                            <div class="progress-bar-wrapper"><div class="progress-bar" style="width: 100%;"></div></div>
+                        </div>
+                        <div class="card-meta">
+                            <div><span class="meta-label">Vencimiento</span><span>20 Sep, 2024</span></div>
+                            <div class="meta-right"><span class="meta-label">Tareas</span><span>0 pendientes</span></div>
+                        </div>
+                        <div class="card-team">
+                            <span class="meta-label">Equipo</span>
+                            <div class="avatar-group">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar de miembro del equipo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-header"><h3>Integración API</h3><span class="badge status-paused">En pausa</span></div>
+                        <div class="progress-section">
+                            <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">20%</span></div>
+                            <div class="progress-bar-wrapper"><div class="progress-bar" style="width: 20%;"></div></div>
+                        </div>
+                        <div class="card-meta">
+                            <div><span class="meta-label">Vencimiento</span><span>30 Nov, 2024</span></div>
+                            <div class="meta-right"><span class="meta-label">Tareas</span><span>15 pendientes</span></div>
+                        </div>
+                        <div class="card-team">
+                            <span class="meta-label">Equipo</span>
+                            <div class="avatar-group">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar de miembro del equipo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-header"><h3>Desarrollo App Móvil</h3><span class="badge status-late">Atrasado</span></div>
+                        <div class="progress-section">
+                            <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">80%</span></div>
+                            <div class="progress-bar-wrapper"><div class="progress-bar" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="card-meta">
+                            <div><span class="meta-label due-date-late">Vencimiento</span><span class="due-date-late">01 Sep, 2024</span></div>
+                            <div class="meta-right"><span class="meta-label">Tareas</span><span>3 pendientes</span></div>
+                        </div>
+                        <div class="card-team">
+                            <span class="meta-label">Equipo</span>
+                            <div class="avatar-group">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar de miembro del equipo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-pagination">
+                    <button class="icon-button" disabled><span class="material-symbols-outlined">chevron_left</span></button>
+                    <button class="pagination-number active">1</button>
+                    <button class="pagination-number">2</button>
+                    <button class="pagination-number">3</button>
+                    <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+            </main>
+        </main>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        const applySavedTheme = () => { const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') { body.classList.add('dark-mode'); } };
+        themeToggleBtn.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); });
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
+    </script>
+</body>
+</html>
