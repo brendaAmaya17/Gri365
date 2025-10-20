@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRI365 - Tareas</title>
+    <!-- Asegúrate de que la ruta al CSS es correcta -->
     <link rel="stylesheet" href="./../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -20,31 +21,34 @@
                 <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
                 <a class="nav-link" href="gestion_proyectos.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
                 <a class="nav-link" href="./pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
-                <a class="nav-link active" href="tareas.html"><span class="material-symbols-outlined">task_alt</span><span>Tareas</span></a>
             </nav>
             <div class="sidebar-footer">
                 <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
             </div>
         </aside>
         <main class="main-content">
-            <header class="tasks-header">
-                <div class="tasks-header-info">
-                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Logo del Equipo">
-                    <div>
-                        <h1>Team Alpha</h1>
-                        <p>Campaña de Marketing</p>
+            <header class="project-header">
+                <div class="project-header-main">
+                    <div class="project-logo">
+                        <span class="material-symbols-outlined">add_task</span>
+                        <h2>Gestión de Proyectos</h2>
                     </div>
+                    <nav class="project-nav">
+                        <a href="./gestion.html">Dashboard</a>
+                        <a href="#" class="active">Tareas</a>
+                        <a href="#">Calendario</a>
+                        <a href="#">Informes</a>
+                    </nav>
                 </div>
+                <!-- Botones de acción del encabezado -->
                 <div class="header-actions">
-                    <div class="search-bar">
-                        <span class="material-symbols-outlined">search</span>
-                        <input type="text" placeholder="Buscar Tarea...">
-                    </div>
-                    <button class="btn btn-primary create-task-btn"><span class="material-symbols-outlined">add</span><span>Añadir Tarea</span></button>
                     <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
                         <span class="material-symbols-outlined sun-icon">light_mode</span>
                         <span class="material-symbols-outlined moon-icon">dark_mode</span>
                     </button>
+                    <a href="#" class="icon-button" title="Cerrar Sesión">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
                 </div>
             </header>
             <main class="tasks-main-content">
@@ -70,32 +74,32 @@
                         <tbody>
                             <tr>
                                 <td>Desarrollar nuevo anuncio creativo</td>
-                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Alice</div></td>
-                                <td>2023-10-26</td>
+                                <td><div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar"> Alice</div></td>
+                                <td>2025-10-26</td>
                                 <td><span class="badge status-high">Alta</span></td>
                                 <td><span class="badge status-progress">En Progreso</span></td>
                                 <td><a href="#" class="action-link">Editar</a></td>
                             </tr>
                             <tr>
                                 <td>Escribir publicación de blog</td>
-                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Bob</div></td>
-                                <td>2023-10-28</td>
+                                <td><div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar"> Bob</div></td>
+                                <td>2025-10-28</td>
                                 <td><span class="badge status-medium">Media</span></td>
                                 <td><span class="badge status-todo">Por Hacer</span></td>
                                 <td><a href="#" class="action-link">Editar</a></td>
                             </tr>
                             <tr>
                                 <td>Programar publicaciones en redes sociales</td>
-                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Charlie</div></td>
-                                <td>2023-10-30</td>
+                                <td><div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar"> Charlie</div></td>
+                                <td>2025-10-30</td>
                                 <td><span class="badge status-low">Baja</span></td>
                                 <td><span class="badge status-todo">Por Hacer</span></td>
                                 <td><a href="#" class="action-link">Editar</a></td>
                             </tr>
                             <tr>
                                 <td>Revisar y aprobar el diseño</td>
-                                <td><div class="user-chip"><img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar"> Alice</div></td>
-                                <td>2023-11-01</td>
+                                <td><div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar"> David</div></td>
+                                <td>2025-11-01</td>
                                 <td><span class="badge status-high">Alta</span></td>
                                 <td><span class="badge status-completed">Completado</span></td>
                                 <td><a href="#" class="action-link">Editar</a></td>
