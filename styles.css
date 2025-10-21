@@ -510,12 +510,9 @@ body.dark-mode .request-type-label.active, body.dark-mode .request-type-label:ha
 
 
 
-/* gestion de proyectos */
-
-
-/* 11. ESTILOS PARA GESTIÓN DE PROYECTOS (.project-page) */
-.project-page { --primary: #370c31; --background: #f8f6f8; --surface: #ffffff; --text-primary: #1f2937; --text-secondary: #6b7280; --border-color: #e5e7eb; }
-.project-page .main-content { background-color: var(--background); }
+/* 12. ESTILOS PARA GESTIÓN DE PROYECTOS  */
+.project-page, .tasks-page { --primary: #370c31; --background: #f8f6f8; --surface: #ffffff; --text-primary: #1f2937; --text-secondary: #6b7280; --border-color: #e5e7eb; --input-background: #f3f4f6; }
+.project-page .main-content, .tasks-page .main-content { background-color: var(--background); }
 .project-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2.5rem; border-bottom: 1px solid var(--border-color); background-color: var(--surface); }
 .project-header-main { display: flex; align-items: center; gap: 2rem; }
 .project-logo { display: flex; align-items: center; gap: 1rem; color: var(--primary); }
@@ -524,7 +521,7 @@ body.dark-mode .request-type-label.active, body.dark-mode .request-type-label:ha
 .project-nav { display: flex; align-items: center; gap: 2.25rem; }
 .project-nav a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; }
 .project-nav a:hover { color: var(--primary); }
-.project-page .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+.project-page .header-actions, .tasks-page .header-actions { display: flex; align-items: center; gap: 0.5rem; }
 .project-main-content { padding: 2rem 2.5rem; }
 .project-content-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; }
 .project-title { font-size: 2.25rem; font-weight: 900; color: var(--text-primary); }
@@ -536,7 +533,7 @@ body.dark-mode .request-type-label.active, body.dark-mode .request-type-label:ha
 .search-bar .material-symbols-outlined { padding-left: 1rem; color: var(--text-secondary); }
 .search-bar input { background: transparent; border: none; outline: none; padding: 0 1rem; color: var(--text-primary); width: 100%; }
 .filter-tabs { display: flex; gap: 0.75rem; overflow-x: auto; }
-.filter-tab { background-color: #f3f4f6; border: none; border-radius: var(--border-radius-lg); padding: 0 1rem; height: 3rem; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; white-space: nowrap; }
+.filter-tab { background-color: #f3f4f6; border: none; border-radius: var(--border-radius-lg); padding: 0 1rem; height: 3rem; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 0.25rem; }
 .filter-tab.active { background-color: var(--accent); color: var(--primary); }
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
 .project-card { background-color: var(--surface); border-radius: var(--border-radius-xl); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s ease; }
@@ -568,18 +565,62 @@ body.dark-mode .request-type-label.active, body.dark-mode .request-type-label:ha
 .project-pagination { display: flex; justify-content: center; margin-top: 2.5rem; gap: 0.5rem; }
 .pagination-number { width: 2.5rem; height: 2.5rem; border-radius: var(--border-radius-lg); background-color: #f3f4f6; color: var(--text-secondary); font-weight: 700; border: none; cursor: pointer; }
 .pagination-number.active { background-color: var(--primary); color: white; }
-.project-page.dark-mode { --primary: #9b4a8d; --background: #101c22; --surface: #1A202C; --text-primary: #f4f4f5; --text-secondary: #a1a1aa; --border-color: #3f3f46; }
-.project-page.dark-mode .project-header, .project-page.dark-mode .project-card { background-color: var(--surface); }
-.project-page.dark-mode .search-bar, .project-page.dark-mode .filter-tab, .project-page.dark-mode .pagination-number { background-color: #374151; }
-.project-page.dark-mode .project-title, .project-page.dark-mode .search-bar input, .project-page.dark-mode .card-header h3 { color: var(--text-primary); }
-.project-page.dark-mode .project-subtitle, .project-page.dark-mode .filter-tab, .project-page.dark-mode .pagination-number { color: var(--text-secondary); }
-.project-page.dark-mode .filter-tab.active { background-color: var(--accent); color: var(--primary); }
+.project-page.dark-mode, .tasks-page.dark-mode { --primary: #9b4a8d; --background: #101c22; --surface: #1A202C; --text-primary: #f4f4f5; --text-secondary: #a1a1aa; --border-color: #3f3f46; --input-background: #374151; }
+.project-page.dark-mode .project-header, .tasks-page.dark-mode .project-header, .project-page.dark-mode .project-card, .tasks-page.dark-mode .tasks-table-container { background-color: var(--surface); }
+.project-page.dark-mode .project-title, .tasks-page.dark-mode .tasks-title, .project-page.dark-mode .search-bar input, .project-page.dark-mode .card-header h3 { color: var(--text-primary); }
+.project-page.dark-mode .project-subtitle, .tasks-page.dark-mode .tasks-subtitle, .project-page.dark-mode .filter-tab, .project-page.dark-mode .pagination-number { color: var(--text-secondary); }
+.project-page.dark-mode .filter-tab.active, .tasks-page.dark-mode .filter-tab.active { background-color: var(--accent); color: var(--primary); }
+.tasks-page.dark-mode .tasks-table thead { background-color: #374151; }
 .project-page.dark-mode .avatar-group img { border-color: var(--surface); }
-.project-page.dark-mode .badge.status-active { background-color: rgba(251, 191, 36, 0.2); color: #FBBF24; }
-.project-page.dark-mode .badge.status-completed { background-color: rgba(52, 211, 153, 0.2); color: #34D399; }
-.project-page.dark-mode .badge.status-paused { background-color: rgba(156, 163, 175, 0.2); color: #9CA3AF; }
-.project-page.dark-mode .badge.status-late { background-color: rgba(239, 68, 68, 0.2); color: #EF4444; }
+.project-page.dark-mode .badge.status-active, .tasks-page.dark-mode .badge.status-active { background-color: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+.project-page.dark-mode .badge.status-completed, .tasks-page.dark-mode .badge.status-completed { background-color: rgba(52, 211, 153, 0.2); color: #34D399; }
+.project-page.dark-mode .badge.status-paused, .tasks-page.dark-mode .badge.status-paused { background-color: rgba(156, 163, 175, 0.2); color: #9CA3AF; }
+.project-page.dark-mode .badge.status-late, .tasks-page.dark-mode .badge.status-late { background-color: rgba(239, 68, 68, 0.2); color: #EF4444; }
 
+/* 13. ESTILOS PARA EL MODAL DE GESTIÓN DE PROYECTOS */
+.project-details-content { max-width: 1200px; width: 95%; height: 90vh; }
+.project-details-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; height: 100%; }
+@media (min-width: 1024px) { .project-details-grid { grid-template-columns: 2fr 1fr; } }
+.project-info-column { display: flex; flex-direction: column; gap: 1.5rem; overflow-y: auto; padding-right: 1rem; }
+.project-meta-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+.project-meta-subtitle { color: var(--text-secondary); }
+.project-meta-actions { display: flex; gap: 0.5rem; }
+.btn-success { background-color: #16a34a; color: white; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: none; border-radius: var(--border-radius); font-weight: 600; }
+.project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; }
+.tag-yellow { background-color: #fef3c7; color: #b45309; }
+.tag-red { background-color: #fee2e2; color: #b91c1c; }
+.tag-indigo { background-color: #e0e7ff; color: #3730a3; }
+.project-assign-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+.assign-label { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem; }
+.project-description-section { background-color: #f9fafb; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; position: relative; overflow: hidden; }
+.canvas-background { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.05); font-size: 5rem; font-weight: 900; pointer-events: none; }
+.canvas-actions { display: flex; gap: 0.5rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.icon-btn-small { width: 2rem; height: 2rem; border-radius: 9999px; background-color: var(--surface); border: 1px solid var(--border-color); display: grid; place-items: center; cursor: pointer; color: var(--text-secondary); }
+.description-content, .attachments-content { position: relative; z-index: 1; }
+.description-content h3, .attachments-content h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+.attachments-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.attachment-card { background-color: var(--surface); padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; }
+.attachment-card .material-symbols-outlined { font-size: 2.5rem; color: var(--text-secondary); }
+.attachment-card a { font-size: 0.75rem; color: var(--primary); }
+.project-comments-column { display: flex; flex-direction: column; border-left: 1px solid var(--border-color); padding-left: 1.5rem; height: 100%; }
+.comments-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; padding: 1rem 0; }
+.comment-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+.comment-item.right { flex-direction: row-reverse; }
+.comment-avatar { width: 2rem; height: 2rem; border-radius: 9999px; }
+.comment-bubble { background-color: #f3f4f6; padding: 0.75rem; border-radius: 1rem; max-width: 80%; }
+.comment-item.right .comment-bubble { background-color: var(--accent); }
+.comment-header { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem; gap: 1rem; }
+.comment-author { font-weight: 600; } .comment-time { color: var(--text-muted); }
+.comment-input-area { border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.comment-input-area textarea { width: 100%; border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 0.5rem; resize: none; height: 5rem; }
+.comment-input-area .btn-primary { align-self: flex-end; }
+.project-page.dark-mode .project-description-section { background-color: #1f2937; }
+.project-page.dark-mode .canvas-background { color: rgba(255,255,255,0.05); }
+.project-page.dark-mode .icon-btn-small, .project-page.dark-mode .attachment-card { background-color: var(--surface); border-color: var(--border-color); }
+.project-page.dark-mode .comment-bubble { background-color: #374151; }
+.project-page.dark-mode .comment-item.right .comment-bubble { background-color: var(--primary); color: white; }
+.project-page.dark-mode .comment-input-area textarea { background-color: #374151; border-color: var(--border-color); color: var(--text-primary); }
 
 /*14. ESTILOS PARA LA PÁGINA DE TAREAS (.tasks-page)
 ============================================================
@@ -680,6 +721,9 @@ body.dark-mode #theme-toggle-btn .moon-icon {
   5.5. Página de Informes 
 ========================================================================== 
 */
+.contenedor {
+    padding: 20px 40px 20px 40px;
+ }
 
 /* --- Contenedor y Títulos --- */
 .reports-page .reports-main-content { padding: 2rem 2.5rem; display: flex; flex-direction: column; }
@@ -741,3 +785,115 @@ body.dark-mode .ai-message .message-bubble { background-color: var(--border); }
 .chat-input-area { display: flex; gap: 0.5rem; padding: 1rem; border-top: 1px solid var(--border); }
 .chat-input-area input { flex-grow: 1; border: 1px solid var(--border); background-color: var(--surface); border-radius: var(--border-radius); padding: 0.75rem; font-size: 1rem; outline: none; }
 .chat-input-area input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px var(--accent); }
+
+/*
+==========================================================================
+   7. MODAL DE NUEVA TAREA
+========================================================================== 
+/*
+
+/* --- Contenedor y cabecera del modal --- */
+.task-modal {
+    max-width: 42rem; /* Equivalente a max-w-2xl de Tailwind */
+}
+.modal-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* --- Formulario --- */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* --- Inputs y Textareas --- */
+.input-with-icon {
+    position: relative;
+}
+.input-with-icon .material-symbols-outlined {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+.modal-input[type="text"], .modal-input[type="date"], .modal-textarea, select.modal-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* --- Chips de usuarios asignados --- */
+.assigned-users-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+.assigned-user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.assigned-user-chip button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    color: var(--primary);
+}
+.assigned-user-chip .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+/* --- Pie del modal (Footer) --- */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    background-color: #f9fafb;
+    border-bottom-left-radius: var(--border-radius-xl);
+    border-bottom-right-radius: var(--border-radius-xl);
+}
+.modal-footer .btn-secondary,
+.modal-footer .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* --- Modo Oscuro para el Modal de Tarea --- */
+body.dark-mode .modal-subtitle {
+    color: var(--text-muted);
+}
+body.dark-mode .assigned-user-chip {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+body.dark-mode .assigned-user-chip button {
+    color: var(--primary);
+}
+body.dark-mode .modal-footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: var(--border);
+}
+

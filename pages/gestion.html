@@ -18,8 +18,8 @@
             <nav class="navigation">
                 <a class="nav-link" href="./../index.html"><span class="material-symbols-outlined">dashboard</span><span>Inicio</span></a>
                 <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
-                <a class="nav-link active" href="gestion_proyectos.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
-                <a class="nav-link" href="./pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
+                <a class="nav-link active" href="./../pages/gestion.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
+                <a class="nav-link" href="./../pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
             </nav>
             <div class="sidebar-footer">
                 <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
@@ -33,13 +33,12 @@
                         <h2>Gestión de Proyectos</h2>
                     </div>
                     <nav class="project-nav">
-                        <a href="./../pages/gestion.html">Dashboard</a>
-                        <a href="./../pages/tareas.html">Tareas</a>
-                        <a href="./../pages/calendario.html">Calendario</a>
-                        <a href="./../pages/informes.html">Informes</a>
+                        <a href="#">Dashboard</a>
+                        <a href="tareas.html">Tareas</a>
+                        <a href="#">Calendario</a>
+                        <a href="#">Informes</a>
                     </nav>
                 </div>
-                <!-- ===== ESTRUCTURA CORREGIDA ===== -->
                 <div class="header-actions">
                     <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
                         <span class="material-symbols-outlined sun-icon">light_mode</span>
@@ -74,7 +73,7 @@
                     </div>
                 </div>
                 <div class="project-grid">
-                    <div class="project-card">
+                    <div class="project-card" data-project-id="1">
                         <div class="card-header"><h3>Campaña de Marketing Q3</h3><span class="badge status-active">Activo</span></div>
                         <div class="progress-section">
                             <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">65%</span></div>
@@ -87,13 +86,13 @@
                         <div class="card-team">
                             <span class="meta-label">Equipo</span>
                             <div class="avatar-group">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar de miembro del equipo">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar de miembro del equipo">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar">
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-project-id="2">
                         <div class="card-header"><h3>Rediseño del Sitio Web</h3><span class="badge status-completed">Completado</span></div>
                         <div class="progress-section">
                             <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">100%</span></div>
@@ -106,12 +105,12 @@
                         <div class="card-team">
                             <span class="meta-label">Equipo</span>
                             <div class="avatar-group">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar de miembro del equipo">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar">
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-project-id="3">
                         <div class="card-header"><h3>Integración API</h3><span class="badge status-paused">En pausa</span></div>
                         <div class="progress-section">
                             <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">20%</span></div>
@@ -124,11 +123,11 @@
                         <div class="card-team">
                             <span class="meta-label">Equipo</span>
                             <div class="avatar-group">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar">
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-project-id="4">
                         <div class="card-header"><h3>Desarrollo App Móvil</h3><span class="badge status-late">Atrasado</span></div>
                         <div class="progress-section">
                             <div class="progress-info"><span class="progress-label">Progreso</span><span class="progress-percent">80%</span></div>
@@ -141,10 +140,10 @@
                         <div class="card-team">
                             <span class="meta-label">Equipo</span>
                             <div class="avatar-group">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar de miembro del equipo">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar de miembro del equipo">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar de miembro del equipo">
-                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar de miembro del equipo">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM%20(4).jpeg?updatedAt=1754335165735" alt="Avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar">
                             </div>
                         </div>
                     </div>
@@ -160,12 +159,125 @@
         </main>
     </div>
 
+    <!-- MODAL DE DETALLES DEL PROYECTO -->
+    <div id="project-details-modal" class="modal-overlay">
+        <div class="modal-content project-details-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Diseño de la nueva landing page</h2>
+                <button class="modal-close-btn" id="close-project-modal"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                 <div class="project-details-grid">
+                    <div class="project-info-column">
+                        <div class="project-meta-header">
+                            <div>
+                                <p class="project-meta-subtitle">Proyecto Titán</p>
+                            </div>
+                            <div class="project-meta-actions">
+                                <button class="btn btn-secondary">Editar Tarea</button>
+                                <button class="btn btn-success"><span class="material-symbols-outlined">check_circle</span> Completada</button>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag tag-yellow">En progreso</span>
+                            <span class="tag tag-red">Prioridad Alta</span>
+                            <span class="tag tag-indigo">UI/UX</span>
+                        </div>
+                        <div class="project-assign-info">
+                            <div class="assign-item">
+                                <p class="assign-label">Asignado a</p>
+                                <div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar"> Ana García</div>
+                            </div>
+                            <div class="assign-item">
+                                <p class="assign-label">Fecha de Vencimiento</p>
+                                <p>25 de Diciembre, 2023</p>
+                            </div>
+                        </div>
+                        <div class="project-description-section">
+                             <div class="canvas-background">CANVAS</div>
+                             <div class="canvas-actions">
+                                <button class="icon-btn-small"><span class="material-symbols-outlined">edit</span></button>
+                                <button class="icon-btn-small"><span class="material-symbols-outlined">brush</span></button>
+                                <button class="icon-btn-small"><span class="material-symbols-outlined">note_add</span></button>
+                             </div>
+                             <div class="description-content">
+                                <h3>Descripción</h3>
+                                <p>Crear un diseño moderno y atractivo para la nueva página de inicio, siguiendo las directrices de la marca. La página debe ser responsive y estar optimizada para la conversión. Incluir secciones para características, testimonios y un formulario de contacto.</p>
+                             </div>
+                             <div class="attachments-content">
+                                <h3>Archivos Adjuntos</h3>
+                                <div class="attachments-grid">
+                                    <div class="attachment-card">
+                                        <span class="material-symbols-outlined">image</span>
+                                        <p>wireframe_v1.png</p>
+                                        <a href="#">Descargar</a>
+                                    </div>
+                                    <div class="attachment-card">
+                                        <span class="material-symbols-outlined">description</span>
+                                        <p>brief_proyecto.pdf</p>
+                                        <a href="#">Descargar</a>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="project-comments-column">
+                        <h3>Comentarios en Tiempo Real</h3>
+                        <div class="comments-list">
+                            <div class="comment-item right">
+                                <div class="comment-bubble">
+                                    <div class="comment-header"><span class="comment-author">Carlos Sánchez</span><span class="comment-time">Hace 2 horas</span></div>
+                                    <p>¿Podemos revisar la paleta de colores? Creo que un tono más vibrante podría funcionar mejor para el CTA principal.</p>
+                                </div>
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar" class="comment-avatar">
+                            </div>
+                            <div class="comment-item left">
+                                <img src="-	https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar" class="comment-avatar">
+                                <div class="comment-bubble">
+                                    <div class="comment-header"><span class="comment-author">Ana García</span><span class="comment-time">Hace 1 hora</span></div>
+                                    <p>Buena idea, Carlos. He adjuntado un nuevo moodboard con algunas alternativas. Échale un vistazo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-input-area">
+                            <img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar" class="comment-avatar-small">
+                            <textarea placeholder="Escribe un comentario..."></textarea>
+                            <button class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
         const applySavedTheme = () => { const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') { body.classList.add('dark-mode'); } };
         themeToggleBtn.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); });
         document.addEventListener('DOMContentLoaded', applySavedTheme);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('project-details-modal');
+            const closeBtn = document.getElementById('close-project-modal');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            projectCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    modal.classList.add('active');
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
