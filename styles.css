@@ -577,6 +577,91 @@ body.dark-mode .request-type-label.active, body.dark-mode .request-type-label:ha
 .project-page.dark-mode .badge.status-paused, .tasks-page.dark-mode .badge.status-paused { background-color: rgba(156, 163, 175, 0.2); color: #9CA3AF; }
 .project-page.dark-mode .badge.status-late, .tasks-page.dark-mode .badge.status-late { background-color: rgba(239, 68, 68, 0.2); color: #EF4444; }
 
+/* 12. ESTILOS PARA GESTIÓN DE PROYECTOS Y TAREAS */
+
+.project-page, .tasks-page { --primary: #370c31; --background: #f8f6f8; --surface: #ffffff; --text-primary: #1f2937; --text-secondary: #6b7280; --border-color: #e5e7eb; --input-background: #f3f4f6; }
+.project-page .main-content, .tasks-page .main-content { background-color: var(--background); }
+.project-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2.5rem; border-bottom: 1px solid var(--border-color); background-color: var(--surface); }
+.project-header-main { display: flex; align-items: center; gap: 2rem; }
+.project-logo { display: flex; align-items: center; gap: 1rem; color: var(--primary); }
+.project-logo .material-symbols-outlined { font-size: 1.875rem; }
+.project-logo h2 { font-size: 1.125rem; font-weight: 700; }
+.project-nav { display: flex; align-items: center; gap: 2.25rem; }
+.project-nav a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; }
+.project-nav a:hover { color: var(--primary); }
+.project-page .header-actions, .tasks-page .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+.project-main-content { padding: 2rem 2.5rem; }
+.project-content-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.project-title { font-size: 2.25rem; font-weight: 900; color: var(--text-primary); }
+.project-subtitle { color: var(--text-secondary); }
+.create-project-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; }
+.project-filters { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+@media (min-width: 768px) { .project-filters { flex-direction: row; } }
+
+/* ==== ¡CAMBIO AQUÍ! (Barra de Búsqueda - Modo Claro) ==== */
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background-color: var(--surface); /* MODIFICADO: De gris claro a blanco */
+    border: 1px solid var(--border-color); /* AÑADIDO: Borde para que resalte */
+    border-radius: var(--border-radius-lg);
+    height: 3rem;
+}
+.search-bar .material-symbols-outlined { padding-left: 1rem; color: var(--text-secondary); }
+.search-bar input { background: transparent; border: none; outline: none; padding: 0 1rem; color: var(--text-primary); width: 100%; }
+.filter-tabs { display: flex; gap: 0.75rem; overflow-x: auto; }
+.filter-tab { background-color: #f3f4f6; border: none; border-radius: var(--border-radius-lg); padding: 0 1rem; height: 3rem; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 0.25rem; }
+.filter-tab.active { background-color: var(--accent); color: var(--primary); }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.project-card { background-color: var(--surface); border-radius: var(--border-radius-xl); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s ease; }
+.project-card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: var(--primary); }
+.project-card .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.project-card .card-header h3 { font-weight: 700; font-size: 1.125rem; }
+.project-card .badge { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; }
+.badge.status-active { background-color: #FEF3C7; color: #B45309; }
+.badge.status-completed { background-color: #D1FAE5; color: #065F46; }
+.badge.status-paused { background-color: #F3F4F6; color: #4B5563; }
+.badge.status-late { background-color: #FEE2E2; color: #991B1B; }
+.progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem; font-size: 0.875rem; }
+.progress-label { color: var(--text-secondary); }
+.progress-percent { font-weight: 600; color: var(--text-primary); }
+.progress-bar-wrapper { width: 100%; background-color: #f3f4f6; border-radius: 9999px; height: 0.5rem; }
+.progress-bar { height: 100%; border-radius: 9999px; }
+.project-card:has(.status-active) .progress-bar { background-color: #FBBF24; }
+.project-card:has(.status-completed) .progress-bar { background-color: #34D399; }
+.project-card:has(.status-paused) .progress-bar { background-color: #9CA3AF; }
+.project-card:has(.status-late) .progress-bar { background-color: #EF4444; }
+.card-meta { border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: space-between; }
+.card-meta > div { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.875rem; color: var(--text-secondary); }
+.meta-right { text-align: right; }
+.due-date-late { color: #EF4444; }
+.card-team { display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; }
+.avatar-group { display: flex; }
+.avatar-group img { height: 2rem; width: 2rem; border-radius: 9999px; border: 2px solid var(--surface); margin-left: -0.5rem; }
+.project-pagination { display: flex; justify-content: center; margin-top: 2.5rem; gap: 0.5rem; }
+.pagination-number { width: 2.5rem; height: 2.5rem; border-radius: var(--border-radius-lg); background-color: #f3f4f6; color: var(--text-secondary); font-weight: 700; border: none; cursor: pointer; }
+.pagination-number.active { background-color: var(--primary); color: white; }
+
+/* Estilos Modo Oscuro */
+.project-page.dark-mode, .tasks-page.dark-mode { --primary: #9b4a8d; --background: #101c22; --surface: #1A202C; --text-primary: #f4f4f5; --text-secondary: #a1a1aa; --border-color: #3f3f46; --input-background: #374151; }
+.project-page.dark-mode .project-header, .tasks-page.dark-mode .project-header, .project-page.dark-mode .project-card, .tasks-page.dark-mode .tasks-table-container { background-color: var(--surface); }
+.project-page.dark-mode .project-title, .tasks-page.dark-mode .tasks-title, .project-page.dark-mode .search-bar input, .project-page.dark-mode .card-header h3 { color: var(--text-primary); }
+.project-page.dark-mode .project-subtitle, .tasks-page.dark-mode .tasks-subtitle, .project-page.dark-mode .filter-tab, .project-page.dark-mode .pagination-number { color: var(--text-secondary); }
+
+/* ==== ¡CAMBIO AQUÍ! (Barra de Búsqueda - Modo Oscuro) ==== */
+.project-page.dark-mode .search-bar {
+    background-color: var(--input-background); /* AÑADIDO: Color de fondo específico para modo oscuro */
+}
+.project-page.dark-mode .filter-tab.active, .tasks-page.dark-mode .filter-tab.active { background-color: var(--accent); color: var(--primary); }
+.tasks-page.dark-mode .tasks-table thead { background-color: #374151; }
+.project-page.dark-mode .avatar-group img { border-color: var(--surface); }
+.project-page.dark-mode .badge.status-active, .tasks-page.dark-mode .badge.status-active { background-color: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+.project-page.dark-mode .badge.status-completed, .tasks-page.dark-mode .badge.status-completed { background-color: rgba(52, 211, 153, 0.2); color: #34D399; }
+.project-page.dark-mode .badge.status-paused, .tasks-page.dark-mode .badge.status-paused { background-color: rgba(156, 163, 175, 0.2); color: #9CA3AF; }
+.project-page.dark-mode .badge.status-late, .tasks-page.dark-mode .badge.status-late { background-color: rgba(239, 68, 68, 0.2); color: #EF4444; }
+
 /* 13. ESTILOS PARA EL MODAL DE GESTIÓN DE PROYECTOS */
 .project-details-content { max-width: 1200px; width: 95%; height: 90vh; }
 .project-details-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; height: 100%; }
@@ -593,34 +678,455 @@ body.dark-mode .request-type-label.active, body.dark-mode .request-type-label:ha
 .tag-indigo { background-color: #e0e7ff; color: #3730a3; }
 .project-assign-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 .assign-label { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem; }
-.project-description-section { background-color: #f9fafb; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; position: relative; overflow: hidden; }
+.project-description-section { background-color: transparent; border: none; padding: 0; position: relative; overflow: hidden; }
 .canvas-background { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.05); font-size: 5rem; font-weight: 900; pointer-events: none; }
 .canvas-actions { display: flex; gap: 0.5rem; margin-bottom: 1rem; position: relative; z-index: 1; }
 .icon-btn-small { width: 2rem; height: 2rem; border-radius: 9999px; background-color: var(--surface); border: 1px solid var(--border-color); display: grid; place-items: center; cursor: pointer; color: var(--text-secondary); }
-.description-content, .attachments-content { position: relative; z-index: 1; }
+.description-content, .attachments-content { 
+    position: relative; 
+    z-index: 1;
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+}
+.description-content {
+    margin-bottom: 1.5rem;
+}
 .description-content h3, .attachments-content h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
 .attachments-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; margin-top: 1rem; }
 .attachment-card { background-color: var(--surface); padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; }
 .attachment-card .material-symbols-outlined { font-size: 2.5rem; color: var(--text-secondary); }
 .attachment-card a { font-size: 0.75rem; color: var(--primary); }
-.project-comments-column { display: flex; flex-direction: column; border-left: 1px solid var(--border-color); padding-left: 1.5rem; height: 100%; }
+.project-comments-column { display: flex; flex-direction: column; border-left: none; padding-left: 0; height: 100%; }
 .comments-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; padding: 1rem 0; }
 .comment-item { display: flex; gap: 0.75rem; align-items: flex-start; }
 .comment-item.right { flex-direction: row-reverse; }
 .comment-avatar { width: 2rem; height: 2rem; border-radius: 9999px; }
+.comment-avatar-small {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+}
 .comment-bubble { background-color: #f3f4f6; padding: 0.75rem; border-radius: 1rem; max-width: 80%; }
 .comment-item.right .comment-bubble { background-color: var(--accent); }
 .comment-header { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem; gap: 1rem; }
-.comment-author { font-weight: 600; } .comment-time { color: var(--text-muted); }
-.comment-input-area { border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.comment-input-area textarea { width: 100%; border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 0.5rem; resize: none; height: 5rem; }
+.comment-author { font-weight: 600; } .comment-time { color: var(--text-secondary); }
+.comment-input-area { 
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem;
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.comment-input-area textarea { 
+    width: 100%;
+    border: none;
+    background: transparent;
+    border-radius: var(--border-radius);
+    padding: 0;
+    resize: none;
+    height: 5rem;
+    outline: none;
+}
 .comment-input-area .btn-primary { align-self: flex-end; }
-.project-page.dark-mode .project-description-section { background-color: #1f2937; }
+.project-page.dark-mode .project-description-section { background-color: transparent; }
 .project-page.dark-mode .canvas-background { color: rgba(255,255,255,0.05); }
+.project-page.dark-mode .description-content, 
+.project-page.dark-mode .attachments-content {
+    background-color: #1f2937;
+    border-color: var(--border-color);
+}
 .project-page.dark-mode .icon-btn-small, .project-page.dark-mode .attachment-card { background-color: var(--surface); border-color: var(--border-color); }
 .project-page.dark-mode .comment-bubble { background-color: #374151; }
 .project-page.dark-mode .comment-item.right .comment-bubble { background-color: var(--primary); color: white; }
-.project-page.dark-mode .comment-input-area textarea { background-color: #374151; border-color: var(--border-color); color: var(--text-primary); }
+.project-page.dark-mode .comment-input-area {
+    background-color: #374151;
+    border-color: var(--border-color);
+}
+.project-page.dark-mode .comment-input-area textarea { 
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* 14. ESTILOS PARA MODAL DE CREACIÓN DE PROYECTO */
+.creation-modal-content {
+    max-width: 720px;
+    width: 90%;
+}
+.creation-modal-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.creation-modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.creation-modal-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary); 
+}
+.creation-modal-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    max-height: 60vh; /* Scroll para el cuerpo del modal */
+}
+.creation-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background-color: #f9fafb;
+    border-top: 1px solid var(--border-color);
+}
+.creation-modal-footer .btn-secondary, .creation-modal-footer .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.creation-modal-footer .btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary); 
+}
+.date-input-wrapper {
+    position: relative;
+}
+.date-input-wrapper .material-symbols-outlined {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary); 
+    pointer-events: none;
+}
+.progress-stepper {
+    display: flex;
+    align-items: flex-start;
+    /* MODIFICADO: De 'center' a 'space-between' para que las líneas funcionen */
+    justify-content: space-between; 
+    margin-bottom: 2rem;
+}
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary); 
+    position: relative;
+    text-align: center;
+}
+.step.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+.step-circle {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    display: grid;
+    place-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: 1px solid var(--border-color); 
+    background-color: var(--surface);
+    color: var(--text-secondary);
+}
+.step.active .step-circle {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+.step.complete .step-circle {
+    background-color: var(--accent);
+    color: var(--primary);
+    border-color: var(--accent);
+}
+
+/* ==== ¡CAMBIO AQUÍ! (Líneas de Pasos) ==== */
+.step-line {
+    /* MODIFICADO: Se restaura la línea (se quitó display: none) */
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--border-color);
+    margin: 0 1rem;
+    position: relative;
+    top: 0.875rem; /* Ajustado para alinear con los círculos pequeños */
+}
+.team-builder-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+    .team-builder-grid {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+.roles-panel .roles-title, .team-canvas .roles-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+.roles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.role-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--surface);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    cursor: grab;
+}
+.role-card .material-symbols-outlined {
+    color: var(--text-secondary); 
+}
+.role-card p {
+    font-weight: 500;
+}
+.role-card span {
+    font-size: 0.875rem;
+    color: var(--text-secondary); 
+}
+.canvas-dropzone {
+    min-height: 20rem;
+    width: 100%;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    background-color: #f9fafb;
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-secondary); 
+}
+.project-page.dark-mode .creation-modal-footer {
+    background-color: #374151;
+    border-color: var(--border-color);
+}
+.project-page.dark-mode .creation-modal-title, .project-page.dark-mode .creation-modal-subtitle {
+    color: var(--text-primary);
+}
+.project-page.dark-mode .step-circle {
+    background-color: var(--surface);
+    border-color: var(--border-color); 
+}
+.project-page.dark-mode .step.active .step-circle {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--text-primary);
+}
+.project-page.dark-mode .step-line {
+    background-color: var(--border-color); 
+}
+.project-page.dark-mode .role-card {
+    background-color: #374151;
+    border-color: #4b5563;
+}
+.project-page.dark-mode .role-card p {
+    color: var(--text-primary);
+}
+.project-page.dark-mode .role-card span, .project-page.dark-mode .role-card .material-symbols-outlined {
+    color: var(--text-secondary); 
+}
+.project-page.dark-mode .canvas-dropzone {
+    background-color: var(--background);
+    border-color: var(--border-color);
+}
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.modal-input, .modal-textarea {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface);
+    border-radius: var(--border-radius-lg);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+}
+.modal-input:focus, .modal-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.modal-input::placeholder, .modal-textarea::placeholder {
+    color: var(--text-secondary);
+}
+.date-input-wrapper .modal-input {
+    padding-right: 2.5rem;
+}
+
+/* 15. ESTILOS PARA EL TOAST (Notificación Emergente) */
+.toast-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+.toast-message {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius-xl);
+    text-align: center;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.4s forwards;
+    width: 90%;
+    max-width: 400px;
+}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes fadeOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
+.toast-message .icon {
+    font-size: 3rem;
+    color: #16a34a; /* verde éxito */
+}
+.toast-message .icon .material-symbols-outlined {
+    font-size: inherit;
+}
+.toast-message h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+}
+.close-toast {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary); 
+}
+
+/* 7. ESTILOS PARA PÁGINA DE CALENDARIO (.calendar-page) */
+.calendar-page .content-wrapper { padding: 1.5rem; }
+.calendar-page .calendar-header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.calendar-page .calendar-nav { display: flex; align-items: center; gap: 1rem; }
+.calendar-page .calendar-title { font-size: 1.5rem; font-weight: 600; }
+.calendar-page .btn-secondary { background-color: var(--surface); border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem 1rem; border-radius: var(--border-radius); cursor: pointer; }
+
+/* === ESTILOS CALENDARIO CAM (TURQUESA) === */
+/* Esta es la base para calendario.html */
+.calendar-page .btn-secondary.active,
+.marketing-page.calendar-page .btn-secondary.active { 
+    background-color: var(--cam-primary); 
+    color: var(--cam-primary-dark); 
+    border-color: var(--cam-primary); 
+    font-weight: 600; 
+}
+
+.calendar-page .calendar-view-toggle { display: flex; } .calendar-page .calendar-view-toggle .btn-secondary { border-radius: 0; } .calendar-page .calendar-view-toggle .btn-secondary:first-child { border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius); } .calendar-page .calendar-view-toggle .btn-secondary:last-child { border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); }
+.calendar-page .calendar-container { background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--border-radius-lg); overflow: hidden; }
+.calendar-page .calendar-grid-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; background-color: #f9fafb; }
+.calendar-page .calendar-grid-header > div { padding: 0.75rem 0.5rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+.calendar-page .calendar-grid-body { display: grid; grid-template-columns: repeat(7, 1fr); grid-auto-rows: minmax(100px, auto); }
+.calendar-page .day-cell { padding: 0.5rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); transition: background-color 0.2s ease; }
+.calendar-page .day-cell:nth-child(7n) { border-right: none; }
+.calendar-page .day-cell.muted { color: var(--text-muted); background-color: #f9fafb; }
+.calendar-page .day-cell:not(.muted):hover { background-color: rgba(0, 123, 123, 0.05); }
+
+/* Celda "Hoy" (TURQUESA) */
+.calendar-page .day-cell.today,
+.marketing-page.calendar-page .day-cell.today { 
+    background-color: var(--cam-primary-light); 
+}
+.calendar-page .day-cell.today span,
+.marketing-page.calendar-page .day-cell.today span { 
+    background-color: var(--cam-primary); 
+    color: var(--cam-primary-dark); 
+    border-radius: 9999px; 
+    padding: 0.25rem 0.5rem; 
+    font-weight: 600; 
+    display: inline-block; 
+}
+
+.calendar-page .event-list { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.calendar-page .event-pill { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 500; }
+.calendar-page .event-danger { background-color: #fee2e2; color: var(--cam-danger); } .calendar-page .event-warning { background-color: #fef3c7; color: var(--cam-warning); } .calendar-page .event-success { background-color: #dcfce7; color: var(--cam-success); } .calendar-page .event-pending { background-color: #f3f4f6; color: #4b5563; }
+
+/* --- MODO OSCURO (TURQUESA) --- */
+.calendar-page.dark-mode .btn-secondary.active,
+.marketing-page.calendar-page.dark-mode .btn-secondary.active { 
+    color: #111827; 
+}
+.calendar-page.dark-mode .day-cell.today,
+.marketing-page.calendar-page.dark-mode .day-cell.today {
+    background-color: rgba(178, 255, 255, 0.1);
+}
+.calendar-page.dark-mode .day-cell.today span,
+.marketing-page.calendar-page.dark-mode .day-cell.today span {
+    color: #111827;
+    background-color: var(--cam-primary); /* --cam-primary es B2FFFF en dark mode */
+}
+.calendar-page.dark-mode .day-cell.muted { background-color: var(--background); }
+.calendar-page.dark-mode .calendar-grid-header { background-color: var(--background); }
+.calendar-page.dark-mode .day-cell:not(.muted):hover { background-color: rgba(178, 255, 255, 0.05); }
+.calendar-page.dark-mode .event-danger { background-color: rgba(254, 178, 178, 0.1); color: #FEB2B2; } .calendar-page.dark-mode .event-warning { background-color: rgba(252, 211, 77, 0.1); color: #FCD34D; } .calendar-page.dark-mode .event-success { background-color: rgba(110, 231, 183, 0.1); color: #6EE7B7; } .calendar-page.dark-mode .event-pending { background-color: #4A5568; color: #E2E8F0; }
+
+/* ===== ¡NUEVO! ESTILOS CALENDARIO PROYECTOS (MORADO) ===== */
+/* Sobreescribe los estilos para calendario2.html */
+
+/* Botones Mes/Semana/Día (MORADO) */
+.project-page.calendar-page .btn-secondary.active {
+    background-color: var(--primary); /* Morado oscuro */
+    color: #ffffff;
+    border-color: var(--primary);
+}
+.project-page.calendar-page .day-cell:not(.muted):hover { 
+    background-color: var(--accent); 
+}
+
+/* Celda "Hoy" (MORADO) */
+.project-page.calendar-page .day-cell.today {
+    background-color: var(--accent); /* Morado claro */
+}
+.project-page.calendar-page .day-cell.today span {
+    background-color: var(--primary); /* Morado oscuro */
+    color: #ffffff;
+}
+
+/* --- MODO OSCURO (MORADO) --- */
+/* Botón "Hoy" (btn-primary) ya hereda el color morado de dark-mode var(--primary) */
+.project-page.calendar-page.dark-mode .btn-secondary.active {
+    background-color: var(--primary); /* Morado claro (dark mode) */
+    color: #ffffff; /* Texto blanco */
+    border-color: var(--primary);
+}
+.project-page.calendar-page.dark-mode .day-cell:not(.muted):hover { 
+    background-color: var(--border); 
+}
+.project-page.calendar-page.dark-mode .day-cell.today {
+    background-color: var(--accent); /* Morado (dark mode accent) */
+}
+.project-page.calendar-page.dark-mode .day-cell.today span {
+    background-color: var(--primary); /* Morado claro (dark mode) */
+    color: #ffffff;
+}
 
 /*14. ESTILOS PARA LA PÁGINA DE TAREAS (.tasks-page)
 ============================================================

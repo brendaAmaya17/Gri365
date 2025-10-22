@@ -33,10 +33,10 @@
                         <h2>Gestión de Proyectos</h2>
                     </div>
                     <nav class="project-nav">
-                        <a href="#">Dashboard</a>
+                        <a href="gestion.html">Dashboard</a>
                         <a href="tareas.html">Tareas</a>
-                        <a href="#">Calendario</a>
-                        <a href="#">Informes</a>
+                        <a href="calendario2.html">Calendario</a>
+                        <a href="informes.html">Informes</a>
                     </nav>
                 </div>
                 <div class="header-actions">
@@ -55,7 +55,7 @@
                         <p class="project-title">Panel de Proyectos</p>
                         <p class="project-subtitle">Una vista general de todos tus proyectos.</p>
                     </div>
-                    <button class="btn btn-primary create-project-btn">
+                    <button class="btn btn-primary create-project-btn" id="open-create-project-modal">
                         <span class="material-symbols-outlined">add</span>
                         <span>Crear Nuevo Proyecto</span>
                     </button>
@@ -148,23 +148,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-pagination">
-                    <button class="icon-button" disabled><span class="material-symbols-outlined">chevron_left</span></button>
-                    <button class="pagination-number active">1</button>
-                    <button class="pagination-number">2</button>
-                    <button class="pagination-number">3</button>
-                    <button class="icon-button"><span class="material-symbols-outlined">chevron_right</span></button>
-                </div>
             </main>
         </main>
     </div>
 
-    <!-- MODAL DE DETALLES DEL PROYECTO -->
     <div id="project-details-modal" class="modal-overlay">
         <div class="modal-content project-details-content">
             <div class="modal-header">
                 <h2 class="modal-title">Diseño de la nueva landing page</h2>
-                <button class="modal-close-btn" id="close-project-modal"><span class="material-symbols-outlined">close</span></button>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
             </div>
             <div class="modal-body">
                  <div class="project-details-grid">
@@ -232,7 +224,7 @@
                                 <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.10%20PM.jpeg?updatedAt=1754335165679" alt="Avatar" class="comment-avatar">
                             </div>
                             <div class="comment-item left">
-                                <img src="-	https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar" class="comment-avatar">
+                                <img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar" class="comment-avatar">
                                 <div class="comment-bubble">
                                     <div class="comment-header"><span class="comment-author">Ana García</span><span class="comment-time">Hace 1 hora</span></div>
                                     <p>Buena idea, Carlos. He adjuntado un nuevo moodboard con algunas alternativas. Échale un vistazo.</p>
@@ -250,33 +242,248 @@
         </div>
     </div>
 
-    <script>
+    <div id="create-project-modal" class="modal-overlay">
+        <div class="modal-content creation-modal-content">
+            <div id="modal-step-1" class="modal-view">
+                <div class="creation-modal-header">
+                    <div>
+                        <p class="creation-modal-title">Crear Nuevo Proyecto</p>
+                        <p class="creation-modal-subtitle">Rellene los siguientes datos para crear un nuevo proyecto.</p>
+                    </div>
+                    <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="creation-modal-body">
+                    <div class="progress-stepper">
+                        <div class="step active"><div class="step-circle">1</div><p>Información Básica</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">2</div><p>Equipo y Roles</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">3</div><p>Presupuesto</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">4</div><p>Hitos</p></div>
+                    </div>
+                    <div class="form-section">
+                        <div class="form-group"><label for="project-name" class="form-label">Nombre del proyecto</label><input type="text" id="project-name" class="modal-input" placeholder="Introduzca el nombre del proyecto"></div>
+                        <div class="form-group"><label for="description" class="form-label">Descripción (opcional)</label><textarea id="description" class="modal-textarea" placeholder="Introduzca una breve descripción del proyecto" rows="4"></textarea></div>
+                        <div class="form-grid">
+                            <div class="form-group"><label for="start-date" class="form-label">Fecha de inicio</label><div class="date-input-wrapper"><input type="text" id="start-date" class="modal-input" placeholder="Seleccionar fecha"><span class="material-symbols-outlined">calendar_today</span></div></div>
+                            <div class="form-group"><label for="end-date" class="form-label">Fecha de finalización</label><div class="date-input-wrapper"><input type="text" id="end-date" class="modal-input" placeholder="Seleccionar fecha"><span class="material-symbols-outlined">calendar_today</span></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="creation-modal-footer">
+                    <button class="btn btn-secondary back-btn" disabled><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
+                    <button class="btn btn-primary next-btn"><span>Siguiente</span><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+
+            <div id="modal-step-2" class="modal-view hidden">
+                <div class="creation-modal-header">
+                    <div>
+                        <p class="creation-modal-title">Crear Nuevo Proyecto</p>
+                        <p class="creation-modal-subtitle">Asigna roles y miembros a tu equipo.</p>
+                    </div>
+                    <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="creation-modal-body">
+                    <div class="progress-stepper">
+                        <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
+                        <div class="step active"><div class="step-circle">2</div><p>Equipo y Roles</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">3</div><p>Presupuesto</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">4</div><p>Hitos</p></div>
+                    </div>
+                    <div class="team-builder-grid">
+                        <div class="roles-panel">
+                            <p class="roles-title">Roles Disponibles</p>
+                            <div class="roles-list">
+                                <div class="role-card"><span class="material-symbols-outlined">group</span><div><p>Gerente de Proyecto</p><span>Lidera la planificación.</span></div></div>
+                                <div class="role-card"><span class="material-symbols-outlined">design_services</span><div><p>Diseñador UX/UI</p><span>Define la experiencia.</span></div></div>
+                                <div class="role-card"><span class="material-symbols-outlined">code</span><div><p>Desarrollador Frontend</p><span>Implementa la interfaz.</span></div></div>
+                                <div class="role-card"><span class="material-symbols-outlined">cloud</span><div><p>Desarrollador Backend</p><span>Construye la lógica.</span></div></div>
+                                <div class="role-card"><span class="material-symbols-outlined">bug_report</span><div><p>Tester QA</p><span>Asegura la calidad.</span></div></div>
+                            </div>
+                        </div>
+                        <div class="team-canvas">
+                            <p class="roles-title">Estructura del Equipo</p>
+                            <div class="canvas-dropzone">
+                                <p>Arrastra y suelta roles aquí para empezar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="creation-modal-footer">
+                    <button class="btn btn-secondary back-btn"><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
+                    <button class="btn btn-primary next-btn"><span>Siguiente</span><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+            
+            <div id="modal-step-3" class="modal-view hidden">
+                <div class="creation-modal-header">
+                    <p class="creation-modal-title">Paso 3: Presupuesto</p>
+                    <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="creation-modal-body">
+                    <p>Contenido del paso de Presupuesto aquí...</p>
+                </div>
+                <div class="creation-modal-footer">
+                    <button class="btn btn-secondary back-btn"><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
+                    <button class="btn btn-primary next-btn"><span>Siguiente</span><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+
+            <div id="modal-step-4" class="modal-view hidden">
+                 <div class="creation-modal-header">
+                    <p class="creation-modal-title">Paso 4: Hitos</p>
+                    <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="creation-modal-body">
+                    <p>Contenido del paso de Hitos aquí...</p>
+                </div>
+                <div class="creation-modal-footer">
+                    <button class="btn btn-secondary back-btn"><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
+                    <button class="btn btn-primary" id="send-request">Crear Proyecto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+          <div id="toast" class="toast-overlay">
+        <div class="toast-message">
+            <button class="close-toast"><span class="material-symbols-outlined">close</span></button>
+            <div class="icon"><span class="material-symbols-outlined">check_circle</span></div>
+            <h3>Proyecto Creado con Éxito</h3>
+            <p>Tu nuevo proyecto ha sido registrado correctamente.</p>
+        </div>
+    </div>
+    
+        <script>
+        // ===== SCRIPT DE TEMA =====
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
-        const applySavedTheme = () => { const savedTheme = localStorage.getItem('theme'); if (savedTheme === 'dark') { body.classList.add('dark-mode'); } };
-        themeToggleBtn.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); });
+        const applySavedTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+            }
+        };
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
         document.addEventListener('DOMContentLoaded', applySavedTheme);
 
+        // ===== SCRIPT PARA MODALES Y TOAST (Lógica principal del Toast) =====
         document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('project-details-modal');
-            const closeBtn = document.getElementById('close-project-modal');
-            const projectCards = document.querySelectorAll('.project-card');
+            // --- Lógica para el Modal de Detalles del Proyecto ---
+            const detailsModal = document.getElementById('project-details-modal');
+            if (detailsModal) {
+                const closeDetailsBtn = detailsModal.querySelector('.modal-close-btn');
+                const projectCards = document.querySelectorAll('.project-card');
 
-            projectCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    modal.classList.add('active');
+                projectCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        detailsModal.classList.add('active');
+                    });
                 });
-            });
 
-            closeBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
+                closeDetailsBtn.addEventListener('click', () => {
+                    detailsModal.classList.remove('active');
+                });
 
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
+                detailsModal.addEventListener('click', (e) => {
+                    if (e.target === detailsModal) {
+                        detailsModal.classList.remove('active');
+                    }
+                });
+            }
+
+            // --- Lógica para el Modal de Creación de Proyecto ---
+            const createModal = document.getElementById('create-project-modal');
+            if (createModal) {
+                const openCreateBtn = document.getElementById('open-create-project-modal');
+                const closeCreateBtns = createModal.querySelectorAll('.modal-close-btn');
+                
+                const steps = createModal.querySelectorAll('.modal-view');
+                const nextBtns = createModal.querySelectorAll('.next-btn');
+                const backBtns = createModal.querySelectorAll('.back-btn');
+                const sendBtn = createModal.querySelector('#send-request'); // Busca el botón con el ID CORREGIDO
+                
+                const toast = document.getElementById("toast");
+                const closeToast = document.querySelector(".close-toast");
+
+                let currentStep = 0;
+
+                const showStep = (stepIndex) => {
+                    steps.forEach((step, index) => {
+                        step.classList.toggle('hidden', index !== stepIndex);
+                    });
+                    // Habilitar/deshabilitar botón "Atrás"
+                    backBtns.forEach(btn => {
+                        const parentStep = btn.closest('.modal-view');
+                        if (parentStep === steps[0]) {
+                            btn.disabled = true;
+                        } else {
+                            btn.disabled = false;
+                        }
+                    });
+                };
+
+                const openModal = () => {
+                    currentStep = 0;
+                    showStep(currentStep);
+                    createModal.classList.add('active');
+                };
+
+                const closeModal = () => {
+                    createModal.classList.remove('active');
+                };
+
+                openCreateBtn.addEventListener('click', openModal);
+                closeCreateBtns.forEach(btn => btn.addEventListener('click', closeModal));
+                createModal.addEventListener('click', (e) => { if (e.target === createModal) closeModal(); });
+
+                nextBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (currentStep < steps.length - 1) {
+                            currentStep++;
+                            showStep(currentStep);
+                        }
+                    });
+                });
+
+                backBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (currentStep > 0) {
+                            currentStep--;
+                            showStep(currentStep);
+                        }
+                    });
+                });
+
+                // Lógica de activación del Toast al hacer click en el botón final
+                if (sendBtn) {
+                    sendBtn.addEventListener('click', () => {
+                        closeModal();
+                        if (toast) {
+                            toast.style.display = "flex"; // Muestra el toast
+                        }
+                    });
                 }
-            });
+
+                if (closeToast) {
+                    closeToast.addEventListener('click', () => {
+                        // Inicia la animación de salida
+                        toast.querySelector(".toast-message").style.animation = "fadeOut 0.4s forwards";
+                        setTimeout(() => {
+                            // Oculta completamente el overlay
+                            toast.style.display = "none";
+                            // Resetea la animación para la próxima vez
+                            toast.querySelector(".toast-message").style.animation = "fadeIn 0.4s forwards";
+                        }, 400);
+                    });
+                }
+            }
         });
     </script>
 </body>
