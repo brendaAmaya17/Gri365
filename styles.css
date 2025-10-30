@@ -91,6 +91,268 @@ body.dark-mode .home-page .header { background-color: var(--surface); }
 body.dark-mode .home-page .module-card:hover { border-color: var(--primary); }
 body.dark-mode .home-page .module-go { background-color: var(--primary); }
 
+
+/* ==========================================================================
+   TOASTS Y NOTIFICACIONES (CORREGIDO PARA PROPORCIONES DE TEXTO)
+========================================================================== */
+.toast-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; 
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 3rem; 
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.toast-message {
+    pointer-events: auto;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    max-width: 480px;
+    width: 90%;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2); 
+    animation: fadeIn 0.4s forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalle de color prominente en el toast */
+.toast-message::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-cam-prominent, #0d9488); 
+}
+
+.toast-message .icon {
+    font-size: 1.8rem;
+    color: var(--color-cam-prominent, #0d9488); 
+    flex-shrink: 0;
+    padding-top: 5px;
+}
+
+.toast-message h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-cam-prominent, #0d9488);
+}
+
+.toast-message p {
+    font-size: 0.95rem; 
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.toast-message .close-toast {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1rem;
+    padding: 0.25rem;
+    line-height: 1;
+    opacity: 0.7;
+}
+.toast-message .close-toast:hover {
+    opacity: 1;
+}
+
+/* Estilos específicos para el toast de información de CAM */
+.toast-message.cam-info {
+    --color-cam-prominent: #0d9488; 
+}
+
+.toast-message.cam-info .info-details {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border);
+}
+
+.toast-message.cam-info .info-details p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.toast-message.cam-info ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin: 0.5rem 0 0.75rem 0; 
+    padding-left: 1.25rem;
+}
+
+.toast-message.cam-info li {
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.toast-message.cam-info strong {
+    font-weight: 700;
+    color: var(--color-cam-prominent, #0d9488);
+}
+
+.toast-message.cam-info .coordination-note {
+    padding: 0.75rem;
+    background-color: var(--accent);
+    border-left: 4px solid var(--color-cam-prominent, #0d9488);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    margin-top: 0.75rem; 
+    color: var(--text-primary);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* ==========================================================================
+   ESTILOS GENERALES Y MODAL DE TICKET (SOLUCIÓN DEFINITIVA DE SCROLL)
+========================================================================== */
+/* Definición del color Turquesa de CAM para reuso */
+:root {
+    --color-cam-prominent: #0d9488; /* Turquesa fuerte */
+}
+body.dark-mode {
+    --color-cam-light: #134e4a;
+}
+
+/* 1. Modal Display Fix (Scrollable Content y Anti-Corte) */
+.modal-overlay.active {
+    display: flex;
+    justify-content: center;
+    /* CRÍTICO: Alineamos arriba y le damos un padding para forzar espacio */
+    align-items: flex-start; 
+    padding-top: 2rem; /* Espacio fijo en la parte superior */
+    padding-bottom: 2rem; /* Espacio fijo en la parte inferior */
+}
+
+.modal-content {
+    background-color: var(--surface);
+    max-width: 700px; 
+    width: 90%;
+    /* CRÍTICO: La altura máxima se basa en la vista - el padding */
+    max-height: calc(100vh - 4rem); /* 100% de la vista menos 2rem arriba y 2rem abajo */
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden; /* Controlamos el overflow a nivel del cuerpo del modal */
+    border-radius: var(--border-radius-xl); 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    /* CRÍTICO: Flex grow para tomar el espacio restante. */
+    flex-grow: 1; 
+    /* CRÍTICO: Garantiza que la barra de scroll aparezca cuando sea necesario */
+    overflow-y: auto; 
+    min-height: 0; 
+}
+
+/* 2. CAM Branding y Estilos de Pasos */
+.request-creator-card {
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    /* CRÍTICO: Eliminamos cualquier margin-bottom para que no empuje el contenido fuera del modal-body scrollable */
+    margin-bottom: 0; 
+}
+
+/* Proceso de Pasos (Stepper) */
+.progress-stepper {
+    margin-bottom: 1.5rem; /* Añadimos espacio debajo del stepper */
+}
+.progress-stepper .step.active .step-circle,
+.progress-stepper .step.complete .step-circle {
+    background-color: var(--color-cam-prominent);
+    border-color: var(--color-cam-prominent);
+}
+.progress-stepper .step.complete + .step-line {
+    background-color: var(--color-cam-prominent);
+}
+
+/* Botones de Navegación (Coherencia de color) */
+.request-creator-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    /* Fondo para que los botones floten sobre el scroll */
+    background-color: var(--surface); 
+    flex-shrink: 0;
+}
+.request-creator-footer .btn-primary {
+    background-color: var(--color-cam-prominent); 
+    border-color: var(--color-cam-prominent);
+}
+.request-creator-footer .btn-primary:hover {
+    background-color: #0c7e73; 
+    border-color: #0c7e73;
+}
+
+/* 3. Sección de Revisión (Paso 3) */
+.review-section h2 {
+    color: var(--color-cam-prominent); 
+    border-bottom: 2px solid var(--color-cam-prominent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.review-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+
+@media (min-width: 600px) {
+    .review-details-grid {
+        grid-template-columns: 150px 1fr;
+        align-items: baseline;
+    }
+}
+
+.review-details-grid p {
+    margin: 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border);
+    word-break: break-word; 
+}
+
+.review-details-grid p.detail-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    padding-right: 1rem;
+    border-bottom: none; 
+}
+.review-details-grid p:last-child {
+    border-bottom: none;
+}
 /* 6. ESTILOS PÁGINA CAM (.marketing-page) */
 .marketing-page { --cam-primary: #007B7B; --cam-primary-dark: #005F5F; --cam-primary-light: #B2FFFF; --cam-success: #16a34a; --cam-warning: #d97706; --cam-danger: #dc2626; --cam-info: #2563eb; background-color: #f8f9fa; color: #374151; }
 .marketing-page .main-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background-color: #ffffff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 900; }
@@ -1402,4 +1664,5 @@ body.dark-mode .modal-footer {
     background-color: rgba(0, 0, 0, 0.2);
     border-color: var(--border);
 }
+
 

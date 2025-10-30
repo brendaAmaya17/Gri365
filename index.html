@@ -48,10 +48,8 @@
         </main>
     </div>
 
-    <!-- MODAL -->
     <div id="new-ticket-modal" class="modal-overlay">
         <div class="modal-content">
-            <!-- VISTA 1: Selección de Módulo -->
             <div id="modal-step-1" class="modal-view">
                 <div class="modal-header">
                     <h2 class="modal-title">Crear Nuevo Ticket</h2>
@@ -71,11 +69,10 @@
                 </div>
             </div>
 
-            <!-- VISTA 2: Formulario FixIT -->
             <div id="modal-fixit-form" class="modal-view hidden">
                 <div class="modal-header">
                     <h2 class="modal-title">Nuevo Ticket - FixIT</h2>
-                    <button class="back-to-step1-btn modal-close-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+                    <button class="back-to-step1-btn modal-close-btn"><span class="material-symbols-outlined">close</span></button>
                 </div>
                 <div class="modal-body">
                      <form class="modal-form">
@@ -89,11 +86,10 @@
                 </div>
             </div>
             
-            <!-- VISTA 3: CAM - Paso 1 (Tipo) -->
             <div id="modal-cam-step1" class="modal-view hidden">
                 <div class="modal-header">
                     <h2 class="modal-title">Nueva Solicitud - CAM</h2>
-                    <button class="back-to-step1-btn modal-close-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+                    <button class="back-to-step1-btn modal-close-btn"><span class="material-symbols-outlined">close</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="request-creator-card">
@@ -113,17 +109,17 @@
                             </div>
                         </div>
                         <div class="request-creator-footer">
+                            <button class="btn-secondary back-to-step1-btn">Atrás</button>
                             <button class="btn-primary next-step-btn"><span>Siguiente Paso</span><span class="material-symbols-outlined">arrow_forward</span></button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- VISTA 4: CAM - Paso 2 (Detalles) -->
             <div id="modal-cam-step2" class="modal-view hidden">
                 <div class="modal-header">
                     <h2 class="modal-title">Nueva Solicitud - CAM</h2>
-                    <button class="back-to-cam-step1-btn modal-close-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+                    <button class="back-to-step1-btn modal-close-btn"><span class="material-symbols-outlined">close</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="request-creator-card">
@@ -159,11 +155,10 @@
                 </div>
             </div>
 
-            <!-- VISTA 5: CAM - Paso 3 (Revisar) -->
             <div id="modal-cam-step3" class="modal-view hidden">
                  <div class="modal-header">
                     <h2 class="modal-title">Revisar Solicitud - CAM</h2>
-                    <button class="back-to-cam-step2-btn modal-close-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+                    <button class="back-to-step1-btn modal-close-btn"><span class="material-symbols-outlined">close</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="request-creator-card">
@@ -175,8 +170,7 @@
                         <div class="review-section">
                             <h2>Confirma los detalles de tu solicitud</h2>
                             <div class="review-details-grid" id="review-details">
-                                <!-- Contenido generado por JS -->
-                            </div>
+                                </div>
                         </div>
                         <div class="request-creator-footer">
                             <button class="back-to-cam-step2-btn btn-secondary">Atrás</button>
@@ -188,13 +182,21 @@
         </div>
     </div>
 
-    <!-- TOAST -->
     <div id="toast" class="toast-overlay">
-        <div class="toast-message">
+        <div class="toast-message cam-info">
             <button class="close-toast"><span class="material-symbols-outlined">close</span></button>
-            <div class="icon"><span class="material-symbols-outlined">check_circle</span></div>
-            <h3>Solicitud enviada con éxito</h3>
-            <p>Tu solicitud ha sido registrada correctamente.</p>
+            <div class="icon"><span class="material-symbols-outlined">info</span></div>
+            <div>
+                <h3>¡Tu Ticket CAM ha sido Creado!</h3>
+                <div class="info-details">
+                    <p><strong>Recuerda nuestros tiempos de entrega habituales:</strong></p>
+                    <ul>
+                        <li>Piezas (Imágenes, diseño, etc.): <strong>2 días hábiles</strong></li>
+                        <li>Videos (Producción audiovisual): <strong>3 días hábiles</strong></li>
+                    </ul>
+                    <p class="coordination-note"><strong>Importante:</strong> Acércate al equipo de CAM (<a href="#">@EnlaceEquipo</a>) inmediatamente después de crear tu ticket para coordinar los detalles y fecha de inicio de tu proyecto.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -224,9 +226,12 @@
             const backToStep1Btns = document.querySelectorAll('.back-to-step1-btn');
             
             const nextBtnFromCam1 = camStep1.querySelector('.next-step-btn');
-            const backBtnFromCam2 = camStep2.querySelector('.back-to-cam-step1-btn');
             const nextBtnFromCam2 = camStep2.querySelector('.next-step-btn');
-            const backBtnFromCam3 = camStep3.querySelector('.back-to-cam-step2-btn');
+            
+            // Botones de "Atrás" específicos
+            const backBtnFromCam1 = camStep1.querySelector('.back-to-step1-btn');
+            const backBtnFromCam2 = camStep2.querySelector('.back-to-cam-step1-btn'); // No existe, debe ser back-to-cam-step1-btn
+            const backBtnFromCam3 = camStep3.querySelector('.back-to-cam-step2-btn'); // No existe, debe ser back-to-cam-step2-btn
             
             const sendBtn = document.getElementById('send-request');
             const toast = document.getElementById("toast");
@@ -247,13 +252,19 @@
             closeModalBtn.addEventListener('click', closeModal);
             modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
             
+            // Navegación principal (Atrás)
+            backToStep1Btns.forEach(btn => {
+                btn.addEventListener('click', () => { 
+                    hideAllSteps(); 
+                    step1.classList.remove('hidden'); 
+                });
+            });
+
+            // Ir a FixIT o CAM
             goToFixitBtn.addEventListener('click', (e) => { e.preventDefault(); hideAllSteps(); stepFixit.classList.remove('hidden'); });
             goToCamBtn.addEventListener('click', (e) => { e.preventDefault(); hideAllSteps(); camStep1.classList.remove('hidden'); });
 
-            backToStep1Btns.forEach(btn => {
-                btn.addEventListener('click', () => { hideAllSteps(); step1.classList.remove('hidden'); });
-            });
-
+            // Lógica de pasos de CAM
             typeCards.forEach(card => {
                 card.addEventListener('click', () => {
                     typeCards.forEach(c => c.classList.remove('active'));
@@ -262,36 +273,64 @@
                 });
             });
 
+            // Botón Siguiente de CAM 1 -> CAM 2
             nextBtnFromCam1.addEventListener('click', () => {
                 hideAllSteps();
                 camStep2.classList.remove('hidden');
             });
 
-            backBtnFromCam2.addEventListener('click', () => { hideAllSteps(); camStep1.classList.remove('hidden'); });
-            
-            nextBtnFromCam2.addEventListener('click', () => {
+            // Botón Siguiente de CAM 2 -> CAM 3 (Revisión)
+            nextBtnFromCam2.addEventListener('click', (e) => {
+                e.preventDefault();
                 const form = document.getElementById('cam-details-form');
+                // Validación simple de campos requeridos
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
                 const reviewDetails = document.getElementById('review-details');
                 const formData = new FormData(form);
-                let reviewHTML = `<p class="detail-label">Tipo de Solicitud:</p><p>${selectedCamType}</p>`;
+                let reviewHTML = '';
 
-                for (let [key, value] of formData.entries()) {
-                    if (value) {
-                         if (key === 'Prioridad') {
-                            const checkedRadio = form.querySelector('input[name="Prioridad"]:checked');
-                            value = checkedRadio ? checkedRadio.value : 'No especificada';
+                // Agrega el Tipo de Solicitud (desde el paso 1)
+                reviewHTML += `<p class="detail-label">Tipo de Solicitud:</p><p>${selectedCamType}</p>`;
+
+                // Recorre los campos del formulario
+                const formElements = form.querySelectorAll('[name]');
+                formElements.forEach(element => {
+                    let key = element.name;
+                    let value = '';
+
+                    if (element.type === 'radio') {
+                        if (element.checked) {
+                            value = element.value;
+                            // Previene duplicar la prioridad si ya se procesó
+                            if (key === 'Prioridad') {
+                                reviewHTML += `<p class="detail-label">${key}:</p><p>${value}</p>`;
+                            }
                         }
+                    } else if (element.type === 'textarea' || element.type === 'text' || element.type === 'url' || element.type === 'date') {
+                        value = element.value || 'N/A'; // Usa N/A si está vacío
                         reviewHTML += `<p class="detail-label">${key}:</p><p>${value}</p>`;
                     }
-                }
+                });
+                
                 reviewDetails.innerHTML = reviewHTML;
 
                 hideAllSteps();
                 camStep3.classList.remove('hidden');
             });
 
-            backBtnFromCam3.addEventListener('click', () => { hideAllSteps(); camStep2.classList.remove('hidden'); });
+
+            // Botón Atrás de CAM 2 -> CAM 1
+            camStep2.querySelector('.back-to-cam-step1-btn').addEventListener('click', () => { hideAllSteps(); camStep1.classList.remove('hidden'); });
             
+            // Botón Atrás de CAM 3 -> CAM 2
+            camStep3.querySelector('.back-to-cam-step2-btn').addEventListener('click', () => { hideAllSteps(); camStep2.classList.remove('hidden'); });
+
+            
+            // Enviar y Mostrar Toast
             sendBtn.onclick = () => {
                 closeModal();
                 toast.style.display = "flex";

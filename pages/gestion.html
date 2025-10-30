@@ -244,6 +244,7 @@
 
     <div id="create-project-modal" class="modal-overlay">
         <div class="modal-content creation-modal-content">
+            <!-- PASO 1: Información Básica -->
             <div id="modal-step-1" class="modal-view">
                 <div class="creation-modal-header">
                     <div>
@@ -256,11 +257,11 @@
                     <div class="progress-stepper">
                         <div class="step active"><div class="step-circle">1</div><p>Información Básica</p></div>
                         <div class="step-line"></div>
-                        <div class="step"><div class="step-circle">2</div><p>Equipo y Roles</p></div>
+                        <div class="step"><div class="step-circle">2</div><p>Tareas</p></div>
                         <div class="step-line"></div>
-                        <div class="step"><div class="step-circle">3</div><p>Presupuesto</p></div>
+                        <div class="step"><div class="step-circle">3</div><p>Equipo y Roles</p></div>
                         <div class="step-line"></div>
-                        <div class="step"><div class="step-circle">4</div><p>Hitos</p></div>
+                        <div class="step"><div class="step-circle">4</div><p>Presupuesto</p></div>
                     </div>
                     <div class="form-section">
                         <div class="form-group"><label for="project-name" class="form-label">Nombre del proyecto</label><input type="text" id="project-name" class="modal-input" placeholder="Introduzca el nombre del proyecto"></div>
@@ -277,7 +278,46 @@
                 </div>
             </div>
 
+            <!-- PASO 2: Tareas -->
             <div id="modal-step-2" class="modal-view hidden">
+                <div class="creation-modal-header">
+                    <div>
+                        <p class="creation-modal-title">Crear Nuevo Proyecto</p>
+                        <p class="creation-modal-subtitle">Define las tareas principales del proyecto.</p>
+                    </div>
+                    <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="creation-modal-body">
+                    <div class="progress-stepper">
+                        <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
+                        <div class="step active"><div class="step-circle">2</div><p>Tareas</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">3</div><p>Equipo y Roles</p></div>
+                        <div class="step-line"></div>
+                        <div class="step"><div class="step-circle">4</div><p>Presupuesto</p></div>
+                    </div>
+                    <div class="form-section">
+                        <p class="section-description">Agrega las tareas principales que componen este proyecto.</p>
+                        <div id="tasks-container">
+                            <div class="task-input-group">
+                                <input type="text" class="modal-input" placeholder="Nombre de la tarea">
+                                <button class="btn-icon-remove"><span class="material-symbols-outlined">close</span></button>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary add-task-btn">
+                            <span class="material-symbols-outlined">add</span>
+                            <span>Agregar Tarea</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="creation-modal-footer">
+                    <button class="btn btn-secondary back-btn"><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
+                    <button class="btn btn-primary next-btn"><span>Siguiente</span><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+            
+            <!-- PASO 3: Equipo y Roles -->
+            <div id="modal-step-3" class="modal-view hidden">
                 <div class="creation-modal-header">
                     <div>
                         <p class="creation-modal-title">Crear Nuevo Proyecto</p>
@@ -288,11 +328,10 @@
                 <div class="creation-modal-body">
                     <div class="progress-stepper">
                         <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
-                        <div class="step active"><div class="step-circle">2</div><p>Equipo y Roles</p></div>
+                        <div class="step complete"><div class="step-circle">2</div></div><div class="step-line"></div>
+                        <div class="step active"><div class="step-circle">3</div><p>Equipo y Roles</p></div>
                         <div class="step-line"></div>
-                        <div class="step"><div class="step-circle">3</div><p>Presupuesto</p></div>
-                        <div class="step-line"></div>
-                        <div class="step"><div class="step-circle">4</div><p>Hitos</p></div>
+                        <div class="step"><div class="step-circle">4</div><p>Presupuesto</p></div>
                     </div>
                     <div class="team-builder-grid">
                         <div class="roles-panel">
@@ -318,28 +357,53 @@
                     <button class="btn btn-primary next-btn"><span>Siguiente</span><span class="material-symbols-outlined">arrow_forward</span></button>
                 </div>
             </div>
-            
-            <div id="modal-step-3" class="modal-view hidden">
-                <div class="creation-modal-header">
-                    <p class="creation-modal-title">Paso 3: Presupuesto</p>
-                    <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
-                </div>
-                <div class="creation-modal-body">
-                    <p>Contenido del paso de Presupuesto aquí...</p>
-                </div>
-                <div class="creation-modal-footer">
-                    <button class="btn btn-secondary back-btn"><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
-                    <button class="btn btn-primary next-btn"><span>Siguiente</span><span class="material-symbols-outlined">arrow_forward</span></button>
-                </div>
-            </div>
 
+            <!-- PASO 4: Presupuesto -->
             <div id="modal-step-4" class="modal-view hidden">
                  <div class="creation-modal-header">
-                    <p class="creation-modal-title">Paso 4: Hitos</p>
+                    <div>
+                        <p class="creation-modal-title">Crear Nuevo Proyecto</p>
+                        <p class="creation-modal-subtitle">Define el presupuesto del proyecto.</p>
+                    </div>
                     <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
                 </div>
                 <div class="creation-modal-body">
-                    <p>Contenido del paso de Hitos aquí...</p>
+                    <div class="progress-stepper">
+                        <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle">2</div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle">3</div></div><div class="step-line"></div>
+                        <div class="step active"><div class="step-circle">4</div><p>Presupuesto</p></div>
+                    </div>
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="budget-total" class="form-label">Presupuesto Total</label>
+                            <div class="currency-input-wrapper">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="budget-total" class="modal-input currency-input" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Distribución del Presupuesto</label>
+                            <div class="budget-categories">
+                                <div class="budget-category-item">
+                                    <label>Recursos Humanos</label>
+                                    <input type="number" class="modal-input" placeholder="0.00">
+                                </div>
+                                <div class="budget-category-item">
+                                    <label>Tecnología y Herramientas</label>
+                                    <input type="number" class="modal-input" placeholder="0.00">
+                                </div>
+                                <div class="budget-category-item">
+                                    <label>Marketing y Publicidad</label>
+                                    <input type="number" class="modal-input" placeholder="0.00">
+                                </div>
+                                <div class="budget-category-item">
+                                    <label>Otros Gastos</label>
+                                    <input type="number" class="modal-input" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="creation-modal-footer">
                     <button class="btn btn-secondary back-btn"><span class="material-symbols-outlined">arrow_back</span><span>Atrás</span></button>
@@ -348,16 +412,21 @@
             </div>
         </div>
     </div>
-          <div id="toast" class="toast-overlay">
+
+    <div id="toast" class="toast-overlay">
         <div class="toast-message">
             <button class="close-toast"><span class="material-symbols-outlined">close</span></button>
-            <div class="icon"><span class="material-symbols-outlined">check_circle</span></div>
-            <h3>Proyecto Creado con Éxito</h3>
-            <p>Tu nuevo proyecto ha sido registrado correctamente.</p>
+            <div class="toast-content">
+                <div class="toast-header">
+                    <div class="icon"><span class="material-symbols-outlined">check_circle</span></div>
+                    <h3>Proyecto Creado con Éxito</h3>
+                </div>
+                <p>Tu nuevo proyecto ha sido registrado correctamente.</p>
+            </div>
         </div>
     </div>
     
-        <script>
+    <script>
         // ===== SCRIPT DE TEMA =====
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
@@ -373,7 +442,7 @@
         });
         document.addEventListener('DOMContentLoaded', applySavedTheme);
 
-        // ===== SCRIPT PARA MODALES Y TOAST (Lógica principal del Toast) =====
+        // ===== SCRIPT PARA MODALES Y TOAST =====
         document.addEventListener('DOMContentLoaded', () => {
             // --- Lógica para el Modal de Detalles del Proyecto ---
             const detailsModal = document.getElementById('project-details-modal');
@@ -407,10 +476,42 @@
                 const steps = createModal.querySelectorAll('.modal-view');
                 const nextBtns = createModal.querySelectorAll('.next-btn');
                 const backBtns = createModal.querySelectorAll('.back-btn');
-                const sendBtn = createModal.querySelector('#send-request'); // Busca el botón con el ID CORREGIDO
+                const sendBtn = createModal.querySelector('#send-request');
                 
                 const toast = document.getElementById("toast");
                 const closeToast = document.querySelector(".close-toast");
+
+                // Lógica para agregar tareas dinámicamente
+                const tasksContainer = document.getElementById('tasks-container');
+                const addTaskBtn = createModal.querySelector('.add-task-btn');
+
+                if (addTaskBtn) {
+                    addTaskBtn.addEventListener('click', () => {
+                        const newTaskGroup = document.createElement('div');
+                        newTaskGroup.className = 'task-input-group';
+                        newTaskGroup.innerHTML = `
+                            <input type="text" class="modal-input" placeholder="Nombre de la tarea">
+                            <button class="btn-icon-remove"><span class="material-symbols-outlined">close</span></button>
+                        `;
+                        tasksContainer.appendChild(newTaskGroup);
+
+                        // Agregar evento para eliminar tarea
+                        const removeBtn = newTaskGroup.querySelector('.btn-icon-remove');
+                        removeBtn.addEventListener('click', () => {
+                            newTaskGroup.remove();
+                        });
+                    });
+                }
+
+                // Agregar evento a los botones de eliminar existentes
+                tasksContainer.addEventListener('click', (e) => {
+                    if (e.target.closest('.btn-icon-remove')) {
+                        const taskGroup = e.target.closest('.task-input-group');
+                        if (tasksContainer.children.length > 1) {
+                            taskGroup.remove();
+                        }
+                    }
+                });
 
                 let currentStep = 0;
 
@@ -466,19 +567,16 @@
                     sendBtn.addEventListener('click', () => {
                         closeModal();
                         if (toast) {
-                            toast.style.display = "flex"; // Muestra el toast
+                            toast.style.display = "flex";
                         }
                     });
                 }
 
                 if (closeToast) {
                     closeToast.addEventListener('click', () => {
-                        // Inicia la animación de salida
                         toast.querySelector(".toast-message").style.animation = "fadeOut 0.4s forwards";
                         setTimeout(() => {
-                            // Oculta completamente el overlay
                             toast.style.display = "none";
-                            // Resetea la animación para la próxima vez
                             toast.querySelector(".toast-message").style.animation = "fadeIn 0.4s forwards";
                         }, 400);
                     });
