@@ -166,7 +166,7 @@
                                 <p class="project-meta-subtitle">Proyecto Titán</p>
                             </div>
                             <div class="project-meta-actions">
-                                <button class="btn btn-secondary">Editar Tarea</button>
+                                <button class="btn btn-secondary" id="edit-task-btn">Editar Tarea</button>
                                 <button class="btn btn-success"><span class="material-symbols-outlined">check_circle</span> Completada</button>
                             </div>
                         </div>
@@ -178,7 +178,7 @@
                         <div class="project-assign-info">
                             <div class="assign-item">
                                 <p class="assign-label">Asignado a</p>
-                                <div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-07-30%20at%203.16.09%20PM.jpeg?updatedAt=1754335165819" alt="Avatar"> Ana García</div>
+                                <div class="user-chip"><img src="https://ik.imagekit.io/v3kitfabd/fotos/fotos/WhatsApp%20Image%202025-08-04%20at%203.59.32%20PM.jpeg?updatedAt=1754414061643" alt="Avatar"> Ana García</div>
                             </div>
                             <div class="assign-item">
                                 <p class="assign-label">Fecha de Vencimiento</p>
@@ -186,10 +186,8 @@
                             </div>
                         </div>
                         <div class="project-description-section">
-                             <div class="canvas-background">CANVAS</div>
                              <div class="canvas-actions">
                                 <button class="icon-btn-small"><span class="material-symbols-outlined">edit</span></button>
-                                <button class="icon-btn-small"><span class="material-symbols-outlined">brush</span></button>
                                 <button class="icon-btn-small"><span class="material-symbols-outlined">note_add</span></button>
                              </div>
                              <div class="description-content">
@@ -200,14 +198,22 @@
                                 <h3>Archivos Adjuntos</h3>
                                 <div class="attachments-grid">
                                     <div class="attachment-card">
-                                        <span class="material-symbols-outlined">image</span>
-                                        <p>wireframe_v1.png</p>
-                                        <a href="#">Descargar</a>
+                                        <div class="attachment-icon">
+                                            <span class="material-symbols-outlined">image</span>
+                                        </div>
+                                        <div class="attachment-info">
+                                            <p class="attachment-name">wireframe_v1.png</p>
+                                            <a href="#" class="attachment-link">Descargar</a>
+                                        </div>
                                     </div>
                                     <div class="attachment-card">
-                                        <span class="material-symbols-outlined">description</span>
-                                        <p>brief_proyecto.pdf</p>
-                                        <a href="#">Descargar</a>
+                                        <div class="attachment-icon">
+                                            <span class="material-symbols-outlined">description</span>
+                                        </div>
+                                        <div class="attachment-info">
+                                            <p class="attachment-name">brief_proyecto.pdf</p>
+                                            <a href="#" class="attachment-link">Descargar</a>
+                                        </div>
                                     </div>
                                 </div>
                              </div>
@@ -234,7 +240,7 @@
                         <div class="comment-input-area">
                             <img src="https://lh3.googleusercontent.com/a/ACg8ocLFXLCR-3-f-2k9_3Y-7E_M9Q-s7c8B-u-P-wH3Q-i-wQ=s96-c-rg-br100" alt="Avatar" class="comment-avatar-small">
                             <textarea placeholder="Escribe un comentario..."></textarea>
-                            <button class="btn btn-primary">Enviar</button>
+                            <button class="btn btn-primary" id="accept-comment-btn">Aceptar</button>
                         </div>
                     </div>
                 </div>
@@ -289,7 +295,7 @@
                 </div>
                 <div class="creation-modal-body">
                     <div class="progress-stepper">
-                        <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle"><span class="material-symbols-outlined">check</span></div></div><div class="step-line"></div>
                         <div class="step active"><div class="step-circle">2</div><p>Tareas</p></div>
                         <div class="step-line"></div>
                         <div class="step"><div class="step-circle">3</div><p>Equipo y Roles</p></div>
@@ -300,8 +306,9 @@
                         <p class="section-description">Agrega las tareas principales que componen este proyecto.</p>
                         <div id="tasks-container">
                             <div class="task-input-group">
-                                <input type="text" class="modal-input" placeholder="Nombre de la tarea">
-                                <button class="btn-icon-remove"><span class="material-symbols-outlined">close</span></button>
+                                <div class="task-number">1</div>
+                                <input type="text" class="modal-input task-input" placeholder="Nombre de la tarea">
+                                <button class="btn-icon-remove" title="Eliminar tarea"><span class="material-symbols-outlined">close</span></button>
                             </div>
                         </div>
                         <button class="btn btn-secondary add-task-btn">
@@ -327,8 +334,8 @@
                 </div>
                 <div class="creation-modal-body">
                     <div class="progress-stepper">
-                        <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
-                        <div class="step complete"><div class="step-circle">2</div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle"><span class="material-symbols-outlined">check</span></div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle"><span class="material-symbols-outlined">check</span></div></div><div class="step-line"></div>
                         <div class="step active"><div class="step-circle">3</div><p>Equipo y Roles</p></div>
                         <div class="step-line"></div>
                         <div class="step"><div class="step-circle">4</div><p>Presupuesto</p></div>
@@ -369,9 +376,9 @@
                 </div>
                 <div class="creation-modal-body">
                     <div class="progress-stepper">
-                        <div class="step complete"><div class="step-circle">1</div></div><div class="step-line"></div>
-                        <div class="step complete"><div class="step-circle">2</div></div><div class="step-line"></div>
-                        <div class="step complete"><div class="step-circle">3</div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle"><span class="material-symbols-outlined">check</span></div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle"><span class="material-symbols-outlined">check</span></div></div><div class="step-line"></div>
+                        <div class="step complete"><div class="step-circle"><span class="material-symbols-outlined">check</span></div></div><div class="step-line"></div>
                         <div class="step active"><div class="step-circle">4</div><p>Presupuesto</p></div>
                     </div>
                     <div class="form-section">
@@ -419,9 +426,78 @@
             <div class="toast-content">
                 <div class="toast-header">
                     <div class="icon"><span class="material-symbols-outlined">check_circle</span></div>
-                    <h3>Proyecto Creado con Éxito</h3>
+                    <h3 id="toast-title">Proyecto Creado con Éxito</h3>
                 </div>
-                <p>Tu nuevo proyecto ha sido registrado correctamente.</p>
+                <p id="toast-description">Tu nuevo proyecto ha sido registrado correctamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Tarea -->
+    <div id="edit-task-modal" class="modal-overlay">
+        <div class="modal-content creation-modal-content">
+            <div class="modal-view">
+                <div class="creation-modal-header">
+                    <div>
+                        <p class="creation-modal-title">Editar Tarea</p>
+                        <p class="creation-modal-subtitle">Actualiza la información de la tarea.</p>
+                    </div>
+                    <button class="modal-close-btn" id="close-edit-modal"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="creation-modal-body">
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="edit-task-name" class="form-label">Nombre de la tarea</label>
+                            <input type="text" id="edit-task-name" class="modal-input" placeholder="Nombre de la tarea">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-task-description" class="form-label">Descripción</label>
+                            <textarea id="edit-task-description" class="modal-textarea" placeholder="Descripción de la tarea" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-task-assignee" class="form-label">Asignado a</label>
+                            <input type="text" id="edit-task-assignee" class="modal-input" placeholder="Nombre del asignado">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-task-date" class="form-label">Fecha de Vencimiento</label>
+                            <div class="date-input-wrapper">
+                                <input type="text" id="edit-task-date" class="modal-input" placeholder="Seleccionar fecha">
+                                <span class="material-symbols-outlined">calendar_today</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estado</label>
+                            <select id="edit-task-status" class="modal-input">
+                                <option value="En progreso">En progreso</option>
+                                <option value="Completada">Completada</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="En revisión">En revisión</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Prioridad</label>
+                            <select id="edit-task-priority" class="modal-input">
+                                <option value="">Seleccionar prioridad</option>
+                                <option value="Prioridad Alta">Prioridad Alta</option>
+                                <option value="Prioridad Media">Prioridad Media</option>
+                                <option value="Prioridad Baja">Prioridad Baja</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Categoría</label>
+                            <select id="edit-task-category" class="modal-input">
+                                <option value="">Seleccionar categoría</option>
+                                <option value="CAM">CAM</option>
+                                <option value="TIC">TIC</option>
+                                <option value="UI/UX">UI/UX</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="creation-modal-footer">
+                    <button class="btn btn-secondary" id="cancel-edit-btn">Cancelar</button>
+                    <button class="btn btn-primary" id="save-edit-btn">Guardar Cambios</button>
+                </div>
             </div>
         </div>
     </div>
@@ -449,6 +525,7 @@
             if (detailsModal) {
                 const closeDetailsBtn = detailsModal.querySelector('.modal-close-btn');
                 const projectCards = document.querySelectorAll('.project-card');
+                const acceptCommentBtn = document.getElementById('accept-comment-btn');
 
                 projectCards.forEach(card => {
                     card.addEventListener('click', () => {
@@ -465,6 +542,13 @@
                         detailsModal.classList.remove('active');
                     }
                 });
+
+                // Cerrar modal al hacer clic en Aceptar (comentarios)
+                if (acceptCommentBtn) {
+                    acceptCommentBtn.addEventListener('click', () => {
+                        detailsModal.classList.remove('active');
+                    });
+                }
             }
 
             // --- Lógica para el Modal de Creación de Proyecto ---
@@ -487,11 +571,13 @@
 
                 if (addTaskBtn) {
                     addTaskBtn.addEventListener('click', () => {
+                        const taskCount = tasksContainer.children.length + 1;
                         const newTaskGroup = document.createElement('div');
                         newTaskGroup.className = 'task-input-group';
                         newTaskGroup.innerHTML = `
-                            <input type="text" class="modal-input" placeholder="Nombre de la tarea">
-                            <button class="btn-icon-remove"><span class="material-symbols-outlined">close</span></button>
+                            <div class="task-number">${taskCount}</div>
+                            <input type="text" class="modal-input task-input" placeholder="Nombre de la tarea">
+                            <button class="btn-icon-remove" title="Eliminar tarea"><span class="material-symbols-outlined">close</span></button>
                         `;
                         tasksContainer.appendChild(newTaskGroup);
 
@@ -499,7 +585,19 @@
                         const removeBtn = newTaskGroup.querySelector('.btn-icon-remove');
                         removeBtn.addEventListener('click', () => {
                             newTaskGroup.remove();
+                            updateTaskNumbers();
                         });
+                    });
+                }
+
+                // Función para actualizar los números de las tareas
+                function updateTaskNumbers() {
+                    const taskGroups = tasksContainer.querySelectorAll('.task-input-group');
+                    taskGroups.forEach((group, index) => {
+                        const numberDiv = group.querySelector('.task-number');
+                        if (numberDiv) {
+                            numberDiv.textContent = index + 1;
+                        }
                     });
                 }
 
@@ -509,6 +607,7 @@
                         const taskGroup = e.target.closest('.task-input-group');
                         if (tasksContainer.children.length > 1) {
                             taskGroup.remove();
+                            updateTaskNumbers();
                         }
                     }
                 });
@@ -581,6 +680,187 @@
                         }, 400);
                     });
                 }
+            }
+
+            // --- Lógica para Editar Tarea ---
+            const editTaskBtn = document.getElementById('edit-task-btn');
+            const editTaskModal = document.getElementById('edit-task-modal');
+            const closeEditModal = document.getElementById('close-edit-modal');
+            const cancelEditBtn = document.getElementById('cancel-edit-btn');
+            const saveEditBtn = document.getElementById('save-edit-btn');
+            
+            // Elementos de la tarea que se van a editar
+            const taskTitle = document.querySelector('.modal-title');
+            const taskDescription = document.querySelector('.description-content p');
+            const taskAssignee = document.querySelector('.user-chip');
+            const taskDate = document.querySelector('.assign-item p:last-child');
+            const taskTags = document.querySelector('.project-tags');
+
+            // Variables para guardar los valores originales
+            let originalValues = {};
+
+            if (editTaskBtn) {
+                editTaskBtn.addEventListener('click', () => {
+                    // Cargar datos actuales en el formulario
+                    const currentTitle = taskTitle.textContent;
+                    const currentDescription = taskDescription.textContent;
+                    const currentAssignee = taskAssignee.textContent.trim();
+                    const currentDate = taskDate.textContent;
+
+                    document.getElementById('edit-task-name').value = currentTitle;
+                    document.getElementById('edit-task-description').value = currentDescription;
+                    document.getElementById('edit-task-assignee').value = currentAssignee;
+                    document.getElementById('edit-task-date').value = currentDate;
+                    
+                    // Obtener estado, prioridad y categoría actuales
+                    let currentStatus = '';
+                    let currentPriority = '';
+                    let currentCategory = '';
+
+                    const tags = taskTags.querySelectorAll('.tag');
+                    tags.forEach(tag => {
+                        const text = tag.textContent;
+                        if (text === 'En progreso' || text === 'Completada' || text === 'Pendiente' || text === 'En revisión') {
+                            currentStatus = text;
+                            document.getElementById('edit-task-status').value = text;
+                        } else if (text.includes('Prioridad')) {
+                            currentPriority = text;
+                            document.getElementById('edit-task-priority').value = text;
+                        } else if (text === 'UI/UX' || text === 'TIC' || text === 'CAM') {
+                            currentCategory = text;
+                            document.getElementById('edit-task-category').value = text;
+                        }
+                    });
+
+                    // Guardar valores originales
+                    originalValues = {
+                        title: currentTitle,
+                        description: currentDescription,
+                        assignee: currentAssignee,
+                        date: currentDate,
+                        status: currentStatus,
+                        priority: currentPriority,
+                        category: currentCategory
+                    };
+                    
+                    editTaskModal.classList.add('active');
+                });
+            }
+
+            const closeEditTaskModal = () => {
+                editTaskModal.classList.remove('active');
+            };
+
+            if (closeEditModal) {
+                closeEditModal.addEventListener('click', closeEditTaskModal);
+            }
+
+            if (cancelEditBtn) {
+                cancelEditBtn.addEventListener('click', closeEditTaskModal);
+            }
+
+            if (editTaskModal) {
+                editTaskModal.addEventListener('click', (e) => {
+                    if (e.target === editTaskModal) {
+                        closeEditTaskModal();
+                    }
+                });
+            }
+
+            if (saveEditBtn) {
+                saveEditBtn.addEventListener('click', () => {
+                    // Obtener nuevos valores
+                    const newTitle = document.getElementById('edit-task-name').value;
+                    const newDescription = document.getElementById('edit-task-description').value;
+                    const newAssignee = document.getElementById('edit-task-assignee').value;
+                    const newDate = document.getElementById('edit-task-date').value;
+                    const newStatus = document.getElementById('edit-task-status').value;
+                    const newPriority = document.getElementById('edit-task-priority').value;
+                    const newCategory = document.getElementById('edit-task-category').value;
+
+                    // Verificar si hubo cambios
+                    const hasChanges = (
+                        newTitle !== originalValues.title ||
+                        newDescription !== originalValues.description ||
+                        newAssignee !== originalValues.assignee ||
+                        newDate !== originalValues.date ||
+                        newStatus !== originalValues.status ||
+                        newPriority !== originalValues.priority ||
+                        newCategory !== originalValues.category
+                    );
+
+                    if (hasChanges) {
+                        // Actualizar título
+                        if (newTitle) taskTitle.textContent = newTitle;
+
+                        // Actualizar descripción
+                        if (newDescription) taskDescription.textContent = newDescription;
+
+                        // Actualizar asignado
+                        if (newAssignee) {
+                            const assigneeText = taskAssignee.childNodes[1];
+                            if (assigneeText) {
+                                assigneeText.textContent = ' ' + newAssignee;
+                            }
+                        }
+
+                        // Actualizar fecha
+                        if (newDate) taskDate.textContent = newDate;
+
+                        // Mapear estados a colores
+                        const statusColors = {
+                            'En progreso': 'tag-yellow',
+                            'Completada': 'tag-green',
+                            'Pendiente': 'tag-gray',
+                            'En revisión': 'tag-blue'
+                        };
+
+                        const priorityColors = {
+                            'Prioridad Alta': 'tag-red',
+                            'Prioridad Media': 'tag-orange',
+                            'Prioridad Baja': 'tag-blue'
+                        };
+
+                        const categoryColors = {
+                            'UI/UX': 'tag-indigo',
+                            'TIC': 'tag-purple',
+                            'CAM': 'tag-pink'
+                        };
+
+                        // Construir HTML de tags solo con los valores seleccionados
+                        let tagsHTML = '';
+                        if (newStatus) {
+                            tagsHTML += `<span class="tag ${statusColors[newStatus] || 'tag-yellow'}">${newStatus}</span>`;
+                        }
+                        if (newPriority) {
+                            tagsHTML += `<span class="tag ${priorityColors[newPriority] || 'tag-red'}">${newPriority}</span>`;
+                        }
+                        if (newCategory) {
+                            tagsHTML += `<span class="tag ${categoryColors[newCategory] || 'tag-indigo'}">${newCategory}</span>`;
+                        }
+
+                        // Actualizar etiquetas
+                        taskTags.innerHTML = tagsHTML;
+
+                        // Cerrar modal
+                        closeEditTaskModal();
+
+                        // Mostrar toast de éxito
+                        const toastTitle = document.getElementById('toast-title');
+                        const toastDescription = document.getElementById('toast-description');
+                        const toast = document.getElementById("toast");
+                        
+                        toastTitle.textContent = 'Tarea Actualizada con Éxito';
+                        toastDescription.textContent = 'Los cambios se han guardado correctamente.';
+                        
+                        if (toast) {
+                            toast.style.display = "flex";
+                        }
+                    } else {
+                        // No hay cambios, solo cerrar modal
+                        closeEditTaskModal();
+                    }
+                });
             }
         });
     </script>
