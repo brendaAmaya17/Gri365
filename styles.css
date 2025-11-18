@@ -1,3 +1,4 @@
+
 /*
  *  GUÍA DE ESTILOS:
  *  1. Variables y Estilos Raíz (Global)
@@ -65,12 +66,24 @@ body.dark-mode .icon-button { color: var(--text-muted); }
 body.dark-mode .icon-button:hover { background-color: var(--border); color: var(--text-primary); }
 
 /* 5. ESTILOS PÁGINA DE INICIO (.home-page) */
+
+/* ... (Estilos de .home-page que ya tenías) ... */
 .home-page .header { display: flex; align-items: center; justify-content: space-between; background-color: var(--surface); padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border); }
 .home-page .header-logo { display: flex; align-items: center; gap: 0.75rem; }
 .home-page .header-logo h2 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
 .home-page .header-actions { display: flex; align-items: center; gap: 0.5rem; }
 body.dark-mode .home-page .header { background-color: var(--surface); }
-.home-page .landing-main { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+/* Modificación: Cambia align-items: center a flex-start y agrega un margin-top */
+.home-page .landing-main { 
+    flex-grow: 1; 
+    display: flex; 
+    /* CRÍTICO: Alinea el contenido al inicio (arriba) */
+    align-items: flex-start; 
+    justify-content: center; 
+    padding: 2rem; 
+    /* AJUSTE: Mueve el contenido hacia abajo (ej. 10rem) */
+    margin-top: 10rem; 
+}
 .home-page .welcome-message { text-align: center; }
 .home-page .welcome-message h1 { font-size: 2rem; font-weight: 700; color: var(--text-primary); }
 .home-page .welcome-message p { font-size: 1.125rem; color: var(--text-muted); margin-top: 0.5rem; }
@@ -93,8 +106,145 @@ body.dark-mode .home-page .module-go { background-color: var(--primary); }
 
 
 /* ==========================================================================
-   TOASTS Y NOTIFICACIONES (CORREGIDO PARA PROPORCIONES DE TEXTO)
+   SOLUCIÓN DE MODAL, CAM Y TOAST (VERSIÓN COMPLETA Y CORREGIDA)
 ========================================================================== */
+
+/* 1. Definición de colores CAM y variables de scroll */
+:root {
+    --color-cam-prominent: #0d9488; /* Turquesa fuerte */
+    --color-cam-light-bg: #f0fdfa;  /* Turquesa muy claro para fondos */
+    
+    /* Variables de Scrollbar */
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+}
+body.dark-mode {
+    --color-cam-light-bg: #134e4a; /* Turquesa oscuro para fondos */
+    
+    /* Variables de Scrollbar (Oscuro) */
+    --scrollbar-track: #0f172a;
+    --scrollbar-thumb: #475569;
+    --scrollbar-thumb-hover: #64748b;
+}
+
+/* 2. Overlays, Content y Scroll (CÓDIGO QUE CORRIGIÓ EL PROBLEMA ANTERIOR) */
+.modal-overlay.active { display: flex; justify-content: center; align-items: flex-start; padding-top: 2rem; padding-bottom: 2rem; overflow-y: auto; }
+.modal-content { background-color: var(--surface); max-width: 700px; width: 90%; max-height: calc(100vh - 4rem); border-radius: var(--border-radius-xl); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; overflow: hidden; }
+.modal-view { display: flex; flex-direction: column; overflow: hidden; flex-grow: 1; min-height: 0; }
+.modal-header { padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.modal-body { padding: 1.5rem; flex-grow: 1; overflow-y: auto; min-height: 0; }
+.modal-body::-webkit-scrollbar { width: 8px; }
+.modal-body::-webkit-scrollbar-track { background: var(--scrollbar-track); border-radius: 4px; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+.modal-body::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+.modal-body { scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); }
+
+
+/* 3. CAM Branding y Estilos de Pasos (Corrección de Colores) */
+.request-creator-card { border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: 1.5rem; margin-bottom: 0; }
+
+/* Estilos para las tarjetas de tipo de CAM (Paso 1) */
+.request-type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.request-type-grid .type-card { border: 2px solid var(--border); background-color: var(--surface); border-radius: var(--border-radius-lg); padding: 1.5rem 1rem; text-align: center; cursor: pointer; transition: all 0.2s ease-in-out; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+.request-type-grid .type-card:hover { border-color: var(--primary); background-color: var(--accent); } /* Mantiene hover de tema general */
+.request-type-grid .type-card.active {
+    border-color: var(--color-cam-prominent);
+    background-color: var(--color-cam-light-bg);
+    box-shadow: 0 4px 10px -4px rgba(13, 148, 136, 0.3);
+}
+.request-type-grid .type-card.active .material-symbols-outlined { color: var(--color-cam-prominent); }
+.request-type-grid .type-card.active .type-title { color: var(--color-cam-prominent); font-weight: 600; }
+
+/* Proceso de Pasos (Stepper) con color TURQUESA */
+.progress-stepper { margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; } /* Se agregó flexbox aquí */
+.progress-stepper .step-line { background-color: var(--border); flex-grow: 1; height: 2px; margin: 0 0.5rem; }
+
+.progress-stepper .step { display: flex; align-items: center; flex-direction: column; text-align: center; position: relative; }
+.progress-stepper .step-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--background);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+.progress-stepper .step-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; max-width: 80px; }
+
+/* ESTILOS CLAVE: CAMBIA MORADO/GRIS A TURQUESA */
+.progress-stepper .step.active .step-circle,
+.progress-stepper .step.complete .step-circle {
+    background-color: var(--color-cam-prominent); /* Turquesa */
+    border-color: var(--color-cam-prominent); /* Turquesa */
+    color: #ffffff;
+}
+.progress-stepper .step.complete + .step-line {
+    background-color: var(--color-cam-prominent); /* Turquesa */
+}
+.progress-stepper .step.active .step-label {
+    color: var(--color-cam-prominent); /* Etiqueta turquesa para paso activo */
+    font-weight: 600;
+}
+.progress-stepper .step.complete .step-circle .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+
+/* Botones de Navegación (Coherencia de color TURQUESA) */
+.request-creator-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    background-color: var(--surface); 
+    flex-shrink: 0;
+    position: sticky;
+    bottom: -1.5rem;
+    margin: 1.5rem -1.5rem -1.5rem;
+    padding: 1.5rem;
+}
+.request-creator-footer .btn-primary {
+    background-color: var(--color-cam-prominent); 
+    border-color: var(--color-cam-prominent);
+}
+.request-creator-footer .btn-primary:hover {
+    background-color: #0c7e73; 
+    border-color: #0c7e73;
+}
+/* Asegurar que el botón de FixIT siga siendo morado */
+#modal-fixit-form .request-creator-footer .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+#modal-fixit-form .request-creator-footer .btn-primary:hover {
+    background-color: #6d28d9; /* un morado más oscuro */
+    border-color: #6d28d9;
+}
+
+
+/* 4. Sección de Revisión (Paso 3) con color TURQUESA */
+.review-section h2 {
+    color: var(--color-cam-prominent); 
+    border-bottom: 2px solid var(--color-cam-prominent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+.review-details-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
+@media (min-width: 600px) { .review-details-grid { grid-template-columns: 150px 1fr; align-items: baseline; } }
+.review-details-grid p { margin: 0; padding: 0.5rem 0; border-bottom: 1px dashed var(--border); word-break: break-word; }
+.review-details-grid p.detail-label { font-weight: 600; color: var(--text-primary); padding-right: 1rem; border-bottom: none; }
+@media (min-width: 600px) { .review-details-grid p.detail-label + p { border-bottom: 1px dashed var(--border); } }
+.review-details-grid p:last-child, .review-details-grid p:nth-last-child(2) { border-bottom: none; }
+
+
+/* 5. TOAST (Diseño más Moderno y Minimalista) */
 .toast-overlay {
     position: fixed;
     top: 0;
@@ -108,112 +258,93 @@ body.dark-mode .home-page .module-go { background-color: var(--primary); }
     z-index: 10000;
     pointer-events: none;
 }
-
 .toast-message {
     pointer-events: auto;
     background-color: var(--surface);
     color: var(--text-primary);
-    border: none;
+    /* Se eliminan bordes y sombras excesivas para look más limpio */
+    border: 1px solid var(--border); /* Borde sutil */
     border-radius: var(--border-radius-lg);
     padding: 1.5rem;
     max-width: 480px;
     width: 90%;
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
     align-items: flex-start;
-    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     animation: fadeIn 0.4s forwards;
     position: relative;
     overflow: hidden;
 }
-
-/* Detalle de color prominente en el toast */
 .toast-message::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 10px;
-    background-color: var(--color-cam-prominent, #0d9488); 
+    height: 6px; /* Barra más delgada */
+    background-color: var(--color-cam-prominent); /* Turquesa */
 }
-
 .toast-message .icon {
-    font-size: 1.8rem;
-    color: var(--color-cam-prominent, #0d9488); 
+    font-size: 1.5rem; /* Icono un poco más pequeño */
+    color: var(--color-cam-prominent); /* Turquesa */
     flex-shrink: 0;
-    padding-top: 5px;
+    padding-top: 2px;
 }
-
 .toast-message h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem; /* Título ligeramente más pequeño */
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--color-cam-prominent, #0d9488);
+    color: var(--color-cam-prominent); /* Turquesa */
 }
-
 .toast-message p {
-    font-size: 0.95rem; 
+    font-size: 0.9rem; /* Texto de cuerpo más sutil */
     color: var(--text-muted);
-    line-height: 1.5;
+    line-height: 1.4;
 }
-
 .toast-message .close-toast {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0.75rem; /* Ajuste de posición */
+    right: 0.75rem; /* Ajuste de posición */
     background: none;
     border: none;
     cursor: pointer;
     color: var(--text-muted);
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 0.25rem;
     line-height: 1;
-    opacity: 0.7;
+    opacity: 0.8;
 }
-.toast-message .close-toast:hover {
-    opacity: 1;
-}
-
-/* Estilos específicos para el toast de información de CAM */
-.toast-message.cam-info {
-    --color-cam-prominent: #0d9488; 
-}
-
+.toast-message .close-toast:hover { opacity: 1; }
 .toast-message.cam-info .info-details {
     margin-top: 0.5rem;
     padding-top: 0.75rem;
     border-top: 1px dashed var(--border);
 }
-
 .toast-message.cam-info .info-details p {
     margin: 0;
     color: var(--text-primary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
-
 .toast-message.cam-info ul {
     list-style: disc;
     list-style-position: inside;
     margin: 0.5rem 0 0.75rem 0; 
     padding-left: 1.25rem;
 }
-
 .toast-message.cam-info li {
     color: var(--text-muted);
-    line-height: 1.5;
-    font-size: 0.9rem;
+    line-height: 1.4;
+    font-size: 0.85rem;
 }
-
 .toast-message.cam-info strong {
     font-weight: 700;
-    color: var(--color-cam-prominent, #0d9488);
+    color: var(--color-cam-prominent);
 }
-
 .toast-message.cam-info .coordination-note {
     padding: 0.75rem;
     background-color: var(--accent);
-    border-left: 4px solid var(--color-cam-prominent, #0d9488);
+    border-left: 4px solid var(--color-cam-prominent);
     border-radius: var(--border-radius-sm);
     font-size: 0.85rem;
     margin-top: 0.75rem; 
@@ -221,138 +352,179 @@ body.dark-mode .home-page .module-go { background-color: var(--primary); }
 }
 
 /* Animaciones */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-20px); } }
+
+/* === MEJORAS TURQUESA Y TOAST MODERNO === */
+
+/* Paleta turquesa general */
+:root {
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --accent: rgba(13, 148, 136, 0.08);
+  --surface: #ffffff;
+  --text-primary: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --background: #f8fafc;
+}
+
+body.dark-mode {
+  --surface: #0f172a;
+  --background: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+}
+
+/* Ajustar posición del mensaje principal */
+.home-page .landing-main {
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 14rem; /* Más abajo */
+}
+
+/* Tarjetas del modal actualizadas */
+.module-card {
+  border: 2px solid var(--border);
+  background-color: var(--surface);
+  border-radius: var(--border-radius-xl);
+  transition: all 0.3s ease;
+}
+
+.module-card:hover {
+  border-color: var(--primary);
+  background-color: var(--accent);
+}
+
+.module-icon-wrapper {
+  background-color: var(--accent);
+}
+
+.module-icon-wrapper .material-symbols-outlined {
+  color: var(--primary);
+}
+
+/* Botón principal */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* === TOAST MODERNO Y MINIMALISTA === */
+.toast-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 4rem;
+  z-index: 10000;
+  backdrop-filter: blur(3px);
+}
+
+.toast-message {
+  pointer-events: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  max-width: 480px;
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark-mode .toast-message {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-color: var(--border);
+}
+
+.toast-message::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), #14b8a6);
+}
+
+.toast-message .icon {
+  font-size: 1.75rem;
+  color: var(--primary);
+}
+
+.toast-message h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 0.5rem;
+}
+
+.toast-message p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.toast-message .close-toast {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toast-message .close-toast:hover {
+  opacity: 1;
+  color: var(--primary);
+}
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(-20px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
 }
 
-/* ==========================================================================
-   ESTILOS GENERALES Y MODAL DE TICKET (SOLUCIÓN DEFINITIVA DE SCROLL)
-========================================================================== */
-/* Definición del color Turquesa de CAM para reuso */
-:root {
-    --color-cam-prominent: #0d9488; /* Turquesa fuerte */
-}
-body.dark-mode {
-    --color-cam-light: #134e4a;
-}
 
-/* 1. Modal Display Fix (Scrollable Content y Anti-Corte) */
-.modal-overlay.active {
-    display: flex;
-    justify-content: center;
-    /* CRÍTICO: Alineamos arriba y le damos un padding para forzar espacio */
-    align-items: flex-start; 
-    padding-top: 2rem; /* Espacio fijo en la parte superior */
-    padding-bottom: 2rem; /* Espacio fijo en la parte inferior */
-}
-
-.modal-content {
-    background-color: var(--surface);
-    max-width: 700px; 
-    width: 90%;
-    /* CRÍTICO: La altura máxima se basa en la vista - el padding */
-    max-height: calc(100vh - 4rem); /* 100% de la vista menos 2rem arriba y 2rem abajo */
-    display: flex;
-    flex-direction: column; 
-    overflow: hidden; /* Controlamos el overflow a nivel del cuerpo del modal */
-    border-radius: var(--border-radius-xl); 
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
-}
-
-.modal-body {
-    padding: 1.5rem;
-    /* CRÍTICO: Flex grow para tomar el espacio restante. */
-    flex-grow: 1; 
-    /* CRÍTICO: Garantiza que la barra de scroll aparezca cuando sea necesario */
-    overflow-y: auto; 
-    min-height: 0; 
-}
-
-/* 2. CAM Branding y Estilos de Pasos */
-.request-creator-card {
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    /* CRÍTICO: Eliminamos cualquier margin-bottom para que no empuje el contenido fuera del modal-body scrollable */
-    margin-bottom: 0; 
-}
-
-/* Proceso de Pasos (Stepper) */
-.progress-stepper {
-    margin-bottom: 1.5rem; /* Añadimos espacio debajo del stepper */
-}
-.progress-stepper .step.active .step-circle,
-.progress-stepper .step.complete .step-circle {
-    background-color: var(--color-cam-prominent);
-    border-color: var(--color-cam-prominent);
-}
-.progress-stepper .step.complete + .step-line {
-    background-color: var(--color-cam-prominent);
-}
-
-/* Botones de Navegación (Coherencia de color) */
-.request-creator-footer {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    /* Fondo para que los botones floten sobre el scroll */
-    background-color: var(--surface); 
-    flex-shrink: 0;
-}
-.request-creator-footer .btn-primary {
-    background-color: var(--color-cam-prominent); 
-    border-color: var(--color-cam-prominent);
-}
-.request-creator-footer .btn-primary:hover {
-    background-color: #0c7e73; 
-    border-color: #0c7e73;
-}
-
-/* 3. Sección de Revisión (Paso 3) */
-.review-section h2 {
-    color: var(--color-cam-prominent); 
-    border-bottom: 2px solid var(--color-cam-prominent);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.review-details-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 1rem 0;
-}
-
-@media (min-width: 600px) {
-    .review-details-grid {
-        grid-template-columns: 150px 1fr;
-        align-items: baseline;
-    }
-}
-
-.review-details-grid p {
-    margin: 0;
-    padding: 0.5rem 0;
-    border-bottom: 1px dashed var(--border);
-    word-break: break-word; 
-}
-
-.review-details-grid p.detail-label {
-    font-weight: 600;
-    color: var(--text-primary);
-    padding-right: 1rem;
-    border-bottom: none; 
-}
-.review-details-grid p:last-child {
-    border-bottom: none;
-}
 /* 6. ESTILOS PÁGINA CAM (.marketing-page) */
 .marketing-page { --cam-primary: #007B7B; --cam-primary-dark: #005F5F; --cam-primary-light: #B2FFFF; --cam-success: #16a34a; --cam-warning: #d97706; --cam-danger: #dc2626; --cam-info: #2563eb; background-color: #f8f9fa; color: #374151; }
 .marketing-page .main-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background-color: #ffffff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 900; }
@@ -2169,3 +2341,715 @@ body.dark-mode .modal-footer {
 }
 
 
+/* 13. Inventario */
+/* =========================================
+   1. VARIABLES Y ESTILOS GLOBALES
+   ========================================= */
+
+:root {
+    /* Paleta de Colores - Light Mode */
+    --color-primary:  #9b1289d2;           /* Morado Brillante (Acento) */
+    --color-primary-dark: #360c32;      /* Morado Oscuro (Botones principales) */
+    --color-primary-light: #ffffffd2;     /* Morado muy claro (Fondo de link activo) */
+
+    --bg-light: #f8fafc;                 /* Fondo principal (Gris muy claro) */
+    --bg-card: #ffffff;                  /* Fondo de tarjeta (Blanco) */
+    --text-main: #1e293b;                /* Texto principal (Gris oscuro) */
+    --text-muted: #64748b;               /* Texto secundario/labels (Gris) */
+    --border-color: #e2e8f0;             /* Color de borde y separadores (Gris claro) */
+    
+
+    /* Sombras */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+    /* Estilos globales */
+    --font-family: 'Inter', sans-serif;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 12px;
+}
+
+/* Paleta de Colores - Dark Mode */
+.dark-mode {
+    --color-primary: #9b1289d2; /* Morado Oscuro para fondos de botones primarios */
+    --color-primary-dark: #660c5ad2; /* Morado más oscuro para hover/actividad */
+    --color-primary-light: #eb87dd; /* Lila muy claro para texto/íconos en color primario */
+    --bg-light: #0f172a;              
+    --bg-card: #1e293b;                
+    --text-main: #f1f5f9;              
+    --text-muted: #94a3b8;             
+    --border-color: #334155;           
+    --status-active-bg: rgba(16, 185, 129, 0.2);
+}
+
+/* Reset y Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.icon-24 { font-size: 24px; }
+.icon-base { font-size: 16px; }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.max-width-7xl { max-width: 80rem; margin: 0 auto; }
+.mt-4 { margin-top: 1rem; }
+.hidden { display: none !important; }
+
+/* --- Layout Principal --- */
+.page-container {
+    display: flex;
+    min-height: 100vh;
+}
+.main-content {
+    margin-left: 256px; /* Ancho fijo del sidebar */
+    flex-grow: 1;
+    padding: 0;
+}
+.content-area {
+    padding: 32px;
+}
+
+/* =========================================
+   2. SIDEBAR Y NAVEGACIÓN
+   ========================================= */
+.titulo-sidebar {
+    
+  color: #360c32;
+}
+.sidebar {
+    width: 256px;
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    height: 100%;
+    z-index: 50;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    margin-bottom: 24px;
+    height: 60px; /* Para mantener consistencia con el header */
+}
+.sidebar-header img {
+    height: 40px;
+    width: auto;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--border-radius-sm);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 1rem;
+}
+.nav-link span:first-child { /* Icono */
+    font-size: 20px;
+}
+.nav-link:hover {
+    background-color: var(--border-color);
+    color: var(--text-main);
+}
+.nav-link.active {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+.dark-mode .nav-link.active {
+    color: var(--color-primary);
+}
+
+
+/* Footer del Sidebar */
+.sidebar-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* =========================================
+   3. HEADER Y BOTONES
+   ========================================= */
+
+.project-header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: 72px; /* Altura para contener todos los elementos */
+}
+.project-header-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.project-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+}
+.project-logo h2 {
+    font-size: 1.25rem; 
+    font-weight: 700;
+}
+
+.header-title {
+    font-size: 1.25rem; 
+    font-weight: 700;
+    color: var(--text-main);
+    margin-right: auto; /* Empuja las acciones a la derecha */
+    margin-left: 24px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botones Icono (Dark Mode Toggle y Logout) */
+.icon-button {
+    background: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color); /* Agregado para consistencia visual */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.icon-button:hover {
+    background-color: var(--border-color);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary);
+}
+.dark-mode .icon-button {
+    color: var(--text-muted);
+}
+.dark-mode .icon-button:hover {
+    color: var(--color-primary);
+}
+
+
+/* Botones (Acciones) */
+.btn-primary-highlight {
+    background-color: var(--color-primary); 
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.875rem;
+}
+.btn-primary-highlight:hover { background-color: color-mix(in srgb, var(--color-primary) 85%, black); }
+
+.btn-primary-dark {
+    background-color: var(--color-primary-dark);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    text-decoration: none; 
+}
+.btn-primary-dark:hover { background-color: var(--color-primary); }
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.875rem;
+}
+.btn-outline:hover { background-color: var(--border-color); border-color: var(--color-primary); color: var(--color-primary-dark); }
+
+
+/* =========================================
+   4. MÓDULO INVENTARIO (VISTAS)
+   ========================================= */
+
+/* Transiciones de vistas */
+.view-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.view-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* --- Directorio: Búsqueda --- */
+.search-container {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    position: relative;
+}
+.search-icon {
+    color: var(--text-muted);
+}
+.search-input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1rem;
+    color: var(--text-main);
+    flex-grow: 1;
+    padding: 8px 0; 
+}
+
+/* --- Directorio: GRID y Tarjetas --- */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.user-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Avatar de Tarjeta de Usuario: BORDE MORADO ELIMINADO */
+.user-card .card-avatar { 
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.user-card .name {
+    font-size: 1.125rem; 
+    font-weight: 600;
+}
+.user-card .role {
+    font-size: 0.875rem; 
+    color: var(--text-muted);
+}
+.user-card .card-text {
+    margin-bottom: 8px;
+}
+.user-card .btn-primary-dark {
+    width: 100%;
+    margin-top: auto;
+}
+
+
+/* --- Perfil Detallado y Edición (Comunes) --- */
+
+.profile-container {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 32px; 
+}
+
+.breadcrumbs {
+    font-size: 0.875rem; 
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+.breadcrumbs span {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.profile-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+.profile-main-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Avatar Grande de Perfil: BORDE MORADO ELIMINADO */
+.profile-avatar-lg {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.profile-name {
+    font-size: 1.5rem; 
+    font-weight: 700;
+}
+.profile-role {
+    font-size: 1rem; 
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem; 
+    font-weight: 600;
+    color: var(--status-active);
+    background-color: var(--status-active-bg);
+}
+
+
+/* Sección de Información Personal y Hardware (Grid) */
+.section-content {
+    padding: 32px 0;
+}
+
+.section-title {
+    font-size: 1.25rem; 
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Grid de solo lectura */
+.info-data-grid {
+    /* 4 columnas: Label-Valor / Label-Valor */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 16px 40px; 
+}
+.info-grid-row {
+    display: contents; 
+}
+.info-label {
+    font-weight: 500;
+    color: var(--text-muted);
+    grid-column: span 1; 
+    padding-right: 16px;
+    font-size: 0.875rem;
+}
+.info-value {
+    font-weight: 600;
+    color: var(--text-main);
+    grid-column: span 1; 
+    font-size: 0.875rem;
+}
+
+
+/* --- Nuevos Estilos para el Formulario de Edición --- */
+
+.edit-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 24px;
+}
+
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 0.875rem; 
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 40px 10px 12px; 
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--bg-light); 
+    color: var(--text-main);
+    font-size: 0.875rem;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.dark-mode .form-input {
+    background-color: var(--bg-card); 
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.input-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem; 
+    color: var(--text-muted);
+}
+
+/* Estilos de Tabla (Historial) */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background-color: var(--bg-light);
+}
+
+.dark-mode .data-table thead {
+    background-color: color-mix(in srgb, var(--bg-card) 90%, black);
+}
+
+.data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.75rem; 
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* --- Tabs (Comunes) --- */
+.tabs-container {
+    display: flex;
+    gap: 24px;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 24px;
+}
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 8px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+}
+.tab-btn.active {
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary); 
+}
+.dark-mode .tab-btn.active {
+    color: var(--color-primary); 
+    border-color: var(--color-primary); 
+}
+
+/* Contenido de Tabs */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* Observaciones */
+.obs-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: 20px;
+    color: var(--text-main);
+    font-size: 0.875rem;
+}
+
+/* Botón de volver */
+.back-to-directory {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.back-to-directory:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Animación simple */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* =========================================
+   5. MEDIA QUERIES (Responsivo)
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .info-data-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 20px;
+    }
+    
+    .info-label {
+        grid-column: 1 / 2; 
+        padding-right: 16px;
+    }
+    .info-value {
+        grid-column: 2 / 3; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    /* Sidebar Compacto */
+    .sidebar { width: 64px; }
+    .sidebar span:not(.material-symbols-outlined) { display: none; }
+    .main-content { margin-left: 64px; }
+    
+    .project-header { padding: 16px; }
+    .content-area { padding: 16px; }
+
+    /* Ocultar Logo Textual del Módulo en móvil */
+    .project-logo h2 { display: none; }
+    .header-title { margin-left: 0; margin-right: 8px; }
+
+    /* Los botones de acción del perfil se apilan */
+    .profile-header { flex-direction: column; align-items: flex-start; }
+    .profile-actions { width: 100%; justify-content: space-between; }
+    .profile-actions button { flex-grow: 1; }
+    
+    /* La cuadrícula de información personal se hace de 1 columna (Label y Value apilados) */
+    .info-data-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    /* Forzar Info Grid a ser un Flexbox apilado para móviles */
+    .info-grid-row {
+        display: flex; 
+        justify-content: space-between;
+        padding: 12px 0; 
+        border-bottom: 1px solid var(--border-color);
+    }
+    .info-label,
+    .info-value {
+        grid-column: auto; 
+        padding: 0;
+    }
+    /* Eliminar el borde inferior del último elemento */
+    .info-data-grid .info-grid-row:last-of-type {
+        border-bottom: none;
+    }
+    
+    /* Formulario de Edición se hace de 1 columna */
+    .edit-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .inventory-grid {
+        grid-template-columns: 1fr; 
+    }
+    .profile-actions {
+        flex-direction: column;
+    }
+}
