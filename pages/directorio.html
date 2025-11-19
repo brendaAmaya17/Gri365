@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRI365 - Inventario TI</title>
+    <link rel="stylesheet" href="./../styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body class="project-page"> 
+    
+    <div class="page-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark hidden">
+            </div>
+            <nav class="navigation">
+                <a class="nav-link" href="./../index.html"><span class="material-symbols-outlined">dashboard</span><span>Inicio</span></a>
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
+                <a class="nav-link" href="./../pages/gestion.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
+                <a class="nav-link" href="./../pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
+                <a class="nav-link active" href="./../pages/inventario.html"><span class="material-symbols-outlined">inventory</span><span>Inventario</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="project-header">
+                <div class="project-header-main">
+                    <div class="project-logo">
+                        <span class="material-symbols-outlined">inventory</span>
+                        <h2 class="titulo">Directorio de Usuarios</h2>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon hidden">dark_mode</span>
+                    </button>
+                    <a href="#" class="icon-button" title="Cerrar Sesión">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div id="inventory-module-scope" class="max-width-7xl">
+                    
+                    <div id="view-directory" class="view-section active">
+                        <!-- Pestañas de Activo/Inactivo/Inventario -->
+                        <div class="tabs-container" style="margin-bottom: 1.5rem;">
+                            <button class="tab-btn active" onclick="switchEmployeeTab('active', this)">Empleados Activos</button>
+                            <button class="tab-btn" onclick="switchEmployeeTab('inactive', this)">Empleados Inactivos</button>
+                            <button class="tab-btn" onclick="switchEmployeeTab('inventory', this)">Inventario</button>
+                        </div>
+
+                        <div class="search-container shadow-sm">
+                            <span class="material-symbols-outlined search-icon">search</span>
+                            <input class="search-input" id="search-input" placeholder="Buscar por nombre o puesto..." type="text"/>
+                        </div>
+                        
+                        <!-- Grid de empleados activos -->
+                        <div id="active-employees-grid" class="inventory-grid">
+                            <div class="user-card shadow-sm">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=9");'></div>
+                                <div class="card-text">
+                                    <p class="name">Ana Garcia</p>
+                                    <p class="role">Directora de TI</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Ana Garcia', 'Directora de TI', '9', 'active')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=51");'></div>
+                                <div class="card-text">
+                                    <p class="name">Ben Carter</p>
+                                    <p class="role">Administrador de Red</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Ben Carter', 'Administrador de Red', '51', 'active')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=5");'></div>
+                                <div class="card-text">
+                                    <p class="name">Chloe Davis</p>
+                                    <p class="role">Analista de Sistemas</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Chloe Davis', 'Analista de Sistemas', '5', 'active')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=11");'></div>
+                                <div class="card-text">
+                                    <p class="name">David Evans</p>
+                                    <p class="role">Soporte Técnico</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('David Evans', 'Soporte Técnico', '11', 'active')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=49");'></div>
+                                <div class="card-text">
+                                    <p class="name">Eva Foster</p>
+                                    <p class="role">Administradora de Base de Datos</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Eva Foster', 'Administradora de Base de Datos', '49', 'active')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=68");'></div>
+                                <div class="card-text">
+                                    <p class="name">Frank Green</p>
+                                    <p class="role">Ciberseguridad</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Frank Green', 'Ciberseguridad', '68', 'active')">Ver detalle</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Grid de empleados inactivos -->
+                        <div id="inactive-employees-grid" class="inventory-grid" style="display: none;">
+                            <div class="user-card shadow-sm inactive-employee">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=1");'></div>
+                                <div class="card-text">
+                                    <p class="name">Grace Hall</p>
+                                    <p class="role">Ex-Desarrolladora</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Grace Hall', 'Ex-Desarrolladora', '1', 'inactive')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm inactive-employee">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=12");'></div>
+                                <div class="card-text">
+                                    <p class="name">Henry Irwin</p>
+                                    <p class="role">Ex-Gerente de Proyectos</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Henry Irwin', 'Ex-Gerente de Proyectos', '12', 'inactive')">Ver detalle</a>
+                            </div>
+                            <div class="user-card shadow-sm inactive-employee">
+                                <div class="card-avatar" style='background-image: url("https://i.pravatar.cc/150?img=47");'></div>
+                                <div class="card-text">
+                                    <p class="name">Ivy Jackson</p>
+                                    <p class="role">Ex-Probadora de QA</p>
+                                </div>
+                                <a class="btn-primary-dark" href="#" onclick="event.preventDefault(); showProfileView('Ivy Jackson', 'Ex-Probadora de QA', '47', 'inactive')">Ver detalle</a>
+                            </div>
+                        </div>
+
+                        <!-- Nueva sección de Inventario -->
+                        <div id="inventory-section" style="display: none;">
+                            <!-- Barra de búsqueda y botones -->
+                            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                                <div class="search-container shadow-sm" style="flex: 1; min-width: 250px; margin: 0;">
+                                    <span class="material-symbols-outlined search-icon">search</span>
+                                    <input class="search-input" id="inventory-search-input" placeholder="Buscar por dispositivo, ID o usuario..." type="text"/>
+                                </div>
+                                <button class="btn-outline" style="white-space: nowrap;">
+                                    <span class="material-symbols-outlined icon-base">filter_alt</span>
+                                    Filtrar por estado
+                                </button>
+                                <button class="btn-primary-highlight" style="white-space: nowrap;">
+                                    <span class="material-symbols-outlined icon-base">add</span>
+                                    Añadir Dispositivo
+                                </button>
+                            </div>
+
+                            <!-- Sección de Monitores -->
+                            <div class="inventory-category">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleCategory('monitors')">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span class="material-symbols-outlined">computer</span>
+                                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">Monitores</h3>
+                                        <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">2</span>
+                                    </div>
+                                    <span class="material-symbols-outlined" id="monitors-icon">expand_less</span>
+                                </div>
+                                
+                                <div id="monitors-grid" class="inventory-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Monitor Dell U2721DE</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: MON-00123</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">Alice Johnson</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Monitor LG 27UL500</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: MON-00124</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">N/A</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #fff3cd; color: #856404; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">En Almacén</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección de Teclados -->
+                            <div class="inventory-category" style="margin-top: 2rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleCategory('keyboards')">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span class="material-symbols-outlined">keyboard</span>
+                                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">Teclados</h3>
+                                        <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">1</span>
+                                    </div>
+                                    <span class="material-symbols-outlined" id="keyboards-icon">expand_more</span>
+                                </div>
+                                
+                                <div id="keyboards-grid" class="inventory-grid" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Teclado Mecánico Keychron K2</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: KBD-00045</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">Bob Smith</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección de Mouses -->
+                            <div class="inventory-category" style="margin-top: 2rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleCategory('mouses')">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span class="material-symbols-outlined">mouse</span>
+                                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">Mouses</h3>
+                                        <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">1</span>
+                                    </div>
+                                    <span class="material-symbols-outlined" id="mouses-icon">expand_more</span>
+                                </div>
+                                
+                                <div id="mouses-grid" class="inventory-grid" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Mouse Logitech MX Master 3</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: MOU-00089</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">Carol Williams</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección de CPU -->
+                            <div class="inventory-category" style="margin-top: 2rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleCategory('cpus')">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span class="material-symbols-outlined">memory</span>
+                                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">CPU</h3>
+                                        <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">2</span>
+                                    </div>
+                                    <span class="material-symbols-outlined" id="cpus-icon">expand_more</span>
+                                </div>
+                                
+                                <div id="cpus-grid" class="inventory-grid" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Dell OptiPlex 7090</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: CPU-00201</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">David Evans</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">HP EliteDesk 800 G6</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: CPU-00202</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">N/A</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #fff3cd; color: #856404; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">En Almacén</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección de Diademas -->
+                            <div class="inventory-category" style="margin-top: 2rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleCategory('headphones')">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span class="material-symbols-outlined">headphones</span>
+                                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">Diademas</h3>
+                                        <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">2</span>
+                                    </div>
+                                    <span class="material-symbols-outlined" id="headphones-icon">expand_more</span>
+                                </div>
+                                
+                                <div id="headphones-grid" class="inventory-grid" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Sony WH-1000XM5</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: HDP-00056</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">Ana Garcia</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">Bose QuietComfort 45</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: HDP-00057</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">Ben Carter</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección de Antenas WiFi -->
+                            <div class="inventory-category" style="margin-top: 2rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleCategory('wifi')">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span class="material-symbols-outlined">wifi</span>
+                                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">Antenas WiFi</h3>
+                                        <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">1</span>
+                                    </div>
+                                    <span class="material-symbols-outlined" id="wifi-icon">expand_more</span>
+                                </div>
+                                
+                                <div id="wifi-grid" class="inventory-grid" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                                    <div class="user-card shadow-sm">
+                                        <div style="padding: 1rem;">
+                                            <h4 style="font-weight: 600; margin: 0 0 0.25rem 0;">TP-Link Archer TX3000E</h4>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.75rem 0;">ID: WIF-00015</p>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Usuario Asignado:</span>
+                                                    <span style="font-size: 0.875rem; font-weight: 500;">Frank Green</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span style="font-size: 0.875rem; color: var(--text-secondary);">Estado:</span>
+                                                    <span style="background: #d4edda; color: #155724; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Asignado</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                                </button>
+                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="view-profile" class="view-section profile-container shadow-sm">
+                        
+                        <p class="breadcrumbs">Directorio / Usuarios / <span id="profile-name-short">Usuario</span></p>
+
+                        <div class="profile-header">
+                            <div class="profile-main-info">
+                                <div id="profile-avatar" class="profile-avatar-lg" style='background-image: url("https://i.pravatar.cc/150?img=9");'></div>
+                                <div>
+                                    <h2 id="profile-name" class="profile-name">Nombre Usuario</h2>
+                                    <p id="profile-role" class="profile-role">Cargo</p>
+                                    <span id="status-badge" class="status-badge">Activo</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn-outline" onclick="showEditProfileView()">
+                                    <span class="material-symbols-outlined icon-base">edit</span> Editar Perfil
+                                </button>
+                                <button class="btn-primary-highlight">
+                                    <span class="material-symbols-outlined icon-base">add</span> Asignar Equipo
+                                </button>
+                            </div>
+                        </div>
+
+                    <!-- Información Personal -->
+                        <div class="section-content">
+                            <h3 class="section-title">Información Personal</h3>
+                            <div class="info-data-grid-2col">
+                                <!-- 1. Nombre -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Nombre Completo</div>
+                                    <div class="info-value">Ana Sofía García Pérez</div>
+                                </div>
+                                
+                                <!-- 2. Fecha de Nacimiento -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha de Nacimiento</div>
+                                    <div class="info-value">10/05/1985</div>
+                                </div>
+                                
+                                <!-- 3. Cédula -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Cédula</div>
+                                    <div class="info-value">V-12.345.678</div>
+                                </div>
+                                
+                                <!-- 4. Celular -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Celular</div>
+                                    <div class="info-value">+58 412-1234567</div>
+                                </div>
+                                
+                                <!-- 5. Correo -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Correo</div>
+                                    <div class="info-value">ana.garcia.p@email.com</div>
+                                </div>
+                                
+                                <!-- 6. Dirección -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Dirección de Residencia</div>
+                                    <div class="info-value">Calle Falsa 123, Apto 4B</div>
+                                </div>
+                                
+                                <!-- 7. Localidad -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Localidad, Barrio</div>
+                                    <div class="info-value">Bosa, La Independencia</div>
+                                </div>
+                                
+                                <!-- 8. Ciudad -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Ciudad / Departamento</div>
+                                    <div class="info-value">Bogotá D.C.</div>
+                                </div>
+                                
+                                <!-- 9. Tipo de Sangre -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Tipo de Sangre</div>
+                                    <div class="info-value">O+</div>
+                                </div>
+                                
+                                <!-- 10. Hijos -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Número de Hijos</div>
+                                    <div class="info-value">2</div>
+                                </div>
+                                
+                                <!-- 11. Persona de Contacto -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Persona de Contacto en Emergencias</div>
+                                    <div class="info-value">Carlos Pérez</div>
+                                </div>
+                                
+                                <!-- 12. Teléfono de Emergencia -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Teléfono de Emergencia</div>
+                                    <div class="info-value">+57 310-9876543</div>
+                                </div>
+                                
+                                <!-- 13. Parentesco del Contacto -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Parentesco del Contacto de Emergencia</div>
+                                    <div class="info-value">Padre</div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- Datos Legales -->
+                        <div class="section-content">
+                            <h3 class="section-title">Datos Legales</h3>
+                            <div class="info-data-grid-2col">
+                                <!-- Activo -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Estado</div>
+                                    <div class="info-value">Activo</div>
+                                </div>
+                                
+                                <!-- EPS -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">EPS</div>
+                                    <div class="info-value">Sura</div>
+                                </div>
+                                
+                                <!-- Fecha Afiliación EPS -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha Afiliación EPS</div>
+                                    <div class="info-value">15/03/2023</div>
+                                </div>
+                                
+                                <!-- Fecha Desafiliación EPS -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha Desafiliación EPS</div>
+                                    <div class="info-value">-</div>
+                                </div>
+                                
+                                <!-- ARL -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">ARL</div>
+                                    <div class="info-value">Positiva</div>
+                                </div>
+                                
+                                <!-- Fecha Afiliación ARL -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha Afiliación ARL</div>
+                                    <div class="info-value">15/03/2023</div>
+                                </div>
+                                
+                                <!-- Fecha Desafiliación ARL -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha Desafiliación ARL</div>
+                                    <div class="info-value">-</div>
+                                </div>
+                                
+                                <!-- Caja de Compensación -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Caja de Compensación</div>
+                                    <div class="info-value">Colsubsidio</div>
+                                </div>
+                                
+                                <!-- Fecha Afiliación Caja Compensación -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha Afiliación Caja Compensación</div>
+                                    <div class="info-value">15/03/2023</div>
+                                </div>
+                                
+                                <!-- Fecha Desafiliación Caja Compensación -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fecha Desafiliación Caja Compensación</div>
+                                    <div class="info-value">-</div>
+                                </div>
+                                
+                                <!-- Fondo de Pensiones -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fondo de Pensiones</div>
+                                    <div class="info-value">Protección</div>
+                                </div>
+                                
+                                <!-- Fondo de Cesantías -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Fondo de Cesantías</div>
+                                    <div class="info-value">Porvenir</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Información de la Empresa -->
+                        <div class="section-content">
+                            <h3 class="section-title">Información de la Empresa</h3>
+                            <div class="info-data-grid-2col">
+                                <!-- Tipo de Contrato -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Tipo de Contrato</div>
+                                    <div class="info-value">Indefinido</div>
+                                </div>
+                                
+                                <!-- Cargo -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Cargo</div>
+                                    <div class="info-value">Desarrollador Senior</div>
+                                </div>
+                                
+                                <!-- Inicio de contrato -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Inicio de Contrato</div>
+                                    <div class="info-value">15/01/2020</div>
+                                </div>
+                                
+                                <!-- Finalización de contrato -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Finalización de Contrato</div>
+                                    <div class="info-value">-</div>
+                                </div>
+                                
+                                <!-- Área / Departamento -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Área / Departamento</div>
+                                    <div class="info-value">Tecnología de la Información</div>
+                                </div>
+                                
+                                <!-- Jefe Inmediato -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Jefe Inmediato</div>
+                                    <div class="info-value">Carlos Rodríguez</div>
+                                </div>
+                                
+                                <!-- Horario / Jornada Laboral -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Horario / Jornada Laboral</div>
+                                    <div class="info-value">L-V 9:00am - 5:00pm</div>
+                                </div>
+                                
+                                <!-- Salario -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Salario</div>
+                                    <div class="info-value">$5.000.000</div>
+                                </div>
+                                
+                                <!-- Entidad de pago -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Entidad de Pago</div>
+                                    <div class="info-value">Bancolombia</div>
+                                </div>
+                                
+                                <!-- Número de cuenta -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">Número de Cuenta</div>
+                                    <div class="info-value">123-456789-01</div>
+                                </div>
+                                
+                                <!-- ID BIOMETRICO -->
+                                <div class="info-grid-item">
+                                    <div class="info-label">ID Biométrico</div>
+                                    <div class="info-value">BIO-2023-001234</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pestañas Hardware / Software / Observaciones -->
+                        <div class="tabs-container">
+                            <button class="tab-btn active" onclick="switchTab('hardware', this)">Hardware</button>
+                            <button class="tab-btn" onclick="switchTab('software', this)">Software</button>
+                            <button class="tab-btn" onclick="switchTab('obs', this)">Observaciones</button>
+                        </div>
+
+                        <!-- Tab Hardware -->
+                        <div id="tab-hardware" class="tab-content active">
+                            <div class="info-data-grid-2col">
+                                <div class="info-grid-item">
+                                    <div class="info-label">Procesador</div>
+                                    <div class="info-value">Intel Core i7 12th Gen</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Memoria RAM</div>
+                                    <div class="info-value">16 GB DDR4</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Almacenamiento</div>
+                                    <div class="info-value">512 GB SSD NVMe</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Tarjeta Gráfica</div>
+                                    <div class="info-value">NVIDIA RTX 3050</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Antena Wifi</div>
+                                    <div class="info-value">Integrada</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Mouse</div>
+                                    <div class="info-value">Logitech G203</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Teclado</div>
+                                    <div class="info-value">Mecánico Redragon</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Diadema</div>
+                                    <div class="info-value">Sony WH-1000XM5</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Software -->
+                        <div id="tab-software" class="tab-content">
+                            <div class="info-data-grid-2col">
+                                <div class="info-grid-item">
+                                    <div class="info-label">Microsoft Office 365</div>
+                                    <div class="info-value">Licencia E3</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Adobe Creative Cloud</div>
+                                    <div class="info-value">Todas las aplicaciones</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Slack</div>
+                                    <div class="info-value">Plan Pro</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Figma</div>
+                                    <div class="info-value">Licencia Profesional</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">Jira</div>
+                                    <div class="info-value">Acceso Completo</div>
+                                </div>
+                                <div class="info-grid-item">
+                                    <div class="info-label">GitLab</div>
+                                    <div class="info-value">Rol de Mantenedor</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Observaciones -->
+                        <div id="tab-obs" class="tab-content">
+                            <div class="obs-card">
+                                <p>El equipo fue entregado el día 15 de Noviembre de 2025. Se encuentra en excelentes condiciones. Tiene instalado el paquete Adobe completo y Office 365 empresarial.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <a class="back-to-directory" href="#" onclick="event.preventDefault(); showDirectoryView()">← Volver al Directorio</a>
+                        </div>
+                    </div>
+                    
+                        <!-- Vista de Edición -->
+                    <div id="view-edit-profile" class="view-section profile-container shadow-sm">
+                        <p class="breadcrumbs">Directorio / Usuarios / <span id="edit-profile-name-short">Usuario</span></p>
+
+                        <div class="profile-header">
+                            <div class="profile-main-info">
+                                <div id="edit-profile-avatar" class="profile-avatar-lg" style='background-image: url("https://i.pravatar.cc/150?img=9");'></div>
+                                <div>
+                                    <h2 id="edit-profile-name-full" class="profile-name">Editar Perfil de Ana García</h2>
+                                    <p class="profile-role">Modifique la información personal y de hardware del usuario.</p>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn-outline" onclick="showProfileViewFromEdit()">Cancelar</button>
+                                <button class="btn-primary-highlight">
+                                    <span class="material-symbols-outlined icon-base">save</span>
+                                    Guardar Cambios
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Personal -->
+                        <div class="section-content">
+                            <h3 class="section-title">Información Personal</h3>
+                            <div class="edit-form-grid">
+                                <div class="form-input-group">
+                                    <label for="edit-nombre-completo" class="form-label">Nombre Completo</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-nombre-completo" type="text" value="Ana Sofía García Pérez"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-nacimiento" class="form-label">Fecha de Nacimiento</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-nacimiento" type="date" value="1985-05-10"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-cedula" class="form-label">Cédula</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-cedula" type="text" value="V-12.345.678"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-celular" class="form-label">Celular</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-celular" type="tel" value="+58 412-1234567"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-correo" class="form-label">Correo</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-correo" type="email" value="ana.garcia.p@email.com"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-direccion" class="form-label">Dirección de Residencia</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-direccion" type="text" value="Calle Falsa 123, Apto 4B"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-localidad" class="form-label">Localidad, Barrio</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-localidad" type="text" value="Bosa, La Independencia"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-ciudad" class="form-label">Ciudad / Departamento</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-ciudad" type="text" value="Bogotá D.C."/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-tipo-sangre" class="form-label">Tipo de Sangre</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-tipo-sangre" type="text" value="O+"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-num-hijos" class="form-label">Número de Hijos</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-num-hijos" type="number" value="2"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-contacto-emergencia" class="form-label">Persona de Contacto en Emergencias</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-contacto-emergencia" type="text" value="Carlos Pérez"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-telefono-emergencia" class="form-label">Teléfono de Emergencia</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-telefono-emergencia" type="tel" value="+57 310-9876543"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-parentesco-emergencia" class="form-label">Parentesco del Contacto de Emergencia</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-parentesco-emergencia" type="text" value="Padre"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Datos Legales -->
+                        <div class="section-content">
+                            <h3 class="section-title">Datos Legales</h3>
+                            <div class="edit-form-grid">
+                                <div class="form-input-group">
+                                    <label for="edit-estado" class="form-label">Estado</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-estado" type="text" value="Activo"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-eps" class="form-label">EPS</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-eps" type="text" value="Sura"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-afiliacion-eps" class="form-label">Fecha Afiliación EPS</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-afiliacion-eps" type="date" value="2023-03-15"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-desafiliacion-eps" class="form-label">Fecha Desafiliación EPS</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-desafiliacion-eps" type="date" value=""/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-arl" class="form-label">ARL</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-arl" type="text" value="Positiva"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-afiliacion-arl" class="form-label">Fecha Afiliación ARL</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-afiliacion-arl" type="date" value="2023-03-15"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-desafiliacion-arl" class="form-label">Fecha Desafiliación ARL</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-desafiliacion-arl" type="date" value=""/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-caja-compensacion" class="form-label">Caja de Compensación</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-caja-compensacion" type="text" value="Colsubsidio"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-afiliacion-caja" class="form-label">Fecha Afiliación Caja Compensación</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-afiliacion-caja" type="date" value="2023-03-15"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fecha-desafiliacion-caja" class="form-label">Fecha Desafiliación Caja Compensación</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fecha-desafiliacion-caja" type="date" value=""/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fondo-pensiones" class="form-label">Fondo de Pensiones</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fondo-pensiones" type="text" value="Protección"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-fondo-cesantias" class="form-label">Fondo de Cesantías</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-fondo-cesantias" type="text" value="Porvenir"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información de la Empresa -->
+                        <div class="section-content">
+                            <h3 class="section-title">Información de la Empresa</h3>
+                            <div class="edit-form-grid">
+                                <div class="form-input-group">
+                                    <label for="edit-tipo-contrato" class="form-label">Tipo de Contrato</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-tipo-contrato" type="text" value="Indefinido"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-cargo" class="form-label">Cargo</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-cargo" type="text" value="Desarrollador Senior"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-inicio-contrato" class="form-label">Inicio de Contrato</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-inicio-contrato" type="date" value="2020-01-15"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-finalizacion-contrato" class="form-label">Finalización de Contrato</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-finalizacion-contrato" type="date" value=""/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-area-departamento" class="form-label">Área / Departamento</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-area-departamento" type="text" value="Tecnología de la Información"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-jefe-inmediato" class="form-label">Jefe Inmediato</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-jefe-inmediato" type="text" value="Carlos Rodríguez"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-horario" class="form-label">Horario / Jornada Laboral</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-horario" type="text" value="L-V 9:00am - 5:00pm"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-salario" class="form-label">Salario</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-salario" type="text" value="$5.000.000"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-entidad-pago" class="form-label">Entidad de Pago</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-entidad-pago" type="text" value="Bancolombia"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-numero-cuenta" class="form-label">Número de Cuenta</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-numero-cuenta" type="text" value="123-456789-01"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                                <div class="form-input-group">
+                                    <label for="edit-id-biometrico" class="form-label">ID Biométrico</label>
+                                    <div class="input-with-icon">
+                                        <input class="form-input" id="edit-id-biometrico" type="text" value="BIO-2023-001234"/>
+                                        <span class="material-symbols-outlined input-icon">edit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pestañas: Hardware, Software, Observaciones, Historial -->
+                        <div class="section-content">
+                            <div class="tabs-container">
+                                <button class="tab-btn active" onclick="switchEditTab('hardware', this)">Hardware</button>
+                                <button class="tab-btn" onclick="switchEditTab('software', this)">Software</button>
+                                <button class="tab-btn" onclick="switchEditTab('obs', this)">Observaciones</button>
+                                <button class="tab-btn" onclick="switchEditTab('history', this)">Historial</button>
+                            </div>
+
+                            <!-- Tab Hardware -->
+                            <div id="tab-edit-hardware" class="tab-content active">
+                                <div class="edit-form-grid">
+                                    <div class="form-input-group">
+                                        <label for="edit-procesador" class="form-label">Procesador</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-procesador" type="text" value="Intel Core i7 12th Gen"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-ram" class="form-label">Memoria RAM</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-ram" type="text" value="16 GB DDR4"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-almacenamiento" class="form-label">Almacenamiento</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-almacenamiento" type="text" value="512 GB SSD NVMe"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-gpu" class="form-label">Tarjeta Gráfica</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-gpu" type="text" value="NVIDIA RTX 3050"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-antena-wifi" class="form-label">Antena Wifi</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-antena-wifi" type="text" value="Integrada"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-mouse" class="form-label">Mouse</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-mouse" type="text" value="Logitech G203"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-teclado" class="form-label">Teclado</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-teclado" type="text" value="Mecánico Redragon"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-diadema" class="form-label">Diadema</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-diadema" type="text" value="Sony WH-1000XM5"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Software -->
+                            <div id="tab-edit-software" class="tab-content">
+                                <div class="edit-form-grid">
+                                    <div class="form-input-group">
+                                        <label for="edit-office365" class="form-label">Microsoft Office 365</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-office365" type="text" value="Licencia E3"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-adobe" class="form-label">Adobe Creative Cloud</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-adobe" type="text" value="Todas las aplicaciones"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-slack" class="form-label">Slack</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-slack" type="text" value="Plan Pro"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-figma" class="form-label">Figma</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-figma" type="text" value="Licencia Profesional"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-jira" class="form-label">Jira</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-jira" type="text" value="Acceso Completo"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-input-group">
+                                        <label for="edit-gitlab" class="form-label">GitLab</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-input" id="edit-gitlab" type="text" value="Rol de Mantenedor"/>
+                                            <span class="material-symbols-outlined input-icon">edit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Observaciones -->
+                            <div id="tab-edit-obs" class="tab-content">
+                                <div class="form-input-group">
+                                    <label for="edit-observaciones" class="form-label">Observaciones</label>
+                                    <textarea class="form-input" id="edit-observaciones" rows="6" style="resize: vertical; font-family: inherit;">El equipo fue entregado el día 15 de Noviembre de 2025. Se encuentra en excelentes condiciones. Tiene instalado el paquete Adobe completo y Office 365 empresarial.</textarea>
+                                </div>
+                            </div>
+
+                            <!-- Tab Historial -->
+                            <div id="tab-edit-history" class="tab-content">
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Componente</th>
+                                                <th>Valor Anterior</th>
+                                                <th>Valor Nuevo</th>
+                                                <th>Realizado por</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>15/05/2024</td>
+                                                <td>RAM</td>
+                                                <td>8 GB</td>
+                                                <td>16 GB</td>
+                                                <td>Admin TI</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10/01/2024</td>
+                                                <td>Mouse</td>
+                                                <td>Apple Magic Mouse</td>
+                                                <td>Logitech MX Master 3S</td>
+                                                <td>Admin TI</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10/01/2024</td>
+                                                <td>Diadema</td>
+                                                <td>N/A</td>
+                                                <td>Sony WH-1000XM5</td>
+                                                <td>Admin TI</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <script>
+        // Referencias a elementos
+        const dirView = document.getElementById('view-directory');
+        const profileView = document.getElementById('view-profile');
+        const editProfileView = document.getElementById('view-edit-profile');
+        const activeEmployeesGrid = document.getElementById('active-employees-grid');
+        const inactiveEmployeesGrid = document.getElementById('inactive-employees-grid');
+        const inventorySection = document.getElementById('inventory-section');
+        const searchInput = document.getElementById('search-input');
+        const inventorySearchInput = document.getElementById('inventory-search-input');
+
+        const profileAvatar = document.getElementById('profile-avatar');
+        const editProfileAvatar = document.getElementById('edit-profile-avatar');
+        const statusBadge = document.getElementById('status-badge');
+
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        const logoLight = document.querySelector('.logo-light');
+        const logoDark = document.querySelector('.logo-dark');
+
+        // Variable global para almacenar datos del usuario seleccionado
+        let currentProfileData = {};
+        let currentEmployeeType = 'active'; // 'active', 'inactive' o 'inventory'
+
+        // Función para cambiar entre pestañas de empleados (Activo/Inactivo/Inventario)
+        function switchEmployeeTab(tabId, element) {
+            // 1. Resetear todos los botones de pestaña
+            document.querySelectorAll('#view-directory .tabs-container .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // 2. Activar el botón clickeado
+            element.classList.add('active');
+
+            // 3. Mostrar/ocultar grids correspondientes
+            if (tabId === 'active') {
+                activeEmployeesGrid.style.display = 'grid';
+                inactiveEmployeesGrid.style.display = 'none';
+                inventorySection.style.display = 'none';
+                searchInput.style.display = 'block';
+                searchInput.placeholder = 'Buscar por nombre o puesto...';
+                currentEmployeeType = 'active';
+            } else if (tabId === 'inactive') {
+                activeEmployeesGrid.style.display = 'none';
+                inactiveEmployeesGrid.style.display = 'grid';
+                inventorySection.style.display = 'none';
+                searchInput.style.display = 'block';
+                searchInput.placeholder = 'Buscar por nombre o puesto...';
+                currentEmployeeType = 'inactive';
+            } else if (tabId === 'inventory') {
+                activeEmployeesGrid.style.display = 'none';
+                inactiveEmployeesGrid.style.display = 'none';
+                inventorySection.style.display = 'block';
+                searchInput.style.display = 'none';
+                currentEmployeeType = 'inventory';
+            }
+
+            // 4. Limpiar búsqueda
+            searchInput.value = '';
+            if (inventorySearchInput) inventorySearchInput.value = '';
+        }
+
+        // Función para expandir/colapsar categorías de inventario
+        function toggleCategory(categoryId) {
+            const grid = document.getElementById(categoryId + '-grid');
+            const icon = document.getElementById(categoryId + '-icon');
+            
+            if (grid.style.display === 'none' || grid.style.display === '') {
+                grid.style.display = 'grid';
+                icon.textContent = 'expand_less';
+            } else {
+                grid.style.display = 'none';
+                icon.textContent = 'expand_more';
+            }
+        }
+
+        // Función para búsqueda en tiempo real (empleados)
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const currentGrid = currentEmployeeType === 'active' ? activeEmployeesGrid : inactiveEmployeesGrid;
+            const cards = currentGrid.querySelectorAll('.user-card');
+
+            cards.forEach(card => {
+                const name = card.querySelector('.name').textContent.toLowerCase();
+                const role = card.querySelector('.role').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || role.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Función para búsqueda en inventario
+        if (inventorySearchInput) {
+            inventorySearchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const allCards = inventorySection.querySelectorAll('.user-card');
+
+                allCards.forEach(card => {
+                    const title = card.querySelector('h4').textContent.toLowerCase();
+                    const id = card.querySelector('p').textContent.toLowerCase();
+                    const user = card.querySelectorAll('div > span')[1] ? card.querySelectorAll('div > span')[1].textContent.toLowerCase() : '';
+                    
+                    if (title.includes(searchTerm) || id.includes(searchTerm) || user.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Función para mostrar la vista de perfil
+        function showProfileView(name, role, imgId, status) {
+            // 1. Guardar la data del usuario seleccionado
+            currentProfileData = {
+                name,
+                role,
+                imgId,
+                status,
+                fullName: 'Ana Sofía García Pérez',
+                cedula: 'V-12.345.678'
+            };
+
+            // 2. Actualizar datos del perfil
+            document.getElementById('profile-name').innerText = name;
+            document.getElementById('profile-name-short').innerText = name;
+            document.getElementById('profile-role').innerText = role;
+            profileAvatar.style.backgroundImage = `url('https://i.pravatar.cc/150?img=${imgId}')`;
+            
+            // 3. Actualizar el badge de estado según el tipo de empleado
+            if (status === 'active') {
+                statusBadge.textContent = 'Activo';
+                statusBadge.className = 'status-badge active';
+            } else {
+                statusBadge.textContent = 'Inactivo';
+                statusBadge.className = 'status-badge inactive';
+            }
+            
+            // 4. Cambiar vista: Ocultar directorio/edición y mostrar perfil detallado
+            dirView.classList.remove('active');
+            editProfileView.classList.remove('active');
+            profileView.classList.add('active');
+
+            // 5. Resetear a la primera pestaña (Hardware) al cargar el perfil
+            const firstTab = document.querySelector('#view-profile .tabs-container .tab-btn:first-child');
+            if (firstTab) {
+                switchTab('hardware', firstTab);
+            }
+        }
+
+        // Función para mostrar la vista de edición de perfil
+        function showEditProfileView() {
+            // 1. Ocultar la vista de perfil detallado
+            profileView.classList.remove('active');
+            
+            // 2. Mostrar la vista de edición
+            editProfileView.classList.add('active');
+
+            // 3. Actualizar datos de la cabecera de edición con los datos guardados
+            document.getElementById('edit-profile-name-full').innerText = `Editar Perfil de ${currentProfileData.name}`;
+            document.getElementById('edit-profile-name-short').innerText = currentProfileData.name;
+            editProfileAvatar.style.backgroundImage = `url('https://i.pravatar.cc/150?img=${currentProfileData.imgId}')`;
+
+            // 4. Asegurarse de que la pestaña de Historial esté activa por defecto
+            const historyTabBtn = document.querySelector('#view-edit-profile .tabs-container .tab-btn:last-child');
+            if (historyTabBtn) {
+                switchEditTab('history', historyTabBtn);
+            }
+        }
+
+        // Función para volver a la vista de perfil detallado desde la edición
+        function showProfileViewFromEdit() {
+            editProfileView.classList.remove('active');
+            profileView.classList.add('active');
+        }
+
+        // Función para volver al directorio
+        function showDirectoryView() {
+            profileView.classList.remove('active');
+            editProfileView.classList.remove('active');
+            dirView.classList.add('active');
+        }
+
+        // Función para cambiar entre pestañas de información (Hardware/Software/Obs) en la VISTA DETALLADA
+        function switchTab(tabId, element) {
+            // 1. Resetear todos los botones de pestaña
+            document.querySelectorAll('#view-profile .tabs-container .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // 2. Activar el botón clickeado
+            element.classList.add('active');
+
+            // 3. Ocultar todos los contenidos de pestaña
+            document.querySelectorAll('#view-profile .tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 4. Mostrar el contenido de la pestaña seleccionada
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // Función para cambiar entre pestañas en la VISTA DE EDICIÓN
+        function switchEditTab(tabId, element) {
+            // 1. Resetear todos los botones de pestaña dentro de la vista de edición
+            document.querySelectorAll('#view-edit-profile .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // 2. Activar el botón clickeado
+            element.classList.add('active');
+
+            // 3. Ocultar todos los contenidos de pestaña dentro de la vista de edición
+            document.querySelectorAll('#view-edit-profile .tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 4. Mostrar el contenido de la pestaña seleccionada
+            document.getElementById('tab-edit-' + tabId).classList.add('active');
+        }
+
+        // Lógica de Alternar Tema (Dark/Light)
+        themeToggleBtn.addEventListener('click', () => {
+            // Alterna la clase 'dark-mode' en el <body>
+            body.classList.toggle('dark-mode');
+            
+            // Cambiar íconos (sol/luna) y logos
+            if (body.classList.contains('dark-mode')) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                
+                // Manejo de Logos
+                if (logoLight && logoDark) {
+                    logoLight.classList.add('hidden');
+                    logoDark.classList.remove('hidden');
+                }
+            } else {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+                
+                // Manejo de Logos
+                if (logoLight && logoDark) {
+                    logoLight.classList.remove('hidden');
+                    logoDark.classList.add('hidden');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

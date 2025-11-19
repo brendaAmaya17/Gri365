@@ -2224,7 +2224,7 @@ body.dark-mode .ai-message .message-icon { background-color: var(--surface); }
 .message-bubble { padding: 0.75rem 1rem; border-radius: var(--border-radius-lg); line-height: 1.5; }
 .ai-message .message-bubble { background-color: var(--accent); border-top-left-radius: 0; }
 body.dark-mode .ai-message .message-bubble { background-color: var(--border); }
-.user-message .message-bubble { background-color: var(--primary); color: white; border-top-right-radius: 0; }
+.user-message .message-bubble { background-color: var(--primary); color: white (255, 255, 255); border-top-right-radius: 0; }
 .chat-input-area { display: flex; gap: 0.5rem; padding: 1rem; border-top: 1px solid var(--border); }
 .chat-input-area input { flex-grow: 1; border: 1px solid var(--border); background-color: var(--surface); border-radius: var(--border-radius); padding: 0.75rem; font-size: 1rem; outline: none; }
 .chat-input-area input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px var(--accent); }
@@ -2350,7 +2350,7 @@ body.dark-mode .modal-footer {
     /* Paleta de Colores - Light Mode */
     --color-primary:  #9b1289d2;           /* Morado Brillante (Acento) */
     --color-primary-dark: #360c32;      /* Morado Oscuro (Botones principales) */
-    --color-primary-light: #ffffffd2;     /* Morado muy claro (Fondo de link activo) */
+    --color-primary-light:  #a2f0fd50;     /* Morado muy claro (Fondo de link activo) */
 
     --bg-light: #f8fafc;                 /* Fondo principal (Gris muy claro) */
     --bg-card: #ffffff;                  /* Fondo de tarjeta (Blanco) */
@@ -2379,8 +2379,8 @@ body.dark-mode .modal-footer {
     --text-main: #f1f5f9;              
     --text-muted: #94a3b8;             
     --border-color: #334155;           
-    --status-active-bg: rgba(16, 185, 129, 0.2);
-}
+    --status-active-bg: #9cedfcb2;
+} 
 
 /* Reset y Base */
 * {
@@ -2770,7 +2770,7 @@ body {
     font-size: 0.75rem; 
     font-weight: 600;
     color: var(--status-active);
-    background-color: var(--status-active-bg);
+    background-color: #00b8005d; /* Verde claro para "Activo" */
 }
 
 
@@ -2971,12 +2971,433 @@ body {
     color: var(--color-primary-dark);
 }
 
+        /* Estilos para empleados inactivos */
+        .inactive-employee {
+            opacity: 0.5;
+            position: relative;
+        }
+
+        .inactive-employee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        body.dark-mode .inactive-employee::after {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .inactive-employee:hover {
+            opacity: 0.7;
+        }
+
+        /* Mejorar la búsqueda */
+        .search-container {
+            margin-bottom: 1.5rem;
+        }
+
 /* Animación simple */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
+    
+        /* Estilos para el badge de estado */
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .status-badge.active {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .status-badge.inactive {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        /* Grid de 2 columnas SIN líneas divisorias entre campos */
+        .info-data-grid-2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .info-grid-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 1rem 0;
+        }
+
+        /* Línea divisoria delgada y sutil gris SOLO entre secciones */
+        .section-content {
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #d1d5db;
+        }
+
+        .dark-mode .section-content {
+            border-bottom: 1px solid #4b5563;
+        }
+
+        /* Eliminar línea del último section-content antes de las pestañas */
+        .section-content:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .info-grid-item .info-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+            padding-right: 1rem;
+        }
+
+        .dark-mode .info-grid-item .info-label {
+            color: #9ca3af;
+        }
+
+        .info-grid-item .info-value {
+            font-size: 0.875rem;
+            color: #111827;
+            font-weight: 400;
+        }
+
+        .dark-mode .info-grid-item .info-value {
+            color: #f3f4f6;
+        }
+
+        /* Ajustes para responsive */
+        @media (max-width: 768px) {
+            .info-data-grid-2col {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid-item {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+        }
+    
+
+        /* ===================================
+   ESTILOS PARA SECCIÓN DE INVENTARIO
+   =================================== */
+
+/* Contenedor principal de inventario */
+#inventory-section {
+    width: 100%;
+}
+
+/* Categoría de inventario - usando <details> */
+.inventory-category {
+    background: var(--bg-primary, #ffffff);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Summary (header clickeable de la categoría) */
+.inventory-category > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.inventory-category > div:first-child:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Contenedor izquierdo del header (ícono + título + badge) */
+.inventory-category > div:first-child > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Ícono de la categoría */
+.inventory-category > div:first-child .material-symbols-outlined:first-child {
+    font-size: 1.5rem;
+    color: #440F4D;
+}
+
+/* Título de categoría */
+.inventory-category h3 {
+    color: var(--text-primary, #1f2937);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Badge contador de dispositivos */
+.inventory-category > div:first-child span[style*="background"] {
+    background: #f3f4f6 !important;
+    color: #4b5563 !important;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Ícono de expandir/colapsar */
+.inventory-category > div:first-child > .material-symbols-outlined:last-child {
+    font-size: 1.5rem;
+    color: #6b7280;
+    transition: transform 0.3s ease;
+}
+
+/* Grid de dispositivos */
+#inventory-section .inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem 1.25rem;
+    padding-top: 0;
+}
+
+/* Tarjetas de dispositivos */
+#inventory-section .user-card {
+    background: #f8f7fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+}
+
+#inventory-section .user-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido de la tarjeta */
+#inventory-section .user-card > div {
+    padding: 0;
+}
+
+/* Título del dispositivo */
+#inventory-section .user-card h4 {
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+}
+
+/* ID del dispositivo */
+#inventory-section .user-card p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0;
+}
+
+/* Contenedor de información (Usuario Asignado y Estado) */
+#inventory-section .user-card > div > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Filas de información */
+#inventory-section .user-card > div > div:first-of-type > div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    align-items: center;
+}
+
+/* Labels (Usuario Asignado, Estado) */
+#inventory-section .user-card > div > div:first-of-type > div > span:first-child {
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Valores de texto */
+#inventory-section .user-card > div > div:first-of-type > div > span:nth-child(2) {
+    color: #6b7280;
+}
+
+/* Badge de estado "Asignado" (verde) */
+#inventory-section .user-card span[style*="background: #d4edda"] {
+    background: #d1fae5 !important;
+    color: #065f46 !important;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Badge de estado "En Almacén" (amarillo) */
+#inventory-section .user-card span[style*="background: #fff3cd"] {
+    background: #fef3c7 !important;
+    color: #92400e !important;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Contenedor de botones de acción */
+#inventory-section .user-card > div > div:last-child {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: auto;
+}
+
+/* Botones de editar/eliminar */
+#inventory-section .user-card button {
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inventory-section .user-card button:hover {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+#inventory-section .user-card button:active {
+    transform: scale(0.95);
+}
+
+#inventory-section .user-card button .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+/* Barra de búsqueda del inventario */
+#inventory-search-input {
+    width: 100%;
+}
+
+/* Modo oscuro */
+body.dark-mode .inventory-category {
+    background: #1f2937;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .inventory-category > div:first-child:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .inventory-category h3 {
+    color: #f9fafb;
+}
+
+body.dark-mode .inventory-category > div:first-child span[style*="background"] {
+    background: #374151 !important;
+    color: #d1d5db !important;
+}
+
+body.dark-mode .inventory-category > div:first-child > .material-symbols-outlined:last-child {
+    color: #9ca3af;
+}
+
+body.dark-mode #inventory-section .user-card {
+    background: #111827;
+    border-color: #374151;
+}
+
+body.dark-mode #inventory-section .user-card h4 {
+    color: #f9fafb;
+}
+
+body.dark-mode #inventory-section .user-card p {
+    color: #9ca3af;
+}
+
+body.dark-mode #inventory-section .user-card > div > div:first-of-type > div > span:first-child {
+    color: #d1d5db;
+}
+
+body.dark-mode #inventory-section .user-card > div > div:first-of-type > div > span:nth-child(2) {
+    color: #9ca3af;
+}
+
+body.dark-mode #inventory-section .user-card span[style*="background: #d4edda"] {
+    background: #064e3b !important;
+    color: #6ee7b7 !important;
+}
+
+body.dark-mode #inventory-section .user-card span[style*="background: #fff3cd"] {
+    background: #78350f !important;
+    color: #fcd34d !important;
+}
+
+body.dark-mode #inventory-section .user-card > div > div:last-child {
+    border-top-color: #374151;
+}
+
+body.dark-mode #inventory-section .user-card button {
+    color: #9ca3af;
+}
+
+body.dark-mode #inventory-section .user-card button:hover {
+    background: #374151;
+    color: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    #inventory-section .inventory-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    #inventory-section .inventory-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .inventory-category > div:first-child {
+        padding: 0.875rem 1rem;
+    }
+    
+    #inventory-section .user-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    #inventory-section .inventory-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventory-category h3 {
+        font-size: 1.125rem;
+    }
+}
 
 /* =========================================
    5. MEDIA QUERIES (Responsivo)

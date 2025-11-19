@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CAM - Dashboard</title>
+    <title>CAM - Inicio</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,25 +18,13 @@
                 <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
                 <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark">
             </div>
-            <nav class="navigation">
-                <a class="nav-link" href="./../index.html">
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span>Inicio</span>
-                </a>
-                <a class="nav-link" href="#">
-                    <span class="material-symbols-outlined">list_alt</span>
-                    <span>FixIT</span>
-                </a>
-                <a class="nav-link" href="./../pages/gestion.html">
-                    <span class="material-symbols-outlined">inbox</span>
-                    <span>Gestión de Proyectos</span>
-                </a>
-                <a class="nav-link active" href="./../pages/marketing.html">
-                    <span class="material-symbols-outlined">linked_camera</span>
-                    <span>CAM</span>
-                </a>
-                <a class="nav-link active" href="./../pages/inventario.html"><span class="material-symbols-outlined">inventory</span><span>Inventario</span></a>
-            </nav>
+                <nav class="navigation">
+                    <a class="nav-link" href="./../index.html"><span class="material-symbols-outlined">dashboard</span><span>Inicio</span></a>
+                    <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
+                    <a class="nav-link" href="./../pages/gestion.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
+                    <a class="nav-link" href="./../pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
+                    <a class="nav-link active" href="./../pages/directorio.html"><span class="material-symbols-outlined">inventory</span><span>Directorio</span></a>
+                </nav>
             <div class="sidebar-footer">
                 <a class="nav-link" href="#">
                     <span class="material-symbols-outlined">logout</span>
@@ -69,11 +57,11 @@
                     </nav>
                 </div>
                 <div class="header-right">
-                    <button class="btn-icon" id="theme-toggle-btn" title="Alternar tema">
+                    <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
                         <span class="material-symbols-outlined sun-icon">light_mode</span>
-                        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+                        <span class="material-symbols-outlined moon-icon hidden">dark_mode</span>
                     </button>
-                    <a href="#" class="btn-icon" title="Cerrar Sesión">
+                    <a href="#" class="icon-button" title="Cerrar Sesión">
                         <span class="material-symbols-outlined">logout</span>
                     </a>
                 </div>
