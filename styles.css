@@ -18,18 +18,25 @@
 
 /* 1. Variables y Estilos Raíz (Global) */
 :root {
-    --font-display: "Inter", sans-serif;
-    --primary: #370c31;
-    --accent: #e6e0f0;
-    --accent-hover: #dcd6e8;
-    --background: #ecf0f1;
-    --surface: #ffffff;
-    --text-primary: #212529;
-    --text-muted: #6C757D;
-    --border: #dee2e6;
-    --border-radius: 0.5rem;
-    --border-radius-lg: 0.75rem;
-    --border-radius-xl: 1rem;
+    --primary-color: #8B458B;
+    --primary-hover: #6d356d;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --bg-hover: #e5e7eb;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #d1d5db;
+}
+
+.dark-mode {
+    --primary-color: #8B458B;
+    --primary-hover: #6d356d;
+    --bg-primary: #1f2937;
+    --bg-secondary: #111827;
+    --bg-hover: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
 }
 
 /* 2. Estilos Base y Tipografía (Global) */
@@ -3366,6 +3373,805 @@ body.dark-mode #inventory-section .user-card button:hover {
     color: #f3f4f6;
 }
 
+
+/* ========================================
+   ESTILOS PARA MODAL DE AGREGAR EMPLEADO
+   ======================================== */
+
+/* Overlay del modal - Fondo oscuro semitransparente */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Contenedor principal del modal */
+.modal-content {
+    background: white;
+    border-radius: 1rem;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Animación de aparición del modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Encabezado del modal */
+.modal-header {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.modal-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Botón de cerrar modal */
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* ========================================
+   INDICADOR DE PASOS (STEPPER)
+   ======================================== */
+
+.steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Item individual de paso */
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+/* Círculo numerado del paso */
+.step-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+/* Etiqueta de texto del paso */
+.step-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+    max-width: 100px;
+    transition: all 0.3s ease;
+}
+
+/* Conector visual entre pasos */
+.step-connector {
+    flex: 1;
+    height: 2px;
+    background: var(--border-color);
+    margin: 0 0.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para el paso activo */
+.step-item.active .step-circle {
+    background: #6b21a8; /* Color morado/púrpura */
+    color: white;
+    box-shadow: 0 4px 12px rgba(107, 33, 168, 0.3);
+}
+
+.step-item.active .step-label {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Estilos para pasos completados */
+.step-item.completed .step-circle {
+    background: #10b981; /* Verde de completado */
+    color: white;
+}
+
+.step-item.completed .step-label {
+    color: var(--text-primary);
+}
+
+.step-connector.completed {
+    background: #10b981;
+}
+
+/* ========================================
+   CONTENIDO DEL FORMULARIO POR PASOS
+   ======================================== */
+
+.form-steps-content {
+    padding: 2rem;
+    min-height: 400px;
+}
+
+/* Paso individual del formulario */
+.form-step {
+    display: none;
+    animation: stepFadeIn 0.4s ease-out;
+}
+
+/* Mostrar solo el paso activo */
+.form-step.active {
+    display: block;
+}
+
+
+/* Animación de transición entre pasos */
+@keyframes stepFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========================================
+   NAVEGACIÓN DEL FORMULARIO
+   ======================================== */
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+/* ========================================
+   RESPONSIVE - ADAPTACIÓN MÓVIL
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Ajustar modal en pantallas pequeñas */
+    .modal-overlay {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        max-height: 95vh;
+    }
+    
+    /* Stepper vertical en móvil */
+    .steps-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .step-connector {
+        display: none;
+    }
+    
+    .step-item {
+        flex-direction: row;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+    
+    .step-label {
+        text-align: left;
+        max-width: none;
+    }
+    
+    /* Ajustar padding del formulario */
+    .form-steps-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .form-navigation {
+        padding: 1rem;
+        flex-direction: column;
+    }
+    
+    .form-navigation button {
+        width: 100%;
+    }
+}
+
+
+
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+
+.dark-mode .modal-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .step-circle {
+    background: #374151;
+}
+
+.dark-mode .step-item.active .step-circle {
+    background: #7c3aed;
+}
+
+
+/* ============================================ */
+/* ESTILOS PARA MODAL DE AÑADIR DISPOSITIVO */
+/* VERSIÓN AISLADA - NO AFECTA OTROS MODALES */
+/* ============================================ */
+
+/* Overlay SOLO para modal de dispositivos */
+#add-device-modal.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+/* Contenedor del modal de dispositivos */
+#add-device-modal .modal-content.modal-device {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    padding: 1.5rem;
+}
+
+/* Header del modal de dispositivos */
+#add-device-modal .modal-header-device {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+}
+
+/* Título principal */
+#add-device-modal .modal-header-device .modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Subtítulo */
+#add-device-modal .modal-subtitle-device {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0.375rem 0 0 0;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* Botón cerrar (X) */
+#add-device-modal .modal-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+#add-device-modal .modal-close-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+#add-device-modal .modal-close-btn .material-symbols-outlined {
+    font-size: 1.5rem;
+}
+
+/* ============================================ */
+/* PESTAÑAS */
+/* ============================================ */
+
+#add-device-modal .device-tabs-container {
+    display: flex;
+    gap: 0.375rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-secondary);
+    padding: 0.25rem;
+    border-radius: 8px;
+}
+
+#add-device-modal .device-tab-btn {
+    flex: 1;
+    padding: 0.625rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    line-height: 1.3;
+}
+
+#add-device-modal .device-tab-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+#add-device-modal .device-tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================ */
+/* CONTENIDO DE PESTAÑAS */
+/* ============================================ */
+
+#add-device-modal .device-tab-content {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#add-device-modal .device-tab-content.active {
+    display: flex;
+}
+
+/* ============================================ */
+/* FORMULARIO */
+/* ============================================ */
+
+#add-device-modal .form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+#add-device-modal .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+#add-device-modal .form-input {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+#add-device-modal .form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(139, 69, 139, 0.1);
+}
+
+#add-device-modal .form-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* Select personalizado */
+#add-device-modal select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem;
+    cursor: pointer;
+}
+
+/* Input con icono */
+#add-device-modal .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#add-device-modal .input-with-icon .form-input {
+    padding-right: 2.5rem;
+}
+
+#add-device-modal .input-with-icon .input-icon {
+    position: absolute;
+    right: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    pointer-events: none;
+}
+
+/* ============================================ */
+/* CHECKBOX AUTO-INCREMENT */
+/* ============================================ */
+
+#add-device-modal input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+/* ============================================ */
+/* BOTONES DE ACCIÓN */
+/* ============================================ */
+
+#add-device-modal .device-modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+#add-device-modal .device-modal-actions button {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+}
+
+#add-device-modal .device-modal-actions .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+#add-device-modal .device-modal-actions .btn-outline:hover {
+    background: var(--bg-hover);
+}
+
+#add-device-modal .device-modal-actions .btn-primary-highlight {
+    background: var(--primary-color);
+    color: white;
+}
+
+#add-device-modal .device-modal-actions .btn-primary-highlight:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================ */
+/* SCROLLBAR */
+/* ============================================ */
+
+#add-device-modal .modal-device::-webkit-scrollbar {
+    width: 8px;
+}
+
+#add-device-modal .modal-device::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+#add-device-modal .modal-device::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+#add-device-modal .modal-device::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* ============================================ */
+/* MODO OSCURO - VERSIÓN COMPLETA */
+/* ============================================ */
+
+/* Overlay más oscuro en dark mode */
+.dark-mode #add-device-modal.modal-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Contenedor del modal en dark mode */
+.dark-mode #add-device-modal .modal-content {
+    background: #1f2937;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Títulos en dark mode */
+.dark-mode #add-device-modal .modal-header-device .modal-title {
+    color: #f9fafb;
+}
+
+/* Subtítulo en dark mode */
+.dark-mode #add-device-modal .modal-subtitle-device {
+    color: #9ca3af;
+}
+
+/* Botón cerrar en dark mode */
+.dark-mode #add-device-modal .modal-close-btn {
+    color: #9ca3af;
+}
+
+.dark-mode #add-device-modal .modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f9fafb;
+}
+
+/* Pestañas en dark mode */
+.dark-mode #add-device-modal .device-tabs-container {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode #add-device-modal .device-tab-btn {
+    color: #9ca3af;
+}
+
+.dark-mode #add-device-modal .device-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f9fafb;
+}
+
+.dark-mode #add-device-modal .device-tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Labels en dark mode */
+.dark-mode #add-device-modal .form-label {
+    color: #f9fafb;
+}
+
+/* Inputs y selects en dark mode */
+.dark-mode #add-device-modal .form-input {
+    background: #111827;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark-mode #add-device-modal .form-input:focus {
+    border-color: var(--primary-color);
+    background: #1f2937;
+    box-shadow: 0 0 0 3px rgba(139, 69, 139, 0.2);
+}
+
+.dark-mode #add-device-modal .form-input::placeholder {
+    color: #6b7280;
+}
+
+/* Select con flecha clara en dark mode */
+.dark-mode #add-device-modal select.form-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-color: #111827;
+}
+
+/* Icono de búsqueda en dark mode */
+.dark-mode #add-device-modal .input-with-icon .input-icon {
+    color: #6b7280;
+}
+
+/* Checkbox en dark mode */
+.dark-mode #add-device-modal input[type="checkbox"] {
+    accent-color: var(--primary-color);
+    background: #111827;
+    border-color: #374151;
+}
+
+/* Texto del checkbox en dark mode */
+.dark-mode #add-device-modal .form-input-group label[style*="cursor"] {
+    color: #9ca3af;
+}
+
+.dark-mode #add-device-modal .form-input-group label[style*="cursor"] .material-symbols-outlined {
+    color: #9ca3af;
+}
+
+/* Botón Cancelar en dark mode */
+.dark-mode #add-device-modal .device-modal-actions .btn-outline {
+    background: transparent;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark-mode #add-device-modal .device-modal-actions .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #4b5563;
+}
+
+/* Botón Añadir en dark mode (mantiene el color primario) */
+.dark-mode #add-device-modal .device-modal-actions .btn-primary-highlight {
+    background: var(--primary-color);
+    color: white;
+}
+
+.dark-mode #add-device-modal .device-modal-actions .btn-primary-highlight:hover {
+    background: var(--primary-hover);
+}
+
+/* Scrollbar en dark mode */
+.dark-mode #add-device-modal .modal-device::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+.dark-mode #add-device-modal .modal-device::-webkit-scrollbar-thumb {
+    background: #374151;
+}
+
+.dark-mode #add-device-modal .modal-device::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+}
+
+/* Options del select en dark mode (para navegadores que lo soporten) */
+.dark-mode #add-device-modal select.form-input option {
+    background: #111827;
+    color: #f9fafb;
+}
+
+/* Input number arrows en dark mode */
+.dark-mode #add-device-modal input[type="number"] {
+    color-scheme: dark;
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+
+@media (max-width: 640px) {
+    #add-device-modal .modal-device {
+        padding: 1.25rem;
+        max-width: 100% !important;
+        margin: 0.5rem;
+    }
+    
+    #add-device-modal .modal-header-device {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    #add-device-modal .modal-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    #add-device-modal .device-tabs-container {
+        flex-direction: column;
+    }
+    
+    #add-device-modal .device-tab-btn {
+        font-size: 0.8125rem;
+        padding: 0.75rem;
+    }
+    
+    #add-device-modal .device-modal-actions {
+        flex-direction: column;
+    }
+}
+
+/* ============================================ */
+/* ANIMACIÓN */
+/* ============================================ */
+
+@keyframes deviceModalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#add-device-modal.modal-overlay {
+    animation: deviceModalFadeIn 0.2s ease-out;
+}
+
+/* ============================================ */
+/* RESET PARA EVITAR CONFLICTOS */
+/* Agregar AL INICIO del CSS del modal */
+/* ============================================ */
+
+/* Reset completo para selects dentro del modal */
+#add-device-modal select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: none !important;
+}
+
+#add-device-modal select::-ms-expand {
+    display: none !important;
+}
+
+/* Limpiar cualquier pseudo-elemento */
+#add-device-modal select::before,
+#add-device-modal select::after {
+    display: none !important;
+}
+
+
+
 /* Responsive */
 @media (max-width: 1024px) {
     #inventory-section .inventory-grid {
@@ -3396,6 +4202,7 @@ body.dark-mode #inventory-section .user-card button:hover {
     
     .inventory-category h3 {
         font-size: 1.125rem;
+        
     }
 }
 

@@ -60,6 +60,401 @@
                             <button class="tab-btn" onclick="switchEmployeeTab('inventory', this)">Inventario</button>
                         </div>
 
+                        <!-- Botón Agregar Empleado - Solo visible en pestaña "Empleados Activos" -->
+                            <div id="add-employee-btn-container" style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                                <button class="btn-primary-highlight" onclick="showAddEmployeeForm()">
+                                    <span class="material-symbols-outlined icon-base">add</span>
+                                    Agregar Empleado
+                                </button>
+                            </div>
+
+                            <!-- Modal/Formulario de Registro de Empleado - Inicialmente oculto -->
+                            <div id="add-employee-modal" class="modal-overlay" style="display: none;">
+                                <div class="modal-content">
+                                    <!-- Encabezado del Modal -->
+                                    <div class="modal-header">
+                                        <h2 class="modal-title">Completa la información del nuevo empleado</h2>
+                                        <p class="modal-subtitle">Sigue los pasos para registrar todos los datos.</p>
+                                        <button class="modal-close-btn" onclick="closeAddEmployeeForm()">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Indicador de Pasos -->
+                                    <div class="steps-container">
+                                        <div class="step-item active" data-step="1">
+                                            <div class="step-circle">1</div>
+                                            <div class="step-label">Información Personal</div>
+                                        </div>
+                                        <div class="step-connector"></div>
+                                        <div class="step-item" data-step="2">
+                                            <div class="step-circle">2</div>
+                                            <div class="step-label">Datos Legales</div>
+                                        </div>
+                                        <div class="step-connector"></div>
+                                        <div class="step-item" data-step="3">
+                                            <div class="step-circle">3</div>
+                                            <div class="step-label">Info. Empresa</div>
+                                        </div>
+                                        <div class="step-connector"></div>
+                                        <div class="step-item" data-step="4">
+                                            <div class="step-circle">4</div>
+                                            <div class="step-label">Hardware</div>
+                                        </div>
+                                        <div class="step-connector"></div>
+                                        <div class="step-item" data-step="5">
+                                            <div class="step-circle">5</div>
+                                            <div class="step-label">Software</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Contenido del Formulario por Pasos -->
+                                    <div class="form-steps-content">
+                                        
+                                        <!-- PASO 1: Información Personal -->
+                                        <div class="form-step active" data-step="1">
+                                            <div class="edit-form-grid">
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Nombre Completo</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Ana María García Pérez" />
+                                                        <span class="material-symbols-outlined input-icon">person</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Fecha de Nacimiento</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="date" />
+                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Cédula</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: V-12.345.678" />
+                                                        <span class="material-symbols-outlined input-icon">badge</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Celular</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="tel" placeholder="Ej: +58 412-1234567" />
+                                                        <span class="material-symbols-outlined input-icon">phone</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Correo</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="email" placeholder="Ej: ana.garcia@email.com" />
+                                                        <span class="material-symbols-outlined input-icon">email</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Dirección de Residencia</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Calle Falsa 123, Apto 4B" />
+                                                        <span class="material-symbols-outlined input-icon">home</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Ciudad / Departamento</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Bogotá D.C." />
+                                                        <span class="material-symbols-outlined input-icon">location_city</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Teléfono de Emergencia</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="tel" placeholder="Ej: +57 310-9876543" />
+                                                        <span class="material-symbols-outlined input-icon">emergency</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Persona de Contacto en Emergencias</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Carlos Pérez" />
+                                                        <span class="material-symbols-outlined input-icon">contact_emergency</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Parentesco del Contacto de Emergencia</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Padre" />
+                                                        <span class="material-symbols-outlined input-icon">family_restroom</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PASO 2: Datos Legales -->
+                                        <div class="form-step" data-step="2">
+                                            <div class="edit-form-grid">
+                                                <div class="form-input-group">
+                                                    <label class="form-label">EPS</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Sura" />
+                                                        <span class="material-symbols-outlined input-icon">medical_services</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Fecha Afiliación EPS</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="date" />
+                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">ARL</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Positiva" />
+                                                        <span class="material-symbols-outlined input-icon">health_and_safety</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Fecha Afiliación ARL</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="date" />
+                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Caja de Compensación</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Colsubsidio" />
+                                                        <span class="material-symbols-outlined input-icon">account_balance</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Fecha Afiliación Caja Compensación</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="date" />
+                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Fondo de Pensiones</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Protección" />
+                                                        <span class="material-symbols-outlined input-icon">savings</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Fondo de Cesantías</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Porvenir" />
+                                                        <span class="material-symbols-outlined input-icon">account_balance_wallet</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PASO 3: Info. Empresa -->
+                                        <div class="form-step" data-step="3">
+                                            <div class="edit-form-grid">
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Tipo de Contrato</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Indefinido" />
+                                                        <span class="material-symbols-outlined input-icon">description</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Cargo</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Desarrollador Senior" />
+                                                        <span class="material-symbols-outlined input-icon">work</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Inicio de Contrato</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="date" />
+                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Área / Departamento</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Tecnología de la Información" />
+                                                        <span class="material-symbols-outlined input-icon">domain</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Jefe Inmediato</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Carlos Rodríguez" />
+                                                        <span class="material-symbols-outlined input-icon">supervisor_account</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Horario / Jornada Laboral</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: L-V 9:00am - 5:00pm" />
+                                                        <span class="material-symbols-outlined input-icon">schedule</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Salario</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: $5.000.000" />
+                                                        <span class="material-symbols-outlined input-icon">payments</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Entidad de Pago</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Bancolombia" />
+                                                        <span class="material-symbols-outlined input-icon">account_balance</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Número de Cuenta</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: 123-456789-01" />
+                                                        <span class="material-symbols-outlined input-icon">credit_card</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">ID Biométrico</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: BIO-2023-001234" />
+                                                        <span class="material-symbols-outlined input-icon">fingerprint</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PASO 4: Hardware -->
+                                        <div class="form-step" data-step="4">
+                                            <div class="edit-form-grid">
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Procesador</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Intel Core i7 12th Gen" />
+                                                        <span class="material-symbols-outlined input-icon">memory</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Memoria RAM</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: 16 GB DDR4" />
+                                                        <span class="material-symbols-outlined input-icon">storage</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Almacenamiento</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: 512 GB SSD NVMe" />
+                                                        <span class="material-symbols-outlined input-icon">hard_drive</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Tarjeta Gráfica</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: NVIDIA RTX 3050" />
+                                                        <span class="material-symbols-outlined input-icon">videogame_asset</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Mouse</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Logitech G203" />
+                                                        <span class="material-symbols-outlined input-icon">mouse</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Teclado</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Mecánico Redragon" />
+                                                        <span class="material-symbols-outlined input-icon">keyboard</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Diadema</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Sony WH-1000XM5" />
+                                                        <span class="material-symbols-outlined input-icon">headphones</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Antena Wifi</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Integrada" />
+                                                        <span class="material-symbols-outlined input-icon">wifi</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PASO 5: Software -->
+                                        <div class="form-step" data-step="5">
+                                            <div class="edit-form-grid">
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Microsoft Office 365</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Licencia E3" />
+                                                        <span class="material-symbols-outlined input-icon">article</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Adobe Creative Cloud</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Todas las aplicaciones" />
+                                                        <span class="material-symbols-outlined input-icon">palette</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Slack</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Plan Pro" />
+                                                        <span class="material-symbols-outlined input-icon">chat</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Figma</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Licencia Profesional" />
+                                                        <span class="material-symbols-outlined input-icon">design_services</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">Jira</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Acceso Completo" />
+                                                        <span class="material-symbols-outlined input-icon">task</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-input-group">
+                                                    <label class="form-label">GitLab</label>
+                                                    <div class="input-with-icon">
+                                                        <input class="form-input" type="text" placeholder="Ej: Rol de Mantenedor" />
+                                                        <span class="material-symbols-outlined input-icon">code</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Botones de Navegación -->
+                                    <div class="form-navigation">
+                                        <button class="btn-outline" id="prev-step-btn" onclick="previousStep()" style="display: none;">
+                                            <span class="material-symbols-outlined icon-base">arrow_back</span>
+                                            Anterior
+                                        </button>
+                                        <button class="btn-primary-highlight" id="next-step-btn" onclick="nextStep()">
+                                            Siguiente
+                                            <span class="material-symbols-outlined icon-base">arrow_forward</span>
+                                        </button>
+                                        <button class="btn-primary-highlight" id="submit-form-btn" onclick="submitEmployeeForm()" style="display: none;">
+                                            <span class="material-symbols-outlined icon-base">check</span>
+                                            Guardar Empleado
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                         <div class="search-container shadow-sm">
                             <span class="material-symbols-outlined search-icon">search</span>
                             <input class="search-input" id="search-input" placeholder="Buscar por nombre o puesto..." type="text"/>
@@ -157,7 +552,7 @@
                                     <span class="material-symbols-outlined icon-base">filter_alt</span>
                                     Filtrar por estado
                                 </button>
-                                <button class="btn-primary-highlight" style="white-space: nowrap;">
+                                <button class="btn-primary-highlight" style="white-space: nowrap;" onclick="openAddDeviceModal()">
                                     <span class="material-symbols-outlined icon-base">add</span>
                                     Añadir Dispositivo
                                 </button>
@@ -1281,6 +1676,169 @@
                     </div>
                 </div>
             </div>
+                <!-- ============================================ -->
+                <!-- MODAL DE AÑADIR DISPOSITIVO -->
+                <!-- Agregar este bloque ANTES del cierre de </main> -->
+                <!-- ============================================ -->
+
+                <!-- Modal Overlay - Fondo oscuro que cubre toda la pantalla -->
+                <div id="add-device-modal" class="modal-overlay" style="display: none;">
+                    <!-- Modal Content - Contenedor principal del modal -->
+                    <div class="modal-content modal-device">
+                        
+                        <!-- HEADER DEL MODAL -->
+                        <div class="modal-header-device">
+                            <div>
+                                <h2 class="modal-title">Añadir Dispositivo(s)</h2>
+                                <p class="modal-subtitle-device">Añade un dispositivo individual o múltiples dispositivos al inventario.</p>
+                            </div>
+                            <!-- Botón para cerrar el modal -->
+                            <button class="modal-close-btn" onclick="closeAddDeviceModal()">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+
+                        <!-- PESTAÑAS DE SELECCIÓN: Individual / Múltiples -->
+                        <div class="device-tabs-container">
+                            <button class="device-tab-btn active" onclick="switchDeviceTab('individual', this)">
+                                Añadir Dispositivo Individual
+                            </button>
+                            <button class="device-tab-btn" onclick="switchDeviceTab('multiple', this)">
+                                Añadir Múltiples Dispositivos
+                            </button>
+                        </div>
+
+                        <!-- ============================================ -->
+                        <!-- FORMULARIO: DISPOSITIVO INDIVIDUAL -->
+                        <!-- ============================================ -->
+                        <div id="device-tab-individual" class="device-tab-content active">
+                            
+                            <!-- Campo: Nombre del Dispositivo -->
+                            <div class="form-input-group">
+                                <label class="form-label">Nombre</label>
+                                <input class="form-input" type="text" placeholder="Ej: Monitor Dell U2721DE" />
+                            </div>
+
+                            <!-- Campo: Identificador Único (ID) -->
+                            <div class="form-input-group">
+                                <label class="form-label">Identificador Único (ID)</label>
+                                <input class="form-input" type="text" placeholder="Ej: MON-00125" />
+                            </div>
+
+                            <!-- Campo: Número de Serie -->
+                            <div class="form-input-group">
+                                <label class="form-label">Número de Serie</label>
+                                <input class="form-input" type="text" placeholder="Ej: SN-456-134-98" />
+                            </div>
+
+                            <!-- Campo: Tipo de Dispositivo (Dropdown) -->
+                            <div class="form-input-group">
+                                <label class="form-label">Tipo de Dispositivo</label>
+                                <select class="form-input">
+                                    <option value="">Seleccionar tipo...</option>
+                                    <option value="monitor">Monitor</option>
+                                    <option value="keyboard">Teclado</option>
+                                    <option value="mouse">Mouse</option>
+                                    <option value="cpu">CPU</option>
+                                    <option value="headphones">Diadema</option>
+                                    <option value="wifi">Antena WiFi</option>
+                                </select>
+                            </div>
+
+                            <!-- Campo: Estado del Dispositivo (Dropdown) -->
+                            <div class="form-input-group">
+                                <label class="form-label">Estado</label>
+                                <select class="form-input">
+                                    <option value="storage">En Almacén</option>
+                                    <option value="assigned">Asignado</option>
+                                    <option value="maintenance">En Mantenimiento</option>
+                                    <option value="damaged">Dañado</option>
+                                </select>
+                            </div>
+
+                            <!-- Campo: Usuario Asignado (Opcional - con búsqueda) -->
+                            <div class="form-input-group">
+                                <label class="form-label">Usuario Asignado (Opcional)</label>
+                                <div class="input-with-icon">
+                                    <input class="form-input" type="text" placeholder="Buscar empleado..." />
+                                    <span class="material-symbols-outlined input-icon">search</span>
+                                </div>
+                            </div>
+
+                            <!-- Botones de Acción -->
+                            <div class="device-modal-actions">
+                                <button class="btn-outline" onclick="closeAddDeviceModal()">
+                                    Cancelar
+                                </button>
+                                <button class="btn-primary-highlight" onclick="submitIndividualDevice()">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- ============================================ -->
+                        <!-- FORMULARIO: MÚLTIPLES DISPOSITIVOS -->
+                        <!-- ============================================ -->
+                        <div id="device-tab-multiple" class="device-tab-content">
+                            
+                            <!-- Campo: Tipo de Dispositivo (Dropdown) -->
+                            <div class="form-input-group">
+                                <label class="form-label">Tipo de Dispositivo</label>
+                                <select class="form-input">
+                                    <option value="">Seleccionar tipo...</option>
+                                    <option value="monitor">Monitor</option>
+                                    <option value="keyboard">Teclado</option>
+                                    <option value="mouse">Mouse</option>
+                                    <option value="cpu">CPU</option>
+                                    <option value="headphones">Diadema</option>
+                                    <option value="wifi">Antena WiFi</option>
+                                </select>
+                            </div>
+
+                            <!-- Campo: Cantidad de Dispositivos -->
+                            <div class="form-input-group">
+                                <label class="form-label">Cantidad</label>
+                                <input class="form-input" type="number" value="1" min="1" />
+                            </div>
+
+                            <!-- Campo: Número de Serie Inicial -->
+                            <div class="form-input-group">
+                                <label class="form-label">Número de Serie Inicial</label>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input class="form-input" type="text" placeholder="Ej: SN-456-13500" style="flex: 1;" />
+                                    <!-- Checkbox para auto-incrementar números de serie -->
+                                    <label style="display: flex; align-items: center; gap: 0.25rem; cursor: pointer; white-space: nowrap; font-size: 0.875rem;">
+                                        <input type="checkbox" checked style="cursor: pointer;" />
+                                        <span class="material-symbols-outlined" style="font-size: 1.25rem;">add_circle</span>
+                                        Auto-incrementar
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Campo: Estado por Defecto -->
+                            <div class="form-input-group">
+                                <label class="form-label">Estado</label>
+                                <select class="form-input">
+                                    <option value="storage">En Almacén</option>
+                                    <option value="assigned">Asignado</option>
+                                    <option value="maintenance">En Mantenimiento</option>
+                                    <option value="damaged">Dañado</option>
+                                </select>
+                            </div>
+
+                            <!-- Botones de Acción -->
+                            <div class="device-modal-actions">
+                                <button class="btn-outline" onclick="closeAddDeviceModal()">
+                                    Cancelar
+                                </button>
+                                <button class="btn-primary-highlight" onclick="submitMultipleDevices()">
+                                    Generar y Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
         </main>
     </div>
 
@@ -1534,6 +2092,446 @@
                 }
             }
         });
+
+            // ========================================
+            // VARIABLES GLOBALES PARA EL FORMULARIO
+            // ========================================
+
+            // Paso actual del formulario (comienza en 1)
+            let currentStep = 1;
+            // Total de pasos en el formulario
+            const totalSteps = 5;
+
+            // ========================================
+            // FUNCIÓN PARA MOSTRAR EL FORMULARIO
+            // ========================================
+
+            function showAddEmployeeForm() {
+                // Mostrar el modal
+                document.getElementById('add-employee-modal').style.display = 'flex';
+                // Resetear al primer paso
+                currentStep = 1;
+                updateStepDisplay();
+                // Prevenir scroll del body cuando el modal está abierto
+                document.body.style.overflow = 'hidden';
+            }
+
+            // ========================================
+            // FUNCIÓN PARA CERRAR EL FORMULARIO
+            // ========================================
+
+            function closeAddEmployeeForm() {
+                // Ocultar el modal
+                document.getElementById('add-employee-modal').style.display = 'none';
+                // Restaurar scroll del body
+                document.body.style.overflow = 'auto';
+                // Limpiar todos los campos del formulario (opcional)
+                // resetFormFields();
+            }
+
+            // ========================================
+            // FUNCIÓN PARA AVANZAR AL SIGUIENTE PASO
+            // ========================================
+
+            function nextStep() {
+                // Verificar que no estemos en el último paso
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepDisplay();
+                }
+            }
+
+            // ========================================
+            // FUNCIÓN PARA RETROCEDER AL PASO ANTERIOR
+            // ========================================
+
+            function previousStep() {
+                // Verificar que no estemos en el primer paso
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStepDisplay();
+                }
+            }
+
+            // ========================================
+            // FUNCIÓN PARA ACTUALIZAR LA VISUALIZACIÓN DE LOS PASOS
+            // ========================================
+
+            function updateStepDisplay() {
+                // 1. ACTUALIZAR INDICADORES DE PASOS (STEPPER)
+                
+                const stepItems = document.querySelectorAll('.step-item');
+                const stepConnectors = document.querySelectorAll('.step-connector');
+                
+                stepItems.forEach((item, index) => {
+                    const stepNumber = index + 1;
+                    
+                    // Remover todas las clases primero
+                    item.classList.remove('active', 'completed');
+                    
+                    if (stepNumber < currentStep) {
+                        // Pasos anteriores = completados
+                        item.classList.add('completed');
+                    } else if (stepNumber === currentStep) {
+                        // Paso actual = activo
+                        item.classList.add('active');
+                    }
+                    // Los pasos futuros no tienen clase especial
+                });
+                
+                // Actualizar conectores entre pasos
+                stepConnectors.forEach((connector, index) => {
+                    connector.classList.remove('completed');
+                    if (index < currentStep - 1) {
+                        connector.classList.add('completed');
+                    }
+                });
+                
+                // 2. MOSTRAR/OCULTAR CONTENIDO DE PASOS
+                
+                const formSteps = document.querySelectorAll('.form-step');
+                formSteps.forEach((step, index) => {
+                    step.classList.remove('active');
+                    if (index === currentStep - 1) {
+                        step.classList.add('active');
+                    }
+                });
+                
+                // 3. ACTUALIZAR BOTONES DE NAVEGACIÓN
+                
+                const prevBtn = document.getElementById('prev-step-btn');
+                const nextBtn = document.getElementById('next-step-btn');
+                const submitBtn = document.getElementById('submit-form-btn');
+                
+                // Mostrar botón "Anterior" solo si no estamos en el primer paso
+                if (currentStep === 1) {
+                    prevBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'flex';
+                }
+                
+                // Mostrar botón "Siguiente" hasta el penúltimo paso
+                if (currentStep === totalSteps) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'flex';
+                } else {
+                    nextBtn.style.display = 'flex';
+                    submitBtn.style.display = 'none';
+                }
+            }
+
+            // ========================================
+            // FUNCIÓN PARA ENVIAR EL FORMULARIO COMPLETO
+            // ========================================
+
+            function submitEmployeeForm() {
+                // Aquí puedes agregar la lógica para:
+                // 1. Validar todos los campos
+                // 2. Recopilar los datos del formulario
+                // 3. Enviar los datos al servidor (API)
+                // 4. Crear la tarjeta del nuevo empleado en la vista
+                
+                // Por ahora, solo mostramos una alerta de confirmación
+                alert('¡Empleado registrado exitosamente!');
+                
+                // Cerrar el modal
+                closeAddEmployeeForm();
+                
+                // Aquí podrías agregar el nuevo empleado al grid dinámicamente
+                // addNewEmployeeCard(employeeData);
+            }
+
+            // ========================================
+            // FUNCIÓN AUXILIAR PARA RESETEAR CAMPOS (OPCIONAL)
+            // ========================================
+
+            function resetFormFields() {
+                // Resetear todos los inputs del formulario
+                const modal = document.getElementById('add-employee-modal');
+                const inputs = modal.querySelectorAll('input');
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                
+                // Volver al primer paso
+                currentStep = 1;
+                updateStepDisplay();
+            }
+
+            // ========================================
+            // CERRAR MODAL AL HACER CLIC FUERA DE ÉL
+            // ========================================
+
+            document.addEventListener('click', function(event) {
+                const modal = document.getElementById('add-employee-modal');
+                if (modal && event.target === modal) {
+                    closeAddEmployeeForm();
+                }
+            });
+
+            // ========================================
+            // CERRAR MODAL CON TECLA ESC
+            // ========================================
+
+            document.addEventListener('keydown', function(event) {
+                const modal = document.getElementById('add-employee-modal');
+                if (modal && modal.style.display === 'flex' && event.key === 'Escape') {
+                    closeAddEmployeeForm();
+                }
+            });
+
+            // ========================================
+            // MODIFICACIÓN DE LA FUNCIÓN switchEmployeeTab
+            // Para mostrar/ocultar el botón "Agregar Empleado"
+            // ========================================
+
+            // REEMPLAZAR la función switchEmployeeTab existente con esta versión mejorada:
+
+            function switchEmployeeTab(tabId, element) {
+                // 1. Resetear todos los botones de pestaña
+                document.querySelectorAll('#view-directory .tabs-container .tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // 2. Activar el botón clickeado
+                element.classList.add('active');
+
+                // 3. Referencias al botón de agregar empleado
+                const addEmployeeBtnContainer = document.getElementById('add-employee-btn-container');
+
+                // 4. Mostrar/ocultar grids correspondientes
+                if (tabId === 'active') {
+                    activeEmployeesGrid.style.display = 'grid';
+                    inactiveEmployeesGrid.style.display = 'none';
+                    inventorySection.style.display = 'none';
+                    searchInput.style.display = 'block';
+                    searchInput.placeholder = 'Buscar por nombre o puesto...';
+                    
+                    // MOSTRAR botón "Agregar Empleado" solo en pestaña Activos
+                    if (addEmployeeBtnContainer) {
+                        addEmployeeBtnContainer.style.display = 'flex';
+                    }
+                    
+                    currentEmployeeType = 'active';
+                } else if (tabId === 'inactive') {
+                    activeEmployeesGrid.style.display = 'none';
+                    inactiveEmployeesGrid.style.display = 'grid';
+                    inventorySection.style.display = 'none';
+                    searchInput.style.display = 'block';
+                    searchInput.placeholder = 'Buscar por nombre o puesto...';
+                    
+                    // OCULTAR botón "Agregar Empleado" en otras pestañas
+                    if (addEmployeeBtnContainer) {
+                        addEmployeeBtnContainer.style.display = 'none';
+                    }
+                    
+                    currentEmployeeType = 'inactive';
+                } else if (tabId === 'inventory') {
+                    activeEmployeesGrid.style.display = 'none';
+                    inactiveEmployeesGrid.style.display = 'none';
+                    inventorySection.style.display = 'block';
+                    searchInput.style.display = 'none';
+                    
+                    // OCULTAR botón "Agregar Empleado" en otras pestañas
+                    if (addEmployeeBtnContainer) {
+                        addEmployeeBtnContainer.style.display = 'none';
+                    }
+                    
+                    currentEmployeeType = 'inventory';
+                }
+
+                // 5. Limpiar búsqueda
+                searchInput.value = '';
+                if (inventorySearchInput) inventorySearchInput.value = '';
+            }
+
+            // ============================================
+            // FUNCIONALIDAD DEL MODAL DE AÑADIR DISPOSITIVO
+            // Agregar estas funciones ANTES del cierre de 
+            // ============================================
+
+            /**
+            * Abre el modal de añadir dispositivo
+            * Se llama cuando se presiona el botón "Añadir Dispositivo" en la vista de inventario
+            */
+            function openAddDeviceModal() {
+                const modal = document.getElementById('add-device-modal');
+                
+                // Mostrar el modal con flex para centrado
+                modal.style.display = 'flex';
+                
+                // Resetear a la primera pestaña (Individual)
+                const firstTab = document.querySelector('.device-tab-btn:first-child');
+                if (firstTab) {
+                    switchDeviceTab('individual', firstTab);
+                }
+                
+                // Prevenir scroll del body cuando el modal está abierto
+                document.body.style.overflow = 'hidden';
+                
+                // Limpiar campos del formulario
+                resetDeviceFormFields();
+            }
+
+            /**
+            * Cierra el modal de añadir dispositivo
+            * Restaura el scroll del body
+            */
+            function closeAddDeviceModal() {
+                const modal = document.getElementById('add-device-modal');
+                
+                // Ocultar el modal
+                modal.style.display = 'none';
+                
+                // Restaurar scroll del body
+                document.body.style.overflow = 'auto';
+            }
+
+            /**
+            * Cambia entre las pestañas del modal (Individual / Múltiples)
+            * @param {string} tabId - ID de la pestaña ('individual' o 'multiple')
+            * @param {HTMLElement} element - Elemento del botón clickeado
+            */
+            function switchDeviceTab(tabId, element) {
+                // 1. Resetear todos los botones de pestaña
+                document.querySelectorAll('.device-tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 2. Activar el botón clickeado
+                element.classList.add('active');
+                
+                // 3. Ocultar todo el contenido de las pestañas
+                document.querySelectorAll('.device-tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 4. Mostrar el contenido de la pestaña seleccionada
+                document.getElementById('device-tab-' + tabId).classList.add('active');
+            }
+
+            /**
+            * Resetea todos los campos del formulario de dispositivos
+            * Útil al abrir el modal o después de guardar
+            */
+            function resetDeviceFormFields() {
+                const modal = document.getElementById('add-device-modal');
+                
+                // Resetear todos los inputs y selects
+                const inputs = modal.querySelectorAll('input:not([type="checkbox"]), select');
+                inputs.forEach(input => {
+                    if (input.tagName === 'SELECT') {
+                        input.selectedIndex = 0;
+                    } else {
+                        input.value = '';
+                    }
+                });
+                
+                // Resetear cantidad a 1 en pestaña múltiple
+                const quantityInput = modal.querySelector('#device-tab-multiple input[type="number"]');
+                if (quantityInput) {
+                    quantityInput.value = '1';
+                }
+                
+                // Marcar checkbox de auto-incrementar
+                const autoIncrementCheckbox = modal.querySelector('#device-tab-multiple input[type="checkbox"]');
+                if (autoIncrementCheckbox) {
+                    autoIncrementCheckbox.checked = true;
+                }
+            }
+
+            /**
+            * Procesa el formulario de dispositivo individual
+            * AQUÍ DEBES AGREGAR LA LÓGICA PARA GUARDAR EN TU BASE DE DATOS
+            */
+            function submitIndividualDevice() {
+                // Obtener valores del formulario
+                const modal = document.getElementById('device-tab-individual');
+                const inputs = modal.querySelectorAll('input, select');
+                
+                // Crear objeto con los datos del dispositivo
+                const deviceData = {
+                    name: inputs[0].value,
+                    id: inputs[1].value,
+                    serialNumber: inputs[2].value,
+                    type: inputs[3].value,
+                    status: inputs[4].value,
+                    assignedUser: inputs[5].value
+                };
+                
+                // Validación básica
+                if (!deviceData.name || !deviceData.id || !deviceData.type) {
+                    alert('Por favor completa los campos obligatorios: Nombre, ID y Tipo de Dispositivo');
+                    return;
+                }
+                
+                // AQUÍ AGREGAR LÓGICA PARA GUARDAR EN BASE DE DATOS
+                console.log('Dispositivo individual a guardar:', deviceData);
+                
+                // Mostrar mensaje de éxito
+                alert('¡Dispositivo añadido exitosamente!');
+                
+                // Cerrar modal
+                closeAddDeviceModal();
+                
+                // AQUÍ PUEDES AGREGAR LÓGICA PARA ACTUALIZAR LA VISTA
+                // Por ejemplo: addDeviceCardToUI(deviceData);
+            }
+
+            /**
+            * Procesa el formulario de múltiples dispositivos
+            * AQUÍ DEBES AGREGAR LA LÓGICA PARA GUARDAR MÚLTIPLES DISPOSITIVOS
+            */
+            function submitMultipleDevices() {
+                // Obtener valores del formulario
+                const modal = document.getElementById('device-tab-multiple');
+                const inputs = modal.querySelectorAll('input, select');
+                
+                // Crear objeto con los datos
+                const deviceData = {
+                    type: inputs[0].value,
+                    quantity: parseInt(inputs[1].value),
+                    initialSerial: inputs[2].value,
+                    autoIncrement: inputs[3].checked,
+                    status: inputs[4].value
+                };
+                
+                // Validación básica
+                if (!deviceData.type || deviceData.quantity < 1) {
+                    alert('Por favor completa los campos obligatorios: Tipo y Cantidad');
+                    return;
+                }
+                
+                // AQUÍ AGREGAR LÓGICA PARA GENERAR Y GUARDAR MÚLTIPLES DISPOSITIVOS
+                console.log('Dispositivos múltiples a guardar:', deviceData);
+                
+                // Mostrar mensaje de éxito
+                alert(`¡${deviceData.quantity} dispositivo(s) añadido(s) exitosamente!`);
+                
+                // Cerrar modal
+                closeAddDeviceModal();
+                
+                // AQUÍ PUEDES AGREGAR LÓGICA PARA ACTUALIZAR LA VISTA
+            }
+
+            // ============================================
+            // EVENT LISTENERS PARA EL MODAL DE DISPOSITIVOS
+            // ============================================
+
+            // Cerrar modal al hacer clic fuera de él
+            document.addEventListener('click', function(event) {
+                const modal = document.getElementById('add-device-modal');
+                if (modal && event.target === modal) {
+                    closeAddDeviceModal();
+                }
+            });
+
+            // Cerrar modal con tecla ESC
+            document.addEventListener('keydown', function(event) {
+                const modal = document.getElementById('add-device-modal');
+                if (modal && modal.style.display === 'flex' && event.key === 'Escape') {
+                    closeAddDeviceModal();
+                }
+            });
     </script>
 </body>
 </html>
