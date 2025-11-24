@@ -22,7 +22,7 @@
                 <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
                 <a class="nav-link" href="./../pages/gestion.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
                 <a class="nav-link" href="./../pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
-                <a class="nav-link active" href="./../pages/inventario.html"><span class="material-symbols-outlined">inventory</span><span>Inventario</span></a>
+                <a class="nav-link active" href="./../pages/directorio.html"><span class="material-symbols-outlined">inventory</span><span>Directorio</span></a>
             </nav>
             <div class="sidebar-footer">
                 <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
@@ -69,7 +69,7 @@
                             </div>
 
                             <!-- Modal/Formulario de Registro de Empleado - Inicialmente oculto -->
-                            <div id="add-employee-modal" class="modal-overlay" style="display: none;">
+                           <div id="add-employee-modal" class="modal-overlay" style="display: none; z-index: 1000;">
                                 <div class="modal-content">
                                     <!-- Encabezado del Modal -->
                                     <div class="modal-header">
@@ -87,23 +87,18 @@
                                             <div class="step-label">Información Personal</div>
                                         </div>
                                         <div class="step-connector"></div>
-                                        <div class="step-item" data-step="2">
-                                            <div class="step-circle">2</div>
-                                            <div class="step-label">Datos Legales</div>
-                                        </div>
-                                        <div class="step-connector"></div>
                                         <div class="step-item" data-step="3">
-                                            <div class="step-circle">3</div>
-                                            <div class="step-label">Info. Empresa</div>
+                                            <div class="step-circle">2</div>
+                                            <div class="step-label">Informacion Laboral</div>
                                         </div>
                                         <div class="step-connector"></div>
                                         <div class="step-item" data-step="4">
-                                            <div class="step-circle">4</div>
+                                            <div class="step-circle">3</div>
                                             <div class="step-label">Hardware</div>
                                         </div>
                                         <div class="step-connector"></div>
                                         <div class="step-item" data-step="5">
-                                            <div class="step-circle">5</div>
+                                            <div class="step-circle">4</div>
                                             <div class="step-label">Software</div>
                                         </div>
                                     </div>
@@ -187,78 +182,10 @@
                                             </div>
                                         </div>
 
-                                        <!-- PASO 2: Datos Legales -->
+                                        <!-- PASO 2: Info. laboral -->
                                         <div class="form-step" data-step="2">
                                             <div class="edit-form-grid">
-                                                <div class="form-input-group">
-                                                    <label class="form-label">EPS</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Sura" />
-                                                        <span class="material-symbols-outlined input-icon">medical_services</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Fecha Afiliación EPS</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="date" />
-                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">ARL</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Positiva" />
-                                                        <span class="material-symbols-outlined input-icon">health_and_safety</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Fecha Afiliación ARL</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="date" />
-                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Caja de Compensación</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Colsubsidio" />
-                                                        <span class="material-symbols-outlined input-icon">account_balance</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Fecha Afiliación Caja Compensación</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="date" />
-                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Fondo de Pensiones</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Protección" />
-                                                        <span class="material-symbols-outlined input-icon">savings</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Fondo de Cesantías</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Porvenir" />
-                                                        <span class="material-symbols-outlined input-icon">account_balance_wallet</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- PASO 3: Info. Empresa -->
-                                        <div class="form-step" data-step="3">
-                                            <div class="edit-form-grid">
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Tipo de Contrato</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Indefinido" />
-                                                        <span class="material-symbols-outlined input-icon">description</span>
-                                                    </div>
-                                                </div>
+                                                <!-- Cargo -->
                                                 <div class="form-input-group">
                                                     <label class="form-label">Cargo</label>
                                                     <div class="input-with-icon">
@@ -266,13 +193,8 @@
                                                         <span class="material-symbols-outlined input-icon">work</span>
                                                     </div>
                                                 </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Inicio de Contrato</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="date" />
-                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
-                                                    </div>
-                                                </div>
+
+                                                <!-- Área / Departamento -->
                                                 <div class="form-input-group">
                                                     <label class="form-label">Área / Departamento</label>
                                                     <div class="input-with-icon">
@@ -280,6 +202,8 @@
                                                         <span class="material-symbols-outlined input-icon">domain</span>
                                                     </div>
                                                 </div>
+
+                                                <!-- Jefe Inmediato -->
                                                 <div class="form-input-group">
                                                     <label class="form-label">Jefe Inmediato</label>
                                                     <div class="input-with-icon">
@@ -287,154 +211,142 @@
                                                         <span class="material-symbols-outlined input-icon">supervisor_account</span>
                                                     </div>
                                                 </div>
+
+                                                <!-- Correo Corporativo -->
                                                 <div class="form-input-group">
-                                                    <label class="form-label">Horario / Jornada Laboral</label>
+                                                    <label class="form-label">Correo Corporativo</label>
                                                     <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: L-V 9:00am - 5:00pm" />
-                                                        <span class="material-symbols-outlined input-icon">schedule</span>
+                                                        <input class="form-input" type="email" placeholder="Ej: ana.garcia@gri365.com" />
+                                                        <span class="material-symbols-outlined input-icon">email</span>
                                                     </div>
                                                 </div>
+
+                                                <!-- Inicio de Contrato -->
                                                 <div class="form-input-group">
-                                                    <label class="form-label">Salario</label>
+                                                    <label class="form-label">Inicio de Contrato</label>
                                                     <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: $5.000.000" />
-                                                        <span class="material-symbols-outlined input-icon">payments</span>
+                                                        <input class="form-input" type="date" />
+                                                        <span class="material-symbols-outlined input-icon">calendar_today</span>
                                                     </div>
                                                 </div>
+                                                <!-- Id biometrico -->
                                                 <div class="form-input-group">
-                                                    <label class="form-label">Entidad de Pago</label>
+                                                    <label class="form-label">Id biometrico</label>
                                                     <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Bancolombia" />
-                                                        <span class="material-symbols-outlined input-icon">account_balance</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Número de Cuenta</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: 123-456789-01" />
-                                                        <span class="material-symbols-outlined input-icon">credit_card</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">ID Biométrico</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: BIO-2023-001234" />
+                                                        <input class="form-input" type="text" />
                                                         <span class="material-symbols-outlined input-icon">fingerprint</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- PASO 4: Hardware -->
+                                        <!-- PASO 3: Hardware -->
+                                        <div class="form-step" data-step="3">
+                                            
+                                            <!-- Barra de búsqueda y botón Agregar Hardware -->
+                                            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
+                                                <div class="search-container shadow-sm" style="flex: 1; margin: 0;">
+                                                    <span class="material-symbols-outlined search-icon">search</span>
+                                                    <input 
+                                                        class="search-input" 
+                                                        id="hardware-search-input" 
+                                                        placeholder="Buscar por nombre, modelo o serial..." 
+                                                        type="text"
+                                                    />
+                                                </div>
+                                                <button class="btn-primary-highlight" onclick="openAddHardwareModal()" type="button">
+                                                    <span class="material-symbols-outlined icon-base">add</span>
+                                                    Agregar Hardware
+                                                </button>
+                                            </div>
+
+                                            <!-- Tabla de Hardware Asignado -->
+                                            <div style="margin-bottom: 1rem;">
+                                                <h4 style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-primary);">
+                                                    Hardware Asignado
+                                                </h4>
+                                            </div>
+
+                                            <div class="table-container">
+                                                <table class="data-table" id="assigned-hardware-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>DISPOSITIVO</th>
+                                                            <th>MODELO</th>
+                                                            <th>SERIAL</th>
+                                                            <th>ACCIONES</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Los dispositivos se agregarán dinámicamente aquí -->
+                                                        <tr id="no-hardware-row">
+                                                            <td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                                                No hay hardware asignado aún. Usa el botón "Agregar Hardware" para comenzar.
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- PASO 4: Software -->
                                         <div class="form-step" data-step="4">
-                                            <div class="edit-form-grid">
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Procesador</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Intel Core i7 12th Gen" />
-                                                        <span class="material-symbols-outlined input-icon">memory</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Memoria RAM</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: 16 GB DDR4" />
-                                                        <span class="material-symbols-outlined input-icon">storage</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Almacenamiento</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: 512 GB SSD NVMe" />
-                                                        <span class="material-symbols-outlined input-icon">hard_drive</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Tarjeta Gráfica</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: NVIDIA RTX 3050" />
-                                                        <span class="material-symbols-outlined input-icon">videogame_asset</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Mouse</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Logitech G203" />
-                                                        <span class="material-symbols-outlined input-icon">mouse</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Teclado</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Mecánico Redragon" />
-                                                        <span class="material-symbols-outlined input-icon">keyboard</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Diadema</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Sony WH-1000XM5" />
-                                                        <span class="material-symbols-outlined input-icon">headphones</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Antena Wifi</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Integrada" />
-                                                        <span class="material-symbols-outlined input-icon">wifi</span>
-                                                    </div>
-                                                </div>
+                                            
+                                            <!-- Software Existente -->
+                                            <div class="form-input-group" style="margin-bottom: 1.5rem;">
+                                                <label class="form-label">Software Existente</label>
+                                                <select 
+                                                    class="form-input" 
+                                                    id="existing-software-select" 
+                                                    multiple 
+                                                    style="min-height: 120px;">
+                                                    <option value="office365">Microsoft Office 365 - Licencia E3</option>
+                                                    <option value="adobe">Adobe Creative Cloud - Todas las aplicaciones</option>
+                                                    <option value="slack">Slack - Plan Pro</option>
+                                                    <option value="figma">Figma - Licencia Profesional</option>
+                                                    <option value="jira">Jira - Acceso Completo</option>
+                                                    <option value="gitlab">GitLab - Rol de Mantenedor</option>
+                                                    <option value="zoom">Zoom - Plan Business</option>
+                                                    <option value="canva">Canva Pro</option>
+                                                </select>
+                                                <small style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; display: block;">
+                                                    Mantén presionada la tecla Ctrl (Cmd en Mac) para seleccionar múltiples opciones
+                                                </small>
                                             </div>
-                                        </div>
 
-                                        <!-- PASO 5: Software -->
-                                        <div class="form-step" data-step="5">
-                                            <div class="edit-form-grid">
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Microsoft Office 365</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Licencia E3" />
-                                                        <span class="material-symbols-outlined input-icon">article</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Adobe Creative Cloud</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Todas las aplicaciones" />
-                                                        <span class="material-symbols-outlined input-icon">palette</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Slack</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Plan Pro" />
-                                                        <span class="material-symbols-outlined input-icon">chat</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Figma</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Licencia Profesional" />
-                                                        <span class="material-symbols-outlined input-icon">design_services</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">Jira</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Acceso Completo" />
-                                                        <span class="material-symbols-outlined input-icon">task</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-input-group">
-                                                    <label class="form-label">GitLab</label>
-                                                    <div class="input-with-icon">
-                                                        <input class="form-input" type="text" placeholder="Ej: Rol de Mantenedor" />
-                                                        <span class="material-symbols-outlined input-icon">code</span>
-                                                    </div>
-                                                </div>
+                                            <!-- Separador visual con "O" -->
+                                            <div style="display: flex; align-items: center; margin: 2rem 0; gap: 1rem;">
+                                                <div style="flex: 1; height: 1px; background: var(--border-color);"></div>
+                                                <span style="color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;">O</span>
+                                                <div style="flex: 1; height: 1px; background: var(--border-color);"></div>
                                             </div>
-                                        </div>
 
+                                            <!-- Desplegable: Crear Nuevo Software -->
+                                            <details class="collapsible-section">
+                                                <summary class="collapsible-header">
+                                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                        <span class="material-symbols-outlined" style="font-size: 1.25rem;">add_circle</span>
+                                                        <span style="font-weight: 500;">Crear Nuevo Software</span>
+                                                    </div>
+                                                    <span class="material-symbols-outlined chevron-icon">expand_more</span>
+                                                </summary>
+                                                <div class="collapsible-content" style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.5rem; margin-top: 0.75rem;">
+                                                    <p style="margin: 0 0 1rem 0; color: var(--text-secondary); font-size: 0.9rem;">
+                                                        ¿No encuentras el software que necesitas? Créalo desde aquí para agregarlo al inventario.
+                                                    </p>
+                                                    <button 
+                                                        class="btn-primary-highlight" 
+                                                        type="button" 
+                                                        id="btn-open-software-modal"
+                                                        style="width: 100%;"
+                                                    >
+                                                        <span class="material-symbols-outlined icon-base">add</span>
+                                                        Abrir Formulario de Software
+                                                    </button>
+                                                </div>
+                                            </details>
+                                        </div>
                                     </div>
 
                                     <!-- Botones de Navegación -->
@@ -585,9 +497,9 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
-                                                </button>
+                                            <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                            </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
                                                 </button>
@@ -610,7 +522,7 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
                                                 </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
@@ -649,9 +561,9 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
-                                                </button>
+                                            <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                            </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
                                                 </button>
@@ -688,9 +600,9 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
-                                                </button>
+                                            <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                            </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
                                                 </button>
@@ -752,7 +664,7 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
                                                 </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
@@ -816,9 +728,9 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
-                                                </button>
+                                            <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                            </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
                                                 </button>
@@ -855,9 +767,9 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem;">
-                                                <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
-                                                </button>
+                                            <button onclick="openEditDeviceModal(this)" style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                <span class="material-symbols-outlined" style="font-size: 1.25rem;">edit</span>
+                                            </button>
                                                 <button style="flex: 1; padding: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                                                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
                                                 </button>
@@ -872,6 +784,10 @@
                     <div id="view-profile" class="view-section profile-container shadow-sm">
                         
                         <p class="breadcrumbs">Directorio / Usuarios / <span id="profile-name-short">Usuario</span></p>
+
+                        <div class="mt-4">
+                            <a class="back-to-directory" href="#" onclick="event.preventDefault(); showDirectoryView()">← Volver al Directorio</a>
+                        </div>
 
                         <div class="profile-header">
                             <div class="profile-main-info">
@@ -975,148 +891,38 @@
                                 </div>
                             </div>
                         </div>
-                    <!-- Datos Legales -->
-                        <div class="section-content">
-                            <h3 class="section-title">Datos Legales</h3>
-                            <div class="info-data-grid-2col">
-                                <!-- Activo -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Estado</div>
-                                    <div class="info-value">Activo</div>
-                                </div>
-                                
-                                <!-- EPS -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">EPS</div>
-                                    <div class="info-value">Sura</div>
-                                </div>
-                                
-                                <!-- Fecha Afiliación EPS -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fecha Afiliación EPS</div>
-                                    <div class="info-value">15/03/2023</div>
-                                </div>
-                                
-                                <!-- Fecha Desafiliación EPS -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fecha Desafiliación EPS</div>
-                                    <div class="info-value">-</div>
-                                </div>
-                                
-                                <!-- ARL -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">ARL</div>
-                                    <div class="info-value">Positiva</div>
-                                </div>
-                                
-                                <!-- Fecha Afiliación ARL -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fecha Afiliación ARL</div>
-                                    <div class="info-value">15/03/2023</div>
-                                </div>
-                                
-                                <!-- Fecha Desafiliación ARL -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fecha Desafiliación ARL</div>
-                                    <div class="info-value">-</div>
-                                </div>
-                                
-                                <!-- Caja de Compensación -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Caja de Compensación</div>
-                                    <div class="info-value">Colsubsidio</div>
-                                </div>
-                                
-                                <!-- Fecha Afiliación Caja Compensación -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fecha Afiliación Caja Compensación</div>
-                                    <div class="info-value">15/03/2023</div>
-                                </div>
-                                
-                                <!-- Fecha Desafiliación Caja Compensación -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fecha Desafiliación Caja Compensación</div>
-                                    <div class="info-value">-</div>
-                                </div>
-                                
-                                <!-- Fondo de Pensiones -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fondo de Pensiones</div>
-                                    <div class="info-value">Protección</div>
-                                </div>
-                                
-                                <!-- Fondo de Cesantías -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Fondo de Cesantías</div>
-                                    <div class="info-value">Porvenir</div>
-                                </div>
-                            </div>
-                        </div>
 
-                    <!-- Información de la Empresa -->
+                    <!-- Información Laboral -->
                         <div class="section-content">
                             <h3 class="section-title">Información de la Empresa</h3>
                             <div class="info-data-grid-2col">
                                 <!-- Tipo de Contrato -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Tipo de Contrato</div>
-                                    <div class="info-value">Indefinido</div>
-                                </div>
                                 
                                 <!-- Cargo -->
                                 <div class="info-grid-item">
                                     <div class="info-label">Cargo</div>
                                     <div class="info-value">Desarrollador Senior</div>
                                 </div>
-                                
-                                <!-- Inicio de contrato -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Inicio de Contrato</div>
-                                    <div class="info-value">15/01/2020</div>
-                                </div>
-                                
-                                <!-- Finalización de contrato -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Finalización de Contrato</div>
-                                    <div class="info-value">-</div>
-                                </div>
-                                
                                 <!-- Área / Departamento -->
                                 <div class="info-grid-item">
                                     <div class="info-label">Área / Departamento</div>
                                     <div class="info-value">Tecnología de la Información</div>
                                 </div>
-                                
                                 <!-- Jefe Inmediato -->
                                 <div class="info-grid-item">
                                     <div class="info-label">Jefe Inmediato</div>
                                     <div class="info-value">Carlos Rodríguez</div>
                                 </div>
-                                
-                                <!-- Horario / Jornada Laboral -->
+                                 <!-- Jefe Inmediato -->
                                 <div class="info-grid-item">
-                                    <div class="info-label">Horario / Jornada Laboral</div>
-                                    <div class="info-value">L-V 9:00am - 5:00pm</div>
+                                    <div class="info-label">Correo Corporativo</div>
+                                    <div class="info-value">carlos.rodriguez@empresa.com</div>
                                 </div>
-                                
-                                <!-- Salario -->
+                                <!-- Inicio de contrato -->
                                 <div class="info-grid-item">
-                                    <div class="info-label">Salario</div>
-                                    <div class="info-value">$5.000.000</div>
+                                    <div class="info-label">Inicio de Contrato</div>
+                                    <div class="info-value">15/01/2020</div>
                                 </div>
-                                
-                                <!-- Entidad de pago -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Entidad de Pago</div>
-                                    <div class="info-value">Bancolombia</div>
-                                </div>
-                                
-                                <!-- Número de cuenta -->
-                                <div class="info-grid-item">
-                                    <div class="info-label">Número de Cuenta</div>
-                                    <div class="info-value">123-456789-01</div>
-                                </div>
-                                
                                 <!-- ID BIOMETRICO -->
                                 <div class="info-grid-item">
                                     <div class="info-label">ID Biométrico</div>
@@ -1125,13 +931,13 @@
                             </div>
                         </div>
 
-                        <!-- Pestañas Hardware / Software / Observaciones -->
+                        <!-- Pestañas Hardware / Software / Historial -->
                         <div class="tabs-container">
                             <button class="tab-btn active" onclick="switchTab('hardware', this)">Hardware</button>
                             <button class="tab-btn" onclick="switchTab('software', this)">Software</button>
-                            <button class="tab-btn" onclick="switchTab('obs', this)">Observaciones</button>
+                            <button class="tab-btn" onclick="switchEditTab('history', this)">Historial</button>
                         </div>
-
+                        <!-- Esto se debe actualizar cuando el Hardware se establezca -->
                         <!-- Tab Hardware -->
                         <div id="tab-hardware" class="tab-content active">
                             <div class="info-data-grid-2col">
@@ -1169,7 +975,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- Esto se debe actualizar cuando el software se establezca -->
                         <!-- Tab Software -->
                         <div id="tab-software" class="tab-content">
                             <div class="info-data-grid-2col">
@@ -1200,10 +1006,52 @@
                             </div>
                         </div>
 
-                        <!-- Tab Observaciones -->
-                        <div id="tab-obs" class="tab-content">
-                            <div class="obs-card">
-                                <p>El equipo fue entregado el día 15 de Noviembre de 2025. Se encuentra en excelentes condiciones. Tiene instalado el paquete Adobe completo y Office 365 empresarial.</p>
+                        <!-- Tab Historial -->
+                        <div id="tab-edit-history" class="tab-content">
+                            <!-- Botón de Exportación -->
+                            <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                                <button onclick="exportHistoryToExcel()" class="btn-primary-highlight" type="button">
+                                    <span class="material-symbols-outlined icon-base">download</span>
+                                    Exportar a Excel
+                                </button>
+                            </div>
+
+                            <!-- Tabla de Historial -->
+                            <div class="table-container">
+                                <table class="data-table" id="history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>FECHA</th>
+                                            <th>COMPONENTE</th>
+                                            <th>VALOR ANTERIOR</th>
+                                            <th>VALOR NUEVO</th>
+                                            <th>REALIZADO POR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>15/05/2024</td>
+                                            <td>RAM</td>
+                                            <td>8 GB</td>
+                                            <td>16 GB</td>
+                                            <td>Admin TI</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10/01/2024</td>
+                                            <td>Mouse</td>
+                                            <td>Apple Magic Mouse</td>
+                                            <td>Logitech MX Master 3S</td>
+                                            <td>Admin TI</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10/01/2024</td>
+                                            <td>Diadema</td>
+                                            <td>N/A</td>
+                                            <td>Sony WH-1000XM5</td>
+                                            <td>Admin TI</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -1331,126 +1179,16 @@
                             </div>
                         </div>
 
-                        <!-- Datos Legales -->
-                        <div class="section-content">
-                            <h3 class="section-title">Datos Legales</h3>
-                            <div class="edit-form-grid">
-                                <div class="form-input-group">
-                                    <label for="edit-estado" class="form-label">Estado</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-estado" type="text" value="Activo"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-eps" class="form-label">EPS</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-eps" type="text" value="Sura"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fecha-afiliacion-eps" class="form-label">Fecha Afiliación EPS</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fecha-afiliacion-eps" type="date" value="2023-03-15"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fecha-desafiliacion-eps" class="form-label">Fecha Desafiliación EPS</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fecha-desafiliacion-eps" type="date" value=""/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-arl" class="form-label">ARL</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-arl" type="text" value="Positiva"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fecha-afiliacion-arl" class="form-label">Fecha Afiliación ARL</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fecha-afiliacion-arl" type="date" value="2023-03-15"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fecha-desafiliacion-arl" class="form-label">Fecha Desafiliación ARL</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fecha-desafiliacion-arl" type="date" value=""/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-caja-compensacion" class="form-label">Caja de Compensación</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-caja-compensacion" type="text" value="Colsubsidio"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fecha-afiliacion-caja" class="form-label">Fecha Afiliación Caja Compensación</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fecha-afiliacion-caja" type="date" value="2023-03-15"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fecha-desafiliacion-caja" class="form-label">Fecha Desafiliación Caja Compensación</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fecha-desafiliacion-caja" type="date" value=""/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fondo-pensiones" class="form-label">Fondo de Pensiones</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fondo-pensiones" type="text" value="Protección"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-fondo-cesantias" class="form-label">Fondo de Cesantías</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-fondo-cesantias" type="text" value="Porvenir"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
-                        <!-- Información de la Empresa -->
+                        <!-- Información laboral -->
                         <div class="section-content">
-                            <h3 class="section-title">Información de la Empresa</h3>
+                            <h3 class="section-title">Información laboral</h3>
                             <div class="edit-form-grid">
-                                <div class="form-input-group">
-                                    <label for="edit-tipo-contrato" class="form-label">Tipo de Contrato</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-tipo-contrato" type="text" value="Indefinido"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
                                 <div class="form-input-group">
                                     <label for="edit-cargo" class="form-label">Cargo</label>
                                     <div class="input-with-icon">
                                         <input class="form-input" id="edit-cargo" type="text" value="Desarrollador Senior"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-inicio-contrato" class="form-label">Inicio de Contrato</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-inicio-contrato" type="date" value="2020-01-15"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-finalizacion-contrato" class="form-label">Finalización de Contrato</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-finalizacion-contrato" type="date" value=""/>
                                         <span class="material-symbols-outlined input-icon">edit</span>
                                     </div>
                                 </div>
@@ -1469,30 +1207,16 @@
                                     </div>
                                 </div>
                                 <div class="form-input-group">
-                                    <label for="edit-horario" class="form-label">Horario / Jornada Laboral</label>
+                                    <label for="edit-correo-corporativo" class="form-label">Correo Corporativo</label>
                                     <div class="input-with-icon">
-                                        <input class="form-input" id="edit-horario" type="text" value="L-V 9:00am - 5:00pm"/>
+                                        <input class="form-input" id="edit-correo-corporativo" type="text" value="correo@empresa.com"/>
                                         <span class="material-symbols-outlined input-icon">edit</span>
                                     </div>
                                 </div>
                                 <div class="form-input-group">
-                                    <label for="edit-salario" class="form-label">Salario</label>
+                                    <label for="edit-inicio-contrato" class="form-label">Inicio de Contrato</label>
                                     <div class="input-with-icon">
-                                        <input class="form-input" id="edit-salario" type="text" value="$5.000.000"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-entidad-pago" class="form-label">Entidad de Pago</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-entidad-pago" type="text" value="Bancolombia"/>
-                                        <span class="material-symbols-outlined input-icon">edit</span>
-                                    </div>
-                                </div>
-                                <div class="form-input-group">
-                                    <label for="edit-numero-cuenta" class="form-label">Número de Cuenta</label>
-                                    <div class="input-with-icon">
-                                        <input class="form-input" id="edit-numero-cuenta" type="text" value="123-456789-01"/>
+                                        <input class="form-input" id="edit-inicio-contrato" type="date" value="2020-01-15"/>
                                         <span class="material-symbols-outlined input-icon">edit</span>
                                     </div>
                                 </div>
@@ -1506,12 +1230,11 @@
                             </div>
                         </div>
                         
-                        <!-- Pestañas: Hardware, Software, Observaciones, Historial -->
+                        <!-- Pestañas: Hardware, Software, Historial -->
                         <div class="section-content">
                             <div class="tabs-container">
                                 <button class="tab-btn active" onclick="switchEditTab('hardware', this)">Hardware</button>
                                 <button class="tab-btn" onclick="switchEditTab('software', this)">Software</button>
-                                <button class="tab-btn" onclick="switchEditTab('obs', this)">Observaciones</button>
                                 <button class="tab-btn" onclick="switchEditTab('history', this)">Historial</button>
                             </div>
 
@@ -1839,9 +1562,315 @@
 
                     </div>
                 </div>
+
+                <!-- ============================================ -->
+                <!-- MODAL DE EDICIÓN DE DISPOSITIVO -->
+                <!-- ============================================ -->
+
+                <div id="edit-device-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content modal-device-edit">
+                        
+                        <!-- HEADER DEL MODAL -->
+                        <div class="modal-header-device">
+                            <div>
+                                <h2 class="modal-title">Editar Dispositivo</h2>
+                                <p class="modal-subtitle-device">Modifica el estado o asignación del dispositivo seleccionado.</p>
+                            </div>
+                            <!-- Botón para cerrar el modal -->
+                            <button class="modal-close-btn" onclick="closeEditDeviceModal()">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+
+                        <!-- CONTENIDO DEL FORMULARIO -->
+                        <div class="edit-device-form">
+                            
+                            <!-- FILA 1: Nombre y ID (Solo lectura) -->
+                            <div class="edit-device-row">
+                                <div class="form-input-group">
+                                    <label class="form-label">Nombre del Dispositivo</label>
+                                    <input 
+                                        class="form-input form-input-readonly" 
+                                        type="text" 
+                                        id="edit-device-name" 
+                                        readonly 
+                                    />
+                                </div>
+                                
+                                <div class="form-input-group">
+                                    <label class="form-label">Identificador Único (ID)</label>
+                                    <input 
+                                        class="form-input form-input-readonly" 
+                                        type="text" 
+                                        id="edit-device-id" 
+                                        readonly 
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- FILA 2: Número de Serie y Tipo (Solo lectura) -->
+                            <div class="edit-device-row">
+                                <div class="form-input-group">
+                                    <label class="form-label">Número de Serie</label>
+                                    <input 
+                                        class="form-input form-input-readonly" 
+                                        type="text" 
+                                        id="edit-device-serial" 
+                                        readonly 
+                                        placeholder="No registrado"
+                                    />
+                                </div>
+                                
+                                <div class="form-input-group">
+                                    <label class="form-label">Tipo de Dispositivo</label>
+                                    <input 
+                                        class="form-input form-input-readonly" 
+                                        type="text" 
+                                        id="edit-device-type" 
+                                        readonly 
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- FILA 3: Marca (Solo lectura) -->
+                            <div class="edit-device-row">
+                                <div class="form-input-group">
+                                    <label class="form-label">Marca</label>
+                                    <input 
+                                        class="form-input form-input-readonly" 
+                                        type="text" 
+                                        id="edit-device-brand" 
+                                        readonly 
+                                        placeholder="No especificada"
+                                    />
+                                </div>
+                                
+                                <div class="form-input-group">
+                                    <!-- Espacio vacío para mantener la estructura de 2 columnas -->
+                                </div>
+                            </div>
+
+                            <!-- DIVISOR VISUAL -->
+                            <div style="width: 100%; height: 1px; background: var(--border-color); margin: 1.5rem 0;"></div>
+
+                            <!-- FILA 4: Estado y Usuario Asignado (EDITABLES) -->
+                            <div class="edit-device-row">
+                                <div class="form-input-group">
+                                    <label class="form-label">
+                                        Estado 
+                                        <span style="color: var(--accent-color); font-weight: 600;">*</span>
+                                    </label>
+                                    <select class="form-input" id="edit-device-status">
+                                        <option value="storage">En Almacén</option>
+                                        <option value="assigned">Asignado</option>
+                                        <option value="maintenance">En Mantenimiento</option>
+                                        <option value="damaged">Dañado</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-input-group">
+                                    <label class="form-label">Usuario Asignado (Opcional)</label>
+                                    <div class="input-with-icon">
+                                        <input 
+                                            class="form-input" 
+                                            type="text" 
+                                            id="edit-device-user" 
+                                            placeholder="Buscar empleado..." 
+                                        />
+                                        <span class="material-symbols-outlined input-icon">search</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- BOTONES DE ACCIÓN -->
+                        <div class="device-modal-actions">
+                            <button class="btn-outline" onclick="closeEditDeviceModal()">
+                                Cancelar
+                            </button>
+                            <button class="btn-primary-highlight" onclick="saveDeviceChanges()">
+                                <span class="material-symbols-outlined icon-base">check</span>
+                                Guardar Cambios
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
         </main>
     </div>
 
+                <!-- ============================================ -->
+                <!-- MODAL DE CREAR NUEVO SOFTWARE -->
+                <!-- ============================================ -->
+
+                <div id="create-software-modal" class="modal-overlay" style="display: none; z-index: 2000;">
+                    <div class="modal-content modal-device">
+                        
+                        <!-- HEADER DEL MODAL -->
+                        <div class="modal-header-device">
+                            <div>
+                                <h2 class="modal-title">Crear Nuevo Software</h2>
+                                <p class="modal-subtitle-device">Completa la información del software para agregarlo al inventario.</p>
+                            </div>
+                            <button class="modal-close-btn" onclick="closeCreateSoftwareModal()">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+
+                        <!-- CONTENIDO DEL FORMULARIO -->
+                        <div style="padding: 0 1.5rem 1.5rem;">
+                            
+                            <!-- Sección: Información Principal -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <h3 style="color: #370c31; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">
+                                    Información principal
+                                </h3>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                    <!-- Nombre del Software -->
+                                    <div class="form-input-group">
+                                        <label class="form-label">Nombre del Software</label>
+                                        <input 
+                                            class="form-input" 
+                                            type="text" 
+                                            id="software-name" 
+                                            placeholder="Ej: Microsoft Office" 
+                                        />
+                                    </div>
+
+                                    <!-- Versión -->
+                                    <div class="form-input-group">
+                                        <label class="form-label">Versión</label>
+                                        <input 
+                                            class="form-input" 
+                                            type="text" 
+                                            id="software-version" 
+                                            placeholder="Ej: 365" 
+                                        />
+                                    </div>
+                                </div>
+
+                                <!-- Descripción Breve -->
+                                <div class="form-input-group">
+                                    <label class="form-label">Descripción breve</label>
+                                    <textarea 
+                                        class="form-input" 
+                                        id="software-description" 
+                                        rows="3" 
+                                        placeholder="Suite de ofimática para productividad..."
+                                        style="resize: vertical; font-family: inherit;"
+                                    ></textarea>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <!-- Categoría -->
+                                    <div class="form-input-group">
+                                        <label class="form-label">Categoría</label>
+                                        <select class="form-input" id="software-category">
+                                            <option value="">Seleccionar...</option>
+                                            <option value="ofimatica">Ofimática</option>
+                                            <option value="diseno">Diseño</option>
+                                            <option value="desarrollo">Desarrollo</option>
+                                            <option value="comunicacion">Comunicación</option>
+                                            <option value="gestion">Gestión de Proyectos</option>
+                                            <option value="seguridad">Seguridad</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Área Usuaria -->
+                                    <div class="form-input-group">
+                                        <label class="form-label">Área usuaria</label>
+                                        <select class="form-input" id="software-area">
+                                            <option value="">Seleccionar...</option>
+                                            <option value="tics">TICS</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="rrhh">Recursos Humanos</option>
+                                            <option value="ventas">Ventas</option>
+                                            <option value="general">General</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Separador -->
+                            <div style="width: 100%; height: 1px; background: var(--border-color); margin: 1.5rem 0;"></div>
+
+                            <!-- Sección: Información de Licencia -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <h3 style="color: #370c31; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">
+                                    Información de licencia
+                                </h3>
+
+                                <!-- Tipo de Licencia (Radio Buttons) -->
+                                <div class="form-input-group" style="margin-bottom: 1rem;">
+                                    <label class="form-label">Tipo de licencia</label>
+                                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input type="radio" name="license-type" value="pago" id="license-pago" />
+                                            <span style="font-size: 0.9rem;">Pago</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input type="radio" name="license-type" value="gratuito" id="license-gratuito" />
+                                            <span style="font-size: 0.9rem;">Gratuito</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input type="radio" name="license-type" value="opensource" id="license-opensource" />
+                                            <span style="font-size: 0.9rem;">Open Source</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input type="radio" name="license-type" value="suscripcion" id="license-suscripcion" />
+                                            <span style="font-size: 0.9rem;">Suscripción</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input type="radio" name="license-type" value="perpetua" id="license-perpetua" />
+                                            <span style="font-size: 0.9rem;">Perpetua</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <!-- Plan -->
+                                    <div class="form-input-group">
+                                        <label class="form-label">Plan</label>
+                                        <select class="form-input" id="software-plan">
+                                            <option value="free">Free</option>
+                                            <option value="basic">Basic</option>
+                                            <option value="pro">Pro</option>
+                                            <option value="enterprise">Enterprise</option>
+                                            <option value="custom">Personalizado</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Costo Mensual/Anual -->
+                                    <div class="form-input-group">
+                                        <label class="form-label">Costo mensual/anual</label>
+                                        <input 
+                                            class="form-input" 
+                                            type="text" 
+                                            id="software-cost" 
+                                            placeholder="Ej: 99.99 USD" 
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- BOTONES DE ACCIÓN -->
+                        <div class="device-modal-actions" style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                            <button class="btn-outline" onclick="closeCreateSoftwareModal()" type="button">
+                                Cancelar
+                            </button>
+                            <button class="btn-primary-highlight" onclick="saveSoftware()" type="button">
+                                <span class="material-symbols-outlined icon-base">check</span>
+                                Guardar Software
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
 
     <script>
         // Referencias a elementos
@@ -2100,7 +2129,7 @@
             // Paso actual del formulario (comienza en 1)
             let currentStep = 1;
             // Total de pasos en el formulario
-            const totalSteps = 5;
+            const totalSteps = 4;
 
             // ========================================
             // FUNCIÓN PARA MOSTRAR EL FORMULARIO
@@ -2115,10 +2144,6 @@
                 // Prevenir scroll del body cuando el modal está abierto
                 document.body.style.overflow = 'hidden';
             }
-
-            // ========================================
-            // FUNCIÓN PARA CERRAR EL FORMULARIO
-            // ========================================
 
             function closeAddEmployeeForm() {
                 // Ocultar el modal
@@ -2532,6 +2557,736 @@
                     closeAddDeviceModal();
                 }
             });
+
+            // ============================================
+            // FUNCIONALIDAD DEL MODAL DE EDICIÓN DE DISPOSITIVO
+            // ============================================
+
+            /**
+             * Variable global para almacenar la información del dispositivo que se está editando
+             * Guarda la referencia a la tarjeta HTML para poder actualizarla después
+             */
+            let currentEditingDevice = {
+                cardElement: null,  // Elemento HTML de la tarjeta
+                data: {}            // Datos del dispositivo
+            };
+
+            /**
+             * Extrae el tipo de dispositivo desde el nombre
+             * Ej: "Monitor Dell U2721DE" → "Monitor"
+             * @param {string} name - Nombre completo del dispositivo
+             * @returns {string} - Tipo de dispositivo
+             */
+            function extractDeviceType(name) {
+                const types = ['Monitor', 'Teclado', 'Mouse', 'CPU', 'Diadema', 'Antena'];
+                for (let type of types) {
+                    if (name.includes(type)) {
+                        return type;
+                    }
+                }
+                return 'Dispositivo';
+            }
+
+            /**
+             * Extrae la marca desde el nombre del dispositivo
+             * Ej: "Monitor Dell U2721DE" → "Dell"
+             * @param {string} name - Nombre completo del dispositivo
+             * @returns {string} - Marca del dispositivo
+             */
+            function extractDeviceBrand(name) {
+                const brands = ['Dell', 'LG', 'Logitech', 'HP', 'Sony', 'Bose', 'TP-Link', 'Keychron', 'Redragon'];
+                for (let brand of brands) {
+                    if (name.includes(brand)) {
+                        return brand;
+                    }
+                }
+                return 'No especificada';
+            }
+
+            /**
+             * Abre el modal de edición y carga la información del dispositivo seleccionado
+             * Esta función se llama cuando el usuario hace clic en el botón del lápiz
+             * @param {HTMLElement} button - Elemento del botón que disparó el evento
+             */
+            function openEditDeviceModal(button) {
+                // 1. Obtener la tarjeta padre del botón clickeado
+                const card = button.closest('.user-card');
+                
+                if (!card) {
+                    console.error('No se encontró la tarjeta del dispositivo');
+                    return;
+                }
+                
+                // 2. Extraer información de la tarjeta
+                const deviceName = card.querySelector('h4').textContent;
+                const deviceId = card.querySelector('p').textContent.replace('ID: ', '');
+                
+                // Buscar usuario asignado y estado
+                const userSpan = card.querySelectorAll('div > span')[1];
+                const statusSpan = card.querySelector('.info-value span') || card.querySelector('[style*="background"]');
+                
+                const assignedUser = userSpan ? userSpan.textContent : 'N/A';
+                const statusText = statusSpan ? statusSpan.textContent.trim() : 'En Almacén';
+                
+                // 3. Guardar referencia al dispositivo actual
+                currentEditingDevice = {
+                    cardElement: card,
+                    data: {
+                        name: deviceName,
+                        id: deviceId,
+                        serialNumber: 'SN-' + Math.random().toString(36).substr(2, 9).toUpperCase(), // Simulado
+                        type: extractDeviceType(deviceName),
+                        brand: extractDeviceBrand(deviceName),
+                        assignedUser: assignedUser,
+                        status: statusText
+                    }
+                };
+                
+                // 4. Llenar el formulario con los datos
+                document.getElementById('edit-device-name').value = currentEditingDevice.data.name;
+                document.getElementById('edit-device-id').value = currentEditingDevice.data.id;
+                document.getElementById('edit-device-serial').value = currentEditingDevice.data.serialNumber;
+                document.getElementById('edit-device-type').value = currentEditingDevice.data.type;
+                document.getElementById('edit-device-brand').value = currentEditingDevice.data.brand;
+                document.getElementById('edit-device-user').value = currentEditingDevice.data.assignedUser === 'N/A' ? '' : currentEditingDevice.data.assignedUser;
+                
+                // 5. Seleccionar el estado correcto en el dropdown
+                const statusSelect = document.getElementById('edit-device-status');
+                const statusMap = {
+                    'Asignado': 'assigned',
+                    'En Almacén': 'storage',
+                    'En Mantenimiento': 'maintenance',
+                    'Dañado': 'damaged'
+                };
+                statusSelect.value = statusMap[statusText] || 'storage';
+                
+                // 6. Mostrar el modal
+                const modal = document.getElementById('edit-device-modal');
+                modal.style.display = 'flex';
+                
+                // 7. Prevenir scroll del body
+                document.body.style.overflow = 'hidden';
+            }
+
+            /**
+             * Cierra el modal de edición y restaura el scroll
+             */
+            function closeEditDeviceModal() {
+                const modal = document.getElementById('edit-device-modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Limpiar referencia al dispositivo actual
+                currentEditingDevice = { cardElement: null, data: {} };
+            }
+
+            /**
+             * Guarda los cambios realizados en el modal y actualiza la tarjeta correspondiente
+             * Solo actualiza visualmente, no hace peticiones al backend
+             */
+            function saveDeviceChanges() {
+                // 1. Obtener nuevos valores editables
+                const newStatus = document.getElementById('edit-device-status').value;
+                const newUser = document.getElementById('edit-device-user').value.trim() || 'N/A';
+                
+                // 2. Mapeo de estados para mostrar en español
+                const statusTextMap = {
+                    'assigned': 'Asignado',
+                    'storage': 'En Almacén',
+                    'maintenance': 'En Mantenimiento',
+                    'damaged': 'Dañado'
+                };
+                
+                const statusStyleMap = {
+                    'assigned': { bg: '#d4edda', color: '#155724' },
+                    'storage': { bg: '#fff3cd', color: '#856404' },
+                    'maintenance': { bg: '#d1ecf1', color: '#0c5460' },
+                    'damaged': { bg: '#f8d7da', color: '#721c24' }
+                };
+                
+                // 3. Actualizar la tarjeta del dispositivo
+                const card = currentEditingDevice.cardElement;
+                
+                if (!card) {
+                    alert('Error: No se pudo actualizar el dispositivo');
+                    return;
+                }
+                
+                // Actualizar usuario asignado
+                const userSpan = card.querySelectorAll('div > span')[1];
+                if (userSpan) {
+                    userSpan.textContent = newUser;
+                }
+                
+                // Actualizar estado (badge)
+                const statusSpan = card.querySelector('[style*="background"]');
+                if (statusSpan) {
+                    const style = statusStyleMap[newStatus];
+                    statusSpan.textContent = statusTextMap[newStatus];
+                    statusSpan.style.background = style.bg;
+                    statusSpan.style.color = style.color;
+                }
+                
+                // 4. Mostrar mensaje de éxito
+                alert('✅ Dispositivo actualizado exitosamente');
+                
+                // 5. Cerrar el modal
+                closeEditDeviceModal();
+                
+                // 6. AQUÍ PUEDES AGREGAR LÓGICA PARA ENVIAR AL BACKEND
+                // Ejemplo:
+                // fetch('/api/devices/update', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({
+                //         deviceId: currentEditingDevice.data.id,
+                //         status: newStatus,
+                //         assignedUser: newUser
+                //     })
+                // });
+            }
+
+            /**
+             * Agrega event listeners a todos los botones de editar (lápiz)
+             * Se ejecuta cuando la página carga
+             */
+            function initializeEditButtons() {
+                // Seleccionar todos los botones de editar (ícono de lápiz)
+                const editButtons = document.querySelectorAll('#inventory-section button[style*="edit"]');
+                
+                editButtons.forEach(button => {
+                    // Verificar que el botón contiene el ícono "edit"
+                    const icon = button.querySelector('.material-symbols-outlined');
+                    if (icon && icon.textContent.trim() === 'edit') {
+                        button.addEventListener('click', function() {
+                            openEditDeviceModal(this);
+                        });
+                    }
+                });
+            }
+
+            // ============================================
+            // EVENT LISTENERS PARA EL MODAL DE EDICIÓN
+            // ============================================
+
+            // Cerrar modal al hacer clic en el overlay (fondo oscuro)
+            document.addEventListener('click', function(event) {
+                const modal = document.getElementById('edit-device-modal');
+                if (modal && event.target === modal) {
+                    closeEditDeviceModal();
+                }
+            });
+
+            // Cerrar modal con tecla ESC
+            document.addEventListener('keydown', function(event) {
+                const modal = document.getElementById('edit-device-modal');
+                if (modal && modal.style.display === 'flex' && event.key === 'Escape') {
+                    closeEditDeviceModal();
+                }
+            });
+
+            // Inicializar los botones de edición cuando la página carga
+            document.addEventListener('DOMContentLoaded', function() {
+                initializeEditButtons();
+            });
+            
+            // ============================================
+            // INICIALIZACIÓN DE EMERGENCIA
+            // ============================================
+
+            // Ejecutar cuando TODO esté cargado
+            window.addEventListener('load', function() {
+                console.log('🔍 Iniciando búsqueda de botones de edición...');
+                
+                // Buscar TODOS los botones en el documento
+                const allButtons = document.querySelectorAll('button');
+                let editButtonsFound = 0;
+                
+                allButtons.forEach(button => {
+                    const icon = button.querySelector('.material-symbols-outlined');
+                    
+                    if (icon && icon.textContent.trim() === 'edit') {
+                        // Remover listeners previos
+                        const newButton = button.cloneNode(true);
+                        button.parentNode.replaceChild(newButton, button);
+                        
+                        // Agregar nuevo listener
+                        newButton.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('✅ Botón de editar clickeado');
+                            openEditDeviceModal(this);
+                        });
+                        
+                        editButtonsFound++;
+                    }
+                });
+                
+                console.log(`✅ Se encontraron y configuraron ${editButtonsFound} botones de edición`);
+            });
+
+            // ============================================
+            // FUNCIONES PARA MODAL DE CREAR SOFTWARE
+            // ============================================
+
+            function openCreateSoftwareModal() {
+                console.log('🔵 Intentando abrir modal de software...');
+                
+                const modal = document.getElementById('create-software-modal');
+                
+                if (!modal) {
+                    console.error('❌ ERROR: Modal de software no encontrado');
+                    alert('Error: No se pudo encontrar el modal de software');
+                    return;
+                }
+                
+                console.log('✅ Modal encontrado');
+                
+                // Forzar estilos directamente
+                modal.style.display = 'flex';
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+                modal.style.zIndex = '9999';
+                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+                
+                // Bloquear scroll
+                document.body.style.overflow = 'hidden';
+                
+                // Resetear formulario
+                resetSoftwareForm();
+                
+                console.log('✅ Modal de software abierto exitosamente');
+            }
+
+            function closeCreateSoftwareModal() {
+                const modal = document.getElementById('create-software-modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            function resetSoftwareForm() {
+                document.getElementById('software-name').value = '';
+                document.getElementById('software-version').value = '';
+                document.getElementById('software-description').value = '';
+                document.getElementById('software-category').selectedIndex = 0;
+                document.getElementById('software-area').selectedIndex = 0;
+                document.getElementById('software-plan').selectedIndex = 0;
+                document.getElementById('software-cost').value = '';
+                
+                // Desmarcar radio buttons
+                document.querySelectorAll('input[name="license-type"]').forEach(radio => {
+                    radio.checked = false;
+                });
+            }
+
+            function saveSoftware() {
+                // Obtener valores del formulario
+                const softwareData = {
+                    name: document.getElementById('software-name').value,
+                    version: document.getElementById('software-version').value,
+                    description: document.getElementById('software-description').value,
+                    category: document.getElementById('software-category').value,
+                    area: document.getElementById('software-area').value,
+                    licenseType: document.querySelector('input[name="license-type"]:checked')?.value || '',
+                    plan: document.getElementById('software-plan').value,
+                    cost: document.getElementById('software-cost').value
+                };
+                
+                // Validación básica
+                if (!softwareData.name || !softwareData.category) {
+                    alert('⚠️ Por favor completa al menos el nombre y la categoría del software');
+                    return;
+                }
+                
+                // AQUÍ PUEDES AGREGAR LÓGICA PARA GUARDAR EN BASE DE DATOS
+                console.log('Software a guardar:', softwareData);
+                
+                // Agregar al select de software existente
+                const select = document.getElementById('existing-software-select');
+                const optionText = `${softwareData.name} ${softwareData.version ? '- ' + softwareData.version : ''}`;
+                const option = new Option(optionText, softwareData.name.toLowerCase().replace(/\s/g, '_'));
+                select.add(option);
+                
+                alert('✅ Software creado exitosamente');
+                closeCreateSoftwareModal();
+            }
+
+            // Cerrar modal al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const modal = document.getElementById('create-software-modal');
+                if (modal && event.target === modal) {
+                    closeCreateSoftwareModal();
+                }
+            });
+
+            // ============================================
+            // FUNCIONES PARA AGREGAR HARDWARE
+            // ============================================
+
+            function openAddHardwareModal() {
+                // AQUÍ implementarás la lógica para abrir un modal
+                // que muestre el inventario de hardware disponible
+                alert('Modal de selección de hardware - Por implementar');
+                
+                // Ejemplo de cómo agregar hardware a la tabla:
+                // addHardwareToTable('Monitor Dell U2721DE', 'MON-00125', 'SN-456-789');
+            }
+
+            function addHardwareToTable(device, model, serial) {
+                const table = document.getElementById('assigned-hardware-table').querySelector('tbody');
+                const noDataRow = document.getElementById('no-hardware-row');
+                
+                // Ocultar mensaje "sin hardware"
+                if (noDataRow) {
+                    noDataRow.style.display = 'none';
+                }
+                
+                // Crear nueva fila
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>${device}</td>
+                    <td>${model}</td>
+                    <td>${serial}</td>
+                    <td>
+                        <button 
+                            onclick="removeHardwareRow(this)" 
+                            style="padding: 0.25rem 0.5rem; background: transparent; border: none; cursor: pointer; color: var(--error-color);"
+                            type="button"
+                        >
+                            <span class="material-symbols-outlined" style="font-size: 1.25rem;">delete</span>
+                        </button>
+                    </td>
+                `;
+            }
+
+            function removeHardwareRow(button) {
+                const row = button.closest('tr');
+                row.remove();
+                
+                // Mostrar mensaje si no hay filas
+                const table = document.getElementById('assigned-hardware-table').querySelector('tbody');
+                if (table.rows.length === 1) { // Solo queda la fila "no hay hardware"
+                    document.getElementById('no-hardware-row').style.display = 'table-row';
+                }
+            }
+
+                        // ============================================
+            // EVENT LISTENER PARA BOTÓN DE SOFTWARE (FORZADO)
+            // ============================================
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('🔵 Inicializando botón de software...');
+                
+                const btnSoftware = document.getElementById('btn-open-software-modal');
+                
+                if (btnSoftware) {
+                    console.log('✅ Botón de software encontrado');
+                    
+                    // Remover onclick si existe
+                    btnSoftware.removeAttribute('onclick');
+                    
+                    // Agregar listener limpio
+                    btnSoftware.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('🔘 Click en botón de software detectado');
+                        openCreateSoftwareModal();
+                    });
+                } else {
+                    console.error('❌ No se encontró el botón de software');
+                }
+            });
+
+            // ============================================
+            // SISTEMA DE HISTORIAL DE CAMBIOS
+            // ============================================
+
+            // Array global para almacenar el historial
+            let employeeHistory = [
+                {
+                    fecha: '15/05/2024',
+                    componente: 'RAM',
+                    valorAnterior: '8 GB',
+                    valorNuevo: '16 GB',
+                    realizadoPor: 'Admin TI',
+                    timestamp: new Date('2024-05-15T10:30:00')
+                },
+                {
+                    fecha: '10/01/2024',
+                    componente: 'Mouse',
+                    valorAnterior: 'Apple Magic Mouse',
+                    valorNuevo: 'Logitech MX Master 3S',
+                    realizadoPor: 'Admin TI',
+                    timestamp: new Date('2024-01-10T14:20:00')
+                },
+                {
+                    fecha: '10/01/2024',
+                    componente: 'Diadema',
+                    valorAnterior: 'N/A',
+                    valorNuevo: 'Sony WH-1000XM5',
+                    realizadoPor: 'Admin TI',
+                    timestamp: new Date('2024-01-10T14:25:00')
+                }
+            ];
+
+            // Función para registrar un cambio en el historial
+            function registerChange(componente, valorAnterior, valorNuevo, realizadoPor = 'Admin TI') {
+                // Solo registrar si hay cambio real
+                if (valorAnterior === valorNuevo) return;
+                
+                const change = {
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    componente: componente,
+                    valorAnterior: valorAnterior || 'N/A',
+                    valorNuevo: valorNuevo,
+                    realizadoPor: realizadoPor,
+                    timestamp: new Date()
+                };
+                
+                employeeHistory.unshift(change); // Agregar al inicio
+                updateHistoryTable();
+                
+                // Guardar en localStorage
+                localStorage.setItem('employeeHistory_' + currentProfileData.name, JSON.stringify(employeeHistory));
+                
+                console.log('✅ Cambio registrado:', change);
+            }
+
+            // Función para actualizar la tabla de historial
+            function updateHistoryTable() {
+                const tbody = document.querySelector('#history-table tbody');
+                if (!tbody) return;
+                
+                tbody.innerHTML = '';
+                
+                // Ordenar por fecha más reciente
+                const sortedHistory = [...employeeHistory].sort((a, b) => b.timestamp - a.timestamp);
+                
+                if (sortedHistory.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                No hay cambios registrados aún
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                sortedHistory.forEach(item => {
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
+                        <td>${item.fecha}</td>
+                        <td>${item.componente}</td>
+                        <td>${item.valorAnterior}</td>
+                        <td>${item.valorNuevo}</td>
+                        <td>${item.realizadoPor}</td>
+                    `;
+                });
+            }
+
+            // Exportar historial a Excel (CSV)
+            function exportHistoryToExcel() {
+                if (employeeHistory.length === 0) {
+                    alert('⚠️ No hay datos para exportar');
+                    return;
+                }
+
+                const headers = ['FECHA', 'COMPONENTE', 'VALOR ANTERIOR', 'VALOR NUEVO', 'REALIZADO POR'];
+                const csvData = [headers];
+                
+                // Ordenar por fecha más reciente
+                const sortedHistory = [...employeeHistory].sort((a, b) => b.timestamp - a.timestamp);
+                
+                sortedHistory.forEach(item => {
+                    const rowData = [
+                        item.fecha,
+                        item.componente,
+                        item.valorAnterior,
+                        item.valorNuevo,
+                        item.realizadoPor
+                    ];
+                    csvData.push(rowData);
+                });
+                
+                // Convertir a CSV
+                const csvContent = csvData.map(row => 
+                    row.map(cell => `"${cell}"`).join(',')
+                ).join('\n');
+                
+                // Crear archivo y descargar
+                const blob = new Blob(['\ufeff' + csvContent], { 
+                    type: 'text/csv;charset=utf-8;' 
+                });
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                const employeeName = currentProfileData.name || 'empleado';
+                link.download = `historial_${employeeName.replace(/\s/g, '_')}_${new Date().getTime()}.csv`;
+                link.click();
+                
+                alert('✅ Archivo Excel descargado exitosamente');
+            }
+
+            // ============================================
+            // INTEGRACIÓN CON GUARDAR CAMBIOS
+            // ============================================
+
+            // Cargar historial desde localStorage al mostrar el perfil
+            function loadEmployeeHistory() {
+                if (!currentProfileData.name) return;
+                
+                const savedHistory = localStorage.getItem('employeeHistory_' + currentProfileData.name);
+                if (savedHistory) {
+                    employeeHistory = JSON.parse(savedHistory);
+                    // Convertir timestamps de string a Date
+                    employeeHistory.forEach(item => {
+                        item.timestamp = new Date(item.timestamp);
+                    });
+                }
+                updateHistoryTable();
+            }
+
+            // Modificar showProfileView para cargar el historial
+            const originalShowProfileView = showProfileView;
+            showProfileView = function(name, role, imgId, status) {
+                originalShowProfileView(name, role, imgId, status);
+                loadEmployeeHistory();
+            };
+
+            // Modificar showEditProfileView para cargar el historial
+            const originalShowEditProfileView = showEditProfileView;
+            showEditProfileView = function() {
+                originalShowEditProfileView();
+                loadEmployeeHistory();
+            };
+
+            // ============================================
+            // CAPTURAR CAMBIOS EN FORMULARIOS
+            // ============================================
+
+            // Función para capturar cambios cuando se guarda el formulario de edición
+            function captureFormChanges() {
+                // Capturar cambios de Información Personal
+                const campos = [
+                    { id: 'edit-nombre-completo', nombre: 'Nombre Completo', valorOriginal: 'Ana Sofía García Pérez' },
+                    { id: 'edit-celular', nombre: 'Celular', valorOriginal: '+58 412-1234567' },
+                    { id: 'edit-correo', nombre: 'Correo', valorOriginal: 'ana.garcia.p@email.com' },
+                    { id: 'edit-direccion', nombre: 'Dirección', valorOriginal: 'Calle Falsa 123, Apto 4B' },
+                    { id: 'edit-cargo', nombre: 'Cargo', valorOriginal: 'Desarrollador Senior' },
+                    { id: 'edit-area-departamento', nombre: 'Área', valorOriginal: 'Tecnología de la Información' },
+                    { id: 'edit-procesador', nombre: 'Procesador', valorOriginal: 'Intel Core i7 12th Gen' },
+                    { id: 'edit-ram', nombre: 'RAM', valorOriginal: '16 GB DDR4' },
+                    { id: 'edit-almacenamiento', nombre: 'Almacenamiento', valorOriginal: '512 GB SSD NVMe' },
+                    { id: 'edit-gpu', nombre: 'Tarjeta Gráfica', valorOriginal: 'NVIDIA RTX 3050' },
+                    { id: 'edit-mouse', nombre: 'Mouse', valorOriginal: 'Logitech G203' },
+                    { id: 'edit-teclado', nombre: 'Teclado', valorOriginal: 'Mecánico Redragon' },
+                    { id: 'edit-diadema', nombre: 'Diadema', valorOriginal: 'Sony WH-1000XM5' }
+                ];
+                
+                campos.forEach(campo => {
+                    const input = document.getElementById(campo.id);
+                    if (input && input.value !== campo.valorOriginal) {
+                        registerChange(campo.nombre, campo.valorOriginal, input.value);
+                    }
+                });
+            }
+
+            // Modificar el botón "Guardar Cambios" en la vista de edición
+            window.addEventListener('DOMContentLoaded', function() {
+                // Buscar el botón de guardar cambios en la vista de edición
+                const saveButton = document.querySelector('#view-edit-profile .btn-primary-highlight');
+                if (saveButton && saveButton.textContent.includes('Guardar Cambios')) {
+                    saveButton.addEventListener('click', function(e) {
+                        // Capturar cambios antes de guardar
+                        captureFormChanges();
+                    });
+                }
+            });
+
+            // ============================================
+            // INTEGRAR CON CAMBIOS DE DISPOSITIVOS
+            // ============================================
+
+            // Override de la función saveDeviceChanges existente
+            const originalSaveDeviceChanges = saveDeviceChanges;
+            window.saveDeviceChanges = function() {
+                // Obtener valores antes del cambio
+                const deviceName = document.getElementById('edit-device-name').value;
+                const oldStatus = document.getElementById('edit-device-status').dataset.originalValue || 'En Almacén';
+                const oldUser = document.getElementById('edit-device-user').dataset.originalValue || 'N/A';
+                
+                // Llamar a la función original
+                if (originalSaveDeviceChanges) {
+                    originalSaveDeviceChanges();
+                }
+                
+                // Obtener nuevos valores
+                const newStatus = document.getElementById('edit-device-status').value;
+                const statusMap = {
+                    'assigned': 'Asignado',
+                    'storage': 'En Almacén',
+                    'maintenance': 'En Mantenimiento',
+                    'damaged': 'Dañado'
+                };
+                const newStatusText = statusMap[newStatus];
+                const newUser = document.getElementById('edit-device-user').value.trim() || 'N/A';
+                
+                // Registrar cambios
+                if (oldStatus !== newStatusText) {
+                    registerChange(`${deviceName} - Estado`, oldStatus, newStatusText);
+                }
+                if (oldUser !== newUser) {
+                    registerChange(`${deviceName} - Usuario`, oldUser, newUser);
+                }
+            };
+
+            // Guardar valores originales cuando se abre el modal de edición
+            const originalOpenEditDeviceModal = openEditDeviceModal;
+            window.openEditDeviceModal = function(button) {
+                if (originalOpenEditDeviceModal) {
+                    originalOpenEditDeviceModal(button);
+                }
+                
+                // Guardar valores originales
+                setTimeout(() => {
+                    const statusSelect = document.getElementById('edit-device-status');
+                    const userInput = document.getElementById('edit-device-user');
+                    
+                    if (statusSelect) {
+                        statusSelect.dataset.originalValue = statusSelect.options[statusSelect.selectedIndex].text;
+                    }
+                    if (userInput) {
+                        userInput.dataset.originalValue = userInput.value;
+                    }
+                }, 100);
+            };
+
+            // ============================================
+            // DEMO: Agregar cambio de prueba
+            // ============================================
+
+            // Función para agregar un cambio de prueba (puedes eliminar esto en producción)
+            function addDemoChange() {
+                registerChange(
+                    'RAM',
+                    '8 GB',
+                    '32 GB',
+                    'Admin TI'
+                );
+                alert('✅ Cambio de prueba agregado. Ve a la pestaña "Historial" para verlo.');
+            }
+
+            // Inicializar la tabla al cargar la página
+            window.addEventListener('load', function() {
+                updateHistoryTable();
+            });
+
     </script>
 </body>
 </html>

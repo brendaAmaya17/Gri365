@@ -4171,6 +4171,452 @@ body.dark-mode #inventory-section .user-card button:hover {
 }
 
 
+/* ============================================ */
+/* ESTILOS DEL MODAL DE EDICIÓN DE DISPOSITIVO */
+/* ============================================ */
+
+/* Contenedor específico para el modal de edición */
+.modal-device-edit {
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Contenedor principal del formulario */
+.edit-device-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+}
+
+/* Fila de 2 columnas */
+.edit-device-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Campos de solo lectura con estilo diferenciado */
+.form-input-readonly {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    cursor: not-allowed !important;
+    border: 1px solid var(--border-color) !important;
+    font-weight: 500;
+}
+
+/* Efecto hover deshabilitado para campos readonly */
+.form-input-readonly:hover,
+.form-input-readonly:focus {
+    border-color: var(--border-color) !important;
+    box-shadow: none !important;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .modal-device-edit {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .edit-device-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .edit-device-form {
+        gap: 1rem;
+    }
+}
+
+/* Ajuste del scroll para el modal */
+.modal-device-edit::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-device-edit::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.modal-device-edit::-webkit-scrollbar-thumb {
+    background: var(--text-tertiary);
+    border-radius: 10px;
+}
+
+.modal-device-edit::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* 🔽 REEMPLAZAR TODO EL CSS DEL MODAL DE EDICIÓN (desde línea ~2800 aprox en styles.css) */
+
+/* ============================================ */
+/* ESTILOS DEL MODAL DE EDICIÓN DE DISPOSITIVO */
+/* ============================================ */
+
+/* Contenedor específico para el modal de edición */
+.modal-device-edit {
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 0;
+}
+
+/* Header del modal */
+.modal-header-device {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Contenedor principal del formulario */
+.edit-device-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+}
+
+/* Fila de 2 columnas */
+.edit-device-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Grupo de input individual */
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Labels del formulario */
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+/* Campos de solo lectura con estilo diferenciado */
+.form-input-readonly {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    cursor: not-allowed !important;
+    border: 1px solid var(--border-color) !important;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Efecto hover deshabilitado para campos readonly */
+.form-input-readonly:hover,
+.form-input-readonly:focus {
+    border-color: var(--border-color) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Estilo para inputs editables */
+.edit-device-form .form-input:not(.form-input-readonly) {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.edit-device-form .form-input:not(.form-input-readonly):hover {
+    border-color: var(--accent-color);
+}
+
+.edit-device-form .form-input:not(.form-input-readonly):focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+/* Divisor visual entre secciones */
+.edit-device-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-color);
+    margin: 0.5rem 0;
+}
+
+/* Botones de acción del modal */
+.device-modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border-radius: 0 0 12px 12px;
+}
+
+/* Ajustes para el select de estado */
+.edit-device-form select.form-input {
+    cursor: pointer;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+    appearance: none;
+}
+
+/* Responsive para tablets */
+@media (max-width: 768px) {
+    .modal-device-edit {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .edit-device-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .edit-device-form {
+        gap: 1.25rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .device-modal-actions {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .device-modal-actions button {
+        width: 100%;
+    }
+}
+
+/* Ajuste del scroll para el modal */
+.modal-device-edit::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-device-edit::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.modal-device-edit::-webkit-scrollbar-thumb {
+    background: var(--text-tertiary);
+    border-radius: 10px;
+}
+
+.modal-device-edit::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Ajuste para el campo de usuario con ícono de búsqueda */
+.edit-device-form .input-with-icon {
+    position: relative;
+}
+
+.edit-device-form .input-with-icon .input-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
+
+.edit-device-form .input-with-icon .form-input {
+    padding-right: 2.5rem;
+}
+
+/* // AGREGAR ESTOS ESTILOS AL FINAL DE styles.css */
+
+/* Estilos para el desplegable colapsable */
+.collapsible-section {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: var(--bg-primary);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    list-style: none;
+}
+
+.collapsible-header:hover {
+    background: var(--bg-secondary);
+}
+
+.collapsible-header .chevron-icon {
+    transition: transform 0.3s ease;
+}
+
+details[open] .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para tabla de hardware */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.data-table thead {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg-secondary);
+}
+
+.table-container {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* // FIN DE LOS ESTILOS */
+
+
+/* ESTILOS PARA MODALES Y FORMULARIOS */
+
+    /* Fix para evitar superposición de campos con botones */
+    .form-steps-content {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        overflow-y: auto;
+        max-height: calc(90vh - 300px);
+    }
+    
+    .form-step {
+        min-height: 350px;
+        padding-bottom: 2rem;
+    }
+    
+    .form-navigation {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+        background: var(--bg-primary);
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+    }
+    
+    /* Mejorar espaciado del campo "Persona de Contacto" */
+    .form-input-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    /* Fix para el collapsible de software */
+    .collapsible-section {
+        margin-bottom: 1rem;
+    }
+    
+    .collapsible-header {
+        cursor: pointer;
+        padding: 1rem;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+    
+    .collapsible-header:hover {
+        background: var(--bg-tertiary);
+    }
+    
+    .chevron-icon {
+        transition: transform 0.3s ease;
+    }
+    
+    details[open] .chevron-icon {
+        transform: rotate(180deg);
+    }
+    
+    /* FORCE MODAL DE SOFTWARE A APARECER - MUY IMPORTANTE */
+    #create-software-modal {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        z-index: 9999 !important;
+        display: none;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #create-software-modal[style*="display: flex"] {
+        display: flex !important;
+    }
+
+    #create-software-modal .modal-content {
+        position: relative !important;
+        z-index: 10000 !important;
+        max-width: 800px !important;
+        width: 90% !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        background: var(--bg-primary) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+    }
+    
+    /* Z-index para modales anidados */
+    #add-employee-modal {
+        z-index: 1000 !important;
+    }
+    
+    /* Fix para el grid de formulario */
+    .edit-form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
 
 /* Responsive */
 @media (max-width: 1024px) {
