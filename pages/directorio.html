@@ -1007,7 +1007,7 @@
                         </div>
 
                         <!-- Tab Historial -->
-                        <div id="tab-edit-history" class="tab-content">
+                        <div id="tab-history" class="tab-content">
                             <!-- Botón de Exportación -->
                             <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
                                 <button onclick="exportHistoryToExcel()" class="btn-primary-highlight" type="button">
@@ -1235,7 +1235,6 @@
                             <div class="tabs-container">
                                 <button class="tab-btn active" onclick="switchEditTab('hardware', this)">Hardware</button>
                                 <button class="tab-btn" onclick="switchEditTab('software', this)">Software</button>
-                                <button class="tab-btn" onclick="switchEditTab('history', this)">Historial</button>
                             </div>
 
                             <!-- Tab Hardware -->
@@ -1348,13 +1347,6 @@
                                 </div>
                             </div>
 
-                            <!-- Tab Observaciones -->
-                            <div id="tab-edit-obs" class="tab-content">
-                                <div class="form-input-group">
-                                    <label for="edit-observaciones" class="form-label">Observaciones</label>
-                                    <textarea class="form-input" id="edit-observaciones" rows="6" style="resize: vertical; font-family: inherit;">El equipo fue entregado el día 15 de Noviembre de 2025. Se encuentra en excelentes condiciones. Tiene instalado el paquete Adobe completo y Office 365 empresarial.</textarea>
-                                </div>
-                            </div>
 
                             <!-- Tab Historial -->
                             <div id="tab-edit-history" class="tab-content">
@@ -1699,7 +1691,151 @@
                 </div>
         </main>
     </div>
+                <!-- ============================================ -->
+                <!-- MODAL DE CATÁLOGO DE HARDWARE -->
+                <!-- ============================================ -->
 
+                <div id="hardware-catalog-modal" class="modal-overlay" style="display: none; z-index: 3000;">
+                    <div class="modal-content" style="max-width: 1200px; width: 95%; max-height: 90vh; overflow-y: auto;">
+                        
+                        <!-- HEADER DEL CATÁLOGO -->
+                        <div class="catalog-header">
+                            <div>
+                                <h2 class="catalog-title">Catálogo de Dispositivos para Asignación</h2>
+                                <p class="catalog-subtitle">Selecciona el equipo que deseas asignar al empleado.</p>
+                            </div>
+                            <button class="modal-close-btn" onclick="closeCatalogModal()">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+
+                        <!-- BARRA DE BÚSQUEDA Y FILTRO -->
+                        <div class="catalog-filters">
+                            <div class="search-container-catalog">
+                                <span class="material-symbols-outlined search-icon-catalog">search</span>
+                                <input 
+                                    type="text" 
+                                    class="search-input-catalog" 
+                                    id="catalog-search-input"
+                                    placeholder="Buscar por nombre, modelo o serial..."
+                                />
+                            </div>
+                            <select class="filter-select-catalog" id="catalog-category-filter">
+                                <option value="all">Todas las categorías</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="monitor">Monitor</option>
+                                <option value="mouse">Mouse</option>
+                                <option value="keyboard">Teclado</option>
+                                <option value="headset">Auriculares</option>
+                            </select>
+                        </div>
+
+                        <!-- GRID DE DISPOSITIVOS -->
+                        <div class="catalog-grid" id="catalog-devices-grid">
+                            <!-- DISPOSITIVO 1: Laptop -->
+                            <div class="catalog-card" data-category="laptop" data-device-id="LAPTOP-001">
+                                <div class="catalog-card-body">
+                                    <h3 class="catalog-card-title">Laptop Pro 14"</h3>
+                                    <p class="catalog-card-category">Laptop</p>
+                                    <div class="catalog-card-status">
+                                        <span class="status-dot available"></span>
+                                        <span class="status-text">Disponible</span>
+                                    </div>
+                                </div>
+                                <button class="catalog-btn-assign" onclick="selectDevice('LAPTOP-001', this)">
+                                    Asignar
+                                </button>
+                            </div>
+
+                            <!-- DISPOSITIVO 2: Monitor -->
+                            <div class="catalog-card" data-category="monitor" data-device-id="MON-001">
+                                <div class="catalog-card-body">
+                                    <h3 class="catalog-card-title">UltraSharp 27"</h3>
+                                    <p class="catalog-card-category">Monitor</p>
+                                    <div class="catalog-card-status">
+                                        <span class="status-dot available"></span>
+                                        <span class="status-text">Disponible</span>
+                                    </div>
+                                </div>
+                                <button class="catalog-btn-assign" onclick="selectDevice('MON-001', this)">
+                                    Asignar
+                                </button>
+                            </div>
+
+                            <!-- DISPOSITIVO 3: Mouse -->
+                            <div class="catalog-card" data-category="mouse" data-device-id="MOUSE-001">
+                                <div class="catalog-card-body">
+                                    <h3 class="catalog-card-title">Wireless Mouse</h3>
+                                    <p class="catalog-card-category">Mouse</p>
+                                    <div class="catalog-card-status">
+                                        <span class="status-dot available"></span>
+                                        <span class="status-text">Disponible</span>
+                                    </div>
+                                </div>
+                                <button class="catalog-btn-assign" onclick="selectDevice('MOUSE-001', this)">
+                                    Asignar
+                                </button>
+                            </div>
+
+                            <!-- DISPOSITIVO 4: Auriculares -->
+                            <div class="catalog-card" data-category="headset" data-device-id="HEAD-001">
+                                <div class="catalog-card-body">
+                                    <h3 class="catalog-card-title">Noise-Cancelling Headset</h3>
+                                    <p class="catalog-card-category">Auriculares</p>
+                                    <div class="catalog-card-status">
+                                        <span class="status-dot available"></span>
+                                        <span class="status-text">Disponible</span>
+                                    </div>
+                                </div>
+                                <button class="catalog-btn-assign" onclick="selectDevice('HEAD-001', this)">
+                                    Asignar
+                                </button>
+                            </div>
+
+                            <!-- DISPOSITIVO 5: Teclado -->
+                            <div class="catalog-card" data-category="keyboard" data-device-id="KEY-001">
+                                <div class="catalog-card-body">
+                                    <h3 class="catalog-card-title">Mechanical Keyboard RGB</h3>
+                                    <p class="catalog-card-category">Teclado</p>
+                                    <div class="catalog-card-status">
+                                        <span class="status-dot available"></span>
+                                        <span class="status-text">Disponible</span>
+                                    </div>
+                                </div>
+                                <button class="catalog-btn-assign" onclick="selectDevice('KEY-001', this)">
+                                    Asignar
+                                </button>
+                            </div>
+
+                            <!-- DISPOSITIVO 6: Laptop (otro modelo) -->
+                            <div class="catalog-card" data-category="laptop" data-device-id="LAPTOP-002">
+                                <div class="catalog-card-body">
+                                    <h3 class="catalog-card-title">Laptop Business 15"</h3>
+                                    <p class="catalog-card-category">Laptop</p>
+                                    <div class="catalog-card-status">
+                                        <span class="status-dot available"></span>
+                                        <span class="status-text">Disponible</span>
+                                    </div>
+                                </div>
+                                <button class="catalog-btn-assign" onclick="selectDevice('LAPTOP-002', this)">
+                                    Asignar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- BOTONES DE ACCIÓN INFERIORES -->
+                        <div class="catalog-footer">
+                            <button class="catalog-btn-cancel" onclick="closeCatalogModal()">
+                                Cancelar
+                            </button>
+                            <button class="catalog-btn-confirm" id="confirm-assignment-btn" onclick="confirmHardwareAssignment()">
+                                Confirmar Asignación
+                                <span class="material-symbols-outlined" style="font-size: 1.25rem; margin-left: 0.5rem;">arrow_forward</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
                 <!-- ============================================ -->
                 <!-- MODAL DE CREAR NUEVO SOFTWARE -->
                 <!-- ============================================ -->
@@ -1830,7 +1966,7 @@
                                     </div>
                                 </div>
 
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                                     <!-- Plan -->
                                     <div class="form-input-group">
                                         <label class="form-label">Plan</label>
@@ -1854,6 +1990,164 @@
                                         />
                                     </div>
                                 </div>
+
+                                <!-- NUEVO CAMPO: Período de Facturación -->
+                                <div class="form-input-group">
+                                    <label class="form-label">Período de facturación</label>
+                                    <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="billing-period" 
+                                                value="mensual" 
+                                                id="billing-monthly"
+                                            />
+                                            <span style="font-size: 0.9rem;">Mensual</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="billing-period" 
+                                                value="trimestral" 
+                                                id="billing-quarterly"
+                                            />
+                                            <span style="font-size: 0.9rem;">Trimestral</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="billing-period" 
+                                                value="semestral" 
+                                                id="billing-biannual"
+                                            />
+                                            <span style="font-size: 0.9rem;">Semestral</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="billing-period" 
+                                                value="anual" 
+                                                id="billing-yearly"
+                                            />
+                                            <span style="font-size: 0.9rem;">Anual</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="billing-period" 
+                                                value="unico" 
+                                                id="billing-onetime"
+                                            />
+                                            <span style="font-size: 0.9rem;">Pago único</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="billing-period" 
+                                                value="gratuito" 
+                                                id="billing-free"
+                                            />
+                                            <span style="font-size: 0.9rem;">Gratuito</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Separador -->
+                            <div style="width: 100%; height: 1px; background: var(--border-color); margin: 1.5rem 0;"></div>
+
+                            <!--  NUEVA SECCIÓN: CREDENCIALES DE ACCESO -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <h3 style="color: #370c31; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">
+                                    Credenciales de acceso
+                                </h3>
+
+                                <!-- Tipo de Autenticación -->
+                                <div class="form-input-group" style="margin-bottom: 1rem;">
+                                    <label class="form-label">Tipo de autenticación</label>
+                                    <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="auth-type" 
+                                                value="credentials" 
+                                                id="auth-credentials"
+                                                checked
+                                                onchange="toggleAuthFields('credentials')"
+                                            />
+                                            <span style="font-size: 0.9rem;">Correo y contraseña</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                            <input 
+                                                type="radio" 
+                                                name="auth-type" 
+                                                value="google" 
+                                                id="auth-google"
+                                                onchange="toggleAuthFields('google')"
+                                            />
+                                            <span style="font-size: 0.9rem;">Cuenta de Google</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Campos: Correo y Contraseña (por defecto visible) -->
+                                <div id="credentials-fields">
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                        <div class="form-input-group">
+                                            <label class="form-label">
+                                                Correo electrónico
+                                                <span style="color: #e74c3c; font-weight: 600;">*</span>
+                                            </label>
+                                            <div class="input-with-icon">
+                                                <input 
+                                                    class="form-input" 
+                                                    type="email" 
+                                                    id="software-email" 
+                                                    placeholder="usuario@empresa.com"
+                                                />
+                                                <span class="material-symbols-outlined input-icon">email</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-input-group">
+                                            <label class="form-label">
+                                                Contraseña
+                                                <span style="color: #e74c3c; font-weight: 600;">*</span>
+                                            </label>
+                                            <div class="input-with-icon">
+                                                <input 
+                                                    class="form-input" 
+                                                    type="password" 
+                                                    id="software-password" 
+                                                    placeholder="••••••••"
+                                                />
+                                                <span class="material-symbols-outlined input-icon">lock</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Campos: Cuenta de Google (inicialmente oculto) -->
+                                <div id="google-fields" style="display: none;">
+                                    <div class="form-input-group">
+                                        <label class="form-label">
+                                            Correo de Google asociado
+                                            <span style="color: #e74c3c; font-weight: 600;">*</span>
+                                        </label>
+                                        <div class="input-with-icon">
+                                            <input 
+                                                class="form-input" 
+                                                type="email" 
+                                                id="software-google-email" 
+                                                placeholder="ejemplo@gmail.com"
+                                            />
+                                            <span class="material-symbols-outlined input-icon">account_circle</span>
+                                        </div>
+                                        <small style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; display: block;">
+                                            Especifica el correo de Google con el que se inicia sesión en este software
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -1871,7 +2165,7 @@
 
                     </div>
                 </div>
-
+            
     <script>
         // Referencias a elementos
         const dirView = document.getElementById('view-directory');
@@ -2079,20 +2373,44 @@
 
         // Función para cambiar entre pestañas en la VISTA DE EDICIÓN
         function switchEditTab(tabId, element) {
-            // 1. Resetear todos los botones de pestaña dentro de la vista de edición
-            document.querySelectorAll('#view-edit-profile .tab-btn').forEach(btn => {
+            // 1. Determinar en qué vista estamos
+            const parentView = element.closest('#view-profile, #view-edit-profile');
+            
+            if (!parentView) {
+                console.error('No se encontró la vista padre');
+                return;
+            }
+            
+            const isProfileView = parentView.id === 'view-profile';
+            const isEditView = parentView.id === 'view-edit-profile';
+            
+            // 2. Resetear SOLO los botones de esta vista específica
+            parentView.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            // 2. Activar el botón clickeado
+            
+            // 3. Activar el botón clickeado
             element.classList.add('active');
-
-            // 3. Ocultar todos los contenidos de pestaña dentro de la vista de edición
-            document.querySelectorAll('#view-edit-profile .tab-content').forEach(content => {
+            
+            // 4. Ocultar todos los contenidos de pestaña de esta vista
+            parentView.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
-
-            // 4. Mostrar el contenido de la pestaña seleccionada
-            document.getElementById('tab-edit-' + tabId).classList.add('active');
+            
+            // 5. Mostrar el contenido correcto según la vista
+            let targetId;
+            if (isProfileView) {
+                targetId = 'tab-' + tabId;
+            } else if (isEditView) {
+                targetId = 'tab-edit-' + tabId;
+            }
+            
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            } else {
+                console.error('No se encontró el contenido:', targetId);
+            }
         }
 
         // Lógica de Alternar Tema (Dark/Light)
@@ -2878,14 +3196,49 @@
                 document.getElementById('software-plan').selectedIndex = 0;
                 document.getElementById('software-cost').value = '';
                 
-                // Desmarcar radio buttons
+                // Limpiar credenciales
+                document.getElementById('software-email').value = '';
+                document.getElementById('software-password').value = '';
+                document.getElementById('software-google-email').value = '';
+                
+                // Resetear tipo de autenticación
+                document.getElementById('auth-credentials').checked = true;
+                toggleAuthFields('credentials');
+                
+                // Desmarcar radio buttons de licencia
                 document.querySelectorAll('input[name="license-type"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                // ✨ Desmarcar radio buttons de período de facturación
+                document.querySelectorAll('input[name="billing-period"]').forEach(radio => {
                     radio.checked = false;
                 });
             }
 
+            // NUEVA FUNCIÓN: Alternar entre campos de credenciales y Google
+            function toggleAuthFields(type) {
+                const credentialsFields = document.getElementById('credentials-fields');
+                const googleFields = document.getElementById('google-fields');
+                
+                if (type === 'credentials') {
+                    credentialsFields.style.display = 'block';
+                    googleFields.style.display = 'none';
+                    
+                    // Limpiar campos de Google
+                    document.getElementById('software-google-email').value = '';
+                } else if (type === 'google') {
+                    credentialsFields.style.display = 'none';
+                    googleFields.style.display = 'block';
+                    
+                    // Limpiar campos de credenciales
+                    document.getElementById('software-email').value = '';
+                    document.getElementById('software-password').value = '';
+                }
+            }
+
             function saveSoftware() {
-                // Obtener valores del formulario
+                    // Obtener valores del formulario
                 const softwareData = {
                     name: document.getElementById('software-name').value,
                     version: document.getElementById('software-version').value,
@@ -2894,7 +3247,13 @@
                     area: document.getElementById('software-area').value,
                     licenseType: document.querySelector('input[name="license-type"]:checked')?.value || '',
                     plan: document.getElementById('software-plan').value,
-                    cost: document.getElementById('software-cost').value
+                    cost: document.getElementById('software-cost').value,
+                    billingPeriod: document.querySelector('input[name="billing-period"]:checked')?.value || '', // ✨ NUEVO
+                    // Credenciales
+                    email: document.getElementById('software-email')?.value || '',
+                    password: document.getElementById('software-password')?.value || '',
+                    authType: document.querySelector('input[name="auth-type"]:checked')?.value || 'credentials',
+                    googleEmail: document.getElementById('software-google-email')?.value || ''
                 };
                 
                 // Validación básica
@@ -2903,17 +3262,33 @@
                     return;
                 }
                 
+                // Validación de credenciales según tipo de autenticación
+                if (softwareData.authType === 'credentials') {
+                    if (!softwareData.email || !softwareData.password) {
+                        alert('⚠️ Por favor completa el correo y contraseña');
+                        return;
+                    }
+                } else if (softwareData.authType === 'google') {
+                    if (!softwareData.googleEmail) {
+                        alert('⚠️ Por favor especifica el correo de Google asociado');
+                        return;
+                    }
+                }
+                
                 // AQUÍ PUEDES AGREGAR LÓGICA PARA GUARDAR EN BASE DE DATOS
                 console.log('Software a guardar:', softwareData);
                 
-                // Agregar al select de software existente
+                // Agregar al select de software existente en el formulario de empleado
                 const select = document.getElementById('existing-software-select');
                 const optionText = `${softwareData.name} ${softwareData.version ? '- ' + softwareData.version : ''}`;
                 const option = new Option(optionText, softwareData.name.toLowerCase().replace(/\s/g, '_'));
                 select.add(option);
                 
-                alert('✅ Software creado exitosamente');
+                // ✅ CERRAR MODAL AUTOMÁTICAMENTE
                 closeCreateSoftwareModal();
+                
+                // Mostrar mensaje de éxito
+                alert('✅ Software creado y agregado exitosamente');
             }
 
             // Cerrar modal al hacer clic fuera
@@ -2928,14 +3303,12 @@
             // FUNCIONES PARA AGREGAR HARDWARE
             // ============================================
 
-            function openAddHardwareModal() {
-                // AQUÍ implementarás la lógica para abrir un modal
-                // que muestre el inventario de hardware disponible
-                alert('Modal de selección de hardware - Por implementar');
-                
-                // Ejemplo de cómo agregar hardware a la tabla:
-                // addHardwareToTable('Monitor Dell U2721DE', 'MON-00125', 'SN-456-789');
+             function openAddHardwareModal() {
+                openCatalogModal();
+                const originalOpenAddHardwareModal = typeof openAddHardwareModal !== 'undefined' ? openAddHardwareModal : null;
+
             }
+
 
             function addHardwareToTable(device, model, serial) {
                 const table = document.getElementById('assigned-hardware-table').querySelector('tbody');
@@ -2975,7 +3348,7 @@
                 }
             }
 
-                        // ============================================
+            // ============================================
             // EVENT LISTENER PARA BOTÓN DE SOFTWARE (FORZADO)
             // ============================================
             
@@ -3171,30 +3544,97 @@
             // ============================================
 
             // Función para capturar cambios cuando se guarda el formulario de edición
+            // REEMPLAZAR la función captureFormChanges completa:
             function captureFormChanges() {
-                // Capturar cambios de Información Personal
-                const campos = [
-                    { id: 'edit-nombre-completo', nombre: 'Nombre Completo', valorOriginal: 'Ana Sofía García Pérez' },
-                    { id: 'edit-celular', nombre: 'Celular', valorOriginal: '+58 412-1234567' },
-                    { id: 'edit-correo', nombre: 'Correo', valorOriginal: 'ana.garcia.p@email.com' },
-                    { id: 'edit-direccion', nombre: 'Dirección', valorOriginal: 'Calle Falsa 123, Apto 4B' },
-                    { id: 'edit-cargo', nombre: 'Cargo', valorOriginal: 'Desarrollador Senior' },
-                    { id: 'edit-area-departamento', nombre: 'Área', valorOriginal: 'Tecnología de la Información' },
-                    { id: 'edit-procesador', nombre: 'Procesador', valorOriginal: 'Intel Core i7 12th Gen' },
-                    { id: 'edit-ram', nombre: 'RAM', valorOriginal: '16 GB DDR4' },
-                    { id: 'edit-almacenamiento', nombre: 'Almacenamiento', valorOriginal: '512 GB SSD NVMe' },
-                    { id: 'edit-gpu', nombre: 'Tarjeta Gráfica', valorOriginal: 'NVIDIA RTX 3050' },
-                    { id: 'edit-mouse', nombre: 'Mouse', valorOriginal: 'Logitech G203' },
-                    { id: 'edit-teclado', nombre: 'Teclado', valorOriginal: 'Mecánico Redragon' },
-                    { id: 'edit-diadema', nombre: 'Diadema', valorOriginal: 'Sony WH-1000XM5' }
+                // ========================================
+                // INFORMACIÓN PERSONAL
+                // ========================================
+                const camposPersonales = [
+                    { id: 'edit-nombre-completo', nombre: 'Nombre Completo', original: 'Ana SofÃ­a GarcÃ­a PÃ©rez' },
+                    { id: 'edit-fecha-nacimiento', nombre: 'Fecha de Nacimiento', original: '10/05/1985' },
+                    { id: 'edit-cedula', nombre: 'Cédula', original: 'V-12.345.678' },
+                    { id: 'edit-celular', nombre: 'Celular', original: '+58 412-1234567' },
+                    { id: 'edit-correo', nombre: 'Correo', original: 'ana.garcia.p@email.com' },
+                    { id: 'edit-direccion', nombre: 'Dirección', original: 'Calle Falsa 123, Apto 4B' },
+                    { id: 'edit-localidad', nombre: 'Localidad', original: 'Bosa, La Independencia' },
+                    { id: 'edit-ciudad', nombre: 'Ciudad', original: 'BogotÃ¡ D.C.' },
+                    { id: 'edit-tipo-sangre', nombre: 'Tipo de Sangre', original: 'O+' },
+                    { id: 'edit-num-hijos', nombre: 'Número de Hijos', original: '2' },
+                    { id: 'edit-contacto-emergencia', nombre: 'Contacto Emergencia', original: 'Carlos PÃ©rez' },
+                    { id: 'edit-telefono-emergencia', nombre: 'Teléfono Emergencia', original: '+57 310-9876543' },
+                    { id: 'edit-parentesco-emergencia', nombre: 'Parentesco Emergencia', original: 'Padre' }
                 ];
                 
-                campos.forEach(campo => {
+                // ========================================
+                // INFORMACIÓN LABORAL
+                // ========================================
+                const camposLaborales = [
+                    { id: 'edit-cargo', nombre: 'Cargo', original: 'Desarrollador Senior' },
+                    { id: 'edit-area-departamento', nombre: 'Ãrea/Departamento', original: 'TecnologÃ­a de la InformaciÃ³n' },
+                    { id: 'edit-jefe-inmediato', nombre: 'Jefe Inmediato', original: 'Carlos RodrÃ­guez' },
+                    { id: 'edit-correo-corporativo', nombre: 'Correo Corporativo', original: 'correo@empresa.com' },
+                    { id: 'edit-inicio-contrato', nombre: 'Inicio de Contrato', original: '2020-01-15' },
+                    { id: 'edit-id-biometrico', nombre: 'ID Biométrico', original: 'BIO-2023-001234' }
+                ];
+                
+                // ========================================
+                // HARDWARE
+                // ========================================
+                const camposHardware = [
+                    { id: 'edit-procesador', nombre: 'Procesador', original: 'Intel Core i7 12th Gen' },
+                    { id: 'edit-ram', nombre: 'RAM', original: '16 GB DDR4' },
+                    { id: 'edit-almacenamiento', nombre: 'Almacenamiento', original: '512 GB SSD NVMe' },
+                    { id: 'edit-gpu', nombre: 'Tarjeta GrÃ¡fica', original: 'NVIDIA RTX 3050' },
+                    { id: 'edit-antena-wifi', nombre: 'Antena Wifi', original: 'Integrada' },
+                    { id: 'edit-mouse', nombre: 'Mouse', original: 'Logitech G203' },
+                    { id: 'edit-teclado', nombre: 'Teclado', original: 'MecÃ¡nico Redragon' },
+                    { id: 'edit-diadema', nombre: 'Diadema', original: 'Sony WH-1000XM5' }
+                ];
+                
+                // ========================================
+                // SOFTWARE
+                // ========================================
+                const camposSoftware = [
+                    { id: 'edit-office365', nombre: 'Microsoft Office 365', original: 'Licencia E3' },
+                    { id: 'edit-adobe', nombre: 'Adobe Creative Cloud', original: 'Todas las aplicaciones' },
+                    { id: 'edit-slack', nombre: 'Slack', original: 'Plan Pro' },
+                    { id: 'edit-figma', nombre: 'Figma', original: 'Licencia Profesional' },
+                    { id: 'edit-jira', nombre: 'Jira', original: 'Acceso Completo' },
+                    { id: 'edit-gitlab', nombre: 'GitLab', original: 'Rol de Mantenedor' }
+                ];
+                
+                // ========================================
+                // PROCESAR TODOS LOS CAMPOS
+                // ========================================
+                const todosCampos = [
+                    ...camposPersonales,
+                    ...camposLaborales,
+                    ...camposHardware,
+                    ...camposSoftware
+                ];
+                
+                let cambiosDetectados = 0;
+                
+                todosCampos.forEach(campo => {
                     const input = document.getElementById(campo.id);
-                    if (input && input.value !== campo.valorOriginal) {
-                        registerChange(campo.nombre, campo.valorOriginal, input.value);
+                    if (!input) return;
+                    
+                    const valorActual = input.value.trim();
+                    const valorOriginal = campo.original;
+                    
+                    // Solo registrar si hay cambio real
+                    if (valorActual && valorActual !== valorOriginal) {
+                        registerChange(campo.nombre, valorOriginal, valorActual);
+                        cambiosDetectados++;
                     }
                 });
+                
+                // Mostrar mensaje de confirmación
+                if (cambiosDetectados > 0) {
+                    console.log(`✅ Se registraron ${cambiosDetectados} cambio(s) en el historial`);
+                } else {
+                    console.log('ℹ️ No se detectaron cambios');
+                }
             }
 
             // Modificar el botón "Guardar Cambios" en la vista de edición
@@ -3285,6 +3725,264 @@
             // Inicializar la tabla al cargar la página
             window.addEventListener('load', function() {
                 updateHistoryTable();
+            });
+
+            // AGREGAR esta función nueva al final del script:
+            function saveAllChanges() {
+                // 1. Capturar todos los cambios
+                captureFormChanges();
+                
+                // 2. Mostrar mensaje de éxito
+                alert('✅ Cambios guardados exitosamente');
+                
+                // 3. Actualizar la vista de perfil con los nuevos datos
+                updateProfileView();
+                
+                // 4. Volver a la vista de perfil
+                showProfileViewFromEdit();
+            }
+
+            // AGREGAR también esta función para actualizar la vista:
+            function updateProfileView() {
+                // Actualizar todos los campos visibles en la vista de perfil
+                // con los valores del formulario de edición
+                
+                // Ejemplo: Actualizar nombre
+                const nombreEdit = document.getElementById('edit-nombre-completo');
+                if (nombreEdit) {
+                    // Actualizar en la vista de perfil
+                    const nombreDisplay = document.querySelector('#view-profile .profile-name');
+                    if (nombreDisplay) {
+                        nombreDisplay.textContent = nombreEdit.value;
+                    }
+                }   
+            }
+            // ============================================
+            // 🆕 CATÁLOGO DE HARDWARE - INICIO
+            // ============================================
+            
+            // Variables globales del catálogo
+            let selectedDevices = []; // Array para almacenar dispositivos seleccionados
+
+            // ============================================
+            // ABRIR CATÁLOGO DE HARDWARE
+            // ============================================
+            function openCatalogModal() {
+                console.log('🔵 Abriendo catálogo de hardware...');
+                
+                const modal = document.getElementById('hardware-catalog-modal');
+                if (!modal) {
+                    console.error('❌ Modal de catálogo no encontrado');
+                    alert('Error: No se encontró el catálogo de hardware');
+                    return;
+                }
+
+                // Mostrar modal
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                // Resetear selección
+                selectedDevices = [];
+                updateConfirmButton();
+                
+                // Limpiar búsqueda y filtros
+                const searchInput = document.getElementById('catalog-search-input');
+                const categoryFilter = document.getElementById('catalog-category-filter');
+                
+                if (searchInput) searchInput.value = '';
+                if (categoryFilter) categoryFilter.value = 'all';
+                
+                // Mostrar todos los dispositivos
+                filterDevices();
+                
+                console.log('✅ Catálogo abierto');
+            }
+
+            // ============================================
+            // CERRAR CATÁLOGO DE HARDWARE
+            // ============================================
+            function closeCatalogModal() {
+                const modal = document.getElementById('hardware-catalog-modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Limpiar selecciones visuales
+                document.querySelectorAll('.catalog-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                document.querySelectorAll('.catalog-btn-assign').forEach(btn => {
+                    btn.textContent = 'Asignar';
+                    btn.classList.remove('selected');
+                });
+                
+                selectedDevices = [];
+                console.log('🔵 Catálogo cerrado');
+            }
+
+            // ============================================
+            // SELECCIONAR/DESELECCIONAR DISPOSITIVO
+            // ============================================
+            function selectDevice(deviceId, buttonElement) {
+                console.log('📦 Dispositivo clickeado:', deviceId);
+                
+                const card = buttonElement.closest('.catalog-card');
+                const index = selectedDevices.indexOf(deviceId);
+                
+                if (index > -1) {
+                    // Ya está seleccionado - deseleccionar
+                    selectedDevices.splice(index, 1);
+                    card.classList.remove('selected');
+                    buttonElement.textContent = 'Asignar';
+                    buttonElement.classList.remove('selected');
+                } else {
+                    // Seleccionar
+                    selectedDevices.push(deviceId);
+                    card.classList.add('selected');
+                    buttonElement.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.25rem;">check</span> Seleccionado';
+                    buttonElement.classList.add('selected');
+                }
+                
+                updateConfirmButton();
+                console.log('✅ Dispositivos seleccionados:', selectedDevices);
+            }
+
+            // ============================================
+            // ACTUALIZAR ESTADO DEL BOTÓN CONFIRMAR
+            // ============================================
+            function updateConfirmButton() {
+                const confirmBtn = document.getElementById('confirm-assignment-btn');
+                if (!confirmBtn) return;
+                
+                if (selectedDevices.length > 0) {
+                    confirmBtn.disabled = false;
+                    confirmBtn.style.opacity = '1';
+                    confirmBtn.style.cursor = 'pointer';
+                } else {
+                    confirmBtn.disabled = true;
+                    confirmBtn.style.opacity = '0.5';
+                    confirmBtn.style.cursor = 'not-allowed';
+                }
+            }
+
+            // ============================================
+            // CONFIRMAR ASIGNACIÓN
+            // ============================================
+            function confirmHardwareAssignment() {
+                if (selectedDevices.length === 0) {
+                    alert('⚠️ Por favor selecciona al menos un dispositivo');
+                    return;
+                }
+                
+                console.log('✅ Confirmando asignación de:', selectedDevices);
+                
+                // Agregar dispositivos a la tabla del formulario
+                selectedDevices.forEach(deviceId => {
+                    const card = document.querySelector(`[data-device-id="${deviceId}"]`);
+                    if (card) {
+                        const deviceName = card.querySelector('.catalog-card-title').textContent;
+                        const category = card.querySelector('.catalog-card-category').textContent;
+                        
+                        // Agregar a la tabla de hardware asignado
+                        addHardwareToTable(deviceName, category, deviceId);
+                    }
+                });
+                
+                alert(`✅ ${selectedDevices.length} dispositivo(s) asignado(s) exitosamente`);
+                closeCatalogModal();
+            }
+
+            // ============================================
+            // BÚSQUEDA Y FILTRADO
+            // ============================================
+            function filterDevices() {
+                const searchInput = document.getElementById('catalog-search-input');
+                const categoryFilter = document.getElementById('catalog-category-filter');
+                
+                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+                const category = categoryFilter ? categoryFilter.value : 'all';
+                
+                const cards = document.querySelectorAll('.catalog-card');
+                let visibleCount = 0;
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('.catalog-card-title')?.textContent.toLowerCase() || '';
+                    const cardCategory = card.getAttribute('data-category') || '';
+                    const deviceId = card.getAttribute('data-device-id')?.toLowerCase() || '';
+                    
+                    const matchesSearch = title.includes(searchTerm) || deviceId.includes(searchTerm);
+                    const matchesCategory = category === 'all' || cardCategory === category;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Mostrar mensaje si no hay resultados
+                const grid = document.getElementById('catalog-devices-grid');
+                if (!grid) return;
+                
+                let noResultsMsg = grid.querySelector('.no-results-message');
+                
+                if (visibleCount === 0) {
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.className = 'no-results-message';
+                        noResultsMsg.innerHTML = `
+                            <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--text-secondary); margin-bottom: 1rem;">search_off</span>
+                            <p style="margin: 0; color: var(--text-secondary); font-size: 1.1rem;">No se encontraron dispositivos</p>
+                            <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary); font-size: 0.9rem;">Intenta con otros términos de búsqueda</p>
+                        `;
+                        grid.appendChild(noResultsMsg);
+                    }
+                } else {
+                    if (noResultsMsg) {
+                        noResultsMsg.remove();
+                    }
+                }
+            }
+
+            // ============================================
+            // INICIALIZACIÓN DE EVENT LISTENERS
+            // ============================================
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('🔵 Inicializando catálogo de hardware...');
+                
+                // Event listener para búsqueda
+                const searchInput = document.getElementById('catalog-search-input');
+                if (searchInput) {
+                    searchInput.addEventListener('input', filterDevices);
+                    console.log('✅ Búsqueda inicializada');
+                }
+                
+                // Event listener para filtro de categoría
+                const categoryFilter = document.getElementById('catalog-category-filter');
+                if (categoryFilter) {
+                    categoryFilter.addEventListener('change', filterDevices);
+                    console.log('✅ Filtro de categoría inicializado');
+                }
+            });
+
+            // Event listener para cerrar con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('hardware-catalog-modal');
+                    if (modal && modal.style.display === 'flex') {
+                        closeCatalogModal();
+                    }
+                }
+            });
+
+            // Event listener para cerrar al hacer clic en el overlay
+            document.addEventListener('click', function(e) {
+                const modal = document.getElementById('hardware-catalog-modal');
+                if (modal && e.target === modal) {
+                    closeCatalogModal();
+                }
             });
 
     </script>

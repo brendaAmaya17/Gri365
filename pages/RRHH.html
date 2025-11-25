@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos Humanos - GRI365</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="page-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20oscuro.png?updatedAt=1759508923355" alt="Logo Claro" class="logo-light">
+                <img src="https://ik.imagekit.io/v3kitfabd/gri365/solo%20ojo%20claro.png?updatedAt=1759508923395" alt="Logo Oscuro" class="logo-dark hidden">
+            </div>
+            <nav class="navigation">
+                <a class="nav-link" href="../index.html"><span class="material-symbols-outlined">dashboard</span><span>Inicio</span></a>
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">list_alt</span><span>FixIT</span></a>
+                <a class="nav-link" href="../pages/gestion.html"><span class="material-symbols-outlined">add_task</span><span>Gestión de Proyectos</span></a>
+                <a class="nav-link" href="../pages/marketing.html"><span class="material-symbols-outlined">linked_camera</span><span>CAM</span></a>
+                <a class="nav-link active" href="../pages/directorio.html"><span class="material-symbols-outlined">inventory</span><span>Directorio</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <a class="nav-link" href="#"><span class="material-symbols-outlined">logout</span><span>Cerrar Sesión</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="project-header">
+                <div class="project-header-main">
+                    <div class="project-logo">
+                        <span class="material-symbols-outlined">group</span>
+                        <h2 class="titulo">Recursos Humanos</h2>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle-btn" class="icon-button" title="Alternar tema">
+                        <span class="material-symbols-outlined sun-icon">light_mode</span>
+                        <span class="material-symbols-outlined moon-icon hidden">dark_mode</span>
+                    </button>
+                    <a href="#" class="icon-button" title="Cerrar Sesión">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
+                </div>
+            </header>
+
+            <div class="rrhh-container">
+                
+                <!-- Pestañas de navegación -->
+                <div class="rrhh-tabs">
+                    <button class="tab-button active" data-tab="dashboard">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </button>
+                    <button class="tab-button" data-tab="empleados">
+                        <span class="material-symbols-outlined">badge</span>
+                        Empleados
+                    </button>
+                    <button class="tab-button" data-tab="vacantes">
+                        <span class="material-symbols-outlined">work</span>
+                        Vacantes
+                    </button>
+                </div>
+
+                <!-- Contenido de las pestañas -->
+                <div class="tab-content active" id="dashboard">
+                    
+                    <!-- Tarjetas de resumen -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <span class="material-symbols-outlined">groups</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-label">Total de Empleados</p>
+                                <h3 class="stat-value">152</h3>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-label">Empleados Activos</p>
+                                <h3 class="stat-value">140</h3>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon red">
+                                <span class="material-symbols-outlined">cancel</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-label">Empleados Inactivos</p>
+                                <h3 class="stat-value">12</h3>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon yellow">
+                                <span class="material-symbols-outlined">work</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-label">Vacantes Abiertas</p>
+                                <h3 class="stat-value">5</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráficas -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3 class="chart-title">Empleados por Departamento</h3>
+                            <canvas id="departmentChart"></canvas>
+                        </div>
+
+                        <div class="chart-card">
+                            <h3 class="chart-title">Distribución de Género</h3>
+                            <canvas id="genderChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-content" id="empleados">
+                    
+                    <!-- Header Section -->
+                    <div class="employee-directory-header">
+                        <div class="header-text">
+                            <h1 class="directory-title">Employee Directory</h1>
+                            <p class="directory-subtitle">Manage and view all employee information in one place.</p>
+                        </div>
+                        <button class="btn-add-employee" id="addEmployeeBtn">
+                            <span class="material-symbols-outlined">add</span>
+                            Add Employee
+                        </button>
+                    </div>
+
+                    <!-- Search and Filters -->
+                    <div class="search-filters-bar">
+                        <div class="search-input-wrapper">
+                            <span class="material-symbols-outlined">search</span>
+                            <input type="text" id="searchEmployee" placeholder="Search by name, position...">
+                        </div>
+                        <div class="filters-wrapper">
+                            <select id="departmentFilter" class="filter-dropdown">
+                                <option value="">Department</option>
+                                <option value="product-design">Product & Design</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="human-resources">Human Resources</option>
+                                <option value="sales">Sales</option>
+                            </select>
+                            <select id="statusFilter" class="filter-dropdown">
+                                <option value="">Status</option>
+                                <option value="active">Active</option>
+                                <option value="on-leave">On Leave</option>
+                                <option value="terminated">Terminated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Employee Cards Grid -->
+                    <div class="employee-cards-grid" id="employeeCardsGrid">
+                        <!-- Cards will be generated by JavaScript -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-container">
+                        <button class="pagination-arrow" id="prevPage">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <div class="pagination-numbers" id="paginationNumbers">
+                            <!-- Numbers will be generated by JavaScript -->
+                        </div>
+                        <button class="pagination-arrow" id="nextPage">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="tab-content" id="vacantes">
+                    
+                    <!-- Barra de herramientas -->
+                    <div class="toolbar">
+                        <div class="search-bar">
+                            <span class="material-symbols-outlined">search</span>
+                            <input type="text" id="searchVacancy" placeholder="Buscar por puesto o área...">
+                        </div>
+                        <div class="toolbar-actions">
+                            <button class="btn-primary" id="addVacancyBtn">
+                                <span class="material-symbols-outlined">add</span>
+                                Nueva Vacante
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid de vacantes -->
+                    <div class="vacancies-grid">
+                        
+                        <div class="vacancy-card">
+                            <div class="vacancy-header">
+                                <h3 class="vacancy-title">Desarrollador Frontend</h3>
+                                <span class="badge badge-active">Activa</span>
+                            </div>
+                            <div class="vacancy-info">
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">business_center</span>
+                                    <span>Área de Tecnología</span>
+                                </div>
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                    <span>Publicado: 16/07/24</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary btn-block">Ver detalles</button>
+                        </div>
+
+                        <div class="vacancy-card">
+                            <div class="vacancy-header">
+                                <h3 class="vacancy-title">Diseñador UI/UX</h3>
+                                <span class="badge badge-active">Activa</span>
+                            </div>
+                            <div class="vacancy-info">
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">business_center</span>
+                                    <span>Área de Diseño</span>
+                                </div>
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                    <span>Publicado: 12/07/24</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary btn-block">Ver detalles</button>
+                        </div>
+
+                        <div class="vacancy-card">
+                            <div class="vacancy-header">
+                                <h3 class="vacancy-title">Gerente de Marketing</h3>
+                                <span class="badge badge-revision">En Revisión</span>
+                            </div>
+                            <div class="vacancy-info">
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">business_center</span>
+                                    <span>Área de Marketing</span>
+                                </div>
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                    <span>Publicado: 10/07/24</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary btn-block">Ver detalles</button>
+                        </div>
+
+                        <div class="vacancy-card">
+                            <div class="vacancy-header">
+                                <h3 class="vacancy-title">Analista de Datos</h3>
+                                <span class="badge badge-closed">Cerrada</span>
+                            </div>
+                            <div class="vacancy-info">
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">business_center</span>
+                                    <span>Área de Business Intelligence</span>
+                                </div>
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                    <span>Publicado: 05/07/24</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary btn-block">Ver detalles</button>
+                        </div>
+
+                        <div class="vacancy-card">
+                            <div class="vacancy-header">
+                                <h3 class="vacancy-title">Especialista en RRHH</h3>
+                                <span class="badge badge-active">Activa</span>
+                            </div>
+                            <div class="vacancy-info">
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">business_center</span>
+                                    <span>Área de Recursos Humanos</span>
+                                </div>
+                                <div class="vacancy-detail">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                    <span>Publicado: 18/07/24</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary btn-block">Ver detalles</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        // ============================================
+        // TOGGLE DE TEMA
+        // ============================================
+        const themeToggle = document.getElementById('theme-toggle-btn');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            sunIcon.classList.toggle('hidden');
+            moonIcon.classList.toggle('hidden');
+        });
+
+        // ============================================
+        // SISTEMA DE PESTAÑAS
+        // ============================================
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+                
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // ============================================
+        // GRÁFICAS CON CHART.JS
+        // ============================================
+        const departmentCtx = document.getElementById('departmentChart').getContext('2d');
+        const departmentChart = new Chart(departmentCtx, {
+            type: 'bar',
+            data: {
+                labels: ['TI', 'Marketing', 'Ventas', 'RRHH', 'Soporte'],
+                datasets: [{
+                    label: 'Empleados',
+                    data: [35, 28, 22, 18, 15],
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                }
+            }
+        });
+
+        const genderCtx = document.getElementById('genderChart').getContext('2d');
+        const genderChart = new Chart(genderCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Mujeres (60%)', 'Hombres (40%)'],
+                datasets: [{
+                    data: [91, 61],
+                    backgroundColor: ['#c084fc', '#7c3aed'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // ============================================
+        // DATOS DE EMPLEADOS
+        // ============================================
+        const employeesData = [
+            {
+                id: 1,
+                name: 'Jane Doe',
+                position: 'Lead UI/UX Designer',
+                department: 'Product & Design',
+                departmentValue: 'product-design',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=1'
+            },
+            {
+                id: 2,
+                name: 'John Smith',
+                position: 'Senior Backend Engineer',
+                department: 'Engineering',
+                departmentValue: 'engineering',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=13'
+            },
+            {
+                id: 3,
+                name: 'Emily White',
+                position: 'Marketing Manager',
+                department: 'Marketing',
+                departmentValue: 'marketing',
+                status: 'On Leave',
+                statusValue: 'on-leave',
+                avatar: 'https://i.pravatar.cc/150?img=5'
+            },
+            {
+                id: 4,
+                name: 'Michael Brown',
+                position: 'HR Generalist',
+                department: 'Human Resources',
+                departmentValue: 'human-resources',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=12'
+            },
+            {
+                id: 5,
+                name: 'Jessica Green',
+                position: 'Sales Representative',
+                department: 'Sales',
+                departmentValue: 'sales',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=9'
+            },
+            {
+                id: 6,
+                name: 'David Black',
+                position: 'DevOps Engineer',
+                department: 'Engineering',
+                departmentValue: 'engineering',
+                status: 'Terminated',
+                statusValue: 'terminated',
+                avatar: 'https://i.pravatar.cc/150?img=14'
+            },
+            {
+                id: 7,
+                name: 'Sarah Johnson',
+                position: 'Product Manager',
+                department: 'Product & Design',
+                departmentValue: 'product-design',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=10'
+            },
+            {
+                id: 8,
+                name: 'Robert Wilson',
+                position: 'Frontend Developer',
+                department: 'Engineering',
+                departmentValue: 'engineering',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=15'
+            },
+            {
+                id: 9,
+                name: 'Lisa Anderson',
+                position: 'Content Strategist',
+                department: 'Marketing',
+                departmentValue: 'marketing',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=16'
+            },
+            {
+                id: 10,
+                name: 'James Taylor',
+                position: 'QA Engineer',
+                department: 'Engineering',
+                departmentValue: 'engineering',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=17'
+            },
+            {
+                id: 11,
+                name: 'Maria Garcia',
+                position: 'UX Researcher',
+                department: 'Product & Design',
+                departmentValue: 'product-design',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=20'
+            },
+            {
+                id: 12,
+                name: 'Thomas Martinez',
+                position: 'Sales Manager',
+                department: 'Sales',
+                departmentValue: 'sales',
+                status: 'Active',
+                statusValue: 'active',
+                avatar: 'https://i.pravatar.cc/150?img=18'
+            }
+        ];
+
+        // ============================================
+        // FUNCIONES DE RENDERIZADO
+        // ============================================
+        let currentPage = 1;
+        const itemsPerPage = 6;
+        let filteredEmployees = [...employeesData];
+
+        function getStatusClass(status) {
+            const statusMap = {
+                'Active': 'status-active',
+                'On Leave': 'status-leave',
+                'Terminated': 'status-terminated'
+            };
+            return statusMap[status] || 'status-active';
+        }
+
+        function renderEmployeeCards() {
+            const grid = document.getElementById('employeeCardsGrid');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageEmployees = filteredEmployees.slice(startIndex, endIndex);
+
+            if (pageEmployees.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <span class="material-symbols-outlined">search_off</span>
+                        <p>No se encontraron empleados</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = pageEmployees.map(employee => `
+                <div class="employee-card">
+                    <img src="${employee.avatar}" alt="${employee.name}" class="employee-card-avatar">
+                    <h3 class="employee-card-name">${employee.name}</h3>
+                    <p class="employee-card-position">${employee.position}</p>
+                    <p class="employee-card-department">${employee.department}</p>
+                    <span class="employee-status ${getStatusClass(employee.status)}">${employee.status}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredEmployees.length / itemsPerPage);
+            const paginationNumbers = document.getElementById('paginationNumbers');
+            
+            let html = '';
+            
+            // Mostrar primera página
+            html += `<button class="pagination-number ${currentPage === 1 ? 'active' : ''}" data-page="1">1</button>`;
+            
+            if (totalPages > 1) {
+                // Si hay muchas páginas, mostrar puntos suspensivos
+                if (currentPage > 3) {
+                    html += `<span class="pagination-dots">...</span>`;
+                }
+                
+                // Mostrar páginas alrededor de la actual
+                for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                    html += `<button class="pagination-number ${currentPage === i ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                }
+                
+                // Mostrar puntos suspensivos antes de la última
+                if (currentPage < totalPages - 2) {
+                    html += `<span class="pagination-dots">...</span>`;
+                }
+                
+                // Mostrar última página
+                if (totalPages > 1) {
+                    html += `<button class="pagination-number ${currentPage === totalPages ? 'active' : ''}" data-page="${totalPages}">${totalPages}</button>`;
+                }
+            }
+            
+            paginationNumbers.innerHTML = html;
+            
+            // Event listeners para botones de página
+            document.querySelectorAll('.pagination-number').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentPage = parseInt(btn.dataset.page);
+                    renderEmployeeCards();
+                    renderPagination();
+                });
+            });
+            
+            // Habilitar/deshabilitar flechas
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = currentPage === totalPages;
+        }
+
+        // ============================================
+        // NAVEGACIÓN DE PAGINACIÓN
+        // ============================================
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderEmployeeCards();
+                renderPagination();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredEmployees.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderEmployeeCards();
+                renderPagination();
+            }
+        });
+
+        // ============================================
+        // BÚSQUEDA Y FILTROS
+        // ============================================
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchEmployee').value.toLowerCase();
+            const departmentFilter = document.getElementById('departmentFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            
+            filteredEmployees = employeesData.filter(employee => {
+                const matchSearch = employee.name.toLowerCase().includes(searchTerm) ||
+                                  employee.position.toLowerCase().includes(searchTerm);
+                const matchDepartment = !departmentFilter || employee.departmentValue === departmentFilter;
+                const matchStatus = !statusFilter || employee.statusValue === statusFilter;
+                
+                return matchSearch && matchDepartment && matchStatus;
+            });
+            
+            currentPage = 1;
+            renderEmployeeCards();
+            renderPagination();
+        }
+
+        document.getElementById('searchEmployee').addEventListener('input', applyFilters);
+        document.getElementById('departmentFilter').addEventListener('change', applyFilters);
+        document.getElementById('statusFilter').addEventListener('change', applyFilters);
+
+        // ============================================
+        // BÚSQUEDA DE VACANTES
+        // ============================================
+        const searchVacancy = document.getElementById('searchVacancy');
+        searchVacancy.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.vacancy-card');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // ============================================
+        // BOTONES DE ACCIÓN
+        // ============================================
+        document.getElementById('addEmployeeBtn').addEventListener('click', () => {
+            alert('Funcionalidad: Agregar nuevo empleado');
+        });
+
+        document.getElementById('addVacancyBtn').addEventListener('click', () => {
+            alert('Funcionalidad: Crear nueva vacante');
+        });
+
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        renderEmployeeCards();
+        renderPagination();
+    </script>
+</body>
+</html>
